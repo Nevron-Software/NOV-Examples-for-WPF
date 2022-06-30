@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputPath>bin</OutputPath>
+    <RootNamespace>Nevron.Nov.Examples.Wpf</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <AssemblyVersion>22.6.9.12</AssemblyVersion>
+    <FileVersion>22.6.9.12</FileVersion>
+    <Description>Nevron.Nov.Examples.Wpf</Description>
+    <Configuration>Release</Configuration>
+    <Company>Nevron Software</Company>
+    <Product>Nevron Open Vision</Product>
+    <Copyright>Copyright © 1998 - 2022 Nevron Software</Copyright>
+    <DocumentationFile>Nevron.Nov.Examples.Wpf.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\NevronOpenVision.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NevronOpenVision.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Nevron.Nov.Barcode">
+      <Name>Nevron.Nov.Barcode</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Barcode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Chart">
+      <Name>Nevron.Nov.Chart</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Diagram">
+      <Name>Nevron.Nov.Diagram</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Diagram.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Examples">
+      <Name>Nevron.Nov.Examples</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Examples.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Grid">
+      <Name>Nevron.Nov.Grid</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Grid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Host.WinBase">
+      <Name>Nevron.Nov.Host.WinBase</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Host.WinBase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Host.Wpf">
+      <Name>Nevron.Nov.Host.Wpf</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Host.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Presentation">
+      <Name>Nevron.Nov.Presentation</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Schedule">
+      <Name>Nevron.Nov.Schedule</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Schedule.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Nov.Text">
+      <Name>Nevron.Nov.Text</Name>
+      <HintPath>..\..\Bin\Net50\Nevron.Nov.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

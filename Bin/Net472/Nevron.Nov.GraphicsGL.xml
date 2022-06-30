@@ -1,0 +1,852 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.GraphicsGL</name>
+    </assembly>
+    <members>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLLineF.#ctor(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Intializer constructor
+            </summary>
+            <param name="origin"></param>
+            <param name="direction"></param>
+        </member>
+        <member name="T:Nevron.Nov.GraphicsGL.NGLVector2DF">
+            <summary>
+            The NVector3DD struct represents a 3D vector with float coordinates
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.#ctor(Nevron.Nov.Graphics.NPoint)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.#ctor(Nevron.Nov.GraphicsGL.NGLVector2DF@)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="vec"></param>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVector2DF.Length">
+            <summary>
+            Gets the vector length
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVector2DF.LengthSquare">
+            <summary>
+            Gets the vector length square (length * length)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.SetXY(System.Single,System.Single)">
+            <summary>
+            Sets the x and y coordinates of the vector
+            </summary>
+            <param name="x">x coordinate</param>
+            <param name="y">y coordinate</param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Add(Nevron.Nov.GraphicsGL.NGLVector2DF@)">
+            <summary>
+            Makes this vector the vector sum of v1 and v2
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Add(System.Single,System.Single,System.Single)">
+            <summary>
+            Adds the specified vector to the current vector.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Subtract(Nevron.Nov.GraphicsGL.NGLVector2DF@)">
+            <summary>
+            Substracts v from this vector
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Multiply(System.Single)">
+            <summary>
+            Makes this vector the scalar multiplication of v1 with the specified fMul factor
+            </summary>
+            <param name="fMul"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Divide(System.Single)">
+            <summary>
+            Makes this vector the scalar division of v1 with the specified fDiv factor
+            </summary>
+            <param name="fDiv"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.ToString">
+            <summary>
+            Overriden to provide a string representation of the vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.op_Addition(Nevron.Nov.GraphicsGL.NGLVector2DF,Nevron.Nov.GraphicsGL.NGLVector2DF)">
+            <summary>
+            Adds a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.op_Subtraction(Nevron.Nov.GraphicsGL.NGLVector2DF,Nevron.Nov.GraphicsGL.NGLVector2DF)">
+            <summary>
+            Substracts a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.op_Multiply(Nevron.Nov.GraphicsGL.NGLVector2DF,System.Single)">
+            <summary>
+            Multiplies vec by value
+            </summary>
+            <param name="vec"></param>
+            <param name="fMul"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Invert">
+            <summary>
+            Inverts the vector
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.GetLength">
+            <summary>
+            Gets the vector length
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.GetLengthSquare">
+            <summary>
+            Gets the vector length square
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.DotProduct(Nevron.Nov.GraphicsGL.NGLVector2DF@)">
+            <summary>
+            Computes the dot product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.CrossProduct(Nevron.Nov.GraphicsGL.NGLVector2DF@)">
+            <summary>
+            Computes the cross product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Normalize">
+            <summary>
+            Normalizes this vector (makes its length equal to 1)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Normalize(System.Single)">
+            <summary>
+            Normalizes this vector (makes its length equal to the specified length)
+            </summary>
+            <param name="fUnitLength"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Equals(Nevron.Nov.GraphicsGL.NGLVector2DF)">
+            <summary>
+            Determines whether this vector is equal to the specified vector
+            </summary>
+            <param name="vec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.RotateZ(System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="fAngle"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.DotProduct(Nevron.Nov.GraphicsGL.NGLVector2DF,Nevron.Nov.GraphicsGL.NGLVector2DF)">
+            <summary>
+            Computes the dot product of two 3-D vectors
+            </summary>
+            <param name="a">source vector</param>
+            <param name="b">source vector</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Normalize(Nevron.Nov.GraphicsGL.NGLVector2DF)">
+            <summary>
+            Computes the normalized version of a 3-D vector.
+            </summary>
+            <param name="vector">Source NVector3DF structure.</param>
+            <returns>A NVector3DF structure that is the normalized version of the specified vector.</returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.Equals(System.Object)">
+            <summary>
+            Returns true if the objects are equal.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVector2DF.GetHashCode">
+            <summary>
+            Returns the hash code of this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVector2DF.X">
+            <summary>
+            x coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVector2DF.Y">
+            <summary>
+            y coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVector2DF.Zero">
+            <summary>
+            The zero vector (0, 0).
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.GraphicsGL.NGLVectorD">
+            <summary>
+            The NVector3DD struct represents a 3D vector with double coordinates
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.#ctor(Nevron.Nov.Graphics.NPoint)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.#ctor(Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="vec"></param>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVectorD.Length">
+            <summary>
+            Gets the vector length
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVectorD.LengthSquare">
+            <summary>
+            Gets the vector length square (length * length)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.SetXYZ(System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the x, y and z coordinates of the vector
+            </summary>
+            <param name="x">x coordinate</param>
+            <param name="y">y coordinate</param>
+            <param name="z">z coordinate</param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.SetXY(System.Double,System.Double)">
+            <summary>
+            Sets the x and y coordinates of the vector
+            </summary>
+            <param name="x">x coordinate</param>
+            <param name="y">y coordinate</param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Add(Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Makes this vector the vector sum of v1 and v2
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Add(System.Double,System.Double,System.Double)">
+            <summary>
+            Adds the specified vector to the current vector.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Subtract(Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Substracts v from this vector
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Multiply(System.Double)">
+            <summary>
+            Makes this vector the scalar multiplication of v1 with the specified fMul factor
+            </summary>
+            <param name="fMul"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Divide(System.Double)">
+            <summary>
+            Makes this vector the scalar division of v1 with the specified fDiv factor
+            </summary>
+            <param name="fDiv"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.ToString">
+            <summary>
+            Overriden to provide a string representation of the vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.op_Addition(Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Adds a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.op_Subtraction(Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Substracts a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.op_Multiply(Nevron.Nov.GraphicsGL.NGLVectorD,System.Double)">
+            <summary>
+            Multiplies vec by value
+            </summary>
+            <param name="vec"></param>
+            <param name="fMul"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Invert">
+            <summary>
+            Inverts the vector
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.GetLength">
+            <summary>
+            Gets the vector length
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.GetLengthSquare">
+            <summary>
+            Gets the vector length square
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.DotProduct(Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Computes the dot product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.CrossProduct(Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Computes the cross product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.CrossProductOf(Nevron.Nov.GraphicsGL.NGLVectorD@,Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Makes this vector the cross product of vector A and vector B
+            </summary>
+            <param name="vA"></param>
+            <param name="vB"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.CalculateNormal(Nevron.Nov.GraphicsGL.NGLVectorD@,Nevron.Nov.GraphicsGL.NGLVectorD@,Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Makes this vector the nozmalized normal of v1, v2 and v3
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.CalculateNormalNN(Nevron.Nov.GraphicsGL.NGLVectorD@,Nevron.Nov.GraphicsGL.NGLVectorD@,Nevron.Nov.GraphicsGL.NGLVectorD@)">
+            <summary>
+            Makes this vector the non nozmalized normal of v1, v2 and v3
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Normalize">
+            <summary>
+            Normalizes this vector (makes its length equal to 1)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Normalize(System.Double)">
+            <summary>
+            Normalizes this vector (makes its length equal to the specified length)
+            </summary>
+            <param name="fUnitLength"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Equals(Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Determines whether this vector is equal to the specified vector
+            </summary>
+            <param name="vec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.RotateZ(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="fAngle"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.RotateZ(Nevron.Nov.GraphicsGL.NGLVectorD@,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <param name="fAngle"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.DotProduct(Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Computes the dot product of two 3-D vectors
+            </summary>
+            <param name="a">source vector</param>
+            <param name="b">source vector</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.CrossProduct(Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Computes the cross product of two 3-D vectors
+            </summary>
+            <param name="a">source vector</param>
+            <param name="b">source vector</param>
+            <returns>A NVector3DF structure that is the cross product of two 3-D vectors.</returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Normalize(Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Computes the normalized version of a 3-D vector.
+            </summary>
+            <param name="vector">Source NVector3DF structure.</param>
+            <returns>A NVector3DF structure that is the normalized version of the specified vector.</returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.TripleOrientationXY(Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD,Nevron.Nov.GraphicsGL.NGLVectorD)">
+            <summary>
+            Determines the orientation of three points in the XY plane.
+            </summary>
+            <param name="a">Vector</param>
+            <param name="b">Vector</param>
+            <param name="c">Vector</param>
+            <returns>
+            0 - the points a, b, c are colinear
+            positive - counter clockwise
+            negative - clockwise
+             </returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.TripleOrientation(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Determines the orientation of three points in the XY plane.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.Equals(System.Object)">
+            <summary>
+            Returns true if the objects are equal.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorD.GetHashCode">
+            <summary>
+            Returns the hash code of this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorD.X">
+            <summary>
+            x coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorD.Y">
+            <summary>
+            y coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorD.Z">
+            <summary>
+            z coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorD.Zero">
+            <summary>
+            The zero vector (0, 0, 0).
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.GraphicsGL.NGLVectorF">
+            <summary>
+            The NVector3DD struct represents a 3D vector with float coordinates
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.#ctor(Nevron.Nov.Graphics.NPoint)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.#ctor(Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="vec"></param>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVectorF.Length">
+            <summary>
+            Gets the vector length
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.GraphicsGL.NGLVectorF.LengthSquare">
+            <summary>
+            Gets the vector length square (length * length)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.SetXYZ(System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the x, y and z coordinates of the vector
+            </summary>
+            <param name="x">x coordinate</param>
+            <param name="y">y coordinate</param>
+            <param name="z">z coordinate</param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.SetXY(System.Single,System.Single)">
+            <summary>
+            Sets the x and y coordinates of the vector
+            </summary>
+            <param name="x">x coordinate</param>
+            <param name="y">y coordinate</param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Add(Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Makes this vector the vector sum of v1 and v2
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Add(System.Single,System.Single,System.Single)">
+            <summary>
+            Adds the specified vector to the current vector.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Subtract(Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Substracts v from this vector
+            </summary>
+            <param name="v1"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Multiply(System.Single)">
+            <summary>
+            Makes this vector the scalar multiplication of v1 with the specified fMul factor
+            </summary>
+            <param name="fMul"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Divide(System.Single)">
+            <summary>
+            Makes this vector the scalar division of v1 with the specified fDiv factor
+            </summary>
+            <param name="fDiv"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.ToString">
+            <summary>
+            Overriden to provide a string representation of the vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.op_Addition(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Adds a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.op_Subtraction(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Substracts a and b
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.op_Multiply(Nevron.Nov.GraphicsGL.NGLVectorF,System.Single)">
+            <summary>
+            Multiplies vec by value
+            </summary>
+            <param name="vec"></param>
+            <param name="fMul"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Invert">
+            <summary>
+            Inverts the vector
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.GetLength">
+            <summary>
+            Gets the vector length
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.GetLengthSquare">
+            <summary>
+            Gets the vector length square
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.DotProduct(Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Computes the dot product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.CrossProduct(Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Computes the cross product of this vector and the specified vector
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.CrossProductOf(Nevron.Nov.GraphicsGL.NGLVectorF@,Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Makes this vector the cross product of vector A and vector B
+            </summary>
+            <param name="vA"></param>
+            <param name="vB"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.CalculateNormal(Nevron.Nov.GraphicsGL.NGLVectorF@,Nevron.Nov.GraphicsGL.NGLVectorF@,Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Makes this vector the nozmalized normal of v1, v2 and v3
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.CalculateNormalNN(Nevron.Nov.GraphicsGL.NGLVectorF@,Nevron.Nov.GraphicsGL.NGLVectorF@,Nevron.Nov.GraphicsGL.NGLVectorF@)">
+            <summary>
+            Makes this vector the non nozmalized normal of v1, v2 and v3
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Normalize">
+            <summary>
+            Normalizes this vector (makes its length equal to 1)
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Normalize(System.Single)">
+            <summary>
+            Normalizes this vector (makes its length equal to the specified length)
+            </summary>
+            <param name="fUnitLength"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Equals(Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Determines whether this vector is equal to the specified vector
+            </summary>
+            <param name="vec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.RotateZ(System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="fAngle"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.RotateZ(Nevron.Nov.GraphicsGL.NGLVectorF@,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <param name="fAngle"></param>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.DotProduct(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Computes the dot product of two 3-D vectors
+            </summary>
+            <param name="a">source vector</param>
+            <param name="b">source vector</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.CrossProduct(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Computes the cross product of two 3-D vectors
+            </summary>
+            <param name="a">source vector</param>
+            <param name="b">source vector</param>
+            <returns>A NVector3DF structure that is the cross product of two 3-D vectors.</returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Normalize(Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Computes the normalized version of a 3-D vector.
+            </summary>
+            <param name="vector">Source NVector3DF structure.</param>
+            <returns>A NVector3DF structure that is the normalized version of the specified vector.</returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.TripleOrientationXY(Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF,Nevron.Nov.GraphicsGL.NGLVectorF)">
+            <summary>
+            Determines the orientation of three points in the XY plane.
+            </summary>
+            <param name="a">Vector</param>
+            <param name="b">Vector</param>
+            <param name="c">Vector</param>
+            <returns>
+            0 - the points a, b, c are colinear
+            positive - counter clockwise
+            negative - clockwise
+             </returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.TripleOrientation(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Determines the orientation of three points in the XY plane.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.Equals(System.Object)">
+            <summary>
+            Returns true if the objects are equal.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.GraphicsGL.NGLVectorF.GetHashCode">
+            <summary>
+            Returns the hash code of this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorF.X">
+            <summary>
+            x coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorF.Y">
+            <summary>
+            y coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorF.Z">
+            <summary>
+            z coordinate
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.GraphicsGL.NGLVectorF.Zero">
+            <summary>
+            The zero vector (0, 0, 0).
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.dvwf.op_Multiply(Nevron.Nov.Internal.dvwf,Nevron.Nov.Internal.dvwf)">
+            <summary>
+            Multiplies the specified matrices.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.yywf.op_Multiply(Nevron.Nov.Internal.yywf,Nevron.Nov.Internal.yywf)">
+            <summary>
+            Multiplies the specified matrices.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.xoqe.Dispose">
+            <summary>
+            Disposes the surface
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.qpxf.CompareTo(Nevron.Nov.Internal.qpxf)">
+            <summary>
+            
+            </summary>
+            <param name="upxf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.ypxf.CompareTo(Nevron.Nov.Internal.ypxf)">
+            <summary>
+            
+            </summary>
+            <param name="cqxf"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.NOpenGLRenderingTest.NResources">
+            <summary>
+            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
+            </summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_DashLines2D_New_frag">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_DashLines2D_New_vert">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_DashLines2D_NewCopy_vert">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_DashLines2D_Old_frag">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_DashLines2D_Old_vert">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_SolidLines2D_frag">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_SolidLines2D_vert">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.NOpenGLRenderingTest.NResources.String_test_frag">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_DashLines2D_New_frag">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_DashLines2D_New_vert">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_DashLines2D_NewCopy_vert">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_DashLines2D_Old_frag">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_DashLines2D_Old_vert">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_SolidLines2D_frag">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_SolidLines2D_vert">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.RSTR_test_frag">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.NOpenGLRenderingTest.NResources.Instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+    </members>
+</doc>

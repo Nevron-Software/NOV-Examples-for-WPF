@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.LicenseKeyManager</name>
+    </assembly>
+    <members>
+        <member name="T:Nevron.Nov.LicenseKeyManager.ENLogEntryType">
+            <summary>
+            Enumerates the log entry types
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.LicenseKeyManager.NLog">
+            <summary>
+            Summary description for NLog.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.LicenseKeyManager.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

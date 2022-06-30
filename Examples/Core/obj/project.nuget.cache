@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "qGW86AcHVitv3c/zYnDI+gMgmfgLf/P0jFscD9qQ7eGq64goQbLtjhhWvq58wHf/h1a1ycVtCYVoqjnP324H/A==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\NOV\\Windows\\Examples\\Core\\Nevron.Nov.Examples.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

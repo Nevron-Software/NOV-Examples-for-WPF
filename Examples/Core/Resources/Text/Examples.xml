@@ -1,0 +1,1209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <title>Nevron Open Vision</title>
+  <statusColors>
+    <!-- The default background color for statuses -->
+    <status name="" color="red" />
+    <!-- The background color for status "UPD" (updated) -->
+    <status name="UPD" color="53A4DA" />
+  </statusColors>
+  <categories>
+    <!--Chart-->
+    <category name="Chart" namespace="Chart" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Chart allows for the visualization of business, scientific, financial and presentation charts.<br />
+					The control features numerous charting types, advanced axes, support for zooming and scrolling, serialization, image export and others.
+				</label>
+      </row>
+      <row>
+        <group name="Axes">
+          <tile name="Elements" icon="AxisElements.png">
+            <example name="Axis Titles" type="NAxisTitlesExample" />
+            <example name="Axis Ticks" type="NAxisTicksExample" />
+            <example name="Axis Stripes" type="NAxisStripesExample" />
+            <example name="Axis Strips" type="NAxisStripsExample" />
+            <example name="Axis Grid Lines" type="NAxisGridLinesExample" />
+            <example name="Axis Labels Formatting" type="NAxisLabelsFormattingExample" />
+            <example name="Axis Labels Orientation" type="NAxisLabelsOrientationtExample" />
+            <example name="Axis Reference Lines" type="NAxisReferenceLinesExample" />
+          </tile>
+          <tile name="Position" icon="AxisPosition.png">
+            <example name="Axis Docking" type="NAxisDockingExample" />
+            <example name="Axis Docking Percentages" type="NAxisDockingPercentagestExample" />
+            <example name="Axis Value Crossing" type="NAxisValueCrossingExample" />
+            <example name="Axis Model Crossing" type="NAxisModelCrossingExample" />
+            <example name="Polar Value Axis Position" type="NPolarValueAxisPositionExample" />
+            <example name="Polar Angle Axis Position" type="NPolarAngleAxisPositionExample" />
+          </tile>
+          <tile name="Appearance" icon="AxisAppearance.png">
+            <example name="Axis Ruler Caps" type="NAxisRulerCapsExample" />
+            <example name="Axis Sections" type="NAxisSectionsExample" />
+          </tile>
+          <tile name="Calendar" icon="Calendar.png">
+            <example name="Daily Schedule Calendar" type="NDailyScheduleWorkCalendarExample" />
+            <example name="Weekly Schedule Calendar" type="NWeeklyScheduleWorkCalendarExample" />
+          </tile>
+          <tile name="Scale" icon="Scale.png">
+            <example name="Date Time Scale" type="NDateTimeScaleExample" />
+            <example name="Hierarchical Scale" type="NHierarchicalScaleExample" />
+            <example name="Linear Scale" type="NLinearScaleExample" />
+            <example name="Logarithmic Scale" type="NLogarithmicScaleExample" />
+            <example name="Ordinal Scale" type="NOrdinalScaleExample" />
+            <example name="Range Timeline Scale" type="NRangeTimelineScaleExample" />
+            <example name="Value Timeline Scale" type="NValueTimelineScaleExample" />
+          </tile>
+          <tile name="Scale Breaks" icon="ScaleBreaks.png">
+            <example name="Automatic Scale Breaks" type="NAutomaticScaleBreaksExample" />
+            <example name="Custom Scale Breaks" type="NCustomScaleBreaksExample" />
+            <example name="Scale Break Appearance" type="NScaleBreakAppearanceExample" />
+          </tile>
+        </group>
+        <group name="Series" maxRows="8">
+          <tile name="Area" icon="AreaSeries.png">
+            <example name="Standard Area" type="NStandardAreaExample" />
+            <example name="Area Labels" type="NAreaLabelsExample" />
+            <example name="Stacked Area" type="NStackedAreaExample" />
+            <example name="XY Scatter Area" type="NXYScatterAreaExample" />
+            <example name="Area Palette" type="NAreaPaletteExample" />
+          </tile>
+          <tile name="Bar" icon="BarSeries.png">
+            <example name="Standard Bar" type="NStandardBarExample" />
+            <example name="XY Scatter Bar" type="NXYScatterBarExample" />
+            <example name="Bar Labels" type="NBarLabelsExample" />
+            <example name="Cluster Bar" type="NClusterBarExample" />
+            <example name="Stacked Bar" type="NStackedBarExample" />
+            <example name="Stacked Percent Bar" type="NStackedPercentBarExample" />
+            <example name="Cluster Stack Bar Labels" type="NClusterStackBarLabelsExample" />
+            <example name="Bar Palette" type="NBarPaletteExample" />
+          </tile>
+          <tile name="Box And Whiskers" icon="BoxAndWhiskersSeries.png">
+            <example name="Standard Box And Whiksers" type="NStandardBoxAndWhiskersExample" />
+          </tile>
+          <tile name="Bubble" icon="BubbleSeries.png">
+            <example name="Standard Bubble" type="NStandardBubbleExample" />
+            <example name="XY Scatter Bubble" type="NXYScatterBubbleExample" />
+          </tile>
+          <tile name="Combo" icon="ComboSeries.png">
+            <example name="Combo Chart" type="NComboChartExample" />
+          </tile>
+          <tile name="Error Bar" icon="ErrorBarSeries.png">
+            <example name="Standard Error Bar" type="NStandardErrorBarExample" />
+          </tile>
+          <tile name="Heat Map" icon="HeatMapSeries.png">
+            <example name="Standard Heat Map" type="NStandardHeatMapExample" />
+            <example name="Wafer Chart" type="NWaferChartExample" />
+            <example name="Contour Chart" type="NContourChartExample" />
+          </tile>
+          <tile name="High Low" icon="HighLowSeries.png">
+            <example name="Standard High Low" type="NStandardHighLowExample" />
+          </tile>
+          <tile name="Kagi" icon="KagiSeries.png">
+            <example name="Kagi" type="NKagiExample" />
+          </tile>
+          <tile name="Line" icon="LineSeries.png">
+            <example name="Standard Line" type="NStandardLineExample" />
+            <example name="XY Scatter Line" type="NXYScatterLineExample" />
+            <example name="Stacked Line" type="NStackedLineExample" />
+            <example name="Step Line" type="NStepLineExample" />
+            <example name="Smooth Line" type="NSmoothLineExample" />
+            <example name="Line Labels" type="NLineLabelsExample" />
+          </tile>
+          <tile name="Point" icon="PointSeries.png">
+            <example name="Standard Point" type="NStandardPointExample" />
+            <example name="XY Scatter Point" type="NXYScatterPointExample" />
+            <example name="Point Droplines" type="NPointDropLinesExample" />
+          </tile>
+          <tile name="Point And Figure" icon="PointAndFigureSeries.png">
+            <example name="Point And Figure" type="NPointAndFigureExample" />
+          </tile>
+          <tile name="Range" icon="RangeSeries.png">
+            <example name="Standard Range" type="NStandardRangeExample" />
+            <example name="Range Fill Styles" type="NRangeFillStylesExample" />
+          </tile>
+          <tile name="Renko" icon="RenkoSeries.png">
+            <example name="Renko" type="NRenkoExample" />
+          </tile>
+          <tile name="Stock" icon="StockSeries.png">
+            <example name="Candle Stock" type="NCandleStockExample" />
+            <example name="Stick Stock" type="NStickStockExample" />
+          </tile>
+          <tile name="Three Line Break" icon="ThreeLineBreakSeries.png">
+            <example name="Three Line Break" type="NThreeLineBreakExample" />
+          </tile>
+          <tile name="Vector" icon="VectorSeries.png">
+            <example name="Standard Vector" type="NStandardVectorExample" />
+          </tile>
+          <tile name="Funnel" icon="FunnelSeries.png">
+            <example name="Standard Funnel" type="NStandardFunnelExample" />
+            <example name="Scatter Funnel" type="NScatterFunnelExample" />
+          </tile>
+          <tile name="Pie" icon="PieSeries.png">
+            <example name="Standard Pie" type="NStandardPieExample" />
+            <example name="Doughnut Pie" type="NDoughnutPieExample" />
+          </tile>
+          <tile name="Polar" icon="PolarSeries.png">
+            <example name="Polar Line" type="NPolarLineExample" />
+            <example name="Polar Point" type="NPolarPointExample" />
+            <example name="Polar Area" type="NPolarAreaExample" />
+            <example name="Polar Range" type="NPolarRangeExample" />
+            <example name="Polar Vector" type="NPolarVectorExample" />
+          </tile>
+          <tile name="Radar" icon="RadarSeries.png">
+            <example name="Radar Line" type="NRadarLineExample" />
+            <example name="Radar Area" type="NRadarAreaExample" />
+            <example name="Multi Measure Radar" type="NMultiMeasureRadarExample" />
+            <example name="Radar Axis Titles" type="NRadarAxisTitlesExample" />
+          </tile>
+          <tile name="TreeMap" icon="TreeMap.png">
+            <example name="Standard TreeMap" type="NStandardTreeMapExample" />
+            <example name="TreeMap Legend" type="NTreeMapLegendExample" />
+          </tile>
+        </group>
+      </row>
+      <row>
+        <group name="Interactivity">
+          <tile name="Tools" icon="Tools.png">
+            <example name="Zooming And Scrolling" type="NZoomingAndScrollingExample" />
+            <example name="Axis Cursor Tool" type="NAxisCursorToolExample" />
+          </tile>
+          <tile name="Hit Testing" icon="Interactivity.png">
+            <example name="Hit Testing" type="NHitTestingExample" />
+          </tile>
+          <tile name="Tooltips" icon="Tooltips.png">
+            <example name="Tooltips" type="NTooltipsExample" />
+          </tile>
+        </group>
+        <group name="Export">
+          <tile name="Image Export" icon="Export.png">
+            <example name="Image Export" type="NImageExportExample" />
+          </tile>
+          <tile name="Pdf Export" icon="PdfExport.png">
+            <example name="Pdf Export" type="NPdfExportExample" />
+          </tile>
+          <tile name="Printing" icon="Printing.png">
+            <example name="Printing" type="NPrintingExample" />
+          </tile>
+          <tile name="Serialization" icon="Serialization.png">
+            <example name="Serialization" type="NSerializationExample" />
+          </tile>
+        </group>
+        <group name="Other">
+          <tile name="Legend" icon="Legend.png">
+            <example name="Legend Appearance" type="NLegendAppearanceExample" />
+            <example name="Legend Layout" type="NLegendLayoutExample" />
+            <example name="Legend Position" type="NLegendPositionExample" />
+            <example name="Series Legend View" type="NSeriesLegendViewExample" />
+            <example name="Interactive Legend" type="NInteractiveLegendExample" />
+            <example name="Multiple Legends" type="NMultipleLegendsExample" />
+          </tile>
+          <tile name="Layout" icon="Layout.png">
+            <example name="Aligning Chart Areas" type="NAligningChartAreasExample" />
+            <example name="Chart Aspect" type="NChartAspectExample" />
+            <example name="Chart Orientation" type="NChartOrientationExample" />
+          </tile>
+          <tile name="Real Time" icon="Realtime.png">
+            <example name="Real Time Line" type="NRealTimeLineExample" />
+            <example name="Real Time Bar" type="NRealTimeBarExample" />
+          </tile>
+          <tile name="Themes" icon="Themes.png">
+            <example name="Chart Themes" type="NChartThemesExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Diagram-->
+    <category name="Diagram" namespace="Diagram" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Diagram for .NET is a fully managed, extensible and powerful diagramming framework, which can help you
+					create feature rich diagramming solutions.
+				</label>
+      </row>
+      <row>
+        <group name="Demo Apps and Diagrams">
+          <tile name="Diagram Designer" icon="DiagramDesigner.png">
+            <example name="Diagram Designer" type="NDiagramDesignerExample" />
+          </tile>
+          <tile name="Bubble Sort" icon="DemoBubbleSort.png">
+            <example name="Bubble Sort" type="NBubbleSortExample" />
+          </tile>
+          <tile name="Family Tree" icon="FamilyTree.png">
+            <example name="Family Tree" type="NFamilyTreeExample" />
+          </tile>
+          <tile name="Install Program" icon="DemoFlowChart.png">
+            <example name="Install Program" type="NInstallProgramExample" />
+          </tile>
+          <tile name="UML Class Diagram" icon="UML.png">
+            <example name="UML Class Diagram" type="NUmlClassDiagramExample" />
+          </tile>
+        </group>
+        <group name="Drawing Objects">
+          <tile name="Shapes" icon="Shape.png">
+            <example name="Custom Shapes" type="NCustomShapesExample" />
+            <example name="Translation Slaves" type="NTranslationSlavesExample" />
+            <example name="Widget Hosting" type="NWidgetHostingExample" />
+          </tile>
+          <tile name="Groups" icon="Group.png">
+            <example name="Groups Example" type="NGroupsExample" />
+            <example name="Resize in Groups" type="NResizeInGroupsExample" />
+            <example name="Layout Group" type="NLayoutGroupExample" />
+          </tile>
+          <tile name="Geometry" icon="Geometry.png">
+            <example name="Geometry Commands" type="NGeometryCommandsExample" />
+            <example name="Geometry Corner Rounding" type="NGeometryCornerRoundingExample" />
+            <example name="Geometry Arrowheads" type="NGeometryArrowheadsExample" />
+          </tile>
+          <tile name="Ports" icon="Port.png">
+            <example name="Input and Output Ports" type="NInputAndOutputPortsExample" />
+            <example name="Inward and Outward Ports" type="NInwardAndOutwardPortsExample" />
+            <example name="Ports Glue" type="NPortsGlueExample" />
+          </tile>
+          <tile name="Connectors" icon="Connector.png">
+            <example name="Routable Connectors" type="NRoutableConnectorsExample" />
+            <example name="Line Jumps" type="NLineJumpsExample" />
+            <example name="End Points Glue" type="NEndPointsGlueExample" />
+            <example name="Connector with Multiple Labels" type="NConnectorWithMultipleLabelsExample" />
+          </tile>
+          <tile name="Texts" icon="Texts.png">
+            <example name="Rich Text Formatting" type="NRichTextFormattingExample" />
+            <example name="Paragraphs" type="NParagraphsExample" />
+            <example name="Bullet lists" type="NBulletListsExample" />
+          </tile>
+          <tile name="Images" icon="Image.png">
+            <example name="Image Block" type="NImageBlockExample" />
+          </tile>
+          <tile name="Tables" icon="Tables.png">
+            <example name="Resize Mode" type="NTableResizeModeExample" />
+            <example name="Table Ports" type="NTablePortsExample" />
+          </tile>
+          <tile name="Barcodes" icon="..\Barcode\Barcode1D.png">
+            <example name="Barcodes" type="NBarcodesInDiagramExample" />
+          </tile>
+        </group>
+        <group name="Predefined Shapes" maxRows="7">
+          <tile name="Annotation Shapes" icon="ShapesAnnotation.png">
+            <example name="Annotation Shapes" type="NAnnotationShapesExample" />
+          </tile>
+          <tile name="Arrow Shapes" icon="ShapesArrow.png">
+            <example name="Arrow Shapes" type="NArrowShapesExample" />
+          </tile>
+          <tile name="Basic Shapes" icon="ShapesBasic.png">
+            <example name="Basic Shapes" type="NBasicShapesExample" />
+          </tile>
+          <tile name="Brainstorming Shapes" icon="ShapesBrainstorming.png">
+            <example name="Brainstorming Shapes" type="NBrainstormingShapesExample" />
+          </tile>
+          <tile name="Business Process Shapes" icon="BusinessProcess.png">
+            <example name="Business Process Shapes" type="NBusinessProcessShapesExample" />
+          </tile>
+          <tile name="Callout Shapes" icon="ShapesCallout.png">
+            <example name="Callout Shapes" type="NCalloutShapesExample" />
+          </tile>
+          <tile name="Connector Shapes" icon="ShapesConnector.png">
+            <example name="Connector Shapes" type="NConnectorShapesExample" />
+          </tile>
+          <!--<tile name="Crows Foot Database Shapes" icon="Database.png">
+				    <example name="Crows Foot Database Shapes" type="NCrowsFootDatabaseShapesExample"/>
+			    </tile>-->
+          <tile name="Country Shapes" icon="ShapesCountry.png">
+            <example name="Country Shapes" type="NCountryShapesExample" />
+          </tile>
+          <tile name="Decorative Shapes" icon="ShapesDecorative.png">
+            <example name="Decorative Shapes" type="NDecorativeShapesExample" />
+          </tile>
+          <tile name="Dimensioning Engineering Shapes" icon="VernierCallipers.png">
+            <example name="Dimensioning Engineering Shapes" type="NDimensioningEngineeringShapesExample" />
+          </tile>
+          <tile name="Data Flow Shapes" icon="ShapesDataFlowDiagram.png">
+            <example name="Data Flow Shapes" type="NDfdShapesExample" />
+          </tile>
+          <tile name="Drawing Tool Shapes" icon="Pergel.png">
+            <example name="Drawing Tool Shapes" type="NDrawingToolShapesExample" />
+          </tile>
+          <tile name="Electrical Symbol Shapes" icon="ShapesElectricalSymbols.png">
+            <example name="Electrical Symbol Shapes" type="NElectricalSymbolShapesExample" />
+          </tile>
+          <tile name="EPC Shapes" icon="FlowchartingEPC.png">
+            <example name="EPC Shapes" type="NEPCShapesExample" />
+          </tile>
+          <tile name="Fishbone Shapes" icon="Fishbone.png">
+            <example name="Fishbone Shapes" type="NFishboneShapesExample" />
+          </tile>
+          <tile name="Floor Plan Shapes" icon="ShapesFloorPlan.png">
+            <example name="Floor Plan Shapes" type="NFloorPlanShapesExample" />
+          </tile>
+          <tile name="Flow Charting Shapes" icon="ShapesFlowCharting.png">
+            <example name="Flow Charting Shapes" type="NFlowChartingShapesExample" />
+          </tile>
+          <tile name="Genogram Shapes" icon="ShapesGenogram.png">
+            <example name="Genogram Shapes" type="NGenogramShapesExample" />
+          </tile>
+          <tile name="Network Shapes" icon="ShapesNetwork.png">
+            <example name="Network Shapes" type="NNetworkShapesExample" />
+          </tile>
+          <tile name="SDL Shapes" icon="FlowchartingSDL.png">
+            <example name="SDL Shapes" type="NSDLShapesExample" />
+          </tile>
+        </group>
+      </row>
+      <row>
+        <group name="Automatic Layouts">
+          <tile name="Box Layouts" icon="BoxLayout.png">
+            <example name="Stack Layout" type="NStackLayoutExample" />
+            <example name="Dock Layout" type="NDockLayoutExample" />
+          </tile>
+          <tile name="Graph Layouts" icon="GraphLayout.png">
+            <example name="Barycenter Graph Layout" type="NBarycenterGraphLayoutExample" />
+            <example name="Layered Graph Layout" type="NLayeredGraphLayoutExample" default="true" />
+            <example name="Orthogonal Graph Layout" type="NOrthogonalGraphLayoutExample" />
+            <example name="Radial Graph Layout" type="NRadialGraphLayoutExample" />
+            <example name="Single Cycle Graph Layout" type="NSingleCycleGraphLayoutExample" />
+            <example name="Spring Graph Layout" type="NSpringGraphLayoutExample" />
+            <example name="Symmetrical Graph Layout" type="NSymmetricalGraphLayoutExample" />
+          </tile>
+          <tile name="Tree Layouts" icon="TreeLayout.png">
+            <example name="Balloon Tree Layout" type="NBalloonTreeLayoutExample" />
+            <example name="Compact Depth Tree Layout" type="NCompactDepthTreeLayoutExample" />
+            <example name="Layered Tree Layout" type="NLayeredTreeLayoutExample" default="true" />
+            <example name="Tip Over Tree Layout" type="NTipOverTreeLayoutExample" />
+          </tile>
+        </group>
+        <group name="Maps">
+          <tile name="World Map" icon="MapWorld.png">
+            <example name="World Map" type="NWorldMapExample" />
+          </tile>
+          <tile name="World Population" icon="MapPopulation.png">
+            <example name="World Population" type="NWorldPopulationExample" />
+          </tile>
+          <tile name="Map Projections" icon="MapProjections.png">
+            <example name="Map Projections" type="NMapProjectionsExample" />
+          </tile>
+        </group>
+        <group name="Import">
+          <tile name="Visio" icon="Visio.png">
+            <example name="Visio Drawing Import" type="NVisioDrawingImportExample" />
+          </tile>
+          <tile name="AutoCAD" icon="AutoCAD.png">
+            <example name="AutoCAD DXF Import" type="NAutoCadDxfImportExample" />
+          </tile>
+          <tile name="GEDCOM Family Trees" icon="FamilyTree.png">
+            <example name="GEDCOM Family Tree Import" type="NGedcomImportExample" />
+          </tile>
+        </group>
+        <group name="Export" maxRows="4">
+          <tile name="Visio" icon="Visio.png">
+            <example name="Visio Drawing Export" type="NVisioDrawingExportExample" />
+          </tile>
+          <tile name="AutoCAD" icon="AutoCAD.png">
+            <example name="AutoCAD DXF Export" type="NAutoCadDxfExportExample" />
+          </tile>
+          <tile name="Image" icon="Image.png">
+            <example name="Raster Image Export" type="NRasterImageExportExample" />
+          </tile>
+          <tile name="PDF" icon="PDF.png">
+            <example name="PDF Export" type="NPdfExportExample" />
+          </tile>
+          <tile name="Print" icon="Print.png">
+            <example name="Print" type="NPrintExample" />
+          </tile>
+          <tile name="SVG" icon="SVG.png">
+            <example name="SVG Export" type="NSvgExportExample" />
+          </tile>
+          <tile name="HTML" icon="..\Text\HtmlFormat.png">
+            <example name="HTML Export" type="NHtmlExportExample" />
+          </tile>
+        </group>
+        <group name="Tasks and Themes" maxRows="4">
+          <tile name="Themes" icon="..\Chart\Themes.png">
+            <example name="Drawing Themes" type="NDrawingThemesExample" />
+            <example name="Theme Based Shapes" type="NThemeBasedShapesExample" />
+          </tile>
+          <tile name="UI Customization" icon="UICustomization.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
+            <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
+            <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
+            <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
+            <example name="File Dialogs Customization" type="NFileDialogsCustomizationExample" />
+          </tile>
+          <tile name="Libraries" icon="Library.png">
+            <example name="Libraries Example" type="NLibrariesExample" />
+          </tile>
+          <tile name="Find and Replace" icon="..\Text\Find.png">
+            <example name="Find and Replace" type="NFindAndReplaceExample" />
+          </tile>
+          <tile name="Spell Check" icon="..\Text\SpellCheck.png">
+            <example name="Spell Check" type="NSpellCheckExample" />
+          </tile>
+          <tile name="Mail Merge" icon="..\Text\MailMerge.png">
+            <example name="Mail Merge" type="NMailMergeExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Grid-->
+    <category name="Grid" namespace="Grid" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Grid for .NET represents a powerful framework for displaying and editing tabular data in versatile ways.
+				</label>
+      </row>
+      <row>
+        <group name="Data Processing">
+          <tile name="Filtering" icon="filter.png">
+            <example name="Filtering by Column and Field" type="NColumnAndFieldFilteringExample" />
+            <example name="Filtering by Formulas" type="NFormulaFilteringExample" />
+          </tile>
+          <tile name="Grouping" icon="group.png">
+            <example name="Grouping by Fields" type="NFieldGroupingExample" />
+            <example name="Grouping by Formulas" type="NFormulaGroupingExample" />
+            <example name="Custom Grouping" type="NCustomGroupingExample" />
+            <example name="Grouping Summary Rows" type="NGroupingSummaryRowsExample" />
+          </tile>
+          <tile name="Sorting" icon="sort.png">
+            <example name="Multilevel Sorting" type="NMultilevelSortingExample" />
+            <example name="Sorting with Formulas" type="NFormulaSortingExample" />
+          </tile>
+          <tile name="Tree Grid View (List Tree View)" icon="ListTreeView.png">
+            <example name="Tree Grid View (List Tree View)" type="NTreeGridViewExample" />
+          </tile>
+        </group>
+        <group name="Grid Features" maxRows="4">
+          <tile name="Alternating Rows" icon="AlternatingRows.png">
+            <example name="Alternating Rows" type="NAlternatingRowsExample" />
+          </tile>
+          <tile name="Gridlines" icon="Gridlines.png">
+            <example name="Gridlines" type="NGridlinesExample" />
+          </tile>
+          <tile name="Master Details" icon="MasterDetails.png">
+            <example name="Custom Master Details" type="NCustomMasterDetailsExample" />
+            <example name="Master Details Tables" type="NMasterDetailTablesExample" />
+          </tile>
+          <tile name="Row Headers" icon="RowHeaders.png">
+            <example name="Row Headers" type="NRowHeadersExample" />
+          </tile>
+          <tile name="Frozen Rows" icon="FrozenRows.png">
+            <example name="Frozen Rows" type="NFrozenRowsExample" />
+          </tile>
+          <tile name="Frozen Columns" icon="FrozenColumns.png">
+            <example name="Frozen Columns" type="NFrozenColumnsExample" />
+          </tile>
+          <tile name="Null Values" icon="NullValues.png">
+            <example name="Null Values" type="NNullValuesExample" />
+          </tile>
+        </group>
+      </row>
+      <row>
+        <group name="Column Features" maxRows="4">
+          <tile name="Calculated Columns" icon="CalculatedColumn.png">
+            <example name="Custom Calculated Columns" type="NCustomCalculatedColumnsExample" />
+            <example name="Formula Calculated Columns" type="NFormulaCalculatedColumnsExample" />
+          </tile>
+          <tile name="Data Columns" icon="DataColumn.png">
+            <example name="Data Columns" type="NAutomaticDataColumnsExamle" />
+          </tile>
+          <tile name="Column Editors" icon="FormatCells.png">
+            <example name="Extended Column Editors" type="NExtendedColumnEditorsExample" />
+          </tile>
+          <tile name="Column Formats" icon="FormatCells.png">
+            <example name="Extended Column Formats" type="NExtendedColumnFormatsExample" />
+            <example name="Custom Column Format" type="NCustomColumnFormatsExample" />
+          </tile>
+          <tile name="Column Conditional Formatting" icon="ConditionalFormatting.png">
+            <example name="Column Conditional Formatting" type="NColumnsConditionalFormattingExample" />
+          </tile>
+          <tile name="Column Width" icon="ColumnWidth.png">
+            <example name="Column Width" type="NColumnsWidthExample" />
+          </tile>
+          <tile name="Column Protection" icon="Protection.png">
+            <example name="Column Protection" type="NColumnProtectionExample" />
+          </tile>
+        </group>
+        <group name="Selection and Navigation">
+          <tile name="Scrolling" icon="Scrolling.png">
+            <example name="Scrolling Example" type="NScrollingExample" />
+          </tile>
+          <tile name="Selection" icon="Selection.png">
+            <example name="Selection" type="NSelectionExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Rich Text Editor-->
+    <category name="Rich Text Editor" namespace="Text" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Text Editor for .NET helps you embed state-of-art, Microsoft Word-like abilities in your .NET applications.
+				</label>
+      </row>
+      <row>
+        <group name="Model">
+          <tile name="Blocks" icon="Blocks.png">
+            <example name="Size" type="NBlockSizeExample" />
+            <example name="Appearance" type="NBlockAppearanceExample" />
+            <example name="Layout" type="NBlockLayoutExample" />
+            <example name="Paging" type="NBlockPagingExample" />
+          </tile>
+          <tile name="Inlines" icon="Inlines.png">
+            <example name="Inline Formatting" type="NInlineFormattingExample" />
+            <example name="Character and Word Spacing" type="NCharacterAndWordSpacingExample" />
+            <example name="Image Inlines" type="NImageInlinesExample" />
+            <example name="Field Inlines" type="NFieldInlinesExample" />
+            <example name="Hyperlink Inlines" type="NHyperlinkInlinesExample" />
+            <example name="Widget Inlines" type="NWidgetInlinesExample" />
+          </tile>
+          <tile name="Lists" icon="Lists.png">
+            <example name="Bullet Lists" type="NBulletListsExample" />
+            <example name="Bullet List Template" type="NBulletListTemplateExample" />
+          </tile>
+          <tile name="Paragraphs" icon="Paragraphs.png">
+            <example name="Paragraph Formatting" type="NParagraphFormattingExample" />
+            <example name="Line Breaks" type="NLineBreaksExample" />
+            <example name="Tab Stops" type="NTabStopsExample" />
+            <example name="Page Breaks" type="NPageBreaksExample" />
+            <example name="Column Breaks" type="NColumnBreaksExample" />
+          </tile>
+          <tile name="Sections" icon="Sections.png">
+            <example name="Header and Footer" type="NHeaderAndFooterExample" />
+            <example name="Columns" type="NSectionColumnsExample" />
+            <example name="Pages" type="NSectionPagesExample" />
+          </tile>
+          <tile name="Styles" icon="Styles.png">
+            <example name="Inline Styles" type="NInlineStylesExample" />
+            <example name="Paragraph Styles" type="NParagraphStylesExample" />
+            <example name="Table Styles" type="NTableStylesExample" />
+          </tile>
+          <tile name="Tables" icon="Tables.png">
+            <example name="Table" type="NTableExample" />
+            <example name="Table Master Cells" type="NTableMasterCellsExample" />
+            <example name="Table Column Types" type="NTableColumnTypesExample" />
+            <example name="Table Cell Orientation" type="NTableCellOrientationExample" />
+            <example name="Table Borders" type="NTableBordersExample" />
+          </tile>
+          <tile name="Table of Contents" icon="TOC.png">
+            <example name="Table of Contents" type="NTableOfContentsExample" />
+          </tile>
+          <tile name="Barcodes" icon="..\Barcode\Barcode1D.png">
+            <example name="Barcodes" type="NBarcodesInRichTextExample" />
+          </tile>
+        </group>
+        <group name="Tasks">
+          <tile name="Find and Replace" icon="Find.png">
+            <example name="Find and Replace" type="NFindAndReplaceExample" />
+          </tile>
+          <tile name="Sample Reports" icon="Report.png">
+            <example name="Sample Report 1" type="NSampleReport1Example" />
+            <example name="Sample Report 2" type="NSampleReport2Example" />
+          </tile>
+          <tile name="Mail Merge" icon="MailMerge.png">
+            <example name="Mail Merge" type="NMailMergeExample" />
+          </tile>
+          <tile name="Selection" icon="Selection.png">
+            <example name="Selection" type="NSelectionExample" />
+            <example name="Multi Range Selection" type="NMultiRangeSelectionExample" />
+          </tile>
+          <tile name="Spell Check" icon="SpellCheck.png">
+            <example name="Spell Check" type="NSpellCheckExample" />
+            <example name="Custom Spell Checker" type="NCustomSpellCheckerExample" />
+          </tile>
+          <tile name="UI Customization" icon="UICustomization.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
+            <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
+            <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
+            <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
+            <example name="File Dialogs Customization" type="NFileDialogsCustomizationExample" />
+          </tile>
+          <tile name="Miscellaneous" icon="Miscellaneous.png">
+            <example name="Bottomless Mode" type="NBottomlessModeExample" default="true" />
+            <example name="Nodepad Editor" type="NNotepadEditorExample" />
+            <example name="Document Statistics" type="NDocumentStatisticsExample" />
+            <example name="Selection" type="NSelectionChangedExample" />
+            <example name="Css Styling" type="NCssStylingExample" />
+            <example name="Custom Clipboard Format" type="NCustomClipboardFormatExample" />
+          </tile>
+        </group>
+        <group name="Formats">
+          <tile name="DOCX Format" icon="DocxFormat.png">
+            <example name="DOCX Import" type="NDocxImportExample" />
+          </tile>
+          <tile name="EPUB Format" icon="EpubFormat.png">
+            <example name="EPUB Import" type="NEpubImportExample" />
+            <example name="EPUB Export" type="NEpubExportExample" />
+          </tile>
+          <tile name="HTML Format" icon="HtmlFormat.png">
+            <example name="HTML Import" type="NHtmlImportExample" />
+            <example name="HTML Export" type="NHtmlExportExample" />
+          </tile>
+          <tile name="PDF Format" icon="PdfFormat.png">
+            <example name="PDF Export" type="NPdfExportExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Schedule-->
+    <category name="Schedule" namespace="Schedule" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Schedule is a widget for showing and organizing appointments and recurring events.<br />
+					It provides all the features of Microsoft Outlook Calendar and Google Calendar plus many more.
+				</label>
+      </row>
+      <row>
+        <group name="Model">
+          <tile name="Appointments" icon="Appointment.png">
+            <example name="First Look" type="NAppointmentsExample" />
+          </tile>
+          <tile name="Categorization" icon="Categorization.png">
+            <example name="Categorization" type="NCategorizationExample" />
+          </tile>
+          <tile name="Time Indicators" icon="TimeIndicator.png">
+            <example name="Current Time Indicator" type="NCurrentTimeIndicatorExample" />
+            <example name="Fixed Time Indicators" type="NFixedTimeIndicatorsExample" />
+          </tile>
+          <tile name="Grouping" icon="Grouping.png">
+            <example name="Grouping" type="NGroupingExample" />
+          </tile>
+          <tile name="Interactivity" icon="Tools.png">
+            <example name="Interactivity" type="NInteractivityExample" />
+          </tile>
+          <tile name="Recurrence" icon="Recurrence.png">
+            <example name="Recurrence Rules" type="NRecurrenceRulesExample" />
+            <example name="Occurrences Modification" type="NOccurrencesModificationExample" />
+          </tile>
+          <tile name="View Modes" icon="ViewModes.png">
+            <example name="View Modes" type="NViewModesExample" />
+          </tile>
+        </group>
+        <group name="Tasks">
+          <tile name="Formats" icon="Formats.png">
+            <example name="Formats" type="NFormatsExample" />
+          </tile>
+          <tile name="Notifications" icon="Notifications.png">
+            <example name="Notifications" type="NNotificationsExample" />
+          </tile>
+          <tile name="Performance" icon="Performance.png">
+            <example name="Appointments Stress Test" type="NAppointmentsStressTestExample" />
+            <example name="Recurrence Stress Test" type="NRecurrenceStressTestExample" />
+          </tile>
+          <tile name="Tools" icon="Tools.png">
+            <example name="Tools" type="NToolsExample" />
+          </tile>
+          <tile name="Ribbon and Command Bars" icon="..\UI\Ribbon.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
+          </tile>
+        </group>
+        <group name="Customization">
+          <tile name="Custom Appointments" icon="Tools.png">
+            <example name="Custom Appointments" type="NCustomAppointmentsExample" />
+          </tile>
+          <tile name="Custom Categories" icon="CustomCategorization.png">
+            <example name="Custom Categories" type="NCustomCategoriesExample" />
+          </tile>
+          <tile name="Custom Time Markers" icon="CustomCategorization.png">
+            <example name="Custom Time Markers" type="NCustomTimeMarkersExample" />
+          </tile>
+          <tile name="Command Bars" icon="UICustomization.png">
+            <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
+          </tile>
+          <tile name="Context Menu" icon="..\UI\ContextMenu.png">
+            <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
+          </tile>
+          <tile name="Ribbon" icon="..\UI\Ribbon.png">
+            <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
+          </tile>
+          <tile name="Appointment Editor" icon="UICustomization.png">
+            <example name="Appoinmnet Editor Customization" type="NAppointmentEditorCustomizationExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Gauge-->
+    <category name="Gauge" namespace="Gauge" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Gauge for .NET has extensive support for instrumentation widgets such as radial (circular)<br />
+					and linear gauges, knobs, indicators and numeric displays.
+				</label>
+      </row>
+      <row>
+        <group>
+          <tile name="Numeric Led Display" icon="NumericLedDisplay.png">
+            <example name="Numeric Led Display" type="NNumericLedDisplayExample" />
+          </tile>
+          <tile name="Axes" icon="Axes.png">
+            <example name="Axis Size" type="NAxisSizeExample" />
+            <example name="Scale Sections" type="NScaleSectionsExample" />
+            <example name="Custom Range Labels" type="NGaugeCustomRangeLabelsExample" />
+            <example name="Labels Orientation" type="NGaugeScaleLabelsOrientationExample" />
+            <example name="Gauge Axis Docking" type="NAxisDockingExample" />
+          </tile>
+          <tile name="Indicators" icon="Indicators.png">
+            <example name="Linear Gauge Indicators" type="NLinearGaugeIndicatorsExample" />
+            <example name="Radial Gauge Indicators" type="NRadialGaugeIndicatorsExample" />
+            <example name="Knob Indicator" type="NKnobIndicatorExample" />
+            <example name="Paint Order" type="NIndicatorPaintOrderExample" />
+            <example name="Palette" type="NIndicatorPaletteExample" />
+          </tile>
+          <tile name="Interactivity" icon="Interactivity.png">
+            <example name="Tooltips" type="NGaugeTooltipsExample" />
+            <example name="Dragging Indicators" type="NDraggingGaugeIndicatorsExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Barcode-->
+    <category name="Barcode" namespace="Barcode" license="Commercial" color="68348C">
+      <row>
+        <label>
+					NOV Barcode for .NET helps you embed barcodes in your .NET applications quickly and easily.<br />
+					The solution is fully customizable and provides support for all industry standard barcode formats.
+				</label>
+      </row>
+      <row>
+        <group name="1D Barcodes" maxRows="10">
+          <tile name="Codabar" icon="Barcode1D.png">
+            <example name="Codabar" type="NCodabarBarcodeExample" />
+          </tile>
+          <tile name="Code 11" icon="Barcode1D.png">
+            <example name="Code 11" type="NCode11BarcodeExample" />
+          </tile>
+          <tile name="Code 39" icon="Barcode1D.png">
+            <example name="Code 39" type="NCode39BarcodeExample" />
+          </tile>
+          <tile name="Code 93" icon="Barcode1D.png">
+            <example name="Code 93" type="NCode93BarcodeExample" />
+          </tile>
+          <tile name="Code 128" icon="Barcode1D.png">
+            <example name="Code 128" type="NCode128BarcodeExample" />
+          </tile>
+          <tile name="EAN-8" icon="Barcode1D.png">
+            <example name="EAN-8" type="NEan8BarcodeExample" />
+          </tile>
+          <tile name="EAN-13" icon="Barcode1D.png">
+            <example name="EAN-13" type="NEan13BarcodeExample" />
+          </tile>
+          <tile name="Interleaved 2 of 5" icon="Barcode1D.png">
+            <example name="Interleaved 2 of 5" type="NInterleaved2of5BarcodeExample" />
+          </tile>
+          <tile name="ISBN" icon="Barcode1D.png">
+            <example name="ISBN" type="NIsbnBarcodeExample" />
+          </tile>
+          <tile name="ITF-14" icon="Barcode1D.png">
+            <example name="ITF-14" type="NItf14BarcodeExample" />
+          </tile>
+          <tile name="JAN-13" icon="Barcode1D.png">
+            <example name="JAN-13" type="NJan13BarcodeExample" />
+          </tile>
+          <tile name="MSI Mod 10" icon="Barcode1D.png">
+            <example name="MSI Mod 10" type="NMsiMod10BarcodeExample" />
+          </tile>
+          <tile name="Pharmacode" icon="Barcode1D.png">
+            <example name="Pharmacode" type="NPharmacodeBarcodeExample" />
+          </tile>
+          <tile name="POSTNET" icon="Barcode1D.png">
+            <example name="POSTNET" type="NPostNetBarcodeExample" />
+          </tile>
+          <tile name="Standard 2 of 5" icon="Barcode1D.png">
+            <example name="Standard 2 of 5" type="NStandard2of5BarcodeExample" />
+          </tile>
+          <tile name="Telepen" icon="Barcode1D.png">
+            <example name="Telepen" type="NTelepenBarcodeExample" />
+          </tile>
+          <tile name="UPC-A" icon="Barcode1D.png">
+            <example name="UPC-A" type="NUpcABarcodeExample" />
+          </tile>
+          <tile name="UPC-E" icon="Barcode1D.png">
+            <example name="UPC-E" type="NUpcEBarcodeExample" />
+          </tile>
+          <tile name="UPC Supplemental 2-Digit" icon="Barcode1D.png">
+            <example name="UPC Supplemental 2-Digit" type="NUpcSup2BarcodeExample" />
+          </tile>
+          <tile name="UPC Supplemental 5-Digit" icon="Barcode1D.png">
+            <example name="UPC Supplemental 5-Digit" type="NUpcSup5BarcodeExample" />
+          </tile>
+        </group>
+        <group name="2D Barcodes">
+          <tile name="Data Matrix" icon="Barcode2D.png">
+            <example name="Data Matrix" type="NDataMatrixBarcodeExample" />
+          </tile>
+          <tile name="QR Code" icon="Barcode2D.png">
+            <example name="QR Code" type="NQrCodeBarcodeExample" />
+          </tile>
+          <tile name="PDF 417" icon="Barcode2D.png">
+            <example name="PDF 417" type="NPdf417BarcodeExample" />
+          </tile>
+        </group>
+        <group name="Tasks">
+          <tile name="Image Export" icon="..\UI\ImageBox.png">
+            <example name="Image Export" type="NBarcodeImageExportExample" />
+          </tile>
+          <tile name="SVG Export" icon="..\Diagram\SVG.png">
+            <example name="SVG Export" type="NBarcodeSvgExportExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--User Interface-->
+    <category name="User Interface" namespace="UI" license="Free!" color="53A4DA">
+      <row>
+        <label>
+					NOV UI for .NET contains a complete and feature-rich set of cross-platform User Interface elements (widgets),<br />
+					which completely eliminates the need to use any platform specific controls.
+				</label>
+      </row>
+      <row>
+        <group name="Appearance">
+          <tile name="Backgrounds" icon="Background.png">
+            <example name="Backgrounds" type="NBackgroundsExample" />
+          </tile>
+          <tile name="Borders" icon="Border.png">
+            <example name="Borders" type="NBordersExample" />
+            <example name="Border Wall" type="NBorderWallExample" />
+          </tile>
+          <tile name="Cursors" icon="Cursor.png">
+            <example name="Cursors" type="NCursorsExample" />
+          </tile>
+          <tile name="Symbols" icon="Symbols.png">
+            <example name="Predefined Symbols" type="NPredefinedSymbolsExample" />
+            <example name="Custom Symbols" type="NCustomSymbolsExample" />
+          </tile>
+          <tile name="Tooltips" icon="Tooltip.png">
+            <example name="Tooltips" type="NTooltipsExample" />
+          </tile>
+          <tile name="Theme Builder" icon="ThemeBuilder.png">
+            <example name="Theme Builder" type="NThemeBuilderExample" />
+          </tile>
+        </group>
+        <group name="Color Pickers">
+          <tile name="Color Box" icon="ColorBox.png">
+            <example name="Color Box" type="NColorBoxExample" />
+          </tile>
+          <tile name="Palette Color Picker" icon="PaletteColorPicker.png">
+            <example name="Palette Color Picker" type="NPaletteColorPickerExample" />
+          </tile>
+          <tile name="HSB Color Picker" icon="HsbColorPicker.png">
+            <example name="HSB Color Picker" type="NHSBColorPickerExample" />
+            <example name="SB Color Picker" type="NSBColorPickerExample" />
+            <example name="Luminance Color Bar" type="NLuminanceColorBarExample" />
+            <example name="Hue Color Bar" type="NHueColorBarExample" />
+          </tile>
+          <tile name="HSB Wheel Color Picker" icon="WheelColorPicker.png">
+            <example name="HSB Wheel Color Picker" type="NHSBWheelColorPickerExample" />
+          </tile>
+          <tile name="Hexagon Color Picker" icon="HexagonColorPicker.png">
+            <example name="Hexagon Color Picker" type="NHexagonColorPickerExample" />
+          </tile>
+          <tile name="Named Color Picker" icon="NamedColorPicker.png">
+            <example name="Named Color Picker" type="NNamedColorPickerExample" />
+          </tile>
+        </group>
+        <group name="Commanding">
+          <tile name="Command Bars" icon="CommandBar.png">
+            <example name="Command Bars" type="NCommandBarsExample" />
+          </tile>
+          <tile name="Context Menu" icon="ContextMenu.png">
+            <example name="Context Menu" type="NContextMenuExample" />
+          </tile>
+          <tile name="Context Popup" icon="ContextPopup.png">
+            <example name="Context Popup" type="NInteractiveContextPopupExample" />
+          </tile>
+          <tile name="Menu Bar" icon="MenuBar.png">
+            <example name="Menu Bar" type="NMenuBarExample" />
+          </tile>
+          <tile name="Ribbon" icon="Ribbon.png">
+            <example name="Ribbon" type="NRibbonExample" />
+            <example name="Ribbon Tab Groups" type="NRibbonTabGroupsExample" />
+          </tile>
+          <tile name="Tool Bar" icon="ToolBar.png">
+            <example name="Tool Bar" type="NToolBarExample" />
+          </tile>
+        </group>
+        <group name="Common Controls" maxRows="6">
+          <tile name="Accordion" icon="Accordion.png">
+            <example name="First Look" type="NAccordionFirstLookExample" />
+            <example name="Flex Box" type="NAccordionFlexBoxExample" />
+          </tile>
+          <tile name="Auto Complete Box" icon="AutoCompleteBox.png">
+            <example name="Auto Complete Box" type="NAutoCompleteBoxExample" />
+          </tile>
+          <tile name="Buttons" icon="Button.png">
+            <example name="Buttons" type="NButtonsExample" />
+          </tile>
+          <tile name="Calendar" icon="Calendar.png">
+            <example name="Calendar" type="NCalendarExample" />
+          </tile>
+          <tile name="Check Box" icon="CheckBox.png">
+            <example name="Check Box" type="NCheckBoxExample" />
+          </tile>
+          <tile name="Combo Box" icon="ComboBox.png">
+            <example name="First Look" type="NComboBoxFirstLookExample" />
+            <example name="Items Manipulation" type="NComboBoxItemsManipulationExample" />
+            <example name="Data Binding" type="NComboBoxDataBindingExample" />
+            <example name="Font Name" type="NFontNameComboBoxExample" />
+            <example name="Checked Combo Box" type="NCheckedComboBoxExample" />
+            <example name="Masked Enum Drop Down" type="NMaskedEnumDropDownExample" />
+          </tile>
+          <tile name="Date Time Box" icon="DateTimeBox.png">
+            <example name="Date Time Box" type="NDateTimeBoxExample" />
+          </tile>
+          <tile name="Drop Down Button" icon="DropDownButton.png">
+            <example name="Drop Down Button" type="NDropDownButtonExample" />
+          </tile>
+          <tile name="Image Box" icon="ImageBox.png">
+            <example name="Image Box" type="NImageBoxFirstLookExample" />
+            <example name="Meta Image Box" type="NMetaImageBoxExample" />
+          </tile>
+          <tile name="Label" icon="Label.png">
+            <example name="Label" type="NLabelExample" />
+          </tile>
+          <tile name="Link Label" icon="LinkLabel.png">
+            <example name="Link Label" type="NLinkLabelExample" />
+          </tile>
+          <tile name="List Box" icon="ListBox.png">
+            <example name="List Box" type="NListBoxFirstLookExample" />
+            <example name="Mixed Content" type="NListBoxMixedContentExample" />
+            <example name="Items Manipulation" type="NListBoxItemsManipulationExample" />
+            <example name="Selection" type="NListBoxSelectionExample" />
+            <example name="Data Binding" type="NListBoxDataBindingExample" />
+          </tile>
+          <tile name="Masked Text Box" icon="MaskedTextBox.png">
+            <example name="Masked Text Box" type="NMaskedTextBoxExample" />
+          </tile>
+          <tile name="Navigation Bar" icon="NavigationBar.png">
+            <example name="Navigation Bar" type="NNavigationBarFirstLookExample" />
+          </tile>
+          <tile name="Page Size and Orientation" icon="PageSize.png">
+            <example name="Page Size and Orientation" type="NPageSizeAndOrientationFirstLookExample" />
+          </tile>
+          <tile name="Progress Bar" icon="ProgressBar.png">
+            <example name="Progress Bar" type="NProgressBarExample" />
+          </tile>
+          <tile name="Radio Button" icon="RadioButton.png">
+            <example name="Radio Button" type="NRadioButtonExample" />
+          </tile>
+          <tile name="Scroll Bar" icon="ScrollBar.png">
+            <example name="First Look" type="NScrollBarsExample" />
+            <example name="Range Scroll Bars" type="NRangeScrollBarsExample" />
+          </tile>
+          <tile name="Slider" icon="Slider.png">
+            <example name="Value Slider" type="NSliderExample" />
+            <example name="Range Slider" type="NRangeSliderExample" />
+          </tile>
+          <tile name="Text Box" icon="TextBox.png">
+            <example name="Text Box" type="NTextBoxExample" />
+          </tile>
+          <tile name="Time Span Box" icon="TimeSpanBox.png">
+            <example name="Time Span Box" type="NTimeSpanBoxExample" />
+          </tile>
+          <tile name="Tree View" icon="TreeView.png">
+            <example name="First Look" type="NTreeViewFirstLookExample" />
+            <example name="Mixed Content" type="NTreeViewMixedContentExample" />
+            <example name="Items Manipulation" type="NTreeViewItemsManipulationExample" />
+          </tile>
+          <tile name="Up Downs" icon="NumericUpDown.png">
+            <example name="Numeric Up Down" type="NNumericUpDownExample" />
+            <example name="Measure Up Down" type="NMeasureUpDownExample" />
+          </tile>
+        </group>
+      </row>
+      <row>
+        <group name="Containers">
+          <tile name="Document Box and Themes" icon="DocumentBox.png">
+            <example name="Document Box and Themes" type="NDocumentBoxAndThemesExample" />
+          </tile>
+          <tile name="Group Box" icon="GroupBox.png">
+            <example name="Group Box" type="NGroupBoxExample" />
+          </tile>
+          <tile name="Pair Box" icon="PairBox.png">
+            <example name="First Look" type="NPairBoxExample" />
+            <example name="Unisize Box" type="NUniSizeBoxExample" />
+          </tile>
+          <tile name="Scroll Content" icon="ScrollContent.png">
+            <example name="Scroll Content" type="NScrollContentExample" />
+          </tile>
+          <tile name="Splitter" icon="Splitter.png">
+            <example name="Splitter" type="NSplitterExample" />
+            <example name="Multi Splitter" type="NMultiSplitterExample" />
+          </tile>
+          <tile name="Tab" icon="Tab.png">
+            <example name="Tab" type="NTabExample" />
+          </tile>
+          <tile name="Transform Content" icon="ScrollContent.png">
+            <example name="Transform Content" type="NTransformContentExample" />
+          </tile>
+        </group>
+        <group name="Panels">
+          <tile name="Dock Panel" icon="DockPanel.png">
+            <example name="Dock Panel" type="NDockPanelExample" />
+          </tile>
+          <tile name="Flex Box Panel" icon="FlexBoxPanel.png">
+            <example name="Flex Box Panel" type="NFlexBoxPanelExample" />
+          </tile>
+          <tile name="Single Visible Panel" icon="SingleVisiblePanel.png">
+            <example name="Single Visible Panel" type="NSingleVisiblePanelExample" />
+          </tile>
+          <tile name="Stack Panel" icon="StackPanel.png">
+            <example name="Stack Panel" type="NStackPanelExample" />
+          </tile>
+          <tile name="Table Flow Panel" icon="TableFlowPanel.png">
+            <example name="Table Flow Panel" type="NTableFlowPanelExample" />
+          </tile>
+          <tile name="User Panel" icon="UserPanel.png">
+            <example name="User Panel" type="NUserPanelExample" />
+          </tile>
+          <tile name="Wrap Flow Panel" icon="WrapFlowPanel.png">
+            <example name="Wrap Flow Panel" type="NWrapFlowPanelExample" />
+          </tile>
+        </group>
+        <group name="Data Exchange">
+          <tile name="Clipboard" icon="Clipboard.png">
+            <example name="Clipboard" type="NClipboardExample" />
+          </tile>
+          <tile name="Drag And Drop" icon="DragAndDrop.png">
+            <example name="Drag And Drop" type="NDragAndDropExample" />
+          </tile>
+        </group>
+        <group name="Dialogs and Windows">
+          <tile name="Dialog Boxes" icon="MessageBox.png">
+            <example name="Message Box" type="NMessageBoxExample" />
+            <example name="Task Dialog" type="NTaskDialogExample" />
+          </tile>
+          <tile name="File Dialogs" icon="FileDialog.png">
+            <example name="File Dialogs" type="NFileDialogsExample" />
+          </tile>
+          <tile name="Print Dialog" icon="PrintDialog.png">
+            <example name="Print Dialog" type="NPrintDialogExample" />
+          </tile>
+          <tile name="Progress Window" icon="ProgressWindow.png">
+            <example name="Progress Window" type="NProgressWindowExample" />
+          </tile>
+          <tile name="Windows" icon="Windows.png">
+            <example name="Top Level Window Properties" type="NTopLevelWindowPropertiesExample" />
+            <example name="Top Level Window Events" type="NTopLevelWindowEventsExample" />
+            <example name="Top Level Window Auto Sizing" type="NTopLevelWindowAutoSizingExample" />
+          </tile>
+        </group>
+        <group name="User Input">
+          <tile name="Mouse Events" icon="Mouse.png">
+            <example name="Mouse Events" type="NMouseEventsExample" />
+          </tile>
+          <tile name="Keyboard Events" icon="Keyboard.png">
+            <example name="Keyboard Events" type="NKeyboardEventsExample" />
+          </tile>
+          <tile name="Touch Support" icon="Touch.png">
+            <example name="Touch Support" type="NTouchSupportExample" />
+          </tile>
+        </group>
+        <group name="Split Buttons">
+          <tile name="Border Split Button" icon="BorderSplitButton.png">
+            <example name="Border Split Button" type="NBorderSplitButtonExample" />
+          </tile>
+          <tile name="Fill Split Button" icon="FillSplitButton.png">
+            <example name="Fill Split Button" type="NFillSplitButtonExample" />
+          </tile>
+          <tile name="Menu Split Button" icon="MenuSplitButton.png">
+            <example name="Menu Split Button" type="NMenuSplitButtonExample" />
+          </tile>
+          <tile name="Shadow Split Button" icon="ShadowSplitButton.png">
+            <example name="Shadow Split Button" type="NShadowSplitButtonExample" />
+          </tile>
+          <tile name="Stroke Split Button" icon="StrokeSplitButton.png">
+            <example name="Stroke Split Button" type="NStrokeSplitButtonExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+    <!--Framework-->
+    <category name="Framework" namespace="Framework" license="Free!" color="53A4DA">
+      <row>
+        <group name="Editors">
+          <tile name="Category Editors" icon="CategoryEdit.png">
+            <example name="Category Editors" type="NCategoryEditorsExample" />
+          </tile>
+          <tile name="Node Designers" icon="NodeDesigner.png">
+            <example name="Node Designers" type="NNodeDesignersExample" />
+          </tile>
+          <tile name="Style Editors" icon="StyleEdit.png">
+            <example name="Style Editors" type="NStyleEditorsExample" />
+          </tile>
+          <tile name="Value Type Editors" icon="ValueEdit.png">
+            <example name="Value Type Editors" type="NValueTypeEditorsExample" />
+          </tile>
+        </group>
+        <group name="Graphics">
+          <tile name="Geometry" icon="Geometry.png">
+            <example name="Area Operations" type="NAreaOperationsExample" />
+          </tile>
+          <tile name="Fill Types" icon="Fill.png">
+            <example name="Solid Color Fill" type="NSolidColorFillExample" />
+            <example name="Linear Gradient Fill" type="NLinearGradientFillExample" />
+            <example name="Radial Gradient Fill" type="NRadialGradientFillExample" />
+            <example name="Stock Gradient Fill" type="NStockGradientFillExample" />
+            <example name="Advanced Gradient Fill" type="NAdvancedGradientFillExample" />
+            <example name="Predefined Advanced Gradients" type="NPredefinedAdvancedGradientsExample" />
+            <example name="Hatch Fill" type="NHatchFillExample" />
+            <example name="Image Fill" type="NImageFillExample" />
+            <example name="Custom Texture Mapping" type="NCustomTextureMappingExample" />
+          </tile>
+          <tile name="Imaging" icon="Images.png">
+            <example name="Painting Images" type="NPaintingImagesExample" />
+            <example name="BMP Decoder" type="NBmpDecoderExample" />
+            <example name="JPEG Decoder" type="NJpegDecoderExample" />
+            <example name="PNG Decoder" type="NPngDecoderExample" />
+            <example name="Animated PNG Decoder" type="NApngDecoderExample" />
+            <example name="GIF Decoder" type="NGifDecoderExample" />
+          </tile>
+          <tile name="Paths &amp; Primitives" icon="Paths.png">
+            <example name="Painting Primitives" type="NPaintingPrimitivesExample" />
+            <example name="Painting Graphics Paths" type="NPaintingGraphicsPathsExample" />
+            <example name="Transformations and Clipping" type="NTransformationsAndClippingExample" />
+          </tile>
+          <tile name="Shadow" icon="Shadow.png">
+            <example name="Shadow" type="NShadowExample" />
+          </tile>
+          <tile name="Stroke" icon="Stroke.png">
+            <example name="Stroke" type="NStrokeExample" />
+          </tile>
+          <tile name="Text" icon="Text.png">
+            <example name="Painting Text at Location" type="NPaintingTextAtLocationExample" />
+            <example name="Painting Text at Bounds" type="NPaintingTextAtBoundsExample" />
+            <example name="Painting Text Path" type="NPaintingTextPathExample" />
+            <example name="Measure Text" type="NMeasureTextExample" />
+            <example name="Installing Fonts" type="NInstallingFontsExample" />
+          </tile>
+        </group>
+        <group name="IO &amp; Misc">
+          <tile name="Embedded Resources" icon="Images.png">
+            <example name="Embedded Resources" type="NEmbeddedResourcesExample" />
+          </tile>
+          <tile name="CLR Serialization" icon="ClrSerialization.png">
+            <example name="CLR Serialization" type="NCLRSerializationExample" />
+          </tile>
+          <tile name="DOM Serialization" icon="DomSerialization.png">
+            <example name="DOM Serialization" type="NDomSerializationExample" />
+            <example name="DOM Serialization Test" type="NDomSerializationTestExample" />
+          </tile>
+          <tile name="XML" icon="Xml.png">
+            <example name="Xml Parsing" type="NXmlParsingExample" />
+            <example name="Xml Serializing" type="NXmlSerializingExample" />
+          </tile>
+          <tile name="ZIP" icon="Zip.png">
+            <example name="Zip Decompression" type="NZipDecompressionExample" />
+          </tile>
+          <tile name="Localization" icon="Localization.png">
+            <example name="Localization" type="NLocalizationExample" />
+          </tile>
+          <tile name="Cryptography" icon="Cryptography.png">
+            <example name="Cryptography" type="NCryptographyExample" />
+          </tile>
+          <tile name="Formulas" icon="Formulas.png">
+            <example name="Formulas" type="NFormulasExample" />
+          </tile>
+          <tile name="HTTP" icon="Http.png">
+            <example name="HTTP" type="NHttpExample" />
+          </tile>
+        </group>
+      </row>
+    </category>
+  </categories>
+</document>

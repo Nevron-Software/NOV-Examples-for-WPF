@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Pseudo Classes</title>
+    <style type="text/css">
+        h2 { border-top:1px solid gray;  padding-top:10px; }
+
+        p:first-child { color:red; }
+        p:last-child { color:green; }
+        div > p:first-child { font-weight:bold; }
+        div p:last-child { color:blue; font-style:italic; }
+
+        :link { color:red; }
+        a.custom { color:brown; }
+        a.custom:link { color:green; }
+
+        span:not(.class1) { color:red }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">Pseudo Classes</h1>
+    <h2>The NOT Pseudo Class</h2>
+    <span>This span should be red.</span><br />
+    <span class="class1">This span should not be styled.</span><br />
+    <span class="class2">This span should be red, too.</span>
+
+    <h2>The LINK Pseudo Class</h2>
+    <div>
+        <a>This is an empty anchor element.</a><br />
+        <a id="123">This is an anchor with an id.</a><br />
+        <a href="#">This anchor is a link and should be red.</a><br />
+        <a class="custom">This anchor should be brown.</a><br />
+        <a href="#" class="custom">This anchor is a link and should be green.</a>
+    </div>
+
+    <h2>The First/Last Child Pseudo Classes</h2>
+    <div>
+        <p>This paragraph is the first child of a div and its text should be red and bold.</p>
+        <p>This paragraph should be unstyled.</p>
+        <p>This paragraph is the last descendant of a div and its text should be blue and itallic.</p>
+    </div>
+    <p>This paragraph is the last descendant of the body and its text should be green.</p>
+</body>
+</html>

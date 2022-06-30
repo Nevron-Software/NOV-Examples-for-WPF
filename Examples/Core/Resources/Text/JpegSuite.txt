@@ -1,0 +1,7 @@
+﻿q001.jpg - Quality 1, File Size: 4455, Compression ratio: 68.3 : 1
+q010.jpg - Quality 10, File Size: 8570, Compression ratio: 35.5 : 1
+q020.jpg - Quality 20, File Size: 13231, Compression ratio: 23 : 1
+q040.jpg - Quality 40, File Size: 20465, Compression ratio: 14.86 : 1
+q060.jpg - Quality 60, File Size: 26993, Compression ratio: 11.27 : 1
+q080.jpg - Quality 80, File Size: 40830, Compression ratio: 7.45 : 1
+q100.jpg - Quality 100, File Size: 188227, Compression ratio: 1.62 : 1

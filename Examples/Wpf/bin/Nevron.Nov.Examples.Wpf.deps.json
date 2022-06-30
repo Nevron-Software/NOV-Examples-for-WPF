@@ -1,0 +1,178 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Nevron.Nov.Examples.Wpf/1.0.0": {
+        "dependencies": {
+          "Nevron.Nov.Barcode": "22.6.9.12",
+          "Nevron.Nov.Chart": "22.6.9.12",
+          "Nevron.Nov.Diagram": "22.6.9.12",
+          "Nevron.Nov.Examples": "22.6.9.12",
+          "Nevron.Nov.Grid": "22.6.9.12",
+          "Nevron.Nov.Host.WinBase": "22.6.9.12",
+          "Nevron.Nov.Host.Wpf": "22.6.9.12",
+          "Nevron.Nov.Presentation": "22.6.9.12",
+          "Nevron.Nov.Schedule": "22.6.9.12",
+          "Nevron.Nov.Text": "22.6.9.12"
+        },
+        "runtime": {
+          "Nevron.Nov.Examples.Wpf.dll": {}
+        }
+      },
+      "Nevron.Nov.Barcode/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Barcode.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Chart/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Chart.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Diagram/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Diagram.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Examples/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Examples.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Grid/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Grid.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Host.WinBase/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Host.WinBase.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Host.Wpf/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Host.Wpf.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Presentation/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Presentation.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Schedule/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Schedule.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.Text/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.Text.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      },
+      "Nevron.Nov.GraphicsGL/22.6.9.12": {
+        "runtime": {
+          "Nevron.Nov.GraphicsGL.dll": {
+            "assemblyVersion": "22.6.9.12",
+            "fileVersion": "22.6.9.12"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Nevron.Nov.Examples.Wpf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Barcode/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Chart/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Diagram/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Examples/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Grid/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Host.WinBase/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Host.Wpf/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Presentation/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Schedule/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.Text/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nevron.Nov.GraphicsGL/22.6.9.12": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

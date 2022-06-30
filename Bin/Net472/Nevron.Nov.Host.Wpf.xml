@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.Host.Wpf</name>
+    </assembly>
+    <members>
+        <member name="T:Nevron.Nov.Windows.NHostWpfLoadAssemblyType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NHostWpfLoadAssemblyType.Dispose">
+            <summary>
+            Disposes any used resources.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.NNovControlHost`1">
+            <summary>
+            A WPF control that contains a NOV widget of a certain type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovControlHost`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovControlHost`1.#ctor(`0)">
+            <summary>
+            Creates a new NNovControl that hosts the specified widget.
+            </summary>
+            <param name="widget"></param>
+        </member>
+        <member name="T:Nevron.Nov.Windows.NNovPropertyValueSerializer">
+            <summary>
+            XAML serializer for NOV properties.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovPropertyValueSerializer.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovPropertyValueSerializer.CanConvertToString(System.Object,System.Windows.Markup.IValueSerializerContext)">
+            <summary>
+            Determines whether the specified object can be converted into a System.String.
+            </summary>
+            <param name="value"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Windows.NNovWidgetHost`1">
+            <summary>
+            A Windows Forms control that contains a NOV widget of a certain type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovWidgetHost`1.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovWidgetHost`1.#ctor(`0)">
+            <summary>
+            Creates a new NNovControl that hosts the specified widget.
+            </summary>
+            <param name="widget"></param>
+        </member>
+        <member name="P:Nevron.Nov.Windows.NNovWidgetHost`1.Widget">
+            <summary>
+            Gets/Sets the NOV widget contained by this host.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.NNovWidgetHost`1.DesignTimeState">
+            <summary>
+            The design time state of the widget.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovWidgetHost`1.UpdateDesignTimeState">
+            <summary>
+            Updates the design time state of the control.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.NNovChildWindowHost">
+            <summary>
+            A System.Windows.Controls.ContentControl which can host a Nevron Open Vision NChildWindow.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovChildWindowHost.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovChildWindowHost.MeasureOverride(System.Windows.Size)">
+            <summary>
+            
+            </summary>
+            <param name="constraint"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Windows.NNovApplicationInstaller">
+            <summary>
+            The WPF Application installer. 
+            Make sure to call its Install() method in your WPF application Main() 
+            function prior to using Nevron Open Vision Products. For example:
+            <code>
+            static class Program
+            {
+            	[STAThread]
+            	static void Main()
+            	{
+            		// install Nevron Open Vision for WPF
+            		NWPFApplicationInstaller.Install();
+            
+            		// show the main form
+            		try
+            		{
+            			Application app = new Application();
+            			app.Run(new Nevron.Examples.Wpf.NMainWindow());
+            		}
+            		catch (Exception ex)
+            		{
+            			System.Diagnostics.NDebug.Assert(false, ex.Message, ex.StackTrace);
+            		}
+            	}
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovApplicationInstaller.Install(Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for WPF applications.
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.NNovApplicationInstaller.InstallServer(Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for a WPF application server.
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pkhi.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+            <summary>
+            Decodes the specified image data using WPF image decoders.
+            </summary>
+            <param name="qkhi">Encoded image data.</param>
+            <param name="rkhi">The format of the data in the byte array. Cannot be null.</param>
+            <returns>Returns a raster that contains the decoded image data. Returns null if the decoding was not successful.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pkhi.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Encodes a raster into BMP image format, using the WPF image encoder.
+            </summary>
+            <param name="skhi">The raster to be encoded.</param>
+            <param name="settings">BMP encoder settings.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pkhi.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+            <summary>
+            Encodes a raster into PNG image format, using the WPF image encoder.
+            </summary>
+            <param name="tkhi">The raster to be encoded.</param>
+            <param name="ukhi">PNG encoder settings.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pkhi.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+            <summary>
+            Encodes a raster into JPEG image format, using the WPF image encoder.
+            </summary>
+            <param name="vkhi">The raster to be encoded.</param>
+            <param name="wkhi">JPEG encoder settings.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pkhi.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Encodes a raster into TIFF image format, using the image encoding capabilities of the underlying platform.
+            Must be implemented in the image service of a platform host.
+            </summary>
+            <param name="xkhi">The raster to be encoded.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.xlhi.Nevron#Nov#Dom#INEventHandler#Invoke(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            Called when the measure of the child window has changed.
+            </summary>
+            <param name="emhi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.fuhi`1.HitTestCore(System.Windows.Media.PointHitTestParameters)">
+            <summary>
+            Overriden to hit test the element, if the point is inside its bounds.
+            </summary>
+            <param name="suhi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.fuhi`1.OnRender(System.Windows.Media.DrawingContext)">
+            <summary>
+            Overriden to render a writable bitmap
+            </summary>
+            <param name="tuhi"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.fuhi`1.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)">
+            <summary>
+            Called when the DPI at which this View is rendered changes.
+            </summary>
+            <param name="uuhi"></param>
+            <param name="vuhi"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Media and Importance</title>
+    <style type="text/css">
+        @media screen {
+            :not(div) { color:red; }
+            body { color:blue; }
+            .test { color:green !important; }
+            .test { color:gold; }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;color:black;">Media and Importance</h1>
+    <p>This is a paragraph and should be red.</p>
+    <span>This span should be red, too.</span>
+    <div>This is a div and should NOT be red.</div>
+    <p class="test">This text should be green!</p>
+</body>
+</html>

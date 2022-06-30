@@ -1,0 +1,5 @@
+Config file: Resources.xml successfully loaded.
+Config file: Resources.xml successfully inited config fields.
+Config file: Resources.xml successfully loaded all settings.
+CS file making skipped because it was considered unnecessary.
+ 

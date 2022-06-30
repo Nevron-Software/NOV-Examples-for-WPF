@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nevron.Nov.Examples.Wpf", "Nevron.Nov.Examples.Wpf.csproj", "{7A2D152F-B034-474E-AEC4-7145B5333FF1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EF29C153-B2CB-43B0-8A4B-377822C973FB} = {EF29C153-B2CB-43B0-8A4B-377822C973FB}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nevron.Nov.Examples", "..\Core\Nevron.Nov.Examples.csproj", "{EF29C153-B2CB-43B0-8A4B-377822C973FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A2D152F-B034-474E-AEC4-7145B5333FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2D152F-B034-474E-AEC4-7145B5333FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2D152F-B034-474E-AEC4-7145B5333FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2D152F-B034-474E-AEC4-7145B5333FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF29C153-B2CB-43B0-8A4B-377822C973FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF29C153-B2CB-43B0-8A4B-377822C973FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF29C153-B2CB-43B0-8A4B-377822C973FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF29C153-B2CB-43B0-8A4B-377822C973FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35DF4BAD-E258-4B55-9F99-9B7E02A38963}
+	EndGlobalSection
+EndGlobal

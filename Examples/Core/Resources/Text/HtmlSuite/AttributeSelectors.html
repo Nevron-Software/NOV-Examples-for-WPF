@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attribute Selectors</title>
+    <style type="text/css">
+        p[lang] {color:brown;} /* A p element with a "lang" attribute */
+        p[lang="am"] {color:red;} /* A p element whose "lang" attribute value is exactly equal to "am" */
+        p[lang~="uk"] {color:blue;} /* A p element whose "lang" attribute value is a list of whitespace-separated values, one of which is exactly equal to "uk" */
+        p[lang^="ak"] {color:green;} /* A p element whose "lang" attribute value begins exactly with the string "ak" */
+        p[lang$="uk"] {font-weight:bold;} /* A p element whose "lang" attribute value ends exactly with the string "uk" */
+        p[lang*="uk"] {font-style:italic;} /* A p element whose "lang" attribute value contains the substring "uk" */
+        p[lang|="bg"] {text-decoration:underline;} /* A p element whose "foo" attribute has a hyphen-separated list of values beginning (from the left) with "bg" */
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">Attribute Selectors</h1>
+    <p>This is an unstyled paragraph.</p>
+    <p lang="am">This paragraph should have red text.</p>
+    <p lang="am uk">This paragraph should have blue, bold, italic text.</p>
+    <p lang="ak">This paragraph should have green text.</p>
+    <p lang="akk">This paragraph should have green text, too.</p>
+    <p lang="bg-mk">This paragraph should have underlined brown text.</p>
+</body>
+</html>

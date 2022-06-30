@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Text Styles</title>
+</head>
+<body style="font:10pt 'Arial'">
+    <h1 style="text-align:center">Text Styles</h1>
+
+    <div style="font-family:'Comic Sans MS'; /* I'm a simple comment */ font-size:16pt; color:#FF0000">This text should be red, large and with a different font!</div>
+    <div style="font-weight:bold;">
+        Here is some bold text. The end of this sentence should be <span style="font-weight: normal; font-style:italic; color:#0000CC;">itallic, in dark blue and not bold</span>.
+    </div>
+    <div style="font:italic bold 16pt/32pt 'Times New Roman'">Font shortcut property with valid property order.</div>
+    <div style="font:italic bold 'Courier New' 16pt/32pt ">Font shortcut property with <span style="color:red">invalid (this should be in red)</span> property order.</div>
+    <div>On the next line there should be a bold hyperlink:</div>
+    <a href="#"><b>This is the bold hyperlink</b></a>
+
+    <hr />
+    <h2>Generic Font Families</h2>
+    <div style="font-family:serif">Serif font</div>
+    <div style="font-family:sans-serif">Sans-serif font</div>
+    <div style="font-family:cursive">Cursive font</div>
+    <div style="font-family:fantasy">Fantasy font</div>
+    <div style="font-family:monospace">Monospace font</div>
+</body>
+</html>

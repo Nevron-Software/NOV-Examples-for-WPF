@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.CustomActions</name>
+    </assembly>
+    <members>
+        <member name="T:Nevron.Nov.CustomActions.NRegisterAssembliesInGACAction">
+            <summary>
+            Registers all nevron assemblies in GAC
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NRegisterAssembliesInGACAction.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamBuilder.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamBuilder.AddStringParam(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamBuilder.AddBoolParam(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamBuilder.AddSwitch(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamBuilder.GetParams">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamParser.#ctor(System.String[])">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamParser.ContainsSwitch(System.String)">
+            <summary>
+            Gets the parsed operation
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamParser.ContainsKey(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamParser.GetStringKeyValue(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NParamParser.GetBoolKeyValue(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NProgram">
+            <summary>
+            Summary description for NProgram.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NCustomActions">
+            <summary>
+            Summary description for NCustomAction.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NRegistryHelpers.DrillSubSoftwareKeys(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NRegistryHelpers.DrillSubMachineKeys1(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NCreateEvaluationLicenseKey">
+            <summary>
+            Creates an evaluation license key
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NLog">
+            <summary>
+            Summary description for NLog.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NCustomAction">
+            <summary>
+            Base class for all custom actions
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NCustomAction.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NInstallationContext.#ctor(System.String)">
+            <summary>
+            Intercept remove make internal
+            </summary>
+            <param name="targetFolder"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NInstallationContext.FromArgs(System.String[])">
+            <summary>
+            Creates an installer context from aruments
+            </summary>
+            <param name="targetDir"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NInstallationContext.SavePersistentKeys">
+            <summary>
+            Saves all persistent keys in the context to a specified xml file
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.NInstallationContext.SetKeyValue(System.String,System.Object)">
+            <summary>
+            Sets the key value
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.NInstallationPaths">
+            <summary>
+            Summary description for NInstallationPaths.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.IEnumSetupInstances">
+            <summary>
+            A enumerator of installed <see cref="T:Microsoft.VisualStudio.Setup.Configuration.ISetupInstance" /> objects.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.IEnumSetupInstances.Next(System.Int32,Nevron.Nov.CustomActions.ISetupInstance[],System.Int32@)">
+            <summary>
+            Retrieves the next set of product instances in the enumeration sequence.
+            </summary>
+            <param name="celt">The number of product instances to retrieve.</param>
+            <param name="rgelt">A pointer to an array of <see cref="T:Microsoft.VisualStudio.Setup.Configuration.ISetupInstance" />.</param>
+            <param name="pceltFetched">A pointer to the number of product instances retrieved. If celt is 1 this parameter may be NULL.</param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.IEnumSetupInstances.Skip(System.Int32)">
+            <summary>
+            Skips the next set of product instances in the enumeration sequence.
+            </summary>
+            <param name="celt">The number of product instances to skip.</param>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.IEnumSetupInstances.Reset">
+            <summary>
+            Resets the enumeration sequence to the beginning.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.IEnumSetupInstances.Clone">
+            <summary>
+            Creates a new enumeration object in the same state as the current enumeration object: the new object points to the same place in the enumeration sequence.
+            </summary>
+            <returns>A pointer to a pointer to a new <see cref="T:Microsoft.VisualStudio.Setup.Configuration.IEnumSetupInstances" /> interface. If the method fails, this parameter is undefined.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.InstanceState">
+            <summary>
+            The state of an <see cref="T:Microsoft.VisualStudio.Setup.Configuration.ISetupInstance2" />.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.CustomActions.InstanceState.None">
+            <summary>
+            The instance state has not been determined.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.CustomActions.InstanceState.Local">
+            <summary>
+            The instance installation path exists.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.CustomActions.InstanceState.Registered">
+            <summary>
+            A product is registered to the instance.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.CustomActions.InstanceState.NoRebootRequired">
+            <summary>
+            No reboot is required for the instance.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.CustomActions.InstanceState.Complete">
+            <summary>
+            The instance represents a complete install.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupConfiguration">
+            <summary>
+            Gets information about product instances set up on the machine.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration.EnumInstances">
+            <summary>
+            Enumerates all product instances installed.
+            </summary>
+            <returns>An enumeration of installed product instances.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration.GetInstanceForCurrentProcess">
+            <summary>
+            Gets the instance for the current process path.
+            </summary>
+            <returns>The instance for the current process path.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration.GetInstanceForPath(System.String)">
+            <summary>
+            Gets the instance for the given path.
+            </summary>
+            <param name="path">Path used to determine instance</param>
+            <returns>The instance for the given path.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupConfiguration2">
+            <summary>
+            Gets information about product instances set up on the machine.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration2.EnumInstances">
+            <summary>
+            Enumerates all completed product instances installed.
+            </summary>
+            <returns>An enumeration of installed product instances.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration2.GetInstanceForCurrentProcess">
+            <summary>
+            Gets the instance for the current process path.
+            </summary>
+            <returns>The instance for the current process path.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration2.GetInstanceForPath(System.String)">
+            <summary>
+            Gets the instance for the given path.
+            </summary>
+            <param name="path">Path used to determine instance</param>
+            <returns>The instance for the given path.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupConfiguration2.EnumAllInstances">
+            <summary>
+            Enumerates all product instances.
+            </summary>
+            <returns>An enumeration of all product instances.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupErrorState">
+            <summary>
+            Information about the error state of the instance.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupErrorState.GetFailedPackages">
+            <summary>
+            Gets an array of failed package references.
+            </summary>
+            <returns>An array of failed package references.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupErrorState.GetSkippedPackages">
+            <summary>
+             Gets an array of skipped package references.
+            </summary>
+            <returns>An array of skipped package references.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupFailedPackageReference">
+            <summary>
+            A reference to a failed package.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetId">
+            <summary>
+            Gets the general package identifier.
+            </summary>
+            <returns>The general package identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetVersion">
+            <summary>
+            Gets the version of the package.
+            </summary>
+            <returns>The version of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetChip">
+            <summary>
+            Gets the target process architecture of the package.
+            </summary>
+            <returns>The target process architecture of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetLanguage">
+            <summary>
+            Gets the language and optional region identifier.
+            </summary>
+            <returns>The language and optional region identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetBranch">
+            <summary>
+            Gets the build branch of the package.
+            </summary>
+            <returns>The build branch of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetType">
+            <summary>
+            Gets the type of the package.
+            </summary>
+            <returns>The type of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetUniqueId">
+            <summary>
+            Gets the unique identifier consisting of all defined tokens.
+            </summary>
+            <returns>The unique identifier consisting of all defined tokens.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupFailedPackageReference.GetIsExtension">
+            <summary>
+            Gets a value indicating whether the package refers to an external extension.
+            </summary>
+            <returns>A value indicating whether the package refers to an external extension.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupHelper">
+            <summary>
+            Helper functions.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupHelper.ParseVersion(System.String)">
+            <summary>
+            Parses a dotted quad version string into a 64-bit unsigned integer.
+            </summary>
+            <param name="version">The dotted quad version string to parse, e.g. 1.2.3.4.</param>
+            <returns>A 64-bit unsigned integer representing the version. You can compare this to other versions.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupHelper.ParseVersionRange(System.String,System.UInt64@,System.UInt64@)">
+            <summary>
+            Parses a dotted quad version string into a 64-bit unsigned integer.
+            </summary>
+            <param name="versionRange">The string containing 1 or 2 dotted quad version strings to parse, e.g. [1.0,) that means 1.0.0.0 or newer.</param>
+            <param name="minVersion">A 64-bit unsigned integer representing the minimum version, which may be 0. You can compare this to other versions.</param>
+            <param name="maxVersion">A 64-bit unsigned integer representing the maximum version, which may be MAXULONGLONG. You can compare this to other versions.</param>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupInstance">
+            <summary>
+            Information about an instance of a product.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetInstanceId">
+            <summary>
+            Gets the instance identifier (should match the name of the parent instance directory).
+            </summary>
+            <returns>The instance identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetInstallDate">
+            <summary>
+            Gets the local date and time when the installation was originally installed.
+            </summary>
+            <returns>The local date and time when the installation was originally installed.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetInstallationName">
+            <summary>
+            Gets the unique name of the installation, often indicating the branch and other information used for telemetry.
+            </summary>
+            <returns>The unique name of the installation, often indicating the branch and other information used for telemetry.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetInstallationPath">
+            <summary>
+            Gets the path to the installation root of the product.
+            </summary>
+            <returns>The path to the installation root of the product.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetInstallationVersion">
+            <summary>
+            Gets the version of the product installed in this instance.
+            </summary>
+            <returns>The version of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetDisplayName(System.Int32)">
+            <summary>
+            Gets the display name (title) of the product installed in this instance.
+            </summary>
+            <param name="lcid">The LCID for the display name.</param>
+            <returns>The display name (title) of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.GetDescription(System.Int32)">
+            <summary>
+            Gets the description of the product installed in this instance.
+            </summary>
+            <param name="lcid">The LCID for the description.</param>
+            <returns>The description of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance.ResolvePath(System.String)">
+            <summary>
+            Resolves the optional relative path to the root path of the instance.
+            </summary>
+            <param name="pwszRelativePath">A relative path within the instance to resolve, or NULL to get the root path.</param>
+            <returns>The full path to the optional relative path within the instance. If the relative path is NULL, the root path will always terminate in a backslash.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupInstance2">
+            <summary>
+            Information about an instance of a product.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetInstanceId">
+            <summary>
+            Gets the instance identifier (should match the name of the parent instance directory).
+            </summary>
+            <returns>The instance identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetInstallDate">
+            <summary>
+            Gets the local date and time when the installation was originally installed.
+            </summary>
+            <returns>The local date and time when the installation was originally installed.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetInstallationName">
+            <summary>
+            Gets the unique name of the installation, often indicating the branch and other information used for telemetry.
+            </summary>
+            <returns>The unique name of the installation, often indicating the branch and other information used for telemetry.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetInstallationPath">
+            <summary>
+            Gets the path to the installation root of the product.
+            </summary>
+            <returns>The path to the installation root of the product.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetInstallationVersion">
+            <summary>
+            Gets the version of the product installed in this instance.
+            </summary>
+            <returns>The version of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetDisplayName(System.Int32)">
+            <summary>
+            Gets the display name (title) of the product installed in this instance.
+            </summary>
+            <param name="lcid">The LCID for the display name.</param>
+            <returns>The display name (title) of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetDescription(System.Int32)">
+            <summary>
+            Gets the description of the product installed in this instance.
+            </summary>
+            <param name="lcid">The LCID for the description.</param>
+            <returns>The description of the product installed in this instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.ResolvePath(System.String)">
+            <summary>
+            Resolves the optional relative path to the root path of the instance.
+            </summary>
+            <param name="pwszRelativePath">A relative path within the instance to resolve, or NULL to get the root path.</param>
+            <returns>The full path to the optional relative path within the instance. If the relative path is NULL, the root path will always terminate in a backslash.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetState">
+            <summary>
+            Gets the state of the instance.
+            </summary>
+            <returns>The state of the instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetPackages">
+            <summary>
+            Gets an array of package references registered to the instance.
+            </summary>
+            <returns>An array of package references registered to the instance.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetProduct">
+            <summary>
+            Gets a package reference to the product registered to the instance
+            </summary>
+            <returns>A package reference to the product registered to the instance. This may be null if <see cref="M:Microsoft.VisualStudio.Setup.Configuration.ISetupInstance2.GetState" /> does not return <see cref="F:Microsoft.VisualStudio.Setup.Configuration.InstanceState.Complete" />.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetProductPath">
+            <summary>
+            Gets the relative path to the product application, if available.
+            </summary>
+            <returns>The relative path to the product application, if available.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupInstance2.GetErrors">
+            <summary>
+            Gets the error state of the instance, if available.
+            </summary>
+            <returns>The error state of the instance, if available.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ISetupPackageReference">
+            <summary>
+            A reference to a package.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetId">
+            <summary>
+            Gets the general package identifier.
+            </summary>
+            <returns>The general package identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetVersion">
+            <summary>
+            Gets the version of the package.
+            </summary>
+            <returns>The version of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetChip">
+            <summary>
+            Gets the target process architecture of the package.
+            </summary>
+            <returns>The target process architecture of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetLanguage">
+            <summary>
+            Gets the language and optional region identifier.
+            </summary>
+            <returns>The language and optional region identifier.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetBranch">
+            <summary>
+            Gets the build branch of the package.
+            </summary>
+            <returns>The build branch of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetType">
+            <summary>
+            Gets the type of the package.
+            </summary>
+            <returns>The type of the package.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetUniqueId">
+            <summary>
+            Gets the unique identifier consisting of all defined tokens.
+            </summary>
+            <returns>The unique identifier consisting of all defined tokens.</returns>
+        </member>
+        <member name="M:Nevron.Nov.CustomActions.ISetupPackageReference.GetIsExtension">
+            <summary>
+            Gets a value indicating whether the package refers to an external extension.
+            </summary>
+            <returns>A value indicating whether the package refers to an external extension.</returns>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.SetupConfiguration">
+            <summary>
+            The implementation of <see cref="T:Microsoft.VisualStudio.Setup.Configuration.ISetupConfiguration2" />.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.SetupConfigurationClass">
+            <summary>
+            Class that implements <see cref="T:Microsoft.VisualStudio.Setup.Configuration.ISetupConfiguration" />.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ENWinPlatform">
+            <summary>
+            Enumerates the win platforms
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ENVSVersion">
+            <summary>
+            Enumerates the VS versions
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ENDotNetLanguage">
+            <summary>
+            Enumerates the .NET languages
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ENNovProduct">
+            <summary>
+            Enumerates the Nov based products
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.CustomActions.ENLogEntryType">
+            <summary>
+            Enumerates the log entry types
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.pnii.Equals(System.Object)">
+            <summary>
+            Returns true if the objects are equal
+            </summary>
+            <param name="vnii"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.coii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="doii"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.gpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="hpii"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.ipii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="jpii"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.mpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="ppii"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.vpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="xpii"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.etii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="jtii"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source path="" />
+  <include filter="*.cs" />
+  <exclude filter="*\Resources\*;*\obj\*;*\_Internal\*" />
+  <target name="Resources\Binary\SourceCode.zip" />
+</settings>

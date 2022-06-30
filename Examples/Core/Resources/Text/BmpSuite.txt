@@ -1,0 +1,28 @@
+﻿g01bw.bmp      - 1 bpp, black and white palette (#000000,#FFFFFF)
+g01wb.bmp      - 1 bpp, white and black palette (#FFFFFF,#000000)
+g01bg.bmp      - 1 bpp, blue and green palette (#4040FF,#40FF40)
+g01p1.bmp      - 1 bpp, 1-color (blue) palette (#4040FF)
+g04.bmp        - 4 bpp, basic 4bpp (16 color) image
+g04rle.bmp     - 4 bpp, RLE compressed
+g04p4.bmp      - 4 bpp, 4-color grayscale palette
+g08.bmp        - 8 bpp, basic 8bpp (256 color) image
+g08p256.bmp    - 8 bpp, biClrUsed=256, biClrImportant=0 [=256]
+g08pi256.bmp   - 8 bpp, biClrUsed=256, biClrImportant=256
+g08pi64.bmp    - 8 bpp, biClrUsed=256, biClrImportant=64
+g08rle.bmp     - 8 bpp, RLE compressed
+g08os2.bmp     - 8 bpp, OS/2-style bitmap
+g08res22.bmp   - 8 bpp, resolution 7874x7874 pixels/meter (200x200 dpi)
+g08res11.bmp   - 8 bpp, resolution 3937x3937 pixels/meter (100x100 dpi)
+g08res21.bmp   - 8 bpp, resolution 7874x3937 pixels/meter (200x100 dpi)
+g08s0.bmp      - 8 bpp, bits size not given (set to 0)
+g08offs.bmp    - 8 bpp, bfOffBits in header not set to the usual value. There are 100 extra unused bytes between palette and bits.
+g08w126.bmp    - 8 bpp, size 126x63 (right and bottom slightly clipped)
+g08w125.bmp    - 8 bpp, size 125x62
+g08w124.bmp    - 8 bpp, size 124x61
+g08p64.bmp     - 8 bpp, 64-color grayscale palette
+g16def555.bmp  - 16 bpp, 15-bit color (1 bit wasted), biCompression=BI_RGB (no bitfields, defaults to 5-5-5)
+g16bf555.bmp   - 16 bpp, 15-bit color, biCompression=BI_BITFIELDS (bitfields indicate 5-5-5)
+g16bf565.bmp   - 16 bpp, 16-bit color, biCompression=BI_BITFIELDS (bitfields indicate 5-6-5)
+g24.bmp        - 24 bpp, 24-bit color (BGR)
+g32def.bmp     - 32 bpp, 24-bit color (8 bits wasted), biCompression=BI_RGB (no bitfields, defaults to BGRx)
+g32bf.bmp      - 32 bpp, 24-bit color (8 bits wasted), biCompression=BI_BITFIELDS (bitfields indicate BGRx)

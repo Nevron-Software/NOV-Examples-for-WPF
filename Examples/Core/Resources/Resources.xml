@@ -1,0 +1,4 @@
+﻿<resources>
+  <source excludeFilter="*.scc" />
+  <target file="NResources.cs" class="NResources" access="public" namespace="Nevron.Nov.Examples" />
+</resources>
