@@ -160,7 +160,7 @@ namespace Nevron.Nov.Examples.Diagram
             
             // group the shapes as a single group
             NGroup group;
-            NBatchGroup batch = new NBatchGroup(m_DrawingView.Document);
+            NBatchGroup<NShape> batch = new NBatchGroup<NShape>(m_DrawingView.Document);
             batch.Build(cupShape, handleShape, steamShape);
             batch.Group(null, out group);
 

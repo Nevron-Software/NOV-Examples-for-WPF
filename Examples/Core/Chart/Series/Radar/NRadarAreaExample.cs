@@ -35,7 +35,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateRadarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Radar Area";
@@ -62,13 +64,13 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_RadarArea1 = new NRadarAreaSeries();
 			m_Chart.Series.Add(m_RadarArea1);
-			m_RadarArea1.Stroke = new NStroke(2, NChartTheme.BrightPalette[0]);
+			m_RadarArea1.Stroke = new NStroke(2, NChartPalette.BrightPalette[0]);
 			m_RadarArea1.Name = "Series 1";
 			m_RadarArea1.DataLabelStyle = new NDataLabelStyle(false);
 
 			m_RadarArea2 = new NRadarAreaSeries();
 			m_Chart.Series.Add(m_RadarArea2);
-			m_RadarArea2.Stroke = new NStroke(2, NChartTheme.BrightPalette[1]);
+			m_RadarArea2.Stroke = new NStroke(2, NChartPalette.BrightPalette[1]);
 			m_RadarArea2.Name = "Series 2";
 			m_RadarArea2.DataLabelStyle = new NDataLabelStyle(false);
 
@@ -81,7 +83,7 @@ namespace Nevron.Nov.Examples.Chart
 				m_RadarArea2.DataPoints.Add(new NRadarAreaDataPoint(random.Next(0, 100)));
 			}
 			
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -187,17 +189,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NRadarAreaExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateRadarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
-			return chartView;
-		}
 
 		#endregion
 	}

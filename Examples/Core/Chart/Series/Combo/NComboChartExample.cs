@@ -36,7 +36,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -84,7 +85,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			NMarkerStyle markerStyle = new NMarkerStyle();
 			markerStyle.Visible = true;
-			markerStyle.Shape = ENPointShape.Ellipse;
+			markerStyle.Shape = ENPointShape3D.Ellipse;
 			markerStyle.Size = new NSize(10, 10);
 			markerStyle.Fill = new NColorFill(NColor.Orange);
 
@@ -127,9 +128,9 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

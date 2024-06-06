@@ -79,10 +79,6 @@ namespace Nevron.Nov.Examples.Diagram
 
         private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            // create all shapes
-            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
-            NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
-
             // create the group
             NGroup group = new NGroup();
 
@@ -92,6 +88,9 @@ namespace Nevron.Nov.Examples.Diagram
             group.Geometry.Add(drawRect);
             group.Geometry.Fill = new NColorFill(NColor.LightCoral);
             group.SetBounds(new NRectangle(50, 50, 230, 330));
+
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
             // create a rectangle that is scaled and repositioned
             NShape rect1 = basicShapes.CreateShape(ENBasicShape.Rectangle);

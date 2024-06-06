@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NContextMenuCustomizationExample : NExampleBase
+    public class NContextMenuCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -67,8 +67,7 @@ at the end of the context menu.</p>
 
 		private void InitDiagram(NDrawingDocument drawingDocument)
 		{
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape.SetBounds(100, 100, 150, 100);
 			drawingDocument.Content.ActivePage.Items.Add(shape);
 		}
@@ -112,7 +111,7 @@ at the end of the context menu.</p>
 			/// </summary>
 			static CustomContextMenu()
 			{
-				CustomContextMenuSchema = NSchema.Create(typeof(CustomContextMenu), NDrawingContextMenu.NDrawingContextMenuSchema);
+				CustomContextMenuSchema = NSchema.Create(typeof(CustomContextMenu), NDrawingContextMenuSchema);
 			}
 
 			protected override void CreateCustomCommands(NMenu menu, NContextMenuBuilder builder)
@@ -145,7 +144,7 @@ at the end of the context menu.</p>
 			/// </summary>
 			static CustomCommandAction()
 			{
-				CustomCommandActionSchema = NSchema.Create(typeof(CustomCommandAction), NDrawingCommandAction.NDrawingCommandActionSchema);
+				CustomCommandActionSchema = NSchema.Create(typeof(CustomCommandAction), NDrawingCommandActionSchema);
 			}
 
 			#endregion

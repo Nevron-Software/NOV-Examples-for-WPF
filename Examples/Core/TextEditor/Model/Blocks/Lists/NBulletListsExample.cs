@@ -63,8 +63,9 @@ namespace Nevron.Nov.Examples.Text
 		{
 			NSection section = new NSection();
 			m_RichText.Content.Sections.Add(section);
+			m_RichText.Content.BulletLists.Clear(); 
 
-			section.Blocks.Add(GetDescriptionBlock("Bullet Lists", "Bullet lists allow you to apply automatic numbering on paragraphs or groups of blocks.", 1));
+            section.Blocks.Add(GetDescriptionBlock("Bullet Lists", "Bullet lists allow you to apply automatic numbering on paragraphs or groups of blocks.", 1));
 
 			section.Blocks.Add(GetDescriptionBlock("Simple bullet list", "Following is a bullet list with default formatting.", 2));
 

@@ -9,7 +9,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NParagraphsExample : NExampleBase
+    public class NParagraphsExample : NExampleBase
     {
         #region Constructors
 
@@ -66,9 +66,7 @@ namespace Nevron.Nov.Examples.Diagram
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
 
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-
-			NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape1 = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape1.SetBounds(10, 10, 600, 900);
 
             NTextBlock textBlock = new NTextBlock();

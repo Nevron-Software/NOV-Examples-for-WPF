@@ -6,10 +6,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-	/// <summary>
-	/// This example demonstrates how to configure the gauge so that the user can drag gauge indicators
-	/// </summary>
-	public class NDraggingGaugeIndicatorsExample : NExampleBase
+    /// <summary>
+    /// This example demonstrates how to configure the gauge so that the user can drag gauge indicators
+    /// </summary>
+    public class NDraggingGaugeIndicatorsExample : NExampleBase
 	{
 		#region Constructors
 

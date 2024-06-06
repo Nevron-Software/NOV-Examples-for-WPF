@@ -11,7 +11,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NTipOverTreeLayoutExample : NExampleBase
+    public class NTipOverTreeLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -119,33 +119,36 @@ namespace Nevron.Nov.Examples.Diagram
 
         private void InitDiagram(NDrawingDocument drawingDocument)
         {
+            const double ShapeWidth = 120;
+            const double ShapeHeight = 60;
+
             // Hide ports
             drawingDocument.Content.ScreenVisibility.ShowPorts = false;
 
             NPage activePage = drawingDocument.Content.ActivePage;
 
             // We will be using basic shapes with default size of 120, 60
-            NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            basicShapesFactory.DefaultSize = new NSize(120, 60);
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			basicShapes.DefaultSize = new NSize(ShapeWidth, ShapeHeight);
 
             // Create the president
-            NShape president = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape president = basicShapes.CreateShape(ENBasicShape.Rectangle);
             president.Text = "President";
             activePage.Items.Add(president);
 
             // Create the VPs.
             // NOTE: The child nodes of the VPs are layed out in cols
-            NShape vpMarketing = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape vpMarketing = basicShapes.CreateShape(ENBasicShape.Rectangle);
             vpMarketing.Text = "VP Marketing";
             vpMarketing.Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
             activePage.Items.Add(vpMarketing);
 
-            NShape vpSales = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape vpSales = basicShapes.CreateShape(ENBasicShape.Rectangle);
             vpSales.Text = "VP Sales";
             vpSales.Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
             activePage.Items.Add(vpSales);
 
-            NShape vpProduction = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape vpProduction = basicShapes.CreateShape(ENBasicShape.Rectangle);
             vpProduction.Text = "VP Production";
             vpProduction.Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
             activePage.Items.Add(vpProduction);
@@ -167,11 +170,11 @@ namespace Nevron.Nov.Examples.Diagram
             connector.GlueEndToShape(vpProduction);
 
             // Create the marketing managers
-            NShape marketingManager1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape marketingManager1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             marketingManager1.Text = "Manager1";
             activePage.Items.Add(marketingManager1);
 
-            NShape marketingManager2 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape marketingManager2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             marketingManager2.Text = "Manager2";
             activePage.Items.Add(marketingManager2);
 
@@ -187,11 +190,11 @@ namespace Nevron.Nov.Examples.Diagram
             connector.GlueEndToShape(marketingManager2);
 
             // Create the sales managers
-            NShape salesManager1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape salesManager1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             salesManager1.Text = "Manager1";
             activePage.Items.Add(salesManager1);
 
-            NShape salesManager2 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape salesManager2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             salesManager2.Text = "Manager2";
             activePage.Items.Add(salesManager2);
 
@@ -207,11 +210,11 @@ namespace Nevron.Nov.Examples.Diagram
             connector.GlueEndToShape(salesManager2);
 
             // Create the production managers
-            NShape productionManager1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape productionManager1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             productionManager1.Text = "Manager1";
             activePage.Items.Add(productionManager1);
 
-            NShape productionManager2 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape productionManager2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             productionManager2.Text = "Manager2";
             activePage.Items.Add(productionManager2);
 
@@ -241,14 +244,14 @@ namespace Nevron.Nov.Examples.Diagram
 		{
 			// Create a random tree
 			NGenericTreeTemplate tree = new NGenericTreeTemplate();
-			tree.EdgesUserClass = "Connector";
+			tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
 			tree.Balanced = false;
 			tree.Levels = levels;
 			tree.BranchNodes = branchNodes;
 			tree.HorizontalSpacing = 10;
 			tree.VerticalSpacing = 10;
-            tree.VerticesShape = VertexShape;
-            tree.VerticesSize = VertexSize;
+            tree.VertexShape = VertexShape;
+            tree.VertexSize = VertexSize;
 			tree.VertexSizeDeviation = 1;
 			tree.Create(drawingDocument);
 

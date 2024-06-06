@@ -33,10 +33,9 @@ namespace Nevron.Nov.Examples.UI
 		{
 			// Create an image box
 			m_ImageBox = new NImageBox(NResources.Image_SampleImage_png);
-			m_ImageBox.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_ImageBox.BorderThickness = new NMargins(1);
 			m_ImageBox.HorizontalPlacement = ENHorizontalPlacement.Left;
 			m_ImageBox.VerticalPlacement = ENVerticalPlacement.Top;
+			m_ImageBox.SetBorder(1, NColor.Red);
 
 			return m_ImageBox;
 		}
@@ -64,7 +63,7 @@ namespace Nevron.Nov.Examples.UI
 		{
 			return @"
 <p>
-	This example demonstrates the features of the Nevron image box widget. Use the controls to the right to load an image
+	This example demonstrates the features of the Nevron image box widget. Use the controls on the right to load an image
 	and change the image box settings.
 </p>
 ";

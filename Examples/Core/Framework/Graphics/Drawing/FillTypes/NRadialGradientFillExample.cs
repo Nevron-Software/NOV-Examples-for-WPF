@@ -1,7 +1,5 @@
-﻿using System;
-using Nevron.Nov.DataStructures;
+﻿using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -131,41 +129,6 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Event Handlers
-
-		private void OnCanvasPrePaint(NCanvasPaintEventArgs args)
-		{
-			NCanvas canvas = args.TargetNode as NCanvas;
-			if (canvas == null)
-				return;
-
-			NFill fill = (NFill)canvas.Tag;
-
-			args.PaintVisitor.ClearStyles();
-			args.PaintVisitor.SetFill(fill);
-			args.PaintVisitor.PaintRectangle(0, 0, canvas.Width, canvas.Height);
-		}
-		private void OnNumericUpDownValueChanged(NValueChangeEventArgs args)
-		{
-			if (m_Table == null)
-				return;
-
-			double width = m_CanvasWidthUpDown.Value;
-			double height = m_CanvasHeightUpDown.Value;
-
-			// Resize the canvases
-			INIterator<NNode> iterator = m_Table.GetSubtreeIterator(ENTreeTraversalOrder.DepthFirstPreOrder, new NInstanceOfSchemaFilter(NCanvas.NCanvasSchema));
-
-			while (iterator.MoveNext())
-			{
-				NCanvas canvas = (NCanvas)iterator.Current;
-				((NWidget)canvas.ParentNode).PreferredWidth = width;
-				canvas.PreferredHeight = height;
-			}
-		}
-
-		#endregion
-
 		#region Implementation
 
 		NRadialGradientFill TwoGradientStops_Stretch()
@@ -259,6 +222,41 @@ namespace Nevron.Nov.Examples.Framework
             // FIX: Radial Gradient
             // rgf.MappingMode = ENGradientMappingMode.ZoomToFill;
 			return rgf;
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		private void OnCanvasPrePaint(NCanvasPaintEventArgs args)
+		{
+			NCanvas canvas = args.TargetNode as NCanvas;
+			if (canvas == null)
+				return;
+
+			NFill fill = (NFill)canvas.Tag;
+
+			args.PaintVisitor.ClearStyles();
+			args.PaintVisitor.SetFill(fill);
+			args.PaintVisitor.PaintRectangle(0, 0, canvas.Width, canvas.Height);
+		}
+		private void OnNumericUpDownValueChanged(NValueChangeEventArgs args)
+		{
+			if (m_Table == null)
+				return;
+
+			double width = m_CanvasWidthUpDown.Value;
+			double height = m_CanvasHeightUpDown.Value;
+
+			// Resize the canvases
+			INIterator<NNode> iterator = m_Table.GetSubtreeIterator(ENTreeTraversalOrder.DepthFirstPreOrder, new NInstanceOfSchemaFilter(NCanvas.NCanvasSchema));
+
+			while (iterator.MoveNext())
+			{
+				NCanvas canvas = (NCanvas)iterator.Current;
+				((NWidget)canvas.ParentNode).PreferredWidth = width;
+				canvas.PreferredHeight = height;
+			}
 		}
 
 		#endregion

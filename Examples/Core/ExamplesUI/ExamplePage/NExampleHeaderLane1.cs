@@ -100,7 +100,7 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private NMenuDropDown CreateThemesMenuDropDown()
 		{
-			NMenuDropDown themesDropDown = new NMenuDropDown(NPairBox.Create(NResources.Image_ExampleIcons_UI_ThemeBuilder_png, "Theme"));
+			NMenuDropDown themesDropDown = new NMenuDropDown(NPairBox.Create(NResources.Image_ExamplesUI_Icons_Themes_png, "Theme"));
 			NStylePropertyEx.SetFlatExtendedLook(themesDropDown);
 
 			// Add the Windows Classic themes
@@ -157,17 +157,21 @@ namespace Nevron.Nov.Examples
 			windows8ThemeMenuItem.Tag = new NWindows8Theme();
 			windows8ThemeMenuItem.Click += OnThemeMenuItemClick;
 			themesDropDown.Items.Add(windows8ThemeMenuItem);
-			m_CurrentThemeMenuItem = windows8ThemeMenuItem;
 
 			// Add the Windows 10 theme (the default theme)
 			NCheckableMenuItem windows10ThemeMenuItem = new NCheckableMenuItem("Windows 10");
 			windows10ThemeMenuItem.Tag = new NWindows10Theme();
 			windows10ThemeMenuItem.Click += OnThemeMenuItemClick;
 			themesDropDown.Items.Add(windows10ThemeMenuItem);
-			m_CurrentThemeMenuItem = windows10ThemeMenuItem;
 
-			// Add the Mac Lion theme
-			NCheckableMenuItem macLionThemeMenuItem = new NCheckableMenuItem("Mac OS X Lion");
+            // Add the Windows 11 theme (the default theme)
+            NCheckableMenuItem windows11ThemeMenuItem = new NCheckableMenuItem("Windows 11");
+            windows11ThemeMenuItem.Tag = new NWindows11Theme();
+            windows11ThemeMenuItem.Click += OnThemeMenuItemClick;
+            themesDropDown.Items.Add(windows11ThemeMenuItem);
+
+            // Add the Mac Lion theme
+            NCheckableMenuItem macLionThemeMenuItem = new NCheckableMenuItem("Mac OS X Lion");
 			macLionThemeMenuItem.Tag = new NMacLionTheme();
 			macLionThemeMenuItem.Click += OnThemeMenuItemClick;
 			themesDropDown.Items.Add(macLionThemeMenuItem);
@@ -194,10 +198,12 @@ namespace Nevron.Nov.Examples
 			if (NApplication.IntegrationPlatform == ENIntegrationPlatform.XamarinMac)
 			{
 				macElCapitanTheme.Checked = true;
+				m_CurrentThemeMenuItem = macElCapitanTheme;
 			}
 			else
 			{
 				windows10ThemeMenuItem.Checked = true;
+				m_CurrentThemeMenuItem = windows10ThemeMenuItem;
 			}
 
 			return themesDropDown;
@@ -230,12 +236,11 @@ namespace Nevron.Nov.Examples
 			// Loop through the first level of menu items
 			for (int i = 0; i < menuItems.Count; i++)
 			{
-				NCheckableMenuItem checkableMenuItem = menuItems[i] as NCheckableMenuItem;
-				if (checkableMenuItem != null &&
+				if (menuItems[i] is NCheckableMenuItem checkableMenuItem &&
 					((NUITheme)checkableMenuItem.Tag).Scheme == themeScheme)
 				{
 					m_CurrentThemeMenuItem.Checked = false;
-					m_CurrentThemeMenuItem = (NCheckableMenuItem)checkableMenuItem;
+					m_CurrentThemeMenuItem = checkableMenuItem;
 					m_CurrentThemeMenuItem.Checked = true;
 					return true;
 				}
@@ -270,7 +275,7 @@ namespace Nevron.Nov.Examples
 			if (changeArg.Property == NExamplesOptions.RecentExamplesProperty)
 			{
 				// Update the Recent Examples menu drop down
-				NExamplesUiHelpers.PopulateExamplesDropDown(
+				NExamplesUi.PopulateExamplesDropDown(
 					m_RecentExamplesDropDown,
 					NExamplesOptions.Instance.RecentExamples.GetReverseIterator(), // Most recent examples should be first
 					m_ExamplesMap,
@@ -279,7 +284,7 @@ namespace Nevron.Nov.Examples
 			else if (changeArg.Property == NExamplesOptions.FavoriteExamplesProperty)
 			{
 				// Update the Favorite Examples menu drop down
-				NExamplesUiHelpers.PopulateExamplesDropDown(
+				NExamplesUi.PopulateExamplesDropDown(
 					m_FavoriteExamplesDropDown,
 					NExamplesOptions.Instance.FavoriteExamples.GetIterator(),
 					m_ExamplesMap,
@@ -301,7 +306,7 @@ namespace Nevron.Nov.Examples
 		{
 			if (ExampleMenuItemClick != null)
 			{
-				NXmlElement xmlElement = NExamplesUiHelpers.GetMenuItemExample((NMenuItem)arg.CurrentTargetNode);
+				NXmlElement xmlElement = NExamplesUi.GetMenuItemExample((NMenuItem)arg.CurrentTargetNode);
 				ExampleMenuItemClick(xmlElement);
 			}
 		}

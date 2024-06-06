@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NSpellCheckExample : NExampleBase
+    public class NSpellCheckExample : NExampleBase
     {
         #region Constructors
 
@@ -70,9 +70,7 @@ namespace Nevron.Nov.Examples.Diagram
             NDrawing drawing = drawingDocument.Content;
             drawing.ScreenVisibility.ShowGrid = false;
 
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-
-			NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape1 = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape1.SetBounds(10, 10, 200, 200);
 			shape1.TextBlock = new NTextBlock();
 			shape1.TextBlock.Padding = new NMargins(20);

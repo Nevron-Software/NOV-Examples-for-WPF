@@ -7,10 +7,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// The example demonstrates how to connect table ports
-	/// </summary>
-	public class NTablePortsExample : NExampleBase
+    /// <summary>
+    /// The example demonstrates how to connect table ports
+    /// </summary>
+    public class NTablePortsExample : NExampleBase
     {
         #region Constructors
 

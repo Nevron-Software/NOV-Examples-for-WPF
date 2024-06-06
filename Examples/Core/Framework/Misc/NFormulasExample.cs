@@ -2,7 +2,6 @@
 
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Formulas;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -27,10 +26,10 @@ namespace Nevron.Nov.Examples.Framework
 
         protected override NWidget CreateExampleContent()
         {
-            m_FormulaEngine = new NFormulaEngine();
+            m_FormulaCalculator = new NFormulaCalculator();
 
             NStackPanel stack = new NStackPanel();
-			NDockLayout.SetDockArea(stack, ENDockArea.Center);
+            NDockLayout.SetDockArea(stack, ENDockArea.Center);
 
             m_InputTextBox = new NTextBox();
             stack.Add(m_InputTextBox);
@@ -70,6 +69,10 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
 
         #region Implementation
 
+        /// <summary>
+        /// Creates a tree view to navigate through the predefined formula examples
+        /// </summary>
+        /// <returns></returns>
         NTreeView CreateTestsTreeView()
         {
             NTreeViewItem categoryItem, folderItem;
@@ -78,7 +81,7 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
             m_TestsTreeView = treeView;
 
             #region Operators
-            
+
             folderItem = new NTreeViewItem("Operators");
             treeView.Items.Add(folderItem);
 
@@ -171,20 +174,20 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
 
             categoryItem = new NTreeViewItem("Bitwise");
             folderItem.Items.Add(categoryItem);
-            CreateTestItems(categoryItem, new string[]{ 
+            CreateTestItems(categoryItem, new string[]{
                    "BITAND(7,2)",
                    "BITNOT(1)",
                    "BITOR(5,3)",
                    "BITXOR(5,3)",
             });
-                
+
             #endregion
 
             #region Logical
 
             categoryItem = new NTreeViewItem("Logical");
             folderItem.Items.Add(categoryItem);
-            CreateTestItems(categoryItem, new string[]{ 
+            CreateTestItems(categoryItem, new string[]{
                 "AND(true, false)",
                 "AND(true, false)",
                 "IF(true, 2, 10)",
@@ -199,7 +202,7 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
 
             categoryItem = new NTreeViewItem("Mathematical");
             folderItem.Items.Add(categoryItem);
-            CreateTestItems(categoryItem, new string[]{ 
+            CreateTestItems(categoryItem, new string[]{
                "ABS(-2.5)",
                "CEILING(1.7)",
                "CEILING(1.7, 0.25)",
@@ -231,11 +234,89 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
 
             #endregion
 
+            #region Statistical
+
+            categoryItem = new NTreeViewItem("Statistical");
+            folderItem.Items.Add(categoryItem);
+            CreateTestItems(categoryItem, new string[]{
+
+                "BETADIST(2,8,10,TRUE,1,3)",  // 0.6854706
+                "BETADIST(2,8,10,FALSE,1,3)", // 1.4837646
+                "BETAINV(0.685470581,8,10,1,3)", // 2
+
+                "BINOMDIST(6, 10, 0.5, FALSE)", // 0.2050781
+
+                "CHISQDIST(0.5,1,TRUE)",  // 0.52049988
+                "CHISQDIST(2,3,FALSE)",  // 0.20755375
+
+                "CHISQINV(0.93,1)",  // 3.283020286
+                "CHISQINV(0.6,2)",  // 1.832581464
+
+                "EXPONDIST(0.2,10,TRUE)", // 0.86466472
+                "EXPONDIST(0.2,10,FALSE)", // 1.35335283 
+                "EXPONINV(0.86466472, 10)", //  0.2
+
+                "FDIST(15.2069,6,7,TRUE)", // 0.99
+                "FDIST(15.2069,6,7,FALSE)", // 0.000220332 
+                "FINV(0.01,6,4)", // 0.10930991
+
+                "GAMMADIST(10.00001131,9,2,FALSE)", // 0.032639
+                "GAMMADIST(10.00001131,9,2,TRUE)", //  0.068094
+                "GAMMAINV(0.068094,9,2)", //  10.0000112
+
+                "HYPGEOMDIST(1,4,8,20,TRUE)", // 0.4654
+                "HYPGEOMDIST(1,4,8,20,FALSE)", // 0.3633
+
+                "LOGNORMDIST(4,3.5,1.2,TRUE)", // 0.0390836
+                "LOGNORMDIST(4,3.5,1.2,FALSE)", // 0.0176176
+                "LOGNORMINV(0.039084, 3.5, 1.2)", // 4.0000252
+
+                "NEGBINOMDIST(10,5,0.25,TRUE)", // 0.3135141
+                "NEGBINOMDIST(10,5,0.25,FALSE)", // 0.0550487
+
+                "NORMDIST(42,40,1.5,TRUE)", // 0.9087888
+                "NORMDIST(42,40,1.5,FALSE)", // 0.10934
+                "NORMINV(0.6, 5, 2 )", // 5.506694206
+
+                "POISSONDIST(2,5,TRUE)", // 0.124652
+                "POISSONDIST(2,5,FALSE)", // 0.084224
+
+                "TDIST(60,1,TRUE)", // 0.99469533
+                "TDIST(8,3,FALSE)", // 0.00073691
+
+                "TINV(0.75,2)", // 0.8164966
+                "TINV2T(0.546449,60)", // 0.606533
+
+                "WEIBULLDIST(105,20,100,TRUE)", // 0.929581
+                "WEIBULLDIST(105,20,100,FALSE)", // 0.035589
+
+                "CORRELATION(ARRAY(3,2,4,5,6), ARRAY(9,7,12,15,17))", // 0.997
+
+                "COVARIANCE(ARRAY(3,2,4,5,6), ARRAY(9,7,12,15,17), true)", //  5.2
+                "COVARIANCE(ARRAY(2, 4, 8), ARRAY(5, 11, 12), false)", // 9.666666667
+
+                "STDDEV(ARRAY(1345,1301,1368,1322,1310,1370,1318,1350,1303,1299), true)", // 26.05455814 
+                "STDDEV(ARRAY(1345,1301,1368,1322,1310,1370,1318,1350,1303,1299), false)", // 27.46392
+
+                "VARIANCE(ARRAY(1345,1301,1368,1322,1310,1370,1318,1350,1303,1299), true)", // 678,84
+                "VARIANCE(ARRAY(1345,1301,1368,1322,1310,1370,1318,1350,1303,1299), false)", // 754.2667
+
+                "LINEST(ARRAY(1, 9, 5, 7), ARRAY(0, 4, 2, 3) ,FALSE)", // 2.31 
+                "LINEST(ARRAY(1, 9, 5, 7), ARRAY(0, 4, 2, 3) ,TRUE)", // { 2, 1 }
+
+                "LOGEST(ARRAY(33100,47300,69000,102000,150000,220000), ARRAY(11,12,13,14,15,16))", // 1.46328, 495.305
+                "LOGEST(ARRAY(33100,47300,69000,102000,150000,220000), ARRAY(11,12,13,14,15,16), FALSE)", // 2.300393, 1
+
+                "RSQ(ARRAY(2,3,9,1,8,7,5), ARRAY(6,5,11,7,5,4,4))" // 0.05795
+            });
+
+            #endregion
+
             #region Text
-            
+
             categoryItem = new NTreeViewItem("Text");
             folderItem.Items.Add(categoryItem);
-            CreateTestItems(categoryItem, new string[]{ 
+            CreateTestItems(categoryItem, new string[]{
                 "CHAR(9)",
                 "LEN(\"Hello World\")",
                 "LOWER(\"Hello World\")",
@@ -252,7 +333,7 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
 
             NTreeViewItem trigonometrical = new NTreeViewItem("Trigonometrical");
             folderItem.Items.Add(trigonometrical);
-            CreateTestItems(trigonometrical , new string[]{
+            CreateTestItems(trigonometrical, new string[]{
                 "ACOS(0)",
                 "ANG360(1.4 + 2 * PI())",
                 "ASIN(1)",
@@ -283,6 +364,7 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
                "ISBOOL(\"true\")",
                "ISDATETIME(10)",
                "ISDATETIME(DATETIME(2008,9,15))",
+               "ISDEFAULT(TODATETIME(\"1-1-0001 0:0:0\"))",
                "ISEMPTY(EMPTY())",
                "ISEMPTY(true)",
                "ISMEASURE(10[mm])",
@@ -361,7 +443,8 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
                 {
                     try
                     {
-                        m_FormulaEngine.Evaluate(tests[i]);
+                        m_FormulaCalculator.Formula = tests[i];
+                        m_FormulaCalculator.Evaluate();
                     }
                     catch (Exception ex)
                     {
@@ -381,7 +464,8 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
         {
             try
             {
-                NVariant result = m_FormulaEngine.Evaluate(m_InputTextBox.Text);
+                m_FormulaCalculator.Formula = m_InputTextBox.Text;
+                NVariant result = m_FormulaCalculator.Evaluate();
                 m_ResultTextBox.Text = result.ToString();
             }
             catch (Exception ex)
@@ -397,7 +481,7 @@ Demonstrates the strong support for Formulas. Formula expressions can be assigne
         NTextBox m_InputTextBox;
         NTextBox m_ResultTextBox;
         NTreeView m_TestsTreeView;
-        NFormulaEngine m_FormulaEngine;
+        NFormulaCalculator m_FormulaCalculator;
 
         #endregion
 

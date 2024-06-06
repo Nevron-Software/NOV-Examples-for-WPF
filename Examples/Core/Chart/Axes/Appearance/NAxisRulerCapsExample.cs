@@ -1,14 +1,14 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Axis ruler caps example
+	/// Axis ruler caps example.
 	/// </summary>
 	public class NAxisRulerCapsExample : NExampleBase
 	{
@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -55,7 +56,8 @@ namespace Nevron.Nov.Examples.Chart
 
 			// fill in some random data
 			Random random = new Random();
-			for (int j = 0; j < 30; j++)
+
+			for (int i = 0; i < 30; i++)
 			{
 				point.DataPoints.Add(new NPointDataPoint(5 + random.Next(90), 5 + random.Next(90)));
 			}
@@ -126,9 +128,9 @@ namespace Nevron.Nov.Examples.Chart
 			yAxisAnchor.BeforeSpace = 10;
 			yAxis.Anchor = yAxisAnchor;
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -189,7 +191,7 @@ namespace Nevron.Nov.Examples.Chart
 			scale.Ruler.EndCap = new NRulerCapStyle((ENCapShape)m_EndCapShapeComboBox.SelectedIndex, capSize, 3, new NColorFill(NColor.Black), new NStroke(NColor.Black));
 			scale.Ruler.ScaleBreakCap = new NRulerCapStyle((ENCapShape)m_ScaleBreakCapShapeComboBox.SelectedIndex, capSize, 0, new NColorFill(NColor.Black), new NStroke(NColor.Black));
 			scale.Ruler.PaintOnScaleBreaks = m_PaintOnScaleBreaksCheckBox.Checked;
-		}
+        }
 
 		private NScaleGridLines CreateScaleGrid()
 		{

@@ -264,12 +264,12 @@ namespace Nevron.Nov.Examples.Diagram
         protected virtual NSize GetSize(Random rnd)
         {
             if (m_nVertexSizeDeviation == 0)
-                return m_VerticesSize;
+                return m_VertexSize;
 
             double factor = m_nVertexSizeDeviation + 1;
 
-            double width = rnd.Next((int)(m_VerticesSize.Width / factor), (int)(m_VerticesSize.Width * factor));
-            double height = rnd.Next((int)(m_VerticesSize.Height / factor), (int)(m_VerticesSize.Height * factor));
+            double width = rnd.Next((int)(m_VertexSize.Width / factor), (int)(m_VertexSize.Width * factor));
+            double height = rnd.Next((int)(m_VertexSize.Height / factor), (int)(m_VertexSize.Height * factor));
 
             return new NSize(width, height);
         }
@@ -304,7 +304,7 @@ namespace Nevron.Nov.Examples.Diagram
                     for (i = 0; i < levelNodesCount; i++)
                     {
                         // create the cur node
-                        cur = CreateVertex(m_VerticesShape);
+                        cur = CreateVertex(m_VertexShape);
                         cur.SetBounds(new NRectangle(m_Origin, GetSize(rnd)));
 
                         page.Items.AddChild(cur);
@@ -330,7 +330,7 @@ namespace Nevron.Nov.Examples.Diagram
                     if (level == 1)
                     {
                         // Create the current node
-                        cur = CreateVertex(m_VerticesShape);
+                        cur = CreateVertex(m_VertexShape);
                         cur.SetBounds(new NRectangle(m_Origin, GetSize(rnd)));
 
                         page.Items.AddChild(cur);
@@ -350,7 +350,7 @@ namespace Nevron.Nov.Examples.Diagram
                                 for (j = 0; j < childrenCount; j++)
                                 {
                                     // Create the current node
-                                    cur = CreateVertex(m_VerticesShape);
+                                    cur = CreateVertex(m_VertexShape);
                                     cur.SetBounds(new NRectangle(m_Origin, GetSize(rnd)));
 
                                     page.Items.AddChild(cur);

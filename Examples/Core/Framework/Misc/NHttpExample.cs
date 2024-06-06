@@ -378,7 +378,7 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 			/// <param name="args"></param>
 			private void OnViewResponseHeadersButtonClick(NEventArgs args)
 			{
-				NHttpResponse httpResponse = Response as NHttpResponse;
+				NHttpWebResponse httpResponse = Response as NHttpWebResponse;
 				if (httpResponse == null)
 					return;
 
@@ -406,7 +406,7 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 			/// <param name="args"></param>
 			private void OnRequestCompleted(NWebRequestCompletedEventArgs args)
 			{
-				Response = (NHttpResponse)args.Response;
+				Response = (NHttpWebResponse)args.Response;
 
 				// highlight the completed item in red
 				ListBoxItem.Border = NBorder.CreateFilledBorder(NColor.LightCoral);
@@ -434,7 +434,7 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 
 					case ENAsyncResponseStatus.Succeeded:
 						// request succeded -> fill content with the response content
-						NHttpResponse httpResponse = Response as NHttpResponse;
+						NHttpWebResponse httpResponse = Response as NHttpWebResponse;
 						if (httpResponse != null)
 						{
 							HandleHttpResponse(httpResponse);
@@ -459,7 +459,7 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 			/// Handles an HTTP response
 			/// </summary>
 			/// <param name="response"></param>
-			private void HandleHttpResponse(NHttpResponse httpResponse)
+			private void HandleHttpResponse(NHttpWebResponse httpResponse)
 			{
 				try
 				{

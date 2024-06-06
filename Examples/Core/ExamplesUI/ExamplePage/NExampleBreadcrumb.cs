@@ -53,7 +53,7 @@ namespace Nevron.Nov.Examples
 			Clear();
 
 			NButton homeButton = NButton.CreateImageAndText(NResources.Image_ExamplesUI_Icons_HomeLight_png,
-				NExamplesUiHelpers.ProcessHeaderText("Home"));
+				NExamplesUi.ProcessHeaderText("Home"));
 			NStylePropertyEx.SetFlatExtendedLook(homeButton);
 			Add(homeButton);
 
@@ -62,12 +62,15 @@ namespace Nevron.Nov.Examples
 
 			Add(new NCommandBarSeparator());
 
-			NDeque<NXmlElement> deque = NExamplesUiHelpers.GetExampleElementsPath(xmlElement);
-			for (int i = 0; i < deque.Count; i++)
+			Add(CreateCategoriesDropDown(xmlElement));
+			Add(new NLabel(ItemSeparator));
+
+			NDeque<NXmlElement> deque = NExamplesUi.GetExampleElementsPath(xmlElement);
+			for (int i = 1; i < deque.Count; i++)
 			{
 				NXmlElement currentXmlElement = deque[i];
 				string name = currentXmlElement.GetAttributeValue("name");
-				name = NExamplesUiHelpers.ProcessHeaderText(name);
+				name = NExamplesUi.ProcessHeaderText(name);
 
 				NButton button = new NButton(name);
 				NStylePropertyEx.SetFlatExtendedLook(button);
@@ -83,9 +86,40 @@ namespace Nevron.Nov.Examples
 
 		#endregion
 
+		#region Implementation
+
+		private NMenuDropDown CreateCategoriesDropDown(NXmlElement xmlElement)
+		{
+			if (CategoryElements == null)
+			{
+				CategoryElements = GetCategoryElements(xmlElement);
+			}
+
+			NXmlElement categoryElement = (NXmlElement)xmlElement.GetFirstAncestor(NExamplesXml.Element.Category);
+			string categoryName = NExamplesXml.GetName(categoryElement);
+
+			NMenuDropDown menuDropDown = new NMenuDropDown(categoryName);
+			NStylePropertyEx.SetExtendedLook(menuDropDown, ENExtendedLook.Flat);
+
+			for (int i = 0; i < CategoryElements.Length; i++)
+			{
+				categoryElement = CategoryElements[i];
+				string curCategoryName = NExamplesXml.GetName(categoryElement);
+
+				NMenuItem menuItem = new NMenuItem(curCategoryName);
+				menuItem.Tag = categoryElement;
+				menuItem.Click += OnButtonOrMenuItemClick;
+				menuDropDown.Items.Add(menuItem);
+			}
+
+			return menuDropDown;
+		}
+
+		#endregion
+
 		#region Event Handlers
 
-		private void OnButtonClick(NEventArgs arg)
+		private void OnButtonOrMenuItemClick(NEventArgs arg)
 		{
 			if (ButtonClick != null)
 			{
@@ -104,6 +138,18 @@ namespace Nevron.Nov.Examples
 
 		#endregion
 
+		#region Static Methods
+
+		private static NXmlElement[] GetCategoryElements(NXmlElement xmlElement)
+		{
+			// Load the categories
+			NXmlElement categoriesElement = (NXmlElement)xmlElement.GetFirstAncestor(NExamplesXml.Element.Categories);
+			NList<NXmlNode> categories = categoriesElement.GetChildren(NExamplesXml.Element.Category);
+			return categories.ToArray<NXmlElement>();
+		}
+
+		#endregion
+
 		#region Static Event Handlers
 
 		/// <summary>
@@ -113,7 +159,7 @@ namespace Nevron.Nov.Examples
 		private static void ButtonClickHandler(NEventArgs arg)
 		{
 			NExampleBreadcrumb exampleBreadcrumb = (NExampleBreadcrumb)arg.CurrentTargetNode;
-			exampleBreadcrumb.OnButtonClick(arg);
+			exampleBreadcrumb.OnButtonOrMenuItemClick(arg);
 		}
 
 		#endregion
@@ -125,6 +171,8 @@ namespace Nevron.Nov.Examples
 		/// </summary>
 		private const string ItemSeparator = ">";
 		//private const string ItemSeparator = "\u2022";
+
+		private static NXmlElement[] CategoryElements = null;
 
 		#endregion
 	}

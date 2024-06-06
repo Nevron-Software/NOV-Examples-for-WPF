@@ -95,10 +95,10 @@ namespace Nevron.Nov.Examples.Grid
 </p>
 <p>
     In this example we have create two filter rules.
-</br>
+<br/>
     The first filter rule filters records for which the <b>PersonId</b> field is equal to 0. This filter rule is not associated with a column, 
     since the <b>PersonId</b> field is not represented by a column in the grid.
-</br>
+<br/>
     The second filter rule filters records for which the <b>Total</b> calculated column is greater than 150. This filter rule is associated with a column,
     which is at the same time row value provider for this filter rule row condition. Note that the <b>Total</b> column does not have an associated field in the data source.
 </p>";

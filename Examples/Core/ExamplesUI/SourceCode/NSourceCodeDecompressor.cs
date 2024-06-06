@@ -4,6 +4,7 @@ using System.IO;
 using Nevron.Nov.Compression;
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.IO;
+using Nevron.Nov.Text;
 
 namespace Nevron.Nov.Examples
 {

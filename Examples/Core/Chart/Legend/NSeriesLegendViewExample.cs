@@ -35,8 +35,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-            NChartView chartView = new NChartView();
-            chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
             // configure title
             chartView.Surface.Titles[0].Text = "Series Legend View";
@@ -84,9 +85,9 @@ namespace Nevron.Nov.Examples.Chart
                 bar3.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
             }
 
-            chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+            chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-            return chartView;
+            return chartViewWithCommandBars;
         }
 		protected override NWidget CreateExampleControls()
 		{

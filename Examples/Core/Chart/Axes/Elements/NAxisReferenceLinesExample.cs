@@ -33,7 +33,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -74,22 +75,26 @@ namespace Nevron.Nov.Examples.Chart
 
 			// Add a constline for the left axis
 			m_XReferenceLine = new NAxisReferenceLine();
-			m_XReferenceLine.Stroke = new NStroke(1, NColor.SteelBlue);
+			m_XReferenceLine.Stroke = new NStroke(1, NColor.Red);
 			m_XReferenceLine.Value = 40;
 			m_XReferenceLine.Text = "X Reference Line";
-			chart.Axes[ENCartesianAxis.PrimaryX].ReferenceLines.Add(m_XReferenceLine);
+			m_XReferenceLine.TextStyle = new NTextStyle();
+            m_XReferenceLine.TextStyle.Fill = new NColorFill(NColor.Red);
+            chart.Axes[ENCartesianAxis.PrimaryX].ReferenceLines.Add(m_XReferenceLine);
 
 			// Add a constline for the bottom axis
 			m_YReferenceLine = new NAxisReferenceLine();
-			m_YReferenceLine.Stroke = new NStroke(1, NColor.SteelBlue);
+			m_YReferenceLine.Stroke = new NStroke(1, NColor.Green);
 			m_YReferenceLine.Value = 60;
 			m_YReferenceLine.Text = "Y Reference Line";
-			chart.Axes[ENCartesianAxis.PrimaryY].ReferenceLines.Add(m_YReferenceLine);
+			m_YReferenceLine.TextStyle = new NTextStyle();
+            m_YReferenceLine.TextStyle.Fill = new NColorFill(NColor.Green);
+            chart.Axes[ENCartesianAxis.PrimaryY].ReferenceLines.Add(m_YReferenceLine);
 
 			// apply style sheet
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

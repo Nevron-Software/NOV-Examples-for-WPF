@@ -33,13 +33,10 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Surface.Titles[0].Text = "Axis Ticks";
@@ -80,15 +77,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(bar);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -145,7 +137,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to configure axis ticks.</p>";

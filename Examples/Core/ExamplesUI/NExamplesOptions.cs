@@ -22,7 +22,10 @@ namespace Nevron.Nov.Examples
 			m_FavoriteExamples = new NDomArray<string>();
 			m_ThemeScheme = DefaultThemeScheme;
 			m_DeveloperMode = DefaultDeveloperMode;
+
 			m_bLoading = false;
+			m_bSaving = false;
+			m_bSavePending = true;
 		}
 
 		/// <summary>
@@ -118,18 +121,34 @@ namespace Nevron.Nov.Examples
 		/// <summary>
 		/// Saves the NOV Examples options.
 		/// </summary>
-		public void Save()
+		public NPromise<NUndefined> SaveAsync()
 		{
 			byte[] settingsBytes = SaveToBytes();
-			NApplication.SetSetting(SettingsName, settingsBytes);
+
+			m_bSaving = true;
+			NPromise<NUndefined> savePromise = NApplication.SetSettingAsync(SettingsName, settingsBytes);
+			savePromise.Finally(
+				() =>
+				{
+					m_bSaving = false;
+					if (m_bSavePending)
+					{
+						// Another Save operation is pending, so save the options again
+						m_bSavePending = false;
+						SaveAsync();
+					}
+				}
+			);
+
+			return savePromise;
 		}
 		/// <summary>
 		/// Loads the NOV Examples options.
 		/// </summary>
 		/// <returns></returns>
-		public NPromise<NUndefined> Load()
+		public NPromise<NUndefined> LoadAsync()
 		{
-			return NApplication.GetSetting(SettingsName).ThenPromise(
+			return NApplication.GetSettingAsync(SettingsName).ThenPromise(
 				delegate (byte[] settingsBytes)
 				{
 					LoadFromBytes(settingsBytes);
@@ -201,7 +220,16 @@ namespace Nevron.Nov.Examples
 
 			if (!m_bLoading && this == Instance)
 			{
-				Save();
+				if (m_bSaving)
+				{
+					// A save operation is in progress, so set a pending save
+					m_bSavePending = true;
+				}
+				else
+				{
+					// Save the options
+					SaveAsync();
+				}
 			}
 		}
 
@@ -209,6 +237,10 @@ namespace Nevron.Nov.Examples
 
 		#region Implementation - Serialization
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		private byte[] SaveToBytes()
 		{
 			using (MemoryStream memoryStream = new MemoryStream())
@@ -217,12 +249,20 @@ namespace Nevron.Nov.Examples
 				return memoryStream.ToArray();
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="stream"></param>
 		private void SaveToStream(Stream stream)
 		{
 			NDomNodeSerializer serializer = new NDomNodeSerializer();
 			serializer.SaveToStream(new NNode[] { this }, stream, PersistencyFormat);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="bytes"></param>
 		private void LoadFromBytes(byte[] bytes)
 		{
 			using (MemoryStream memoryStream = new MemoryStream(bytes))
@@ -230,10 +270,12 @@ namespace Nevron.Nov.Examples
 				LoadFromStream(memoryStream);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="stream"></param>
 		private void LoadFromStream(Stream stream)
 		{
-			m_bLoading = true;
-
 			// Load the example options from the given stream
 			if (stream.Length == 0)
 				return;
@@ -247,8 +289,8 @@ namespace Nevron.Nov.Examples
 			NExamplesOptions loadedOptions = (NExamplesOptions)nodes[0];
 
 			// Copy the loaded options into the current ones
+			m_bLoading = true;
 			DeepCopyCore(loadedOptions, new NDomDeepCopyContext());
-
 			m_bLoading = false;
 		}
 
@@ -262,6 +304,8 @@ namespace Nevron.Nov.Examples
 		private bool m_DeveloperMode;
 
 		private bool m_bLoading;
+		private bool m_bSaving;
+		private bool m_bSavePending;
 
 		#endregion
 

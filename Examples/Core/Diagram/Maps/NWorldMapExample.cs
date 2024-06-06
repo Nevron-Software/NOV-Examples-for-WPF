@@ -90,7 +90,7 @@ namespace Nevron.Nov.Examples.Diagram
 			mapImporter.MapBounds = NMapBounds.World;
 
 			// Add an ESRI shapefile
-			NEsriShapefile countries = new NEsriShapefile(Nevron.Nov.Diagram.NResources.RBIN_countries_zip);
+			NEsriShapefile countries = new NEsriShapefile(NResources.RBIN_Countries_zip);
 			countries.NameColumn = "name_long";
 			countries.TextColumn = "name_long";
 			countries.MinTextZoomPercent = 50;

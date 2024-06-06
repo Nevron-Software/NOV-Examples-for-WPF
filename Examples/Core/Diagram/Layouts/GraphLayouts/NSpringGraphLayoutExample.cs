@@ -113,29 +113,29 @@ namespace Nevron.Nov.Examples.Diagram
 
         private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            // Hide ports
-            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
+			// Hide ports
+			drawingDocument.Content.ScreenVisibility.ShowPorts = false;
 
             NPage activePage = drawingDocument.Content.ActivePage;
 
-            // We will be using basic shapes for this example
-            NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            basicShapesFactory.DefaultSize = new NSize(80, 80);
+			// We will be using basic shapes for this example
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			basicShapes.DefaultSize = new NSize(80, 80);
 
-            NList<NPerson> persons = new NList<NPerson>();
+			NList<NPerson> persons = new NList<NPerson>();
 
             // Create persons
-            NPerson personEmil = new NPerson("Emil Moore", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personAndre = new NPerson("Andre Smith", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personRobert = new NPerson("Robert Johnson", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personBob = new NPerson("Bob Williams", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personPeter = new NPerson("Peter Brown", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personSilvia = new NPerson("Silvia Moore", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personEmily = new NPerson("Emily Smith", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personMonica = new NPerson("Monica Johnson", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personSamantha = new NPerson("Samantha Miller", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-            NPerson personIsabella = new NPerson("Isabella Davis", basicShapesFactory.CreateShape(ENBasicShape.Circle));
-
+            NPerson personEmil = new NPerson("Emil Moore", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personAndre = new NPerson("Andre Smith", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personRobert = new NPerson("Robert Johnson", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personBob = new NPerson("Bob Williams", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personPeter = new NPerson("Peter Brown", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personSilvia = new NPerson("Silvia Moore", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personEmily = new NPerson("Emily Smith", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personMonica = new NPerson("Monica Johnson", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personSamantha = new NPerson("Samantha Miller", basicShapes.CreateShape(ENBasicShape.Circle));
+            NPerson personIsabella = new NPerson("Isabella Davis", basicShapes.CreateShape(ENBasicShape.Circle));
+				
             persons.Add(personEmil);
             persons.Add(personAndre);
             persons.Add(personRobert);
@@ -258,11 +258,11 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a test tree
                 NRandomGraphTemplate graph = new NRandomGraphTemplate();
-                graph.EdgesUserClass = "Connector";
+                graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 graph.VertexCount = 10;
                 graph.EdgeCount = 15;
-                graph.VerticesShape = VertexShape;
-                graph.VerticesSize = VertexSize;
+                graph.VertexShape = VertexShape;
+                graph.VertexSize = VertexSize;
                 graph.Create(drawingDocument);
 
                 // layout the tree
@@ -284,11 +284,11 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a test tree
                 NRandomGraphTemplate graph = new NRandomGraphTemplate();
-                graph.EdgesUserClass = "Connector";
+                graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 graph.VertexCount = 20;
                 graph.EdgeCount = 30;
-                graph.VerticesShape = VertexShape;
-                graph.VerticesSize = VertexSize;
+                graph.VertexShape = VertexShape;
+                graph.VertexSize = VertexSize;
                 graph.Create(drawingDocument);
 
                 // layout the tree

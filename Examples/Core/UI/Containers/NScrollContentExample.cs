@@ -35,9 +35,8 @@ namespace Nevron.Nov.Examples.UI
 			m_ScrollContent = new NScrollContent();
 			m_ScrollContent.HorizontalPlacement = ENHorizontalPlacement.Left;
 			m_ScrollContent.VerticalPlacement = ENVerticalPlacement.Top;
-			m_ScrollContent.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_ScrollContent.BorderThickness = new NMargins(1);
-			m_ScrollContent.PreferredSize = new NSize(300, 250);
+			m_ScrollContent.SetBorder(1, NColor.Red);
+            m_ScrollContent.PreferredSize = new NSize(300, 250);
 
 			// Create a table with some buttons
 			NTableFlowPanel table = new NTableFlowPanel();

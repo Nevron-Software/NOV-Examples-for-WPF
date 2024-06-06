@@ -168,6 +168,7 @@ namespace Nevron.Nov.Examples.Framework
 
 			NList<NPropertyEditor> editors = SimpleNodeDesigner.CreatePropertyEditors(m_SimpleNode,
 				NSimpleNode.ComboBoxEnumValueProperty,
+				NSimpleNode.ComboBoxMaskedEnumProperty,
 				NSimpleNode.HRadioGroupEnumProperty,
 				NSimpleNode.VRadioGroupEnumProperty);
 
@@ -175,7 +176,11 @@ namespace Nevron.Nov.Examples.Framework
 			stack.Add(groupBox);
 			groupBox.Content = editors[0];
 
-			for (int i = 1, count = editors.Count; i < count; i++)
+			groupBox = new NGroupBox(editors[1].EditedProperty.ToString());
+			stack.Add(groupBox);
+			groupBox.Content = editors[1];
+
+			for (int i = 2; i < editors.Count; i++)
 			{
 				NPropertyEditor editor = editors[i];
 				stack.Add(editor);

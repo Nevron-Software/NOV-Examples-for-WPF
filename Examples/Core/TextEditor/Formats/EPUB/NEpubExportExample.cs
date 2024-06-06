@@ -119,7 +119,7 @@ namespace Nevron.Nov.Examples.Text
 		{
 			if (arg.Result == ENCommonDialogResult.OK)
 			{
-				m_RichText.SaveToFile(arg.File);
+				m_RichText.SaveToFileAsync(arg.File);
 			}
 		}
 

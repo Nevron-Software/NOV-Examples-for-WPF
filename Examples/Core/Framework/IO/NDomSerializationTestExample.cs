@@ -137,7 +137,7 @@ namespace Nevron.Nov.Examples.Framework
 			}
 			catch (Exception ex)
 			{
-				NTrace.WriteLine(ex.Message);
+				NDebug.WriteLine(ex.Message);
 			}
 
 			// Restore the default cursor

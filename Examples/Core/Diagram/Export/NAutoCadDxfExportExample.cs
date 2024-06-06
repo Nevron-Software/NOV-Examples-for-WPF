@@ -1,4 +1,5 @@
 ﻿using Nevron.Nov.Diagram;
+using Nevron.Nov.Diagram.DrawingCommands;
 using Nevron.Nov.Diagram.Export;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
@@ -32,11 +33,11 @@ namespace Nevron.Nov.Examples.Diagram
 
 		protected override NWidget CreateExampleContent()
 		{
-			// Create a simple drawing
-			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
 			m_DrawingView = drawingViewWithRibbon.View;
 
-			m_DrawingView.Document.HistoryService.Pause();
+            m_DrawingView.Document.HistoryService.Pause();
 			try
 			{
 				InitDiagram(m_DrawingView.Document);
@@ -80,30 +81,30 @@ namespace Nevron.Nov.Examples.Diagram
 			drawing.ScreenVisibility.ShowGrid = false;
 			drawing.ScreenVisibility.ShowPorts = false;
 
-			NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			NLibrary flowchartShapes = NLibrary.FlowchartShapes;
 			NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
-			NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
+			NShape nonPrintableShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			nonPrintableShape.Text = "Non printable shape";
 			nonPrintableShape.AllowPrint = false;
 			nonPrintableShape.Geometry.Fill = new NColorFill(NColor.Tomato);
 			nonPrintableShape.SetBounds(50, 50, 150, 50);
 			activePage.Items.Add(nonPrintableShape);
 
-			NShape isLifeGood = flowChartingShapes.CreateShape(ENFlowchartingShape.Decision);
+			NShape isLifeGood = flowchartShapes.CreateShape(ENFlowchartingShape.Decision);
 			isLifeGood.Text = "Is Life Good?";
 			isLifeGood.SetBounds(300, 50, 150, 100);
 			isLifeGood.Geometry.Fill = new NColorFill(NColor.LightSkyBlue);
 			activePage.Items.Add(isLifeGood);
 
-			NShape goodShape = flowChartingShapes.CreateShape(ENFlowchartingShape.Termination);
+			NShape goodShape = flowchartShapes.CreateShape(ENFlowchartingShape.Termination);
 			goodShape.Text = "Good";
 			goodShape.SetBounds(200, 200, 100, 100);
 			goodShape.Geometry.Fill = new NColorFill(NColor.Gold);
 			activePage.Items.Add(goodShape);
 
-			NShape changeSomething = flowChartingShapes.CreateShape(ENFlowchartingShape.Process);
+			NShape changeSomething = flowchartShapes.CreateShape(ENFlowchartingShape.Process);
 			changeSomething.Text = "Change Something";
 			changeSomething.Geometry.Fill = new NColorFill(NColor.Thistle);
 			changeSomething.SetBounds(450, 200, 100, 100);
@@ -133,13 +134,13 @@ namespace Nevron.Nov.Examples.Diagram
 
 		private void OnShowDialogButtonClick(NEventArgs arg)
 		{
-			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingView.Drawing);
+			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingView.Content);
 			imageExporter.ShowDialog(DisplayWindow, true);
 		}
 		private void OnSaveAsButtonClick(NEventArgs arg)
 		{
-			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingView.Drawing);
-			imageExporter.SaveAsImage("dxf");
+			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingView.Content);
+			imageExporter.SaveAsImage(ENVectorImageFormat.Dxf);
 		}
 
 		#endregion

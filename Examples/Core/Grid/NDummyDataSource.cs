@@ -48,8 +48,9 @@ namespace Nevron.Nov.Examples.Grid
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="count"></param>
         /// <returns></returns>
-        public static NDataSource CreateCompanySalesDataSource()
+        public static NDataSource CreateCompanySalesDataSource(int count = 10000)
         {
             dataTable = new NMemoryDataTable("CompanySales", new NFieldInfo[]{
                 new NFieldInfo("Id", typeof(Int32)),
@@ -58,7 +59,7 @@ namespace Nevron.Nov.Examples.Grid
                 new NFieldInfo("Profit", typeof(Double)),
             });
 
-            for (int i = 0; i < 50000; i++)
+            for (int i = 0; i < count; i++)
             {
                 dataTable.AddRow(
                     i,

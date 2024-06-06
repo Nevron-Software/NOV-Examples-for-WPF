@@ -1,17 +1,15 @@
 using System;
 
-using System.Collections;
-
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// The NEllipticalGridTemplate class represents a rectangular grid template
-	/// </summary>
-	public class NRectangularGridTemplate : NGraphTemplate
+    /// <summary>
+    /// The NEllipticalGridTemplate class represents a rectangular grid template
+    /// </summary>
+    public class NRectangularGridTemplate : NGraphTemplate
     {
         #region Constructors
 
@@ -136,10 +134,10 @@ namespace Nevron.Nov.Examples.Diagram
 				for (int col = 0; col < m_nColumns; col++)
 				{	
 					// create the vertex
-					vertex = CreateVertex(m_VerticesShape);
-					vertex.SetBounds(new NRectangle(	m_Origin.X + col * (m_VerticesSize.Width + m_fHorizontalSpacing), 
-														m_Origin.Y + row * (m_VerticesSize.Height + m_fVerticalSpacing),
-														m_VerticesSize.Width, m_VerticesSize.Height));
+					vertex = CreateVertex(m_VertexShape);
+					vertex.SetBounds(new NRectangle(	m_Origin.X + col * (m_VertexSize.Width + m_fHorizontalSpacing), 
+														m_Origin.Y + row * (m_VertexSize.Height + m_fVerticalSpacing),
+														m_VertexSize.Width, m_VertexSize.Height));
 					page.Items.AddChild(vertex);
 
 					// connect it with its X and Y predecessors

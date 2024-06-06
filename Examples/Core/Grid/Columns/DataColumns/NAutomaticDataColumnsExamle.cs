@@ -38,11 +38,11 @@ namespace Nevron.Nov.Examples.Grid
             NTableGrid grid = m_GridView.Grid;
 
             NItem[] items = new NItem[]{
-                new NItem(NResources.Image_CountryFlags_ad_png, NColor.Navy, new NColorFill(NColor.Moccasin), new NStroke(NColor.AntiqueWhite)),
-                new NItem(NResources.Image_CountryFlags_ae_png, NColor.Olive, new NStockGradientFill(NColor.Violet, NColor.WhiteSmoke), new NStroke(NColor.Bisque)),
-                new NItem(NResources.Image_CountryFlags_af_png, NColor.OldLace, new NHatchFill(ENHatchStyle.DiagonalBrick, NColor.Yellow, NColor.Red), new NStroke(NColor.DarkCyan)),
-                new NItem(NResources.Image_CountryFlags_ag_png, NColor.Plum, new NImageFill(NResources.Image__16x16_Birthday_png), new NStroke(NColor.DimGray)),
-                new NItem(NResources.Image_CountryFlags_ai_png, NColor.Peru,  new NStockGradientFill(ENGradientStyle.FromCenter, ENGradientVariant.Variant1, NColor.Wheat, NColor.DarkGoldenrod), new NStroke(NColor.CadetBlue))
+                new NItem(Presentation.NResources.Image_CountryFlags_ad_png, NColor.Navy, new NColorFill(NColor.Moccasin), new NStroke(NColor.AntiqueWhite)),
+                new NItem(Presentation.NResources.Image_CountryFlags_ae_png, NColor.Olive, new NStockGradientFill(NColor.Violet, NColor.WhiteSmoke), new NStroke(NColor.Bisque)),
+                new NItem(Presentation.NResources.Image_CountryFlags_af_png, NColor.OldLace, new NHatchFill(ENHatchStyle.DiagonalBrick, NColor.Yellow, NColor.Red), new NStroke(NColor.DarkCyan)),
+                new NItem(Presentation.NResources.Image_CountryFlags_ag_png, NColor.Plum, new NImageFill(NResources.Image__16x16_Birthday_png), new NStroke(NColor.DimGray)),
+                new NItem(Presentation.NResources.Image_CountryFlags_ai_png, NColor.Peru,  new NStockGradientFill(ENGradientStyle.FromCenter, ENGradientVariant.Variant1, NColor.Wheat, NColor.DarkGoldenrod), new NStroke(NColor.CadetBlue))
             };
 
             // bind the grid to the data source
@@ -73,7 +73,7 @@ namespace Nevron.Nov.Examples.Grid
     Data columns are columns, which obtain and edit data from the data source.
 </p>
 <p>
-    When the grid is bound to a data source, it will automatically create data columns for all data source fields, if the grid <b>AutoCreateColumns</b> property is true.</br>
+    When the grid is bound to a data source, it will automatically create data columns for all data source fields, if the grid <b>AutoCreateColumns</b> property is true.<br/>
     During this process it will also raise the <b>AutoCreateColumn</b> column event.
 </p>
 <p>

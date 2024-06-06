@@ -106,7 +106,7 @@ namespace Nevron.Nov.Examples.Text
 			paragraph.Inlines.Add(new NLineBreakInline());
 			paragraph.Inlines.Add(new NTextInline("Nevron Software"));
 			paragraph.Inlines.Add(new NLineBreakInline());
-			paragraph.Inlines.Add(new NHyperlinkInline("www.nevron.com", "https://www.nevron.com"));
+			paragraph.Inlines.Add(new NFieldInline("www.nevron.com", new NUrlHyperlink("https://www.nevron.com")));
 			section.Blocks.Add(paragraph);
 
 			// Load a mail merge data source from resource
@@ -155,7 +155,7 @@ namespace Nevron.Nov.Examples.Text
 
 				// Save the merged document to file
 				string fileName = "Document" + i.ToString(CultureInfo.InvariantCulture) + ".docx";
-				clonedRichTextView.SaveToFile(NPath.Current.Combine(targetPath, fileName));
+				clonedRichTextView.SaveToFileAsync(NPath.Current.Combine(targetPath, fileName));
 			}
 
 			NMessageBox.Show("Merged documents saved to \"" + targetPath + "\".", "Mail Merge Complete",

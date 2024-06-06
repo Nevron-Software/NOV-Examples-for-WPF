@@ -35,17 +35,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Grid.Editors.NFormattingRuleCollectionEditor.CreateControl">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Nevron.Nov.Grid.Editors.NFormattingRuleCollectionEditor.EditedRules">
-            <summary>
-            Gets the currently edited rules
-            </summary>
-        </member>
         <member name="F:Nevron.Nov.Grid.Editors.NFormattingRuleCollectionEditor.NFormattingRuleCollectionEditorSchema">
             <summary>
             Schema associated with NFormattingRuleCollectionEditor
@@ -3848,7 +3837,6 @@
             <summary>
             Shows the column properties dialog
             </summary>
-            <param name="ownerWindow"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NColumn.ShowFormatDialog">
             <summary>
@@ -3867,6 +3855,7 @@
             <remarks>
             This implementation forwards the call to the FormatDataCell method of the format returned by the Format property.
             </remarks> 
+            <param name="dataCell"></param>
             <param name="rowValue"></param>
             <returns></returns>
         </member>
@@ -3889,7 +3878,7 @@
             <summary>
             Must override to creates a data cell editor which initially displays the specified value.
             </summary>
-            <param name="cell"></param>
+            <param name="dataCell"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NColumn.GetRowValuesType">
@@ -4130,7 +4119,7 @@
             </summary>
             <param name="row"></param>
             <param name="startX"></param>
-            <param name="y"></param>
+            <param name="endX"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NColumn.MeasureCore">
             <summary>
@@ -4187,6 +4176,7 @@
             </summary>
             <param name="dataCell"></param>
             <param name="view"></param>
+            <param name="rowValue"></param>
         </member>
         <member name="F:Nevron.Nov.Grid.NColumn.NColumnSchema">
             <summary>
@@ -5532,7 +5522,6 @@
             Builds a menu for the grid.
             </summary>
             <param name="menu"></param>
-            <param name="grid"></param>
             <param name="builder"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridContextMenu.AddColumnSortingCommands(Nevron.Nov.UI.NMenu,Nevron.Nov.Grid.NColumn)">
@@ -5540,6 +5529,7 @@
             Builds the colunm Sorting commands.
             </summary>
             <param name="menu"></param>
+            <param name="column"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridContextMenu.AddColumnFilteringCommands(Nevron.Nov.UI.NMenu,Nevron.Nov.Grid.NColumn)">
             <summary>
@@ -5567,7 +5557,6 @@
             Adds the View commands to the specified menu.
             </summary>
             <param name="menu"></param>
-            <param name="column"></param>
         </member>
         <member name="F:Nevron.Nov.Grid.NGridContextMenu.NGridContextMenuSchema">
             <summary>
@@ -7012,7 +7001,7 @@
             Default constructor.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Grid.Formats.NGridFormatRegistry`2.FallbackFormatExtension">
+        <member name="P:Nevron.Nov.Grid.Formats.NGridFormatRegistry`2.DefaultFormatExtension">
             <summary>
             Gets the fallback format extension of document format registry.
             </summary>
@@ -8160,18 +8149,19 @@
             Called when a cell is clicked
             </summary>
             <param name="cell"></param>
+            <param name="doubleClick"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridSelection.ClickRowHeader(Nevron.Nov.Grid.NRowHeader)">
             <summary>
             Called when a row header is clicked
             </summary>
-            <param name="cell"></param>
+            <param name="howHeader"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridSelection.ClickRow(Nevron.Nov.Grid.NRow)">
             <summary>
             Called when a header is clicked
             </summary>
-            <param name="cell"></param>
+            <param name="row"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridSelection.Clear">
             <summary>
@@ -8954,8 +8944,6 @@
             </summary>
             <param name="masterDataSource"></param>
             <param name="masterRowIndex"></param>
-            <param name="masterBinding"></param>
-            <param name="detailDataSource"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NGridDetail`4.OnTemplateGridSubtreeChanged(Nevron.Nov.Dom.NNodeSubtreeChangeMonitor,Nevron.Nov.Dom.NEventArgs)">
@@ -9243,11 +9231,9 @@
         </member>
         <member name="M:Nevron.Nov.Grid.NTableGrid.OnGroupingRulesChanged">
             <summary>
-            Called when a change occurs in the grouping rules subtree.
+            Called when a change occurs in the grouping rules subtree. 
             Raises the GroupingRulesChanged event.
             </summary>
-            <param name="node"></param>
-            <param name="data"></param>
         </member>
         <member name="F:Nevron.Nov.Grid.NTableGrid.NTableGridSchema">
             <summary>
@@ -9270,6 +9256,21 @@
             </summary>
         </member>
         <member name="F:Nevron.Nov.Grid.NTableGrid.AllowGroupColumnsProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Grid.NTableGrid.ToggleGroupingPanelCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Grid.NTableGrid.ColumnGroupByCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Grid.NTableGrid.ColumnClearGroupingCommand">
             <summary>
             
             </summary>
@@ -9412,7 +9413,6 @@
             <summary>
             Overriden to check for service fields and whether the creation of service fields is allowed.
             </summary>
-            <param name="dataSource"></param>
             <param name="index"></param>
             <returns></returns>
         </member>
@@ -9972,8 +9972,6 @@
             <summary>
             Gets the matrix that transforms local to parent coordinates
             </summary>
-            <param name="unit"></param>
-            <param name="dpi"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NHeaderCollectionBase`1.LocalToParent(Nevron.Nov.Graphics.NPoint)">
@@ -10951,7 +10949,6 @@
             <summary>
             Overriden to measure the data cells
             </summary>
-            <param name="ownerGridView"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NDataRow.ArrangeHeader(System.Double,System.Double,System.Double,System.Double)">
@@ -11224,7 +11221,6 @@
             <summary>
             Overriden to measure the header desired height
             </summary>
-            <param name="ownerGridView"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NGroupRow.ArrangeHeader(System.Double,System.Double,System.Double,System.Double)">
@@ -11272,14 +11268,6 @@
         </member>
         <member name="F:Nevron.Nov.Grid.NChildRowCollection.NGroupRowCollectionSchema">
             <summary>
-            Tries to get the range of visible rows for the specified Y range (in row collection coordinates)
-            </summary>
-            <param name="paintVisitor"></param>
-            <param name="first"></param>
-            <param name="last"></param>
-            <param name="children"></param>
-            <returns></returns>
-            <summary>
             Schema associated with NChildRowCollection
             </summary>
         </member>
@@ -11318,17 +11306,17 @@
             <summary>
             Called by child or descendant measure elements that consider this element as measure parent, and want to inform it to invalidate it's measure.
             </summary>
-            <param name="bfsg"></param>
-            <param name="cfsg"></param>
-            <param name="dfsg"></param>
+            <param name="YQnI"></param>
+            <param name="ArnI"></param>
+            <param name="brnI"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NDefaultRowMeasure`2.Nevron#Nov#Dom#INArrangeElementParent#InvalidateArrangeFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
             <summary>
             Called by child or descendant arrange elements that consider this element as arrange parent, and want to inform it to invalidate it's arrange.
             </summary>
-            <param name="efsg"></param>
-            <param name="ffsg"></param>
-            <param name="gfsg"></param>
+            <param name="CrnI"></param>
+            <param name="drnI"></param>
+            <param name="ErnI"></param>
         </member>
         <member name="P:Nevron.Nov.Grid.NDefaultRowMeasure`2.Cells">
             <summary>
@@ -11745,13 +11733,14 @@
             <summary>
             
             </summary>
-            <param name="ownerGridView"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NRow.ArrangeHeader(System.Double,System.Double,System.Double,System.Double)">
             <summary>
             
             </summary>
+            <param name="startX"></param>
+            <param name="endX"></param>
             <param name="y"></param>
             <param name="height"></param>
         </member>
@@ -11828,7 +11817,6 @@
             <summary>
             Virtualized the row cells.
             </summary>
-            <param name="force"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NRow.RealizeContentYRange(System.Double,System.Double)">
             <summary>
@@ -12022,8 +12010,6 @@
             <summary>
             Gets the matrix that transforms local to parent coordinates
             </summary>
-            <param name="unit"></param>
-            <param name="dpi"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NRowCollection.LocalToParent(Nevron.Nov.Graphics.NPoint)">
@@ -12362,8 +12348,6 @@
             <summary>
             Gets the matrix that transforms local to parent coordinates
             </summary>
-            <param name="unit"></param>
-            <param name="dpi"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Grid.NRowCollectionBase.LocalToParent(Nevron.Nov.Graphics.NPoint)">
@@ -12407,6 +12391,18 @@
             Performs the collection foreground painting
             </summary>
             <param name="visitor"></param>
+        </member>
+        <member name="M:Nevron.Nov.Grid.NRowCollectionBase.OnYChanged(Nevron.Nov.Dom.NValueChangeData)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Nevron.Nov.Grid.NRowCollectionBase.OnHeightChanged(Nevron.Nov.Dom.NValueChangeData)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
         </member>
         <member name="F:Nevron.Nov.Grid.NRowCollectionBase.NRowCollectionBaseSchema">
             <summary>
@@ -12813,7 +12809,6 @@
             <summary>
             Gets the cursor and tooltip that the tool requests when not active.
             </summary>
-            <param name="args"></param>
             <param name="cursor"></param>
             <param name="toolTip"></param>
         </member>
@@ -13554,6 +13549,11 @@
             The theme this plugin should add rules to.
             </summary>
         </member>
+        <member name="F:Nevron.Nov.Grid.NGridUIThemePlugin.SymbolSize">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Grid.NResources">
             <summary>
             DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
@@ -13650,199 +13650,182 @@
             Singleton instance.
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Grid.NResourcesData1">
+        <member name="T:Nevron.Nov.Editors.NGridCollectionEditor`2">
             <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
+            Serves as base class for node collecgtion editors that use the grid to display the edited nodes. 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jqsg.GetHashCode">
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateControl">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Nevron.Nov.Editors.NGridCollectionEditor`2.EditedCollection">
+            <summary>
+            Gets the edited collection
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateColumns(Nevron.Nov.Grid.NTableGrid)">
+            <summary>
+            Must override to create the grid columns.
+            </summary>
+            <param name="grid"></param>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateDataTable">
+            <summary>
+            Creates a data table from the edited collection nodes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateNewElement">
+            <summary>
+            Creates a new element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateToolBar">
+            <summary>
+            Creates the rules editing toolbar.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Editors.NGridCollectionEditor`2.CreateGrid">
+            <summary>
+            Creates the rules grid.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.Editors.NGridCollectionEditor`2.NGridCollectionEditorSchema">
+            <summary>
+            Schema associated with NGridCollectionEditor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.ldOI.GetHashCode">
             <summary>
             Gets the hash code of this item.
             Note: Must be called only for groups.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jqsg.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.ldOI.Equals(System.Object)">
             <summary>
             Gets whether the items are equal.
             Note: Must be called only for groups.
             </summary>
-            <param name="oqsg"></param>
+            <param name="QdOI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fjtg.Compare(System.Int32,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.UUOI.Compare(System.Int32,System.Int32)">
             <summary>
             Comparers rows a and b
             </summary>
-            <param name="jjtg"></param>
-            <param name="kjtg"></param>
+            <param name="YUOI"></param>
+            <param name="AvOI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fjtg.Compare(Nevron.Nov.Internal.arsg,Nevron.Nov.Internal.arsg)">
+        <member name="M:Nevron.Nov.Internal.UUOI.Compare(Nevron.Nov.Internal.CEOI,Nevron.Nov.Internal.CEOI)">
             <summary>
             Comparers tree data members a and b
             </summary>
-            <param name="ljtg"></param>
-            <param name="mjtg"></param>
+            <param name="bvOI"></param>
+            <param name="CvOI"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.dvsg`2.Name">
+        <member name="P:Nevron.Nov.Internal.GIOI`2.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.dvsg`2.Extensions">
+        <member name="P:Nevron.Nov.Internal.GIOI`2.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.dvsg`2.Mime">
+        <member name="P:Nevron.Nov.Internal.GIOI`2.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dvsg`2.OnUse">
+        <member name="M:Nevron.Nov.Internal.GIOI`2.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dvsg`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
-            <summary>
-            Loads a document from a stream.
-            </summary>
-            <param name="ivsg"></param>
-            <param name="jvsg"></param>
-            <param name="kvsg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.dvsg`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
-            <summary>
-            Saves a document to a stream.
-            </summary>
-            <param name="lvsg"></param>
-            <param name="mvsg"></param>
-            <param name="nvsg"></param>
-            <param name="ovsg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.dvsg`2.LoadFromStreamCoreImmediate(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.GIOI`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="pvsg"></param>
-            <param name="qvsg"></param>
-            <param name="rvsg"></param>
+            <param name="lIOI"></param>
+            <param name="MIOI"></param>
+            <param name="nIOI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dvsg`2.SaveToStreamCoreImmediate(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.GIOI`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="svsg"></param>
-            <param name="tvsg"></param>
-            <param name="uvsg"></param>
-            <param name="vvsg"></param>
+            <param name="OIOI"></param>
+            <param name="pIOI"></param>
+            <param name="QIOI"></param>
+            <param name="rIOI"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.awsg`2.Name">
+        <member name="P:Nevron.Nov.Internal.vIOI`2.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.awsg`2.Extensions">
+        <member name="P:Nevron.Nov.Internal.vIOI`2.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.awsg`2.Mime">
+        <member name="P:Nevron.Nov.Internal.vIOI`2.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.awsg`2.OnUse">
+        <member name="M:Nevron.Nov.Internal.vIOI`2.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.awsg`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
-            <summary>
-            Loads a document from a stream.
-            </summary>
-            <param name="cwsg"></param>
-            <param name="dwsg"></param>
-            <param name="ewsg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.awsg`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
-            <summary>
-            Saves a document to a stream.
-            </summary>
-            <param name="fwsg"></param>
-            <param name="gwsg"></param>
-            <param name="hwsg"></param>
-            <param name="iwsg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.awsg`2.LoadFromStreamCoreImmediate(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.vIOI`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="jwsg"></param>
-            <param name="kwsg"></param>
-            <param name="lwsg"></param>
+            <param name="xIOI"></param>
+            <param name="YIOI"></param>
+            <param name="AjOI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.awsg`2.SaveToStreamCoreImmediate(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.vIOI`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="mwsg"></param>
-            <param name="nwsg"></param>
-            <param name="owsg"></param>
-            <param name="pwsg"></param>
+            <param name="bjOI"></param>
+            <param name="CjOI"></param>
+            <param name="djOI"></param>
+            <param name="EjOI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.etrg.Nevron#Nov#Formulas#INVariableProvider#GetVariableIndex(System.String)">
-            <summary>
-            Gets a variable index for the specified string (used during parsing).  Returns
-            -1 if the specified string is not a valid variable name.
-            </summary>
-            <param name="ntrg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.etrg.Nevron#Nov#Formulas#INVariableProvider#GetVariableValue(System.Int32)">
-            <summary>
-            Gets the variable value by a previously provided the variable index (used
-            during evaluation).  Throws an exception if the specified index is not valid.
-            </summary>
-            <param name="otrg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.etrg.Nevron#Nov#Formulas#INVariableProvider#CanSetVariableValue(System.Int32)">
-            <summary>
-            Determines whether the variable value for the specified index can be set.
-            </summary>
-            <param name="ptrg"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Internal.etrg.Nevron#Nov#Formulas#INVariableProvider#SetVariableValue(System.Int32,Nevron.Nov.NVariant)">
-            <summary>
-            Sets the value of the specified variable.
-            </summary>
-            <param name="qtrg"></param>
-            <param name="var"></param>
-        </member>
-        <member name="M:Nevron.Nov.Internal.sktg.AccumulateMonitoredNodeAggregatedNodes(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
+        <member name="M:Nevron.Nov.Internal.IWOI.AccumulateMonitoredNodeAggregatedNodes(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
             <summary>
             
             </summary>
-            <param name="tktg"></param>
-            <param name="uktg"></param>
+            <param name="jWOI"></param>
+            <param name="KWOI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.sktg.AccumulateMonitoredNodeChildren(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
+        <member name="M:Nevron.Nov.Internal.IWOI.AccumulateMonitoredNodeChildren(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
             <summary>
             
             </summary>
-            <param name="vktg"></param>
-            <param name="wktg"></param>
+            <param name="lWOI"></param>
+            <param name="MWOI"></param>
         </member>
     </members>
 </doc>

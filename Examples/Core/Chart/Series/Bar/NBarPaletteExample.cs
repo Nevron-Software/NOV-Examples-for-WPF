@@ -34,7 +34,8 @@ namespace Nevron.Nov.Examples.Chart
 
         protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Registered += OnChartViewRegistered;
@@ -81,7 +82,7 @@ namespace Nevron.Nov.Examples.Chart
                 m_Bar.DataPoints.Add(new NBarDataPoint(0));
 			}            
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
         {
@@ -116,8 +117,8 @@ namespace Nevron.Nov.Examples.Chart
 		}
 
 		#endregion 
-
-		#region Override
+		
+		#region Event Handlers
 
 		private void OnChartViewRegistered(NEventArgs arg)
 		{
@@ -131,10 +132,6 @@ namespace Nevron.Nov.Examples.Chart
 			m_Timer.Tick -= OnTimerTick;
 			m_Timer = null;
 		}
-
-		#endregion
-		
-		#region Event Handlers
 
 		void OnInvertScaleCheckBoxCheckedChanged(NValueChangeEventArgs arg)
 		{
@@ -183,7 +180,7 @@ namespace Nevron.Nov.Examples.Chart
 		void OnSmoothPaletteCheckBoxCheckedChanged(NValueChangeEventArgs arg)
 		{
 			bool smoothPalette = ((NCheckBox)arg.TargetNode).Checked;
-            m_Bar.Palette.SmoothColors = smoothPalette;
+            m_Bar.Palette.InterpolateColors = smoothPalette;
 		}
 
 		#endregion

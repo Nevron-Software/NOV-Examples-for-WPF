@@ -34,8 +34,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-            NChartView chartView = new NChartView();
-            chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
             // configure title
             chartView.Surface.Titles[0].Text = "Legend Appearance";
@@ -51,8 +52,6 @@ namespace Nevron.Nov.Examples.Chart
 
             // configure chart
             NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
-
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
             // add interlace stripe
 			NLinearScale linearScale = chart.Axes[ENCartesianAxis.PrimaryY].Scale as NLinearScale;
@@ -84,7 +83,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			chart.Series.Add(bar);
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

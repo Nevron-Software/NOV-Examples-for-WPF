@@ -34,7 +34,8 @@ namespace Nevron.Nov.Examples.Chart
 
         protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Registered += OnChartViewRegistered;
@@ -60,9 +61,10 @@ namespace Nevron.Nov.Examples.Chart
             m_Area.UseXValues = false;
 			m_Area.DataLabelStyle = new NDataLabelStyle(false);
 
-			m_Area.Palette = new NColorValuePalette(new NColorValuePair[] { new NColorValuePair(0, NColor.Green), new NColorValuePair(60, NColor.Yellow), new NColorValuePair(120, NColor.Red) });
+            // m_Area.Palette = new NColorValuePalette(new NColorValuePair[] { new NColorValuePair(0, NColor.Green), new NColorValuePair(60, NColor.Yellow), new NColorValuePair(120, NColor.Red) });
+            m_Area.Palette = new NColorValuePalette(new NColorValuePair[] { new NColorValuePair(0, NColor.Green), new NColorValuePair(120, NColor.Red) });
 
-			m_AxisRange = new NRange(0, 130);
+            m_AxisRange = new NRange(0, 130);
 
 			// limit the axis range to 0, 130
 			NCartesianAxis yAxis = m_Chart.Axes[ENCartesianAxis.PrimaryY];
@@ -81,9 +83,8 @@ namespace Nevron.Nov.Examples.Chart
                 m_Area.DataPoints.Add(new NAreaDataPoint(0));
 			}            
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
-
 		protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
@@ -168,7 +169,7 @@ namespace Nevron.Nov.Examples.Chart
 		void OnSmoothPaletteCheckBoxCheckedChanged(NValueChangeEventArgs arg)
 		{
 			bool smoothPalette = ((NCheckBox)arg.TargetNode).Checked;
-            m_Area.Palette.SmoothColors = smoothPalette;
+            m_Area.Palette.InterpolateColors = smoothPalette;
 		}
 
 		#endregion

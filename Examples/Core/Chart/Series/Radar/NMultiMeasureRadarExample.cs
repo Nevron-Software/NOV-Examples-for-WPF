@@ -33,7 +33,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateRadarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Radar Axis Titles";
@@ -61,6 +63,8 @@ namespace Nevron.Nov.Examples.Chart
 				"Missoula County", 95802, 41319, 20.37, 2597.97, 36.9, 15.9,
 				"Powell County", 7180, 2930, 6.74, 2325.94, 3.1, 1.3 };
 
+			NColor[] palette = NChartPalette.BrightPalette;
+
 			for (int i = 0; i < 6; i++)
 			{
 				NRadarLineSeries radarLine = new NRadarLineSeries();
@@ -81,22 +85,20 @@ namespace Nevron.Nov.Examples.Chart
 				NMarkerStyle markerStyle = new NMarkerStyle();
 				markerStyle.Size = new NSize(4, 4);
 				markerStyle.Visible = true;
-				markerStyle.Fill = new NColorFill(NChartTheme.BrightPalette[i]);
+				markerStyle.Fill = new NColorFill(palette[i]);
 				radarLine.MarkerStyle = markerStyle;
 
-				radarLine.Stroke = new NStroke(2, NChartTheme.BrightPalette[i]);
+				radarLine.Stroke = new NStroke(2, palette[i]);
 			}
 			
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
 			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
-			
-
 			return group;
 		}
 		protected override string GetExampleDescription()
@@ -142,17 +144,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NMultiMeasureRadarExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateRadarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
-			return chartView;
-		}
 
 		#endregion
 	}

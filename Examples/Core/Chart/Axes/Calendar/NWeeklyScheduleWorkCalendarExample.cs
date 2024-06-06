@@ -1,10 +1,10 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Chart.Tools;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
@@ -36,7 +36,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -88,9 +89,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			ConfigureInteractivity(m_Chart);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -127,14 +128,12 @@ namespace Nevron.Nov.Examples.Chart
 			NInteractor interactor = new NInteractor();
 
 			NRectangleZoomTool rectangleZoomTool = new NRectangleZoomTool();
-			rectangleZoomTool.Enabled = true;
 			rectangleZoomTool.VerticalValueSnapper = new NAxisRulerMinMaxSnapper();
 			interactor.Add(rectangleZoomTool);
 
 			NDataPanTool dataPanTool = new NDataPanTool();
 			dataPanTool.StartMouseButtonEvent = ENMouseButtonEvent.RightButtonDown;
 			dataPanTool.EndMouseButtonEvent = ENMouseButtonEvent.RightButtonUp;
-			dataPanTool.Enabled = true;
 			interactor.Add(dataPanTool);
 
 			chart.Interactor = interactor;

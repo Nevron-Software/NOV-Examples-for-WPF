@@ -19,7 +19,7 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NChartThemesExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -44,8 +45,6 @@ namespace Nevron.Nov.Examples.Chart
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
-
 			// add interlace stripe
 			NLinearScale linearScale = chart.Axes[ENCartesianAxis.PrimaryY].Scale as NLinearScale;
 			NScaleStrip strip = new NScaleStrip(new NColorFill(ENNamedColor.Beige), null, true, 0, 0, 1, 1);
@@ -53,45 +52,46 @@ namespace Nevron.Nov.Examples.Chart
 			linearScale.Strips.Add(strip);
 
 			// add a bar series
-            Random random = new Random();
-            for (int i = 0; i < 6; i++)
-            {
-                NBarSeries bar = new NBarSeries();
-			    bar.Name = "Bar" + i.ToString();
-			    bar.MultiBarMode = ENMultiBarMode.Clustered;
-                bar.DataLabelStyle = new NDataLabelStyle(false);
-			    bar.ValueFormatter = new NNumericValueFormatter("0.###");
-			    chart.Series.Add(bar);
+			Random random = new Random();
+			for (int i = 0; i < 6; i++)
+			{
+				NBarSeries bar = new NBarSeries();
+				bar.Name = "Bar" + i.ToString();
+				bar.MultiBarMode = ENMultiBarMode.Clustered;
+				bar.DataLabelStyle = new NDataLabelStyle(false);
+				bar.ValueFormatter = new NNumericValueFormatter("0.###");
+				chart.Series.Add(bar);
 
-                for (int j = 0; j < 6; j++)
-                {
-                    bar.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
-                }
-            }
+				for (int j = 0; j < 6; j++)
+				{
+					bar.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
+				}
+			}
 
-			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(DefaultChartPalette, ENChartPaletteTarget.Series));
 
-			return m_ChartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
-			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
 
-            m_ChartThemesComboBox = new NComboBox();
-            m_ChartThemesComboBox.FillFromEnum<ENChartPalette>();
-            m_ChartThemesComboBox.SelectedIndexChanged += OnChartThemesComboBoxSelectedIndexChanged;
-            stack.Add(m_ChartThemesComboBox);
+			m_ChartPaletteComboBox = new NComboBox();
+			m_ChartPaletteComboBox.FillFromEnum<ENChartPalette>();
+			m_ChartPaletteComboBox.SelectedIndexChanged += OnChartPaletteComboBoxSelectedIndexChanged;
+			stack.Add(NPairBox.Create("Palette:", m_ChartPaletteComboBox));
 
-            m_ColorDataPointsCheckBox = new NCheckBox("Color Data Points");
-            m_ColorDataPointsCheckBox.CheckedChanged += OnColorDataPointsCheckBoxCheckedChanged;
-            stack.Add(m_ColorDataPointsCheckBox);
+			m_ChartPaletteTargetComboBox = new NComboBox();
+			m_ChartPaletteTargetComboBox.FillFromEnum<ENChartPaletteTarget>();
+			m_ChartPaletteTargetComboBox.SelectedIndexChanged += OnChartPaletteComboBoxSelectedIndexChanged;
+			stack.Add(NPairBox.Create("Target:", m_ChartPaletteTargetComboBox));
 
-            m_ChartThemesComboBox.SelectedIndex = (int)ENChartPalette.Autumn;
-            m_ColorDataPointsCheckBox.Checked = true;
+			m_ChartPaletteComboBox.SelectedIndex = (int)DefaultChartPalette;
+			m_ChartPaletteTargetComboBox.SelectedIndex = (int)ENChartPaletteTarget.DataPoints;
 
-            return boxGroup;
-		}		
+			return new NUniSizeBoxGroup(stack);
+		}
+
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to apply different chart color themes.</p>";
@@ -101,29 +101,30 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Event Handlers
 
-        void OnColorDataPointsCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme((ENChartPalette)m_ChartThemesComboBox.SelectedIndex, m_ColorDataPointsCheckBox.Checked));
-        }
-
-        void OnChartThemesComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
-        {
-            m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme((ENChartPalette)m_ChartThemesComboBox.SelectedIndex, m_ColorDataPointsCheckBox.Checked));
-        }
+		private void OnChartPaletteComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
+		{
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme((ENChartPalette)m_ChartPaletteComboBox.SelectedIndex, (ENChartPaletteTarget)m_ChartPaletteTargetComboBox.SelectedIndex));
+		}
 
 		#endregion
 
 		#region Fields
 
 		private NChartView m_ChartView;
-		private NComboBox m_ChartThemesComboBox;
-        private NCheckBox m_ColorDataPointsCheckBox;
+		private NComboBox m_ChartPaletteComboBox;
+		private NComboBox m_ChartPaletteTargetComboBox;
 
 		#endregion
 
 		#region Schema
 
 		public static readonly NSchema NChartThemesExampleSchema;
+
+		#endregion
+
+		#region Constants
+
+		private const ENChartPalette DefaultChartPalette = ENChartPalette.Autumn;
 
 		#endregion
 	}

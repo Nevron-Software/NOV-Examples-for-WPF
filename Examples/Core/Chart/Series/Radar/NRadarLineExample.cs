@@ -35,7 +35,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateRadarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Radar Line";
@@ -62,23 +64,23 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_RadarLine1 = new NRadarLineSeries();
 			m_Chart.Series.Add(m_RadarLine1);
-			m_RadarLine1.Stroke = new NStroke(2, NChartTheme.BrightPalette[0]);
+			m_RadarLine1.Stroke = new NStroke(2, NChartPalette.BrightPalette[0]);
 			m_RadarLine1.Name = "Series 1";
 			m_RadarLine1.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle1 = new NMarkerStyle();
 			markerStyle1.Visible = true;
-			markerStyle1.Shape = ENPointShape.Ellipse;
+			markerStyle1.Shape = ENPointShape3D.Ellipse;
 			markerStyle1.Size = new NSize(10, 10);
 			m_RadarLine1.MarkerStyle = markerStyle1;
 
 			m_RadarLine2 = new NRadarLineSeries();
 			m_Chart.Series.Add(m_RadarLine2);
-			m_RadarLine2.Stroke = new NStroke(2, NChartTheme.BrightPalette[1]);
+			m_RadarLine2.Stroke = new NStroke(2, NChartPalette.BrightPalette[1]);
 			m_RadarLine2.Name = "Series 2";
 			m_RadarLine2.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle2 = new NMarkerStyle();
 			markerStyle2.Visible = true;
-			markerStyle2.Shape = ENPointShape.Ellipse;
+			markerStyle2.Shape = ENPointShape3D.Ellipse;
 			markerStyle2.Size = new NSize(10, 10);
 			m_RadarLine2.MarkerStyle = markerStyle2;
 
@@ -91,7 +93,7 @@ namespace Nevron.Nov.Examples.Chart
 				m_RadarLine2.DataPoints.Add(new NRadarLineDataPoint(random.Next(0, 100)));
 			}
 			
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -197,17 +199,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NRadarLineExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateRadarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
-			return chartView;
-		}
 
 		#endregion
 	}

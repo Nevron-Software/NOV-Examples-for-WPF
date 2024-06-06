@@ -44,11 +44,12 @@ namespace Nevron.Nov.Examples.Gauge
 
 			m_RadialGauge.Dial = new NDial(ENDialShape.CutCircle, new NEdgeDialRim());
 			m_RadialGauge.Dial.BackgroundFill = new NStockGradientFill(NColor.DarkGray, NColor.Black);
+            m_RadialGauge.SweepAngle = new NAngle(360, NUnit.Degree);
 
-			NGelCapEffect gelEffect = new NGelCapEffect(ENCapEffectShape.Ellipse);
+            NGelCapEffect gelEffect = new NGelCapEffect(ENCapEffectShape.Ellipse);
 			gelEffect.Margins = new NMargins(0, 0, 0, 0.5);
-			
-			m_RadialGauge.Axes.Clear();
+
+            m_RadialGauge.Axes.Clear();
 
 			// create the first axis
 			NGaugeAxis axis1 = new NGaugeAxis();
@@ -95,7 +96,6 @@ namespace Nevron.Nov.Examples.Gauge
 			needleValueIndicator1.ScaleAxis = axis1;
 			needleValueIndicator1.OffsetFromScale = 2;
 			m_RadialGauge.Indicators.Add(needleValueIndicator1);
-			m_RadialGauge.SweepAngle = new NAngle(360, NUnit.Degree);
 
 			NNeedleValueIndicator needleValueIndicator2 = new NNeedleValueIndicator();
 			needleValueIndicator2.Value = 79;
@@ -107,8 +107,8 @@ namespace Nevron.Nov.Examples.Gauge
 			
 			return stack;
 		}
-        protected override NWidget CreateExampleControls()
-        {
+		protected override NWidget CreateExampleControls()
+		{
 			NStackPanel stack = new NStackPanel();
 
 			NStackPanel propertyStack = new NStackPanel();
@@ -120,7 +120,7 @@ namespace Nevron.Nov.Examples.Gauge
 			propertyStack.Add(new NPairBox("Percent:", m_ScrollBar, true));
 
 			return stack;
-        }
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how use the begin and end percent properties of the anchor in order to change the gauge axis size.</p>";

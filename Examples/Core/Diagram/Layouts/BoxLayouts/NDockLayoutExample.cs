@@ -141,7 +141,7 @@ namespace Nevron.Nov.Examples.Diagram
             drawingDocument.Content.ScreenVisibility.ShowPorts = false;
 
             NPage activePage = drawingDocument.Content.ActivePage;
-            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			m_ShapeFactory = new NBasicShapeFactory();
 
             int min = 100;
             int max = 200;
@@ -151,7 +151,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             for (int i = 0; i < 5; i++)
             {
-                shape = basicShapes.CreateShape(ENBasicShape.Rectangle);
+                shape = m_ShapeFactory.CreateShape(ENBasicShape.Rectangle);
 
                 NColor[] shapeLightColors = new NColor[] {
                                                     new NColor(236, 97, 49),
@@ -237,8 +237,7 @@ namespace Nevron.Nov.Examples.Diagram
         }
         private NShape CreateShape()
         {
-            NBasicShapeFactory factory = new NBasicShapeFactory();
-            return factory.CreateShape(ENBasicShape.Rectangle);
+            return m_ShapeFactory.CreateShape(ENBasicShape.Rectangle);
         }
         private void OnAddSmallItemButtonClick(NEventArgs args)
         {
@@ -301,6 +300,7 @@ namespace Nevron.Nov.Examples.Diagram
         #region Fields
 
         private NDrawingView m_DrawingView;
+		private NBasicShapeFactory m_ShapeFactory;
         private NDockLayout m_Layout = new NDockLayout();
 
         #endregion

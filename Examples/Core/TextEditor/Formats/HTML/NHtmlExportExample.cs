@@ -149,7 +149,7 @@ namespace Nevron.Nov.Examples.Text
 				saveSettings.MinifyHtml = m_MinifyHtmlCheckBox.Checked;
 
 				// Save to HTML
-                m_RichText.SaveToStream(stream, NTextFormat.Html, saveSettings);
+                m_RichText.SaveToStreamAsync(stream, NTextFormat.Html, saveSettings);
                 stopwatch.Stop();
 
                 LoadHtmlSource(stream);
@@ -167,7 +167,7 @@ namespace Nevron.Nov.Examples.Text
         {
             try
             {
-                m_RichText.LoadFromFile(fileName);
+                m_RichText.LoadFromFileAsync(fileName);
             }
             catch
             {

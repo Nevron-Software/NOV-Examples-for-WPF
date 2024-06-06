@@ -1,9 +1,9 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -134,9 +135,9 @@ namespace Nevron.Nov.Examples.Chart
 			labelStyle.Font.Style = ENFontStyle.Bold;
 			m_SecondVerticalSection.LabelTextStyle = labelStyle;
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

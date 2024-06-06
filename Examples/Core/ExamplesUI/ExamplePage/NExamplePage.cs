@@ -30,27 +30,12 @@ namespace Nevron.Nov.Examples
 		/// </summary>
 		static NExamplePage()
 		{
-			NExamplePageSchema = NSchema.Create(typeof(NExamplePage), NDockPanel.NDockPanelSchema);
+			NExamplePageSchema = NSchema.Create(typeof(NExamplePage), NDockPanelSchema);
 		}
 
 		#endregion
 
 		#region Properties
-
-		/// <summary>
-		/// Gets/Sets the path to the examples.
-		/// </summary>
-		public string ExamplesPath
-		{
-			get
-			{
-				return m_ExamplesPath;
-			}
-			set
-			{
-				m_ExamplesPath = value;
-			}
-		}
 
 		/// <summary>
 		/// Gets the current example path.
@@ -59,7 +44,7 @@ namespace Nevron.Nov.Examples
 		{
 			get
 			{
-				return NExamplesUiHelpers.GetExamplePath(m_CurrentExampleXmlElement);
+				return NExamplesUi.GetExamplePath(m_CurrentExampleXmlElement);
 			}
 		}
 
@@ -92,10 +77,26 @@ namespace Nevron.Nov.Examples
 			// Update the breadcrumb
 			m_HeaderLane2.Breadcrumb.InitFromXmlElement(exampleXmlElement);
 
-			if (m_CurrentExampleXmlElement != exampleXmlElement)
+			if (m_CurrentExampleXmlElement != exampleXmlElement &&
+				exampleXmlElement.Name == NExamplesXml.Element.Example)
 			{
 				// The tree view selected path change event has not been fired, so load the example
 				LoadExample(exampleXmlElement);
+			}
+		}
+
+		#endregion
+
+		#region Protected Overrides
+
+		protected override void OnRegistered()
+		{
+			base.OnRegistered();
+
+			if (OwnerDocument != null)
+			{
+				NStyleSheet styleSheet = CreateStyleSheet();
+				OwnerDocument.StyleSheets.Add(styleSheet);
 			}
 		}
 
@@ -152,45 +153,48 @@ namespace Nevron.Nov.Examples
 
 		#region Implementation - Example Loading
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xmlElement"></param>
 		private void LoadExample(NXmlElement xmlElement)
 		{
-			string groupNamespace = NHomePage.GetNamespace(xmlElement);
+			string groupNamespace = NExamplesXml.GetNamespace(xmlElement);
 			string name = xmlElement.GetAttributeValue("name");
 			string type = groupNamespace + "." + xmlElement.GetAttributeValue("type");
-			string examplePath = NExamplesUiHelpers.GetExamplePath(xmlElement);
+			string examplePath = NExamplesUi.GetExamplePath(xmlElement);
 
-			// Set example title
-			m_HeaderLane2.Title = NExamplesUiHelpers.ProcessHeaderText(name);
-			m_HeaderLane2.UpdateFavoriteButton(NExamplesOptions.Instance.FavoriteExamples.Contains(examplePath));
+			// Update the example title, favorites and copy link butons
+			m_HeaderLane2.Update(xmlElement);
 
 			try
 			{
 				type = "Nevron.Nov.Examples." + type;
 				Type exampleType = Type.GetType(type);
-				if (exampleType != null)
-				{
-					NDomType domType = NDomType.FromType(exampleType);
-					NDebug.Assert(domType != null, "The example type:" + type + " is not a valid type");
+				if (exampleType == null)
+					throw new Exception("Failed to find example with type: " + type);
+				
+				NDomType domType = NDomType.FromType(exampleType);
+				NDebug.Assert(domType != null, "The example type:" + type + " is not a valid type");
 
-					// Create the example
-					DateTime start = DateTime.Now;
-					NExampleBase example = domType.CreateInstance() as NExampleBase;
-					example.Title = name;
-					example.Initialize();
-					m_Splitter.Pane2.Content = example;
+				// Create the example
+				DateTime start = DateTime.Now;
+				NExampleBase example = domType.CreateInstance() as NExampleBase;
+				example.Title = name;
+				example.Initialize();
+				m_Splitter.Pane2.Content = example;
 
-					// Evaluate the example
-					string stats = "Example created in: " + (DateTime.Now - start).TotalSeconds + " seconds, ";
-					start = DateTime.Now;
-					OwnerDocument.Evaluate();
-					stats += " evaluated in: " + (DateTime.Now - start).TotalSeconds + " seconds";
-					NDebug.WriteLine(stats);
+				// Evaluate the example
+				string stats = "Example created in: " + (DateTime.Now - start).TotalSeconds + " seconds, ";
+				start = DateTime.Now;
+				OwnerDocument.Evaluate();
+				stats += " evaluated in: " + (DateTime.Now - start).TotalSeconds + " seconds";
+				NDebug.WriteLine(stats);
 
-					m_CurrentExampleXmlElement = xmlElement;
+				m_CurrentExampleXmlElement = xmlElement;
 
-					// Add the recent example
-					NExamplesOptions.Instance.AddRecentExample(examplePath);
-				}
+				// Add the recent example
+				NExamplesOptions.Instance.AddRecentExample(examplePath);
 			}
 			catch (Exception ex)
 			{
@@ -198,6 +202,9 @@ namespace Nevron.Nov.Examples
 				m_Splitter.Pane2.Content = new NErrorPanel("Failed to load example. Exception was: " + ex.Message);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
 		private void CloseExample()
 		{
 			NExampleBase oldExample = m_Splitter.Pane2.Content as NExampleBase;
@@ -214,10 +221,18 @@ namespace Nevron.Nov.Examples
 
 		#region Event Handlers - Header
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exampleXmlElement"></param>
 		private void OnExampleMenuItemClick(NXmlElement exampleXmlElement)
 		{
 			NavigateToExample(exampleXmlElement);
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="favoriteAdded"></param>
 		private void OnFavoriteAddedOrRemoved(bool favoriteAdded)
 		{
 			if (favoriteAdded)
@@ -229,6 +244,10 @@ namespace Nevron.Nov.Examples
 				NExamplesOptions.Instance.RemoveFavoriteExample(CurrentExamplePath);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnNextExampleButtonClick(NEventArgs arg)
 		{
 			NXmlElement current = m_CurrentExampleXmlElement;
@@ -256,6 +275,10 @@ namespace Nevron.Nov.Examples
 				NavigateToExample(next);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnPreviousExampleButtonClick(NEventArgs arg)
 		{
 			NXmlElement current = m_CurrentExampleXmlElement;
@@ -290,19 +313,15 @@ namespace Nevron.Nov.Examples
 
 		private void OnTreeViewSelectedPathChanged(NValueChangeEventArgs arg)
 		{
-			// Close the old example
-			CloseExample();
-
-			// Load the new example
 			NTreeViewItem selectedItem = ((NTreeView)arg.TargetNode).SelectedItem;
-			if (selectedItem != null)
+			if (selectedItem != null && selectedItem.Tag is NXmlElement xmlElement)
 			{
-				NXmlElement xmlElement = selectedItem.Tag as NXmlElement;
-				if (xmlElement != null)
-				{
-					m_HeaderLane2.Breadcrumb.InitFromXmlElement(xmlElement);
-					LoadExample(xmlElement);
-				}
+				// Close the old example
+				CloseExample();
+
+				// Load the new example
+				m_HeaderLane2.Breadcrumb.InitFromXmlElement(xmlElement);
+				LoadExample(xmlElement);
 			}
 		}
 		private void OnBreadcrumbButtonClick(NEventArgs arg)
@@ -353,7 +372,6 @@ namespace Nevron.Nov.Examples
 		private NExamplesAccordion m_Accordion;
 		private NExampleFooter m_Footer;
 
-		private string m_ExamplesPath;
 		private NXmlElement m_CurrentExampleXmlElement;
 
 		#endregion
@@ -364,6 +382,49 @@ namespace Nevron.Nov.Examples
 		/// Schema associated with NExamplePage.
 		/// </summary>
 		public static readonly NSchema NExamplePageSchema;
+
+		#endregion
+
+		#region Static Methods - Styling
+
+		private static NStyleSheet CreateStyleSheet()
+		{
+			NColor purpleColor = new NColor(0xFF68348C);
+
+			NStyleSheet styleSheet = new NStyleSheet();
+
+			// Example tree view item
+			NRule rule = styleSheet.CreateRule(
+				delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NExampleTile.NExampleTileSchema);
+					sb.ChildOf();
+					sb.ChildOf();
+					sb.Type(NTreeViewItem.NTreeViewItemSchema);
+					sb.DescendantOf();
+					sb.Type(NExamplesAccordion.NExamplesAccordionSchema);
+				}
+			);
+
+			rule.AddValueDeclaration(PaddingProperty, new NMargins(2));
+
+			// Active example tree view item - the item of the currently opened example
+			rule = styleSheet.CreateRule(
+				delegate(NSelectorBuilder sb)
+				{
+					sb.Type(NTreeViewItem.NTreeViewItemSchema);
+					sb.ValueEquals(NStylePropertyEx.IsHighlightedPropertyEx, true);
+					sb.DescendantOf();
+					sb.Type(NExamplesAccordion.NExamplesAccordionSchema);
+				}
+			);
+
+			rule.AddValueDeclaration(TextFillProperty, new NColorFill(purpleColor));
+			rule.AddValueDeclaration(FontProperty, new NFont(NFontDescriptor.DefaultSansFamilyName,
+				NUIThemeFontMap.DefaultFontSize, ENFontStyle.Bold));
+
+			return styleSheet;
+		}
 
 		#endregion
 

@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -48,7 +49,7 @@ namespace Nevron.Nov.Examples.Chart
             m_HeatMap = new NHeatMapSeries();
             chart.Series.Add(m_HeatMap);
 
-            NGridData data = m_HeatMap.Data;
+            NHeatMapData data = m_HeatMap.Data;
 
             m_HeatMap.Palette = new NColorValuePalette( new NColorValuePair[] { new NColorValuePair(0.0, NColor.Purple),
                                                         new NColorValuePair(1.5, NColor.MediumSlateBlue),
@@ -84,7 +85,7 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -109,7 +110,7 @@ namespace Nevron.Nov.Examples.Chart
 
         void OnSmoothPaletteCheckBoxCheckedChanged(NValueChangeEventArgs arg)
         {
-            m_HeatMap.Palette.SmoothColors = ((NCheckBox)arg.TargetNode).Checked;
+            m_HeatMap.Palette.InterpolateColors = ((NCheckBox)arg.TargetNode).Checked;
         }
 
 		#endregion

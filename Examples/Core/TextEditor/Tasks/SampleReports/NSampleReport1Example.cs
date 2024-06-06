@@ -86,7 +86,7 @@ namespace Nevron.Nov.Examples.Text
 						table.Rows.Add(tableRow);
 						{
 							NTableCell tableCell = new NTableCell();
-							tableCell.Blocks.Add(CreateSampleBarChart(chartSize, "Adjusted total income", new double[] { 674.9, 814.8, 852.9, 1, 213.1, 1, 043.9, 1, 096.4, 1, 381.1 }, new string[] { "2008", "2009", "2010", "2011", "2012", "2013", "2014" }));
+							tableCell.Blocks.Add(CreateSampleBarChart(chartSize, "Adjusted total income", new double[] { 674.9, 814.8, 852.9, 213.1, 96.4, 381.1, 958.0 }, new string[] { "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
 							tableRow.Cells.Add(tableCell);
 						}
 
@@ -404,7 +404,6 @@ namespace Nevron.Nov.Examples.Text
 			chart.Padding = new NMargins(20);
 
 			// configure axes
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 			chart.Margins = NMargins.Zero;
 
 			NBarSeries bar = new NBarSeries();

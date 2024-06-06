@@ -2886,6 +2886,11 @@
             Gets/Sets the day view mode.
             </summary>
         </member>
+        <member name="P:Nevron.Nov.Schedule.NSchedule.WorkWeekViewMode">
+            <summary>
+            Gets/Sets the work week view mode.
+            </summary>
+        </member>
         <member name="P:Nevron.Nov.Schedule.NSchedule.WeekViewMode">
             <summary>
             Gets/Sets the week view mode.
@@ -3170,26 +3175,26 @@
             <summary>
             Determines whether the specified printRangeMode option is supported by the element.
             </summary>
-            <param name="ifqg"></param>
+            <param name="ESlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#BeginPrinting(Nevron.Nov.UI.NPagedContext)">
             <summary>
-            Called when priting is about to start
+            Called when priting is about to start.
             </summary>
-            <param name="jfqg"></param>
+            <param name="fSlI"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#QueryPageSettings(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Called before printing a page.
             </summary>
-            <param name="kfqg"></param>
+            <param name="GSlI"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#PrintPage(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Called when a print page needs to be displayed.
             </summary>
-            <param name="lfqg"></param>
+            <param name="hSlI"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#EndPrinting">
             <summary>
@@ -3200,14 +3205,14 @@
             <summary>
             Gets the context specific text representaton of the specified printRangeMode.
             </summary>
-            <param name="mfqg"></param>
+            <param name="ISlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetSheetRangeModeSheetRange(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the range of sheets, which are going to be printed by the specified printRangeMode.
             </summary>
-            <param name="nfqg"></param>
+            <param name="jSlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#CanHaveMultipleSheets">
@@ -3218,7 +3223,7 @@
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetSheetCount">
             <summary>
-            Always returns 1, since the sheet has one and only sheet.
+            Always returns 1, since the schedule has one and only sheet.
             </summary>
             <returns></returns>
         </member>
@@ -3226,28 +3231,28 @@
             <summary>
             Gets the title of the page with the specified index.
             </summary>
-            <param name="ofqg"></param>
+            <param name="KSlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetSheetPrintLayout(System.Int32)">
             <summary>
             Gets the print layout of the sheet with the specified index.
             </summary>
-            <param name="pfqg"></param>
+            <param name="lSlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#SetSheetPrintLayout(System.Int32,Nevron.Nov.UI.NPrintLayout)">
             <summary>
             Sets the print layout of the sheet with the specified index.
             </summary>
-            <param name="qfqg"></param>
-            <param name="rfqg"></param>
+            <param name="MSlI"></param>
+            <param name="nSlI"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetPrintLayoutTilingGridSet(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the set of tiling grids, for the current context print range mode.
             </summary>
-            <param name="sfqg"></param>
+            <param name="OSlI"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.AccumulateDisplayChildren(Nevron.Nov.Dom.NDisplayVisitor,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NVisual})">
@@ -3473,7 +3478,7 @@
             </remarks>
             <param name="visitor"></param>
         </member>
-        <member name="M:Nevron.Nov.Schedule.NSchedule.CreateBorderWall">
+        <member name="M:Nevron.Nov.Schedule.NSchedule.CreateBorderWall(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Creates the border wall of the box.
             </summary>
@@ -3568,6 +3573,11 @@
         <member name="F:Nevron.Nov.Schedule.NSchedule.DayViewModeChild">
             <summary>
             Reference to the DayViewMode child.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Schedule.NSchedule.WorkWeekViewModeChild">
+            <summary>
+            Reference to the WorkWeekViewMode child.
             </summary>
         </member>
         <member name="F:Nevron.Nov.Schedule.NSchedule.WeekViewModeChild">
@@ -4153,7 +4163,7 @@
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedulePrintLayout.GetDocumentBounds">
             <summary>
-            Gets the bounds of the given document element.
+            Gets the bounds of the document content.
             </summary>
             <returns></returns>
         </member>
@@ -4388,6 +4398,11 @@
         <member name="T:Nevron.Nov.Schedule.NFixedTimeIndicator.NFixedTimeIndicatorDesigner">
             <summary>
             Designer for fixed schedule time indicators.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Schedule.NFixedTimeIndicator.NFixedTimeIndicatorDesigner.#ctor">
+            <summary>
+            Default constructor
             </summary>
         </member>
         <member name="T:Nevron.Nov.Schedule.NFixedTimeIndicatorCollection">
@@ -5035,6 +5050,11 @@
             Gets the duration of the view mode in days.
             </summary>
         </member>
+        <member name="P:Nevron.Nov.Schedule.NViewMode.NavigationStep">
+            <summary>
+            Gets the prev/next navigation step in days.
+            </summary>
+        </member>
         <member name="P:Nevron.Nov.Schedule.NViewMode.Groupings">
             <summary>
             Gets/Sets the Groupings child.
@@ -5171,6 +5191,38 @@
             Schema associated with NWeekViewMode.
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Schedule.NWorkWeekViewMode">
+            <summary>
+            Schedule work week view mode.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Schedule.NWorkWeekViewMode.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Schedule.NWorkWeekViewMode.ViewMode">
+            <summary>
+            Gets the view mode enumeration value that corresponds to this schedule view mode settings.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Schedule.NWorkWeekViewMode.NavigationStep">
+            <summary>
+            Gets the prev/next navigation step in days. Overriden to return 7.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Schedule.NWorkWeekViewMode.GetStartDate(System.DateTime)">
+            <summary>
+            Gets the start date of the view mode for the given date.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.Schedule.NWorkWeekViewMode.NWorkWeekViewModeSchema">
+            <summary>
+            Schema associated with NWorkWeekViewMode.
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Schedule.ENScheduleViewMode">
             <summary>
             Enumerates the schedule view modes.
@@ -5183,12 +5235,17 @@
         </member>
         <member name="F:Nevron.Nov.Schedule.ENScheduleViewMode.Timeline">
             <summary>
-            Timeline view - the schedule view shows a specified number of days (by default 5).
+            Timeline view - the schedule view shows a specified number of days (by default 4).
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Schedule.ENScheduleViewMode.WorkWeek">
+            <summary>
+            Work week view - the schedule view shows the 5 working days of the week (Monday to Friday).
             </summary>
         </member>
         <member name="F:Nevron.Nov.Schedule.ENScheduleViewMode.Week">
             <summary>
-            Week view - the schedule view shows 7 days.
+            Week view - the schedule view shows all 7 days of the week.
             </summary>
         </member>
         <member name="F:Nevron.Nov.Schedule.ENScheduleViewMode.Month">
@@ -5485,6 +5542,24 @@
             <param name="includeStampAndId"></param>
             <returns></returns>
         </member>
+        <member name="M:Nevron.Nov.Schedule.Formats.NIcalFormat.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Schedule.Formats.NScheduleLoadSettings,Nevron.Nov.NProgress)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <param name="loadSettings"></param>
+            <param name="progress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Schedule.Formats.NIcalFormat.SaveToStreamCore(Nevron.Nov.Schedule.NScheduleDocument,System.IO.Stream,Nevron.Nov.Schedule.Formats.NScheduleSaveSettings,Nevron.Nov.NProgress)">
+            <summary>
+            
+            </summary>
+            <param name="document"></param>
+            <param name="stream"></param>
+            <param name="saveSettings"></param>
+            <param name="progress"></param>
+        </member>
         <member name="T:Nevron.Nov.Schedule.Formats.NScheduleFormat">
             <summary>
             Base class for all schedule document formats.
@@ -5515,7 +5590,7 @@
             Default constructor.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Schedule.Formats.NScheduleFormatRegistry.FallbackFormatExtension">
+        <member name="P:Nevron.Nov.Schedule.Formats.NScheduleFormatRegistry.DefaultFormatExtension">
             <summary>
             Gets the fallback format extension for schedule documents.
             </summary>
@@ -5633,6 +5708,9 @@
         <member name="P:Nevron.Nov.Schedule.NResources.Image_Ribbon_32x32_ViewModeWeek_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Schedule.NResources.Image_Ribbon_32x32_ViewModeWorkWeek_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Schedule.NResources.Image_Ribbon_32x32_AppMenu_Formats_ICS_png">
             <summary></summary>
         </member>
@@ -5697,6 +5775,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Schedule.NResources.Image_View_ViewModeWeek_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Schedule.NResources.Image_View_ViewModeWorkWeek_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Schedule.NResources.RBIN_documentation_zip">
@@ -5774,6 +5855,9 @@
         <member name="F:Nevron.Nov.Schedule.NResources.RIMG_Ribbon_32x32_ViewModeWeek_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Schedule.NResources.RIMG_Ribbon_32x32_ViewModeWorkWeek_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Schedule.NResources.RIMG_Ribbon_32x32_AppMenu_Formats_ICS_png">
             <summary></summary>
         </member>
@@ -5840,14 +5924,12 @@
         <member name="F:Nevron.Nov.Schedule.NResources.RIMG_View_ViewModeWeek_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Schedule.NResources.RIMG_View_ViewModeWorkWeek_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Schedule.NResources.Instance">
             <summary>
             Singleton instance.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Schedule.NResourcesData1">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
             </summary>
         </member>
         <member name="T:Nevron.Nov.Schedule.NScheduleTheme">
@@ -6216,7 +6298,7 @@
             <summary>
             Creates a split button.
             </summary>
-            <typeparam name="varg"></typeparam>
+            <typeparam name="rnMI"></typeparam>
             <param name="image"></param>
             <param name="moreOptionsImage"></param>
             <param name="command"></param>
@@ -8204,100 +8286,100 @@
             Schema associated with NTagSplitButtonCommandSource.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dapg.ToString">
+        <member name="M:Nevron.Nov.Internal.bnKI.ToString">
             <summary>
             Converts the value of this instance to string.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xcpg.Parse(System.Char[],System.Int32,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.vpKI.Parse(System.Char[],System.Int32,System.Int32)">
             <summary>
             Parses the given characters and returns true on success.
             </summary>
-            <param name="adpg"></param>
-            <param name="bdpg"></param>
-            <param name="cdpg"></param>
+            <param name="xpKI"></param>
+            <param name="YpKI"></param>
+            <param name="AQKI"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.ysog.Name">
+        <member name="P:Nevron.Nov.Internal.KhKI.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ysog.Extensions">
+        <member name="P:Nevron.Nov.Internal.KhKI.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ysog.FileSignature">
+        <member name="P:Nevron.Nov.Internal.KhKI.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ysog.Mime">
+        <member name="P:Nevron.Nov.Internal.KhKI.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtog.Name">
+        <member name="P:Nevron.Nov.Internal.vhKI.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtog.Extensions">
+        <member name="P:Nevron.Nov.Internal.vhKI.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtog.FileSignature">
+        <member name="P:Nevron.Nov.Internal.vhKI.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtog.Mime">
+        <member name="P:Nevron.Nov.Internal.vhKI.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xopg.CompareTo(System.Object)">
+        <member name="M:Nevron.Nov.Internal.vClI.CompareTo(System.Object)">
             <summary>
             Compares this appointment body to the given one by start and end time.
             </summary>
-            <param name="bppg"></param>
+            <param name="YClI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xopg.CompareTo(Nevron.Nov.Internal.xopg)">
+        <member name="M:Nevron.Nov.Internal.vClI.CompareTo(Nevron.Nov.Internal.vClI)">
             <summary>
             Compares this appointment body to the given one by start and end time.
             </summary>
-            <param name="cppg"></param>
+            <param name="AdlI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jppg.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.hdlI.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates the given body from the specified object.
             </summary>
-            <param name="lppg"></param>
-            <param name="mppg"></param>
+            <param name="jdlI"></param>
+            <param name="KdlI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.jppg.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
+        <member name="M:Nevron.Nov.Internal.hdlI.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
             <summary>
             Reads a property of a 2D body
             </summary>
-            <param name="nppg"></param>
-            <param name="oppg"></param>
+            <param name="ldlI"></param>
+            <param name="MdlI"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jppg.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.hdlI.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates an object from the specified 2D body.
             </summary>
-            <param name="pppg"></param>
-            <param name="qppg"></param>
+            <param name="ndlI"></param>
+            <param name="OdlI"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.uppg.Item(System.Int32,System.Int32)">
+        <member name="P:Nevron.Nov.Internal.SdlI.Item(System.Int32,System.Int32)">
             <summary>
             Gets/Sets the appointment body at the specified address inthe grid.
             </summary>
@@ -8305,43 +8387,43 @@
             <param name="columnIndex"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.wqpg.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.UElI.Item(System.Int32)">
             <summary>
             Gets the appointment body at the given cell index.
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.irpg.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.GflI.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Arranges the given bodies.
             </summary>
-            <param name="jrpg"></param>
-            <param name="krpg"></param>
+            <param name="hflI"></param>
+            <param name="IflI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.irpg.CreateBoxBody">
+        <member name="M:Nevron.Nov.Internal.GflI.CreateBoxBody">
             <summary>
             Creates an appointment body.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.lrpg.MeasureBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.jflI.MeasureBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Returns NSize.Zero, because the appointment layout does not have desired size,
             but rather fits a set of appointments to a given area.
             </summary>
-            <param name="qrpg"></param>
-            <param name="rrpg"></param>
+            <param name="OflI"></param>
+            <param name="pflI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.lrpg.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.jflI.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Layouts the boxes.
             </summary>
-            <param name="srpg"></param>
-            <param name="trpg"></param>
+            <param name="QflI"></param>
+            <param name="rflI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.lrpg.CreateBoxBody">
+        <member name="M:Nevron.Nov.Internal.jflI.CreateBoxBody">
             <summary>
             Creates an appointment body.
             </summary>

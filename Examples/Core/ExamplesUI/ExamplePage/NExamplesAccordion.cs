@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 
+using Nevron.Nov.Compression;
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
@@ -10,11 +10,11 @@ using Nevron.Nov.Xml;
 
 namespace Nevron.Nov.Examples
 {
-	/// <summary>
-	/// An accordion that has an item for each NOV component and shows a tree view
-	/// with the examples for the selected component.
-	/// </summary>
-	internal class NExamplesAccordion : NAccordion
+    /// <summary>
+    /// An accordion that has an item for each NOV component and shows a tree view
+    /// with the examples for the selected component.
+    /// </summary>
+    internal class NExamplesAccordion : NAccordion
 	{
 		#region Constructors
 
@@ -40,9 +40,6 @@ namespace Nevron.Nov.Examples
 		static NExamplesAccordion()
 		{
 			NExamplesAccordionSchema = NSchema.Create(typeof(NExamplesAccordion), NAccordionSchema);
-
-			// Create the product icon map
-			ExampleIconMap = new NMap<string, NImage>();
 		}
 
 		#endregion
@@ -65,7 +62,7 @@ namespace Nevron.Nov.Examples
 			m_ExamplesMap.Clear();
 
 			NXmlNode categoriesNode = xmlDocument.GetFirstDescendant("categories");
-			NList<NXmlNode> categories = categoriesNode.GetChildren(CategoryElement);
+			NList<NXmlNode> categories = categoriesNode.GetChildren(NExamplesXml.Element.Category);
 
 			for (int i = 0; i < categories.Count; i++)
 			{
@@ -89,37 +86,42 @@ namespace Nevron.Nov.Examples
 		{
 			switch (xmlElement.Name)
 			{
-				case ExampleElement:
+				case NExamplesXml.Element.Category:
+				case NExamplesXml.Element.Folder:
+					{
+						// Find the first example of the category or folder
+						xmlElement = (NXmlElement)xmlElement.GetFirstDescendant(NExamplesXml.Element.Example);
+						if (xmlElement != null)
+						{
+							goto case NExamplesXml.Element.Example;
+						}
+					}
 					break;
 
-				case TileElement:
-					xmlElement = GetExampleXmlElement(xmlElement);
+				case NExamplesXml.Element.Example:
+					string examplePath = NExamplesUi.GetExamplePath(xmlElement);
+
+					NTreeViewItem treeViewItem;
+					if (m_ExamplesMap.TryGet(examplePath, out treeViewItem))
+					{
+						// Navigate to an example or an example folder
+						NTreeView treeView = treeViewItem.OwnerTreeView;
+						treeView.ExpandPathToItem(treeViewItem);
+						treeView.SelectedItem = treeViewItem;
+						treeView.EnsureVisible(treeViewItem);
+
+						NExpandableSection section = treeView.GetFirstAncestor<NExpandableSection>();
+						section.OwnerAccordion.ExpandedSection = section;
+					}
+					else
+					{
+						NDebug.Assert(false);
+					}
 					break;
 
-				case CategoryElement:
-					// Navigate to an example's category on the home screen
-					NExamplesContent examplesContent = GetFirstAncestor<NExamplesContent>();
-					examplesContent.NavigateToHomePageCategory(xmlElement.GetAttributeValue(NameAttribute));
+				default:
+					NDebug.Assert(false, $"Examples accordion cannot navigate to a <{xmlElement.Name}> XML element.");
 					return null;
-			}
-
-			string examplePath = NExamplesUiHelpers.GetExamplePath(xmlElement);
-
-			NTreeViewItem treeViewItem;
-			if (m_ExamplesMap.TryGet(examplePath, out treeViewItem))
-			{
-				// Navigate to an example or an example folder
-				NTreeView treeView = treeViewItem.OwnerTreeView;
-				treeView.ExpandPathToItem(treeViewItem);
-				treeView.SelectedItem = treeViewItem;
-				treeView.EnsureVisible(treeViewItem);
-
-				NExpandableSection section = treeView.GetFirstAncestor<NExpandableSection>();
-				section.OwnerAccordion.ExpandedSection = section;
-			}
-			else
-			{
-				NDebug.Assert(false);
 			}
 
 			return xmlElement;
@@ -131,11 +133,12 @@ namespace Nevron.Nov.Examples
 
 		private NWidget CreateSectionHeader(NXmlElement category)
 		{
-			string name = category.GetAttributeValue(NameAttribute);
-			NImage icon = GetCategoryIcon(category.GetAttributeValue(NamespaceAttribute));
+			string name = NExamplesXml.GetName(category);
+			NImage icon = NExamplesUi.GetComponentIcon(category, ENImageStyle.Colored);
 
-			NPairBox sectionHeader = NPairBox.Create(icon, name);
-			return sectionHeader;
+			NPairBox sectionHeaderPairBox = NPairBox.Create(icon, name);
+			sectionHeaderPairBox.Box1.PreferredSize = NExampleTile.IconSize;
+			return sectionHeaderPairBox;
 		}
 		private NWidget CreateSectionContent(NXmlElement category)
 		{
@@ -181,29 +184,24 @@ namespace Nevron.Nov.Examples
 		}
 		private NTreeViewItem CreateTreeViewItem(NXmlElement xmlElement)
 		{
-			if (NExamplesUiHelpers.IsSingleExampleTile(xmlElement))
-			{
-				// This is a tile with a single example, so create only the example tree view item
-				return CreateTreeViewItem((NXmlElement)xmlElement.GetChildAt(0));
-			}
+            if (!NExamplesXml.IsSupportedOnTheCurrentPlatform(xmlElement))
+                return null;
 
 			NImage icon;
-			string name = xmlElement.GetAttributeValue(NameAttribute);
+			string name = xmlElement.GetAttributeValue(NExamplesXml.Attribute.Name);
 			if (String.IsNullOrEmpty(name))
 				return null;
 
 			switch (xmlElement.Name)
 			{
-				case TileElement:
-				case GroupElement:
-					icon = NResources.Image__16x16_Folders_png;
+				case NExamplesXml.Element.Folder:
+					// Use the folder icon
+					icon = new NImage(NResources.RIMG_ExamplesUI_Icons_Folder_emf);
 					break;
 
-				case ExampleElement:
-					// Get an icon for the example, which is grayscale version of the example's category icon
-					NXmlElement categoryXmlElement = (NXmlElement)xmlElement.GetFirstAncestor(CategoryElement);
-					string categoryNamespace = categoryXmlElement.GetAttributeValue(NamespaceAttribute);
-					icon = GetExampleIcon(categoryNamespace);
+				case NExamplesXml.Element.Example:
+					// Get an icon for the example, which is a grayscale version of the example's category icon
+					icon = NExamplesUi.GetComponentIcon(xmlElement, ENImageStyle.Grayscale);
 					break;
 
 				default:
@@ -212,15 +210,16 @@ namespace Nevron.Nov.Examples
 
 			NExampleTile tile = new NExampleTile(icon, name);
 			tile.Box1.Padding = new NMargins(0, 1, 0, 1);
-			tile.Status = xmlElement.GetAttributeValue(StatusAttribute);
+			tile.Status = NExamplesXml.GetStatus(xmlElement);
+
 			tile.Box2.VerticalPlacement = ENVerticalPlacement.Center;
 			tile.Spacing = NDesign.HorizontalSpacing;
 
 			NTreeViewItem treeViewItem = new NTreeViewItem(tile);
-			string examplePath = NExamplesUiHelpers.GetExamplePath(xmlElement);
+			string examplePath = NExamplesUi.GetExamplePath(xmlElement);
 			m_ExamplesMap.Add(examplePath, treeViewItem);
 
-			if (xmlElement.Name == ExampleElement)
+			if (xmlElement.Name == NExamplesXml.Element.Example)
 			{
 				// This is an example element
 				treeViewItem.Tag = xmlElement;
@@ -243,25 +242,33 @@ namespace Nevron.Nov.Examples
 		private void OnTreeViewSelectedPathChanged(NValueChangeEventArgs arg)
 		{
 			NTreeView treeView = (NTreeView)arg.TargetNode;
-			NTreeViewItem oldSelectedItem = GetTreeViewItem(treeView, (NDomPath)arg.OldValue);
 			NTreeViewItem newSelectedItem = GetTreeViewItem(treeView, (NDomPath)arg.NewValue);
-
-			if (oldSelectedItem != null &&
-				oldSelectedItem.Tag is NXmlElement oldXmlElement && oldXmlElement.Name == ExampleElement)
+			NTreeViewItem oldSelectedItem = GetTreeViewItem(treeView, (NDomPath)arg.OldValue);
+			if (IsExample(oldSelectedItem))
 			{
-				// Convert the image of the old selected tree view item to grayscale
-				NImageBox imageBox = oldSelectedItem.GetFirstDescendant<NImageBox>();
-				NImageSource imageSource = imageBox.Image.ImageSource;
-				imageBox.Image = new NImage(new NGrayscaleImageSource(imageSource));
+				m_OldSelectedItem = oldSelectedItem;
 			}
 
-			if (newSelectedItem != null &&
-				newSelectedItem.Tag is NXmlElement newXmlElement && newXmlElement.Name == ExampleElement)
+			NImageBox imageBox;
+			if (IsExample(newSelectedItem))
 			{
+				if (m_OldSelectedItem != null)
+				{
+					// Convert the image of the old selected tree view item to grayscale
+					imageBox = m_OldSelectedItem.GetFirstDescendant<NImageBox>();
+					imageBox.Image = NExamplesUi.GetComponentIcon((NXmlElement)m_OldSelectedItem.Tag, ENImageStyle.Grayscale);
+
+					// Clear the "IsHighlighted" extended property for the old selected tree view item
+					NStylePropertyEx.ClearIsHighlighted(m_OldSelectedItem);
+					m_OldSelectedItem = null;
+				}
+
 				// Set a colored image to the new selected tree view image
-				NImageBox imageBox = newSelectedItem.GetFirstDescendant<NImageBox>();
-				NImageSource imageSource = imageBox.Image.ImageSource;
-				imageBox.Image = new NImage(((NGrayscaleImageSource)imageSource).OriginalImageSource);
+				imageBox = newSelectedItem.GetFirstDescendant<NImageBox>();
+				imageBox.Image = NExamplesUi.GetComponentIcon((NXmlElement)newSelectedItem.Tag, ENImageStyle.Colored);
+
+				// Set the "IsHighlighted" extended property for the new selected tree view item
+				NStylePropertyEx.SetIsHighlighted(newSelectedItem, true);
 			}
 
 			if (TreeViewSelectedPathChanged != null)
@@ -269,7 +276,6 @@ namespace Nevron.Nov.Examples
 				TreeViewSelectedPathChanged(arg);
 			}
 		}
-
 		/// <summary>
 		/// Called to show a context menu with a copy link to an example option.
 		/// </summary>
@@ -302,29 +308,16 @@ namespace Nevron.Nov.Examples
 		/// <param name="arg"></param>
 		private void OnCopyLinkToClipboardClick(NEventArgs arg)
 		{
+            NExamplesContent examplesContent = GetFirstAncestor<NExamplesContent>();
 			NXmlElement xmlElement = (NXmlElement)arg.CurrentTargetNode.Tag;
-
-			string exampleLink;
-			if (NApplication.IntegrationPlatform == ENIntegrationPlatform.WebAssembly)
-			{
-				NExamplePage exampleHost = GetFirstAncestor<NExamplePage>();
-				exampleLink = exampleHost.ExamplesPath + "?example=" + xmlElement.GetAttributeValue("type");
-			}
-			else
-			{
-				exampleLink = NExamplesUiHelpers.GetExamplePath(xmlElement);
-			}
-
-			// Copy the example link to clipboard
-			NDataObject dataObject = new NDataObject();
-			dataObject.SetData(NDataFormat.TextFormatString, exampleLink);
-			NClipboard.SetDataObject(dataObject);
+			NExamplesUi.CopyExampleLinkToClipboard(examplesContent.LinkProcessor, xmlElement);
 		}
 
 		#endregion
 
 		#region Fields
 
+		private NTreeViewItem m_OldSelectedItem;
 		private NAccordionFlexBoxPanel m_FlexBox;
 		private NMap<string, NTreeViewItem> m_ExamplesMap;
 
@@ -342,80 +335,26 @@ namespace Nevron.Nov.Examples
 		#region Static Methods
 
 		/// <summary>
-		/// Gets a category icon. Category icons are used in the accordion items.
+		/// Gets the tree view item at the given DOM path.
 		/// </summary>
-		/// <param name="productName"></param>
+		/// <param name="treeView"></param>
+		/// <param name="domPath"></param>
 		/// <returns></returns>
-		private static NImage GetCategoryIcon(string productName)
-		{
-			// Get product icon from resources
-			byte[] imageData = NResources.Instance.GetResourceBytes($"RIMG_ExamplesUI_ProductIcons_{productName}_png");
-			NDebug.Assert(imageData != null, $"Image for product {productName} not found");
-			return NImage.FromBytes(imageData);
-		}
-		/// <summary>
-		/// Gets a grayscale icon for an example. Example icons are used in the tree views hosted in accordion items.
-		/// </summary>
-		/// <param name="productName"></param>
-		/// <returns></returns>
-		private static NImage GetExampleIcon(string productName)
-		{
-			NImage image;
-			if (ExampleIconMap.TryGet(productName, out image))
-				return (NImage)image.DeepClone();
-
-			image = GetCategoryIcon(productName);
-			image = new NImage(new NGrayscaleImageSource(image.ImageSource));
-			ExampleIconMap.Add(productName, image);
-
-			return image;
-		}
 		private static NTreeViewItem GetTreeViewItem(NTreeView treeView, NDomPath domPath)
 		{
 			return domPath != null ? (NTreeViewItem)domPath.Select(treeView) : null;
 		}
-
 		/// <summary>
-		/// Gets the default "example" XML element for the given "tile" XML element.
+		/// Checks whether the given tree view item represents an example.
 		/// </summary>
-		/// <param name="tileXmlElement"></param>
+		/// <param name="treeViewItem"></param>
 		/// <returns></returns>
-		private static NXmlElement GetExampleXmlElement(NXmlElement tileXmlElement)
+		private static bool IsExample(NTreeViewItem treeViewItem)
 		{
-			NList<NXmlNode> exampleXmlNodes = tileXmlElement.GetChildren(ExampleElement);
-			if (exampleXmlNodes.Count == 0)
-			{
-				NDebug.Assert(false, "Empty XML tile element found");
-				return null;
-			}
-
-			for (int i = 0; i < exampleXmlNodes.Count; i++)
-			{
-				NXmlElement exampleXmlElement = (NXmlElement)exampleXmlNodes[i];
-				if (exampleXmlElement.GetAttributeValue("default") == "true")
-					return exampleXmlElement;
-			}
-
-			// A default XML element not found, so return the first one
-			return (NXmlElement)exampleXmlNodes[0];
+			return treeViewItem != null &&
+				treeViewItem.Tag is NXmlElement xmlElement &&
+				xmlElement.Name == NExamplesXml.Element.Example;
 		}
-
-		#endregion
-
-		#region Constants
-
-		private static readonly NMap<string, NImage> ExampleIconMap;
-
-		// XML Elements
-		private const string CategoryElement = "category";
-		private const string GroupElement = "group";
-		private const string TileElement = "tile";
-		private const string ExampleElement = "example";
-
-		// XML Attributes
-		private const string NameAttribute = "name";
-		private const string NamespaceAttribute = "namespace";
-		private const string StatusAttribute = "status";
 
 		#endregion
 	}

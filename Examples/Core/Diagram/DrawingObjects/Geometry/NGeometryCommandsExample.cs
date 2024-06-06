@@ -213,8 +213,8 @@ namespace Nevron.Nov.Examples.Diagram
             NGenericNGram ngon = new NGenericNGram(4, 0, 0.5, 0.1, new NPoint(0.5, 0.5));
             NPoint[] points = ngon.CreateVertices();
 
-            // the draw ellipse command draws an ellipse inside a relative or absolute rect inside the shape coordinate system. 
-            // The following draws an ellipse that fills the shape.
+            // the draw polygon command draws a polygon inside a relative or absolute rect inside the shape coordinate system. 
+            // The following draws a polygon that fills the shape.
             NDrawPolygon drawPolygon = new NDrawPolygon(0, 0, 1, 1, points);
             drawPolygon.Tension = tension;
             shape.Geometry.AddRelative(drawPolygon);
@@ -234,8 +234,8 @@ namespace Nevron.Nov.Examples.Diagram
                 new NPoint(1, 0),
             };
 
-            // the draw ellipse command draws an ellipse inside a relative or absolute rect inside the shape coordinate system. 
-            // The following draws an ellipse that fills the shape.
+            // the draw polyline command draws a polyline inside a relative or absolute rect inside the shape coordinate system. 
+            // The following draws a polyline that fills the shape.
             NDrawPolyline drawPolyline = new NDrawPolyline(0, 0, 1, 1, points);
             drawPolyline.Tension = tension;
             drawPolyline.ShowFill = false;

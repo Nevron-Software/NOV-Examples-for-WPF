@@ -18,8 +18,7 @@ namespace Nevron.Nov.Examples.Chart
 		/// Default constructor
 		/// </summary>
 		public NStackedAreaExample()
-		{
-			
+		{			
 		}
 		/// <summary>
 		/// Static constructor
@@ -35,7 +34,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -43,8 +43,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
-
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
 			// setup X axis
 			NOrdinalScale scaleX = (NOrdinalScale)chart.Axes[ENCartesianAxis.PrimaryX].Scale;
@@ -90,7 +88,7 @@ namespace Nevron.Nov.Examples.Chart
 				m_Area3.DataPoints.Add(new NAreaDataPoint(random.Next(20, 50)));
 			}
 
-			return m_ChartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

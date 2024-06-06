@@ -79,7 +79,7 @@ namespace Nevron.Nov.Examples
 
 		#region Constants
 
-		private const string NevronMailToLink = "mailto:" + NExamplesUiHelpers.NevronEmail + "?subject={0}";
+		private const string NevronMailToLink = "mailto:" + NExamplesUi.NevronEmail + "?subject={0}";
 
 		#endregion
 	}

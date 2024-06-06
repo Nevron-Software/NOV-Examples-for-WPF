@@ -2,7 +2,9 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 
+using Nevron.Nov.Graphics;
 using Nevron.Nov.Windows;
+using Nevron.Nov.Windows.Wpf;
 
 namespace Nevron.Nov.Examples.Wpf
 {
@@ -30,7 +32,9 @@ namespace Nevron.Nov.Examples.Wpf
             }
 
             // Place a NOV UI Element that contains an NExampleContent widget
-            Content = new NNovWidgetHost<NExamplesContent>();
-        }
-    }
+            NExamplesContent examplesContent = new NExamplesContent();
+            examplesContent.LinkProcessor = new NWpfExampleLinkProcessor();
+            Content = new NNovWidgetHost<NExamplesContent>(examplesContent);
+		}
+	}
 }

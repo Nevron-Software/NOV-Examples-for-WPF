@@ -27,10 +27,9 @@ namespace Nevron.Nov.Examples.UI
 		protected override NWidget CreateExampleContent()
 		{
 			m_Label = new NLabel();
-			m_Label.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_Label.BorderThickness = new NMargins(1);
+			m_Label.SetBorder(1, NColor.Red);
 
-			return m_Label;
+            return m_Label;
 		}
 		protected override NWidget CreateExampleControls()
 		{

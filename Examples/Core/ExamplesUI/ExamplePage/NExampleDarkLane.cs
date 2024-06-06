@@ -87,25 +87,69 @@ namespace Nevron.Nov.Examples
 			});
 			rule.Declarations.Add(new NValueDeclaration<NFill>(TextFillProperty, new NColorFill(theme.Colors.ControlText)));
 
-			// Button - mouse over 
-			rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
-			{
-				sb.Type(NButton.NButtonSchema);
-				sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
-				sb.ValueEquals(NMouse.IsOverPropertyEx, true);
-			});
-			rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(lightGrayColor)));
-			rule.Declarations.Add(new NValueDeclaration<NBorder>(BorderProperty, NBorder.CreateFilledBorder(lightestGrayColor)));
+			#region Buttons
 
-			// Button - pressed 
-			rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
 			{
-				sb.Type(NButton.NButtonSchema);
-				sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
-				sb.ValueEquals(NButtonBase.IsPressedProperty, true);
-			});
-			rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(lighterGrayColor)));
-			rule.Declarations.Add(new NValueDeclaration<NBorder>(BorderProperty, NBorder.CreateFilledBorder(lightestGrayColor)));
+				// Button - mouse over 
+				rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NButton.NButtonSchema);
+					sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
+					sb.ValueEquals(NMouse.IsOverPropertyEx, true);
+				});
+				rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(lightGrayColor)));
+				rule.Declarations.Add(new NValueDeclaration<NBorder>(BorderProperty, NBorder.CreateFilledBorder(lightestGrayColor)));
+
+				// Button - pressed 
+				rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NButton.NButtonSchema);
+					sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
+					sb.ValueEquals(NButtonBase.IsPressedProperty, true);
+				});
+				rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(lighterGrayColor)));
+				rule.Declarations.Add(new NValueDeclaration<NBorder>(BorderProperty, NBorder.CreateFilledBorder(lightestGrayColor)));
+			}
+
+			#endregion
+
+			#region Menu Drop Downs
+
+			{
+				// Menu drop down
+				rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NMenuDropDown.NMenuDropDownSchema);
+					sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
+				});
+				rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(grayColor)));
+				rule.Declarations.Add(new NValueDeclaration<double>(NMenuDropDown.SpacingProperty, NDesign.HorizontalSpacing / 2));
+
+				// Menu drop down - mouse over
+				rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NMenuDropDown.NMenuDropDownSchema);
+					sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
+					sb.ValueEquals(NMouse.IsOverPropertyEx, true);
+				});
+				rule.Declarations.Add(new NValueDeclaration<NFill>(BackgroundFillProperty, new NColorFill(lighterGrayColor)));
+				rule.Declarations.Add(new NValueDeclaration<NBorder>(BorderProperty, NBorder.CreateFilledBorder(lightestGrayColor)));
+
+				// Menu drop down symbol
+				rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NSymbolBox.NSymbolBoxSchema);
+					sb.ChildOf();
+					sb.Type(NMenuDropDown.NMenuDropDownSchema);
+					sb.ValueEquals(NStylePropertyEx.ExtendedLookPropertyEx, ENExtendedLook.Flat);
+				});
+				
+				NSymbol triangleDown = NSymbol.Create(ENSymbolShape.TriangleDown, new NSize(8, 4), textColor);
+				triangleDown.Padding = new NMargins(0, 2);
+				rule.Declarations.Add(new NValueDeclaration<NSymbol>(NSymbolBox.SymbolProperty, triangleDown));
+			}
+
+			#endregion
 
 			// Link labels
 			rule = styleSheet.CreateRule(delegate (NSelectorBuilder sb)

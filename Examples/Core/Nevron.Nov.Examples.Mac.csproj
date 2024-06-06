@@ -6,32 +6,32 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Nevron.Examples.Core.snk</AssemblyOriginatorKeyFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>..\..\Bin\</OutputPath>
+    <OutputPath>..\..\..\Bin\XamarinMac\</OutputPath>
   </PropertyGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="mono &quot;$(ProjectDir)\NResourceMaker.exe&quot; &quot;$(ProjectDir)\Resources&quot; Resources.xml ResourcesLog.txt" />
   </Target>
   <ItemGroup>
     <Reference Include="Nevron.Nov.Barcode">
-      <HintPath>..\..\Bin\Nevron.Nov.Barcode.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Barcode.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Chart">
-      <HintPath>..\..\Bin\Nevron.Nov.Chart.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Chart.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Diagram">
-      <HintPath>..\..\Bin\Nevron.Nov.Diagram.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Diagram.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Grid">
-      <HintPath>..\..\Bin\Nevron.Nov.Grid.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Grid.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Presentation">
-      <HintPath>..\..\Bin\Nevron.Nov.Presentation.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Presentation.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Schedule">
-      <HintPath>..\..\Bin\Nevron.Nov.Schedule.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Schedule.dll</HintPath>
     </Reference>
     <Reference Include="Nevron.Nov.Text">
-      <HintPath>..\..\Bin\Nevron.Nov.Text.dll</HintPath>
+      <HintPath>..\..\..\Bin\Standard\Nevron.Nov.Text.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

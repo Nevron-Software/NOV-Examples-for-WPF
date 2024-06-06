@@ -12,7 +12,7 @@
 			get
 			{
 				return IsNet50orNewer ?
-					NResources.RBIN_ProjectTemplates_CS_Net50_NovWinFormsProject_zip :
+					NResources.RBIN_ProjectTemplates_CS_Net70_NovWinFormsProject_zip :
 					NResources.RBIN_ProjectTemplates_CS_Net472_NovWinFormsProject_zip;
 			}
 		}

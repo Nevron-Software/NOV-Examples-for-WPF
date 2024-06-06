@@ -67,10 +67,10 @@ namespace Nevron.Nov.Examples.Diagram
 			}
 
 			// Import the AutoCAD DXF Drawing
-			m_DrawingView.LoadFromStream(zipDecompressor.Items[0].Stream);
+			m_DrawingView.LoadFromStreamAsync(zipDecompressor.Items[0].Stream);
 
 			// Hide ports
-			m_DrawingView.Drawing.ScreenVisibility.ShowPorts = false;
+			m_DrawingView.Content.ScreenVisibility.ShowPorts = false;
 		}
 
 		#endregion

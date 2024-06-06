@@ -8,11 +8,12 @@ using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Text;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NBarycenterGraphLayoutExample : NExampleBase
+    public class NBarycenterGraphLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -151,15 +152,15 @@ namespace Nevron.Nov.Examples.Diagram
             activePage.Items.Clear();
 
             // we will be using basic circle shapes with default size of (30, 30)
-            NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            basicShapesFactory.DefaultSize = new NSize(30, 30);
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			basicShapes.DefaultSize = new NSize(30, 30);
 
 			// create the fixed vertices
 			NShape[] fixedShapes = new NShape[fixedCount];
 
             for (int i = 0; i < fixedCount; i++)
             {
-                fixedShapes[i] = basicShapesFactory.CreateShape(ENBasicShape.Circle);
+                fixedShapes[i] = basicShapes.CreateShape(ENBasicShape.Circle);
 
                 //((NDynamicPort)fixedShapes[i].Ports.GetChildByName("Center", -1)).GlueMode = DynamicPortGlueMode.GlueToLocation;
                 fixedShapes[i].Geometry.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant3, new NColor(251, 203, 156), new NColor(247, 150, 56));
@@ -177,7 +178,7 @@ namespace Nevron.Nov.Examples.Diagram
             NShape[] freeShapes = new NShape[freeCount];
             for (int i = 0; i < freeCount; i++)
             {
-                freeShapes[i] = basicShapesFactory.CreateShape(ENBasicShape.Circle);
+                freeShapes[i] = basicShapes.CreateShape(ENBasicShape.Circle);
                 freeShapes[i].Geometry.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant3, new NColor(192, 194, 194), new NColor(129, 133, 133));
                 freeShapes[i].Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
                 activePage.Items.AddChild(freeShapes[i]);
@@ -238,8 +239,8 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // send all edges to back
-            NBatchReorder batchReorder = new NBatchReorder(m_DrawingView.Document);
-            batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NDiagramItem>());
+            NBatchReorder<NPageItem> batchReorder = new NBatchReorder<NPageItem>(m_DrawingView.Document);
+            batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NPageItem>());
             batchReorder.SendToBack(activePage);
 
             // arrange the elements
@@ -256,8 +257,8 @@ namespace Nevron.Nov.Examples.Diagram
             activePage.Items.Clear();
 
             // we will be using basic circle shapes with default size of (30, 30)
-            NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            basicShapesFactory.DefaultSize = new NSize(30, 30);
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			basicShapes.DefaultSize = new NSize(30, 30);
 
 			NShape prev = null;
 			NList<NShape> prevRowShapes = null;
@@ -268,7 +269,7 @@ namespace Nevron.Nov.Examples.Diagram
 
 				for (int i = 0; i < level; i++)
                 {
-					NShape cur = basicShapesFactory.CreateShape(ENBasicShape.Circle);
+					NShape cur = basicShapes.CreateShape(ENBasicShape.Circle);
 					cur.Geometry.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant3, new NColor(192, 194, 194), new NColor(129, 133, 133));
                     cur.Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
                     activePage.Items.Add(cur);
@@ -327,8 +328,8 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // send all edges to back
-            NBatchReorder batchReorder = new NBatchReorder(m_DrawingView.Document);
-            batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NDiagramItem>());
+            NBatchReorder<NPageItem> batchReorder = new NBatchReorder<NPageItem>(m_DrawingView.Document);
+            batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NPageItem>());
             batchReorder.SendToBack(activePage);
 
             // arrange the elements

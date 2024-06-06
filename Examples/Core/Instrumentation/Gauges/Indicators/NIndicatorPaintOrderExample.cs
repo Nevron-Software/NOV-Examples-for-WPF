@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Nevron.Nov.Chart;
+using Nevron.Nov.Diagram.UI;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
@@ -49,7 +50,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_RadialGauge.PreferredSize = defaultRadialGaugeSize;
 
 			m_RadialGauge.CapEffect = new NGlassCapEffect();
-			m_RadialGauge.Dial = new NDial(ENDialShape.CutCircle, new NEdgeDialRim());
+			m_RadialGauge.Dial = new NDial(ENDialShape.RoundedOutline, new NEdgeDialRim());
 			m_RadialGauge.Dial.BackgroundFill = new NStockGradientFill(NColor.DarkGray, NColor.Black);
 
 			// configure scale

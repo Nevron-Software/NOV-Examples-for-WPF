@@ -39,7 +39,7 @@ namespace Nevron.Nov.Examples.Barcode
 			m_Barcode.HorizontalPlacement = ENHorizontalPlacement.Center;
 			m_Barcode.VerticalPlacement = ENVerticalPlacement.Center;
 
-			return m_Barcode;
+            return m_Barcode;
 		}
 		protected override NWidget CreateExampleControls()
 		{

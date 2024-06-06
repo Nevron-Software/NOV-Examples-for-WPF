@@ -147,7 +147,7 @@ goes for the rich text and the images examples.</p>";
 			byte[] data = dataObject.GetRTF();
 			if (data != null)
 			{
-				m_RichText.LoadFromStream(new MemoryStream(data), NTextFormat.Rtf);
+				m_RichText.LoadFromStreamAsync(new MemoryStream(data), NTextFormat.Rtf);
 			}
 		}
 		private void OnSetRTFButtonClick(NEventArgs args)
@@ -155,7 +155,7 @@ goes for the rich text and the images examples.</p>";
 			NDataObject dataObject = new NDataObject();
 			using (MemoryStream stream = new MemoryStream())
 			{
-				m_RichText.SaveToStream(stream, NTextFormat.Rtf);
+				m_RichText.SaveToStreamAsync(stream, NTextFormat.Rtf);
 				dataObject.SetData(NDataFormat.RTFFormat, stream.ToArray());
 				NClipboard.SetDataObject(dataObject);
 			}

@@ -1,12 +1,12 @@
-﻿using Nevron.Nov.Dom;
-using Nevron.Nov.Diagram;
+﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.DrawingCommands;
-using Nevron.Nov.UI;
 using Nevron.Nov.Diagram.Shapes;
+using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NCommandBarsCustomizationExample : NExampleBase
+    public class NCommandBarsCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -56,10 +56,16 @@ namespace Nevron.Nov.Examples.Diagram
 			m_CommandBarBuilder.MenuDropDownBuilders.Insert(1, new CustomMenuBuilder());
 
 			// Remove the "Standard" toolbar and insert a custom one
-			m_CommandBarBuilder.ToolBarBuilders.Remove(NDiagramCommandBarBuilder.ToolbarStandardName);
+			m_CommandBarBuilder.ToolBarBuilders.Remove(NDiagramCommandBarBuilder.ToolBarStandardName);
 			m_CommandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
 
-			return m_CommandBarBuilder.CreateUI(m_DrawingView);
+			// Create the commanding UI
+			NCommandUIHolder drawingViewWithCommandBars = m_CommandBarBuilder.CreateUI(m_DrawingView);
+
+			// Remove the Open command from the File menu and the page number command from the status bar
+			drawingViewWithCommandBars.RemoveCommands(NDrawingView.OpenCommand, NDrawingView.PageNumberStatusBarCommand);
+
+			return drawingViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -74,8 +80,7 @@ namespace Nevron.Nov.Examples.Diagram
 
 		private void InitDiagram(NDrawingDocument drawingDocument)
 		{
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape.SetBounds(100, 100, 150, 100);
 			drawingDocument.Content.ActivePage.Items.Add(shape);
 		}

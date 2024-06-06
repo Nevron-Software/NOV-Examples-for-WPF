@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples
 {
 	/// <summary>
-	/// Represents the examples' search box, that searches through all examples.
+	/// Represents the examples' search box, which searches through all examples.
 	/// </summary>
 	internal class NExamplesSearchBox : NAutoCompleteBox
 	{
@@ -21,9 +21,10 @@ namespace Nevron.Nov.Examples
 			HorizontalPlacement = ENHorizontalPlacement.Left;
 			VerticalPlacement = ENVerticalPlacement.Center;
 			StringMatchMode = ENStringMatchMode.WordStartsWith;
-			PreferredWidth = 200;
-			Image = NResources.Image_ExamplesUI_Icons_Search_png;
-			Padding = new NMargins(2, 5, 2, 5);
+			PreferredWidth = 250;
+			Image = NResources.Image_ExamplesUI_Icons_Search_svg;
+
+			NStylePropertyEx.SetIsDarkThemeInvertible(ImageBox, false);
 		}
 
 		/// <summary>

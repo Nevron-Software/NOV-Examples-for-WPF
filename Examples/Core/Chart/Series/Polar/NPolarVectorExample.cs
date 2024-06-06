@@ -33,7 +33,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreatePolarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Polar Vector";
@@ -76,9 +78,9 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 			
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -115,12 +117,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Static Methods
 
-		private static NChartView CreatePolarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
-			return chartView;
-		}
 		private static NColor ColorFromValue(double value)
 		{
 			return NColor.InterpolateColors(NColor.Red, NColor.Blue, value / 100.0);

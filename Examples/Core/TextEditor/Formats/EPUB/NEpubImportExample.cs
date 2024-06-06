@@ -56,7 +56,7 @@ namespace Nevron.Nov.Examples.Text
 
 		private void PopulateRichText()
 		{
-			m_RichText.LoadFromResource(NResources.RBIN_EPUB_GeographyOfBliss_epub, NTextFormat.Epub);
+			m_RichText.LoadFromResourceAsync(NResources.RBIN_EPUB_GeographyOfBliss_epub, NTextFormat.Epub);
 		}
 
 		#endregion

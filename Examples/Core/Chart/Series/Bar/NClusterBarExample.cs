@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -43,8 +44,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
-
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
 			// add interlace stripe
 			NLinearScale linearScale = chart.Axes[ENCartesianAxis.PrimaryY].Scale as NLinearScale;
@@ -70,9 +69,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			FillRandomData();
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -82,7 +81,7 @@ namespace Nevron.Nov.Examples.Chart
 			NNumericUpDown gapPercentNumericUpDown = new NNumericUpDown();
 			propertyStack.Add(NPairBox.Create("Gap Percent: ", gapPercentNumericUpDown));
 
-			gapPercentNumericUpDown.Value = m_Bar1.GapFactor * 100.0;
+			gapPercentNumericUpDown.Value = m_Bar1.WidthGapFactor * 100.0;
 			gapPercentNumericUpDown.ValueChanged += new Function<NValueChangeEventArgs>(gapPercentNumericUpDown_ValueChanged);
 
 			return boxGroup;
@@ -124,7 +123,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		void gapPercentNumericUpDown_ValueChanged(NValueChangeEventArgs arg)
 		{
-			m_Bar1.GapFactor = ((NNumericUpDown)arg.TargetNode).Value / 100.0;
+			m_Bar1.WidthGapFactor = ((NNumericUpDown)arg.TargetNode).Value / 100.0;
 		}
 
 		#endregion

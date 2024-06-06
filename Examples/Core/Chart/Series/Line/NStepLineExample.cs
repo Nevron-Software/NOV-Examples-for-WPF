@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -56,8 +57,9 @@ namespace Nevron.Nov.Examples.Chart
 			m_Line.InflateMargins = true;
 			m_Line.DataLabelStyle = new NDataLabelStyle("<value>");
 			m_Line.MarkerStyle = new NMarkerStyle(new NSize(4, 4));
+			m_Line.Stroke = new NStroke(2, NColor.Green);
 
-			Random random = new Random();
+            Random random = new Random();
 
 			for (int i = 0; i < 8; i++)
 			{
@@ -66,9 +68,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(m_Line);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

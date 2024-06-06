@@ -35,7 +35,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreatePolarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Polar Point";
@@ -70,25 +72,23 @@ namespace Nevron.Nov.Examples.Chart
 
 			// create three polar point series
             Random random = new Random();
-            NSeries s1 = CreatePolarPointSeries("Sample 1", ENPointShape.Ellipse, random);
-			NSeries s2 = CreatePolarPointSeries("Sample 2", ENPointShape.Rectangle, random);
-            NSeries s3 = CreatePolarPointSeries("Sample 3", ENPointShape.Triangle, random);
+            NPolarSeries s1 = CreatePolarPointSeries("Sample 1", ENPointShape2D.Ellipse, random);
+            NPolarSeries s2 = CreatePolarPointSeries("Sample 2", ENPointShape2D.Rectangle, random);
+            NPolarSeries s3 = CreatePolarPointSeries("Sample 3", ENPointShape2D.Triangle, random);
 
 			// add the series to the chart
 			m_Chart.Series.Add(s1);
 			m_Chart.Series.Add(s2);
 			m_Chart.Series.Add(s3);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
 			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
-			
-
 
 			return group;
 		}
@@ -107,7 +107,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Implementation
 
-        private NSeries CreatePolarPointSeries(string name, ENPointShape shape, Random random)
+        private NPolarSeries CreatePolarPointSeries(string name, ENPointShape2D shape, Random random)
 		{
 			NPolarPointSeries series = new NPolarPointSeries();
 			series.Name = name;
@@ -140,17 +140,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NPolarPointExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreatePolarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
-			return chartView;
-		}
 
 		#endregion
 	}

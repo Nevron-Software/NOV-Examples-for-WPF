@@ -34,6 +34,7 @@ namespace Nevron.Nov.Examples.Framework
 			DoubleValueProperty = NSimpleNodeSchema.AddSlot("DoubleValue", NDomType.Double, defaultDouble);
 			SpecifiedDoubleValueProperty = NSimpleNodeSchema.AddSlot("SpecifiedDoubleValue", NDomType.Double, defaultSpecifiedDouble);
 			ComboBoxEnumValueProperty = NSimpleNodeSchema.AddSlot("ComboBoxEnum", typeof(ENSampleEnum), defaultComboBoxEnum);
+			ComboBoxMaskedEnumProperty = NSimpleNodeSchema.AddSlot("ComboBoxMaskedEnum", typeof(ENSampleEnum), DefaultComboBoxMaskedEnum);
 			HRadioGroupEnumProperty = NSimpleNodeSchema.AddSlot("HRadioGroupEnum", typeof(ENSampleEnum), defaultHRadioGroupEnum);
 			VRadioGroupEnumProperty = NSimpleNodeSchema.AddSlot("VRadioGroupEnum", typeof(ENSampleEnum), defaultVRadioGroupEnum);
 
@@ -165,6 +166,20 @@ namespace Nevron.Nov.Examples.Framework
 			set
 			{
 				SetValue(ComboBoxEnumValueProperty, value);
+			}
+		}
+		/// <summary>
+		/// Gets or sets the value of the ComboBoxMaskedEnumValue property.
+		/// </summary>
+		public ENSampleEnum ComboBoxMaskedEnum
+		{
+			get
+			{
+				return (ENSampleEnum)GetValue(ComboBoxMaskedEnumProperty);
+			}
+			set
+			{
+				SetValue(ComboBoxMaskedEnumProperty, value);
 			}
 		}
 		/// <summary>
@@ -380,6 +395,10 @@ namespace Nevron.Nov.Examples.Framework
 		/// </summary>
 		public static readonly NProperty ComboBoxEnumValueProperty;
 		/// <summary>
+		/// Reference to the ComboBoxMaskedEnum property.
+		/// </summary>
+		public static readonly NProperty ComboBoxMaskedEnumProperty;
+		/// <summary>
 		/// Reference to the HRadioGroupEnum property.
 		/// </summary>
 		public static readonly NProperty HRadioGroupEnumProperty;
@@ -420,6 +439,7 @@ namespace Nevron.Nov.Examples.Framework
 		private const double defaultDouble = 0;
 		private const double defaultSpecifiedDouble = Double.NaN;
 		private const ENSampleEnum defaultComboBoxEnum = ENSampleEnum.Option1;
+		private const ENSampleEnum DefaultComboBoxMaskedEnum = ENSampleEnum.Option1 | ENSampleEnum.Option2;
 		private const ENSampleEnum defaultHRadioGroupEnum = ENSampleEnum.Option1;
 		private const ENSampleEnum defaultVRadioGroupEnum = ENSampleEnum.Option1;
 
@@ -437,12 +457,14 @@ namespace Nevron.Nov.Examples.Framework
 
 		#region Nested Types
 
+		[Flags]
 		public enum ENSampleEnum
 		{
-			Option1,
-			Option2,
-			Option3,
-			Option4
+			None = 0,
+			Option1 = 1,
+			Option2 = 2,
+			Option3 = 4,
+			Option4 = 8
 		}
 
 		#endregion
@@ -464,6 +486,7 @@ namespace Nevron.Nov.Examples.Framework
 				SetPropertyCategory(ColorProperty, ColorsCategory);
 
 				SetPropertyCategory(ComboBoxEnumValueProperty, EnumsCategory);
+				SetPropertyCategory(ComboBoxMaskedEnumProperty, EnumsCategory);
 				SetPropertyCategory(HRadioGroupEnumProperty, EnumsCategory);
 				SetPropertyCategory(VRadioGroupEnumProperty, EnumsCategory);
 
@@ -471,6 +494,7 @@ namespace Nevron.Nov.Examples.Framework
 				SetCategoryEditor(NLocalizedString.Empty, NTabCategoryEditor.HeadersTopTemplate);
 
 				// Property Editors
+				SetPropertyEditor(ComboBoxMaskedEnumProperty, NMaskedEnumPropertyEditor.DropDownTemplate);
 				SetPropertyEditor(SpecifiedDoubleValueProperty, NSpecifiedDoublePropertyEditor.ZeroTemplate);
 				SetPropertyEditor(AdvancedColorProperty, NColorPropertyEditor.AdvancedTemplate);
 				SetPropertyEditor(HRadioGroupEnumProperty, NEnumPropertyEditor.HorizontalRadioGroupTemplate);

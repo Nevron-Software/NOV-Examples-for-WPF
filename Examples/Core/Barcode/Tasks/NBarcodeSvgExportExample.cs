@@ -101,7 +101,7 @@ namespace Nevron.Nov.Examples.Barcode
 			NSvgDocument svgDocument = svgExporter.CreateSvg(m_Barcode, 0);
 
 			// Save the SVG document to a file
-			arg.File.Create().Then(
+			arg.File.CreateAsync().Then(
 				delegate (Stream stream)
 				{
 					using (stream)

@@ -71,6 +71,7 @@ namespace Nevron.Nov.Examples.UI
 				NTopLevelWindow.ModalProperty,
 				NTopLevelWindow.ShowInTaskbarProperty,
 				NTopLevelWindow.ShowTitleBarProperty,
+				NTopLevelWindow.ShowControlMenuProperty,
 				NTopLevelWindow.ShowControlBoxProperty,
 
 				NTopLevelWindow.AllowMinimizeProperty,

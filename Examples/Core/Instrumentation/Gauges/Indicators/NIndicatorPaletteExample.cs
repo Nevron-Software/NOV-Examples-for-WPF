@@ -306,10 +306,10 @@ namespace Nevron.Nov.Examples.Gauge
 
 			for (int i = 0; i < m_LinearGauge.Indicators.Count; i++)
 			{
-				m_LinearGauge.Indicators[i].Palette.SmoothColors = smoothPalette;
+				m_LinearGauge.Indicators[i].Palette.InterpolateColors = smoothPalette;
 			}
 
-			m_RadialGauge.Indicators[0].Palette.SmoothColors = smoothPalette;
+			m_RadialGauge.Indicators[0].Palette.InterpolateColors = smoothPalette;
 		}
 
 		#endregion

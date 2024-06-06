@@ -159,7 +159,7 @@ namespace Nevron.Nov.Examples.Diagram
 			m_MapImporter.Projection = m_Projections[DefaultProjectionIndex];
 
 			// Add an ESRI shapefile
-			NEsriShapefile countries = new NEsriShapefile(Nevron.Nov.Diagram.NResources.RBIN_countries_zip);
+			NEsriShapefile countries = new NEsriShapefile(NResources.RBIN_Countries_zip);
 			countries.NameColumn = "name_long";
 			countries.FillRule = new NMapFillRuleValue("mapcolor8", Colors);
 			m_MapImporter.AddShapefile(countries);

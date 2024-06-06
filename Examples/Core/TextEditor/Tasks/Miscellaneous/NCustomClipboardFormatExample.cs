@@ -1,18 +1,18 @@
-﻿using Nevron.Nov.DataStructures;
+﻿using System.IO;
+
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Serialization;
 using Nevron.Nov.Text;
 using Nevron.Nov.Text.Formats;
 using Nevron.Nov.UI;
-using System;
-using System.IO;
 
 namespace Nevron.Nov.Examples.Text
 {
-    /// <summary>
-    /// The example demonstrates how to create a custom clipboard format that allows the user to selectively copy/paste text, images or both.
-    /// </summary>
-    public class NCustomClipboardFormatExample : NExampleBase
+	/// <summary>
+	/// The example demonstrates how to create a custom clipboard format that allows the user to selectively copy/paste text, images or both.
+	/// </summary>
+	public class NCustomClipboardFormatExample : NExampleBase
 	{
 		#region Constructors
 
@@ -41,7 +41,7 @@ namespace Nevron.Nov.Examples.Text
 			m_RichText.AcceptsTab = true;
             
             m_RichText.Content.Sections.Clear();
-            m_RichText.Selection.ClipboardTextFormats = new NClipboardTextFormat[] { new NCustomClipboardFormat(this) };
+            m_RichText.Selection.ClipboardTextFormats.Add(new NCustomClipboardFormat(this));
 
             NSection section = new NSection();
             m_RichText.Content.Sections.Add(section);
@@ -69,7 +69,6 @@ namespace Nevron.Nov.Examples.Text
 
 			return m_RichText;
 		}
-
         protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -84,7 +83,6 @@ namespace Nevron.Nov.Examples.Text
 
 			return stack;
 		}
-
         protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates a scenario where the user can selectively copy/paste text, images, or both. The purpose of the example is to demonstrate how to implement a custom clipboard format.</p>";
@@ -92,10 +90,23 @@ namespace Nevron.Nov.Examples.Text
 
         #endregion
 
-        #region Custom Clipboard Example Code
+        #region Fields
+
+        private NRichTextView m_RichText;
+		private NComboBox m_ContentTypeComboBox;
+
+		#endregion
+
+		#region Schema
+
+		public static readonly NSchema NCustomClipboardFormatExampleSchema;
+
+		#endregion
+
+        #region Nested Types
 
         /// <summary>
-        /// Represents a custom clipboard format
+        /// Represents a custom clipboard format.
         /// </summary>
         public class NCustomClipboardFormat : NClipboardTextFormat
         {
@@ -119,9 +130,10 @@ namespace Nevron.Nov.Examples.Text
                       new FunctionResult<byte[], NDataFormat, object>(SerializeDataObject),
                       new FunctionResult<object, NDataFormat, byte[]>(DeserializeDataObject));
             }
+
             #endregion
 
-            #region Overrides
+            #region Public Overrides
 
             /// <summary>
             /// Imports a document from a data object
@@ -257,18 +269,5 @@ namespace Nevron.Nov.Examples.Text
         }
     
         #endregion
-
-        #region Fields
-
-        private NRichTextView m_RichText;
-		private NComboBox m_ContentTypeComboBox;
-
-		#endregion
-
-		#region Schema
-
-		public static readonly NSchema NCustomClipboardFormatExampleSchema;
-
-		#endregion
 	}
 }

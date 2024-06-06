@@ -1,13 +1,14 @@
 ﻿using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Layout;
+using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Editors;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NFamilyTreeExample : NExampleBase
+    public class NFamilyTreeExample : NExampleBase
 	{
 		#region Constructors
 
@@ -32,19 +33,17 @@ namespace Nevron.Nov.Examples.Diagram
 
 		protected override NWidget CreateExampleContent()
 		{
-			// Create a simple drawing
+			// Create a drawing view with a ribbon
 			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
 			m_DrawingView = drawingViewWithRibbon.View;
 
-			m_DrawingView.Document.HistoryService.Pause();
-			try
-			{
-				InitDiagram(m_DrawingView.Document);
-			}
-			finally
-			{
-				m_DrawingView.Document.HistoryService.Resume();
-			}
+            // hide grid and ports
+            m_DrawingView.Content.ScreenVisibility.ShowGrid = false;
+            m_DrawingView.Content.ScreenVisibility.ShowPorts = false;
+
+            // Create a family tree diagram
+            m_DrawingView.Document.HistoryService.Pause();
+			InitDiagram(m_DrawingView.Document);
 
 			return drawingViewWithRibbon;
 		}
@@ -53,7 +52,7 @@ namespace Nevron.Nov.Examples.Diagram
 			NStackPanel stack = new NStackPanel();
 
 			// Get the family tree drawing extension
-			NFamilyTreeExtension familyTreeExtension = m_DrawingView.Content.Extensions.FindByType<NFamilyTreeExtension>();
+			NFamilyTreeExtension familyTreeExtension = (NFamilyTreeExtension)m_DrawingView.Content.Extensions.FindByType(NFamilyTreeExtension.FamilyTreeExtensionType);
 
 			// Create property editors
 			NList<NPropertyEditor> propertyEditors = NDesigner.GetDesigner(familyTreeExtension).CreatePropertyEditors(familyTreeExtension,
@@ -86,49 +85,71 @@ namespace Nevron.Nov.Examples.Diagram
 		{
 			// Get drawing and the active page
 			NDrawing drawing = drawingDocument.Content;
-			NPage page = drawing.ActivePage;
 
 			// Set the family tree extension to the drawing to activate the "Family Tree" ribbon tab
 			drawing.Extensions = new NDiagramExtensionCollection();
 			drawing.Extensions.Add(new NFamilyTreeExtension());
 
-			// Create 3 person shapes
-			NPersonShape fatherShape = new NPersonShape(ENGender.Male, "Abraham", "Lincoln",
-				new NDateTime(1809, 02, 12), new NDateTime(1865, 04, 15));
+            // Create a family tree diagram in the active page of the drawing
+            CreateFamilyTree(drawing.ActivePage);
+		}
+		private void CreateFamilyTree(NPage page)
+		{
+			// Create the parents
+			NShape fatherShape = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Male);
+			fatherShape.SetShapePropertyValue("FirstName", "Abraham");
+			fatherShape.SetShapePropertyValue("LastName", "Lincoln");
+			fatherShape.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1809, 02, 12));// NMaskedDateTime
+			fatherShape.SetShapePropertyValue("DeathDate", new NMaskedDateTime(1865, 04, 15));
 			page.Items.Add(fatherShape);
 
-			NPersonShape motherShape = new NPersonShape(ENGender.Female, "Mary", "Todd",
-				new NDateTime(1811), null);
+			NShape motherShape = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Female);
+			motherShape.SetShapePropertyValue("FirstName", "Mary");
+			motherShape.SetShapePropertyValue("LastName", "Todd");
+			motherShape.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1811));
 			page.Items.Add(motherShape);
 
-			NPersonShape childShape1 = new NPersonShape(ENGender.Male, "Thomas", "Lincoln",
-				new NDateTime(1853, 4, 4), new NDateTime(1871));
+			// Create the children
+			NShape childShape1 = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Male);
+			childShape1.SetShapePropertyValue("FirstName", "Thomas");
+			childShape1.SetShapePropertyValue("LastName", "Lincoln");
+			childShape1.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1853, 4, 4));
+			childShape1.SetShapePropertyValue("DeathDate", new NMaskedDateTime(1871));
 			page.Items.Add(childShape1);
 
-			NPersonShape childShape2 = new NPersonShape(ENGender.Male, "Robert Todd", "Lincoln",
-				new NDateTime(1843, 8, 1), new NDateTime(1926, 7, 26));
+			NShape childShape2 = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Male);
+			childShape2.SetShapePropertyValue("FirstName", "Robert Todd");
+			childShape2.SetShapePropertyValue("LastName", "Lincoln");
+			childShape2.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1843, 8, 1));
+			childShape2.SetShapePropertyValue("DeathDate", new NMaskedDateTime(1926, 7, 26));
 			page.Items.Add(childShape2);
 
-			NPersonShape childShape3 = new NPersonShape(ENGender.Male, "William Wallace", "Lincoln",
-				new NDateTime(1850, 12, 21), new NDateTime(1862, 2, 20));
+			NShape childShape3 = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Male);
+			childShape3.SetShapePropertyValue("FirstName", "William Wallace");
+			childShape3.SetShapePropertyValue("LastName", "Lincoln");
+			childShape3.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1850, 12, 21));
+			childShape3.SetShapePropertyValue("DeathDate", new NMaskedDateTime(1862, 2, 20));
 			page.Items.Add(childShape3);
 
-			NPersonShape childShape4 = new NPersonShape(ENGender.Male, "Edward Baker", "Lincoln",
-				new NDateTime(1846, 3, 10), new NDateTime(1850, 2, 1));
+			NShape childShape4 = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Male);
+			childShape4.SetShapePropertyValue("FirstName", "Edward Baker");
+			childShape4.SetShapePropertyValue("LastName", "Lincoln");
+			childShape4.SetShapePropertyValue("BirthDate", new NMaskedDateTime(1846, 3, 10));
+			childShape4.SetShapePropertyValue("DeathDate", new NMaskedDateTime(1850, 2, 1));
 			page.Items.Add(childShape4);
 
-			// Create a family shape
-			NFamilyShape familyShape = new NFamilyShape();
-			familyShape.Marriage = new NFamilyTreeEvent(new NDateTime(1842, 11, 4));
-			page.Items.Add(familyShape);
+			// Create the relationship shape
+			NShape relShape = NLibrary.FamilyTreeShapes.CreateShape(ENFamilyTreeShape.Relationship);
+			relShape.SetShapePropertyValue("MarriageDate", new NMaskedDateTime(1842, 11, 4));
+			page.Items.Add(relShape);
 
-			page.Items.Add(CreateConnector(fatherShape, familyShape));
-			page.Items.Add(CreateConnector(motherShape, familyShape));
+			page.Items.Add(CreateConnector(fatherShape, relShape));
+			page.Items.Add(CreateConnector(motherShape, relShape));
 
-			page.Items.Add(CreateConnector(familyShape, childShape1));
-			page.Items.Add(CreateConnector(familyShape, childShape2));
-			page.Items.Add(CreateConnector(familyShape, childShape3));
-			page.Items.Add(CreateConnector(familyShape, childShape4));
+			page.Items.Add(CreateConnector(relShape, childShape1));
+			page.Items.Add(CreateConnector(relShape, childShape2));
+			page.Items.Add(CreateConnector(relShape, childShape3));
+			page.Items.Add(CreateConnector(relShape, childShape4));
 
 			// Arrange the family tree shapes
 			NFamilyGraphLayout layout = new NFamilyGraphLayout();

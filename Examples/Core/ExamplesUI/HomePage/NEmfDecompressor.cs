@@ -1,16 +1,16 @@
 ﻿using System;
-using System.IO;
+
 using Nevron.Nov.Compression;
 using Nevron.Nov.DataStructures;
-using Nevron.Nov.Wmf;
+using Nevron.Nov.Graphics;
 using Nevron.Nov.IO;
 
 namespace Nevron.Nov.Examples
 {
-    /// <summary>
-    /// Decompresses EMF image files from a ZIP archive.
-    /// </summary>
-    internal class NEmfDecompressor : INZipDecompressor
+	/// <summary>
+	/// Decompresses EMF image files from a ZIP archive.
+	/// </summary>
+	internal class NEmfDecompressor : INZipDecompressor
     {
         #region Constructors
 
@@ -19,7 +19,7 @@ namespace Nevron.Nov.Examples
         /// </summary>
         public NEmfDecompressor()
         {
-            m_ImageMap = new NMap<string, byte[]>();
+            m_ImageMap = new NMap<string, NImage>();
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace Nevron.Nov.Examples
         /// Gets an iterator, which iterates through all metafile images.
         /// </summary>
         /// <returns></returns>
-        public INIterator<NKeyValuePair<string, byte[]>> GetImageIterator()
+        public INIterator<NKeyValuePair<string, NImage>> GetImageIterator()
         {
             return m_ImageMap.GetIterator();
         }
@@ -45,8 +45,9 @@ namespace Nevron.Nov.Examples
         }
         public void OnItemDecompressed(NZipItem zipItem)
         {
-            byte[] bytes = NStreamHelpers.ReadToEnd(zipItem.Stream);
-            m_ImageMap.Add(zipItem.Name, bytes);
+			NImage image = NImage.FromStream(zipItem.Stream);
+			string imageName = NPath.Current.GetFileNameWithoutExtension(zipItem.Name);
+            m_ImageMap.Add(imageName, image);
         }
 
         #endregion
@@ -58,16 +59,19 @@ namespace Nevron.Nov.Examples
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public byte[] GetMetaImage(string name)
+        public NImage GetMetaImage(string name)
         {
-            return m_ImageMap[name];
+            return (NImage)m_ImageMap[name].DeepClone();
         }
 
         #endregion
 
         #region Fields
 
-        private NMap<string, byte[]> m_ImageMap;
+		/// <summary>
+		/// A map with image names (without the extension) and images.
+		/// </summary>
+        internal NMap<string, NImage> m_ImageMap;
 
         #endregion
     }

@@ -9,7 +9,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NBalloonTreeLayoutExample : NExampleBase
+    public class NBalloonTreeLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -127,14 +127,14 @@ namespace Nevron.Nov.Examples.Diagram
 
             // Create a template graph
             NGenericTreeTemplate tree = new NGenericTreeTemplate();
-            tree.EdgesUserClass = "Connector";
+            tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
             tree.Levels = 4;
             tree.BranchNodes = 4;
             tree.HorizontalSpacing = 10;
             tree.VerticalSpacing = 10;
             tree.ConnectorType = ENConnectorShape.RoutableConnector;
-            tree.VerticesShape = VertexShape;
-            tree.VerticesSize = VertexSize;
+            tree.VertexShape = VertexShape;
+            tree.VertexSize = VertexSize;
             tree.Create(drawingDocument);
 
             // Arrange diagram
@@ -181,13 +181,13 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a random tree
                 NGenericTreeTemplate tree = new NGenericTreeTemplate();
-                tree.EdgesUserClass = "Connector";
+                tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 tree.Levels = 6;
                 tree.BranchNodes = 3;
                 tree.HorizontalSpacing = 10;
                 tree.VerticalSpacing = 10;
-                tree.VerticesShape = VertexShape;
-                tree.VerticesSize = VertexSize;
+                tree.VertexShape = VertexShape;
+                tree.VertexSize = VertexSize;
                 tree.Balanced = true;
                 tree.VertexSizeDeviation = 0;
 
@@ -212,13 +212,13 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a random tree
                 NGenericTreeTemplate tree = new NGenericTreeTemplate();
-                tree.EdgesUserClass = "Connector";
+                tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 tree.Levels = 8;
                 tree.BranchNodes = 2;
                 tree.HorizontalSpacing = 10;
                 tree.VerticalSpacing = 10;
-                tree.VerticesShape = VertexShape;
-                tree.VerticesSize = VertexSize;
+                tree.VertexShape = VertexShape;
+                tree.VertexSize = VertexSize;
                 tree.Balanced = true;
                 tree.VertexSizeDeviation = 0;
 

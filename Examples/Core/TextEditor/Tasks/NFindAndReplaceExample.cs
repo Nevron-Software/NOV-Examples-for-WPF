@@ -5,10 +5,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	/// <summary>
-	/// The example demonstrates how to programmatically create paragraphs with different inline formatting.
-	/// </summary>
-	public class NFindAndReplaceExample : NExampleBase
+    /// <summary>
+    /// The example demonstrates how to programmatically create paragraphs with different inline formatting.
+    /// </summary>
+    public class NFindAndReplaceExample : NExampleBase
 	{
 		#region Constructors
 

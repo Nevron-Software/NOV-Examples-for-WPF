@@ -127,7 +127,6 @@ namespace Nevron.Nov.Examples.Text
 
 		#endregion
 
-
 		#region Static Methods
 
 		private static NParagraph GetDescriptionParagraph(string text)

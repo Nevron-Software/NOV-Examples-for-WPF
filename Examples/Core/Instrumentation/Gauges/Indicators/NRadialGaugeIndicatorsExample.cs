@@ -67,14 +67,17 @@ namespace Nevron.Nov.Examples.Gauge
 			m_RangeIndicator.Palette = new NTwoColorPalette(NColor.Green, NColor.Red);
 			m_RangeIndicator.Stroke = null;
 			m_RangeIndicator.EndWidth = 20;
+
 			m_RadialGauge.Indicators.Add(m_RangeIndicator);
 
 			m_ValueIndicator = new NNeedleValueIndicator();
 			m_ValueIndicator.Value = 79;
 			m_ValueIndicator.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant1, NColor.White, NColor.Red);
 			m_ValueIndicator.Stroke.Color = NColor.Red;
+			m_ValueIndicator.EnableDampening = true;
 
-			m_ValueIndicator.OffsetFromCenter = -20;
+
+            m_ValueIndicator.OffsetFromCenter = -20;
 
 			m_RadialGauge.Indicators.Add(m_ValueIndicator);
 			m_RadialGauge.SweepAngle = new NAngle(270.0, NUnit.Degree);

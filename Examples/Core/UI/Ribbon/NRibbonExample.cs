@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 
 using Nevron.Nov.Dom;
+using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
@@ -49,7 +50,14 @@ namespace Nevron.Nov.Examples.UI
 			ribbon.Tab.TabPages.Add(viewPage);
 
 			// The help button
-			ribbon.Tab.AdditionalContent = new NRibbonHelpButton();
+			ribbon.Tab.AdditionalHeaderContent = new NRibbonHelpButton();
+
+            // The logo image
+            NImageBox logoImageBox = new NImageBox(NResources.Image_ExamplesUI_Logos_Nevron_emf);
+            logoImageBox.HorizontalPlacement = ENHorizontalPlacement.Right;
+            logoImageBox.PreferredSize = new NSize(179, 24);
+            logoImageBox.Margins = new NMargins(0, 0, NDesign.HorizontalSpacing, 0);
+            ribbon.Tab.AdditionalTabContent = logoImageBox;
 
 			// The ribbon search box
 			ribbon.Tab.SearchBox = new NRibbonSearchBox();
@@ -135,12 +143,15 @@ namespace Nevron.Nov.Examples.UI
 			group.Items.Add(pasteSplitButton);
 
 			NRibbonCollapsiblePanel collapsiblePanel = new NRibbonCollapsiblePanel();
-			collapsiblePanel.InitialState = (int)ENRibbonWidgetState.Medium;
+			collapsiblePanel.InitialState = ENRibbonWidgetState.Medium;
 			group.Items.Add(collapsiblePanel);
 
 			collapsiblePanel.Add(new NRibbonButton("Cut", null, NResources.Image_Ribbon_16x16_clipboard_cut_png));
 			collapsiblePanel.Add(new NRibbonButton("Copy", null, NResources.Image_Ribbon_16x16_clipboard_copy_png));
-			collapsiblePanel.Add(new NRibbonButton("Format Painter", null, NResources.Image_Ribbon_16x16_copy_format_png));
+
+			NRibbonButton ribbonButton = new NRibbonButton("Format Painter", null, NResources.Image_Ribbon_16x16_copy_format_png);
+			ribbonButton.UserClass = NUITheme.UserClassAlert; // Make this an alert button (i.e. a red button)
+			collapsiblePanel.Add(ribbonButton);
 
 			#endregion
 
@@ -261,6 +272,7 @@ namespace Nevron.Nov.Examples.UI
 
 			NRibbonGallery gallery = new NRibbonGallery("Table Style", NResources.Image_Ribbon_32x32_table_design_png, new NTableStylePicker());
 			gallery.MinimumPopupColumnCount = 7;
+            gallery.MaximumColumnCount = 7;
 			gallery.PopupMenu = new NMenu();
 			gallery.PopupMenu.Items.Add(new NMenuSeparator());
 			gallery.PopupMenu.Items.Add(new NMenuItem("Modify Table Style..."));

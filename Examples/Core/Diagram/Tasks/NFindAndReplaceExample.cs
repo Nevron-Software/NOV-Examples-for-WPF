@@ -8,10 +8,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class NFindAndReplaceExample : NExampleBase
+    /// <summary>
+    /// 
+    /// </summary>
+    public class NFindAndReplaceExample : NExampleBase
     {
         #region Constructors
 
@@ -95,17 +95,16 @@ namespace Nevron.Nov.Examples.Diagram
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
 
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-
 			double padding = 10;
 			double sizeX = 160;
 			double sizeY = 160;
 
+			NBasicShapeFactory factory = new NBasicShapeFactory();
 			for (int x = 0; x < 4; x++)
 			{
 				for (int y = 0; y < 4; y++)
 				{
-					NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+					NShape shape1 = factory.CreateShape(ENBasicShape.Rectangle);
 					shape1.SetBounds(padding + x * (padding + sizeX), padding + y * (padding + sizeY), sizeX, sizeY);
 					shape1.TextBlock = new NTextBlock();
 					shape1.TextBlock.Padding = new NMargins(20);
@@ -177,7 +176,7 @@ namespace Nevron.Nov.Examples.Diagram
 		/// <param name="arg"></param>
 		void OnClearHighlightButtonClick(NEventArgs arg)
 		{
-			NList<NNode> shapes = m_DrawingView.Drawing.GetDescendants(NShape.NShapeSchema);
+			NList<NNode> shapes = m_DrawingView.Content.GetDescendants(NShape.NShapeSchema);
 
 			for (int i = 0; i < shapes.Count; i++)
 			{

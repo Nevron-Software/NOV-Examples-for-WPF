@@ -157,7 +157,7 @@ namespace Nevron.Nov.Examples.Text
 			byte[] bytes = NStreamHelpers.ReadToEnd(stream);
 			m_HtmlTextBox.Text = NEncoding.UTF8.GetString(bytes);
 		}
-		private void LoadHtml(Stream stream, string baseUri)
+		private NPromise<bool> LoadHtml(Stream stream, string baseUri)
 		{
 			m_ElapsedTimeLabel.Text = String.Empty;
 
@@ -171,7 +171,7 @@ namespace Nevron.Nov.Examples.Text
 				settings.BaseUri = new NUri(baseUri);
             }
 
-			m_PreviewRichText.LoadFromStream(stream, NTextFormat.Html, settings);
+			return m_PreviewRichText.LoadFromStreamAsync(stream, NTextFormat.Html, settings);
 		}
 
 		#endregion
@@ -195,11 +195,14 @@ namespace Nevron.Nov.Examples.Text
 			string resName = (string)arg1.Item.Tag;
 
 			// Read the stream and set it as text of the HTML code text box
-			using (Stream stream = NResources.Instance.GetResourceStream(resName))
-			{
-				LoadSource(stream);
-				LoadHtml(stream, null);
-			}
+			Stream stream = NResources.Instance.GetResourceStream(resName);
+			LoadSource(stream);
+			LoadHtml(stream, null).Finally(
+				delegate()
+				{
+					stream.Close();
+				}
+			);
 		}
 		private void OnGoButtonClick(NEventArgs arg1)
 		{
@@ -220,7 +223,7 @@ namespace Nevron.Nov.Examples.Text
 				// Load from file
 				NFile file = NFileSystem.Current.GetFile(url);
 				
-				file.OpenRead().Then(delegate (Stream stream)
+				file.OpenReadAsync().Then(delegate (Stream stream)
 				{
 					using (stream)
 					{
@@ -235,7 +238,7 @@ namespace Nevron.Nov.Examples.Text
 				try
 				{
 					m_Stopwatch = NStopwatch.StartNew();
-					m_PreviewRichText.LoadFromUri((NUri)uri);
+					m_PreviewRichText.LoadFromUriAsync((NUri)uri);
 				}
 				catch (Exception ex)
 				{

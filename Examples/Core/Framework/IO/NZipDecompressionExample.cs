@@ -101,7 +101,7 @@ namespace Nevron.Nov.Examples.Framework
 				return;
 
 			NFile file = arg.Files[0];
-			file.OpenRead().Then(
+			file.OpenReadAsync().Then(
 				delegate (Stream stream)
 				{
 					using(stream)

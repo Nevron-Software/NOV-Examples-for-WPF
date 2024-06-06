@@ -118,13 +118,13 @@ namespace Nevron.Nov.Examples.Diagram
 
             // Create random diagram
             NGenericTreeTemplate template = new NGenericTreeTemplate();
-            template.EdgesUserClass = "Connector";
+            template.EdgeUserClass = NDR.StyleSheetNameConnectors;
             template.Balanced = false;
             template.Levels = 6;
             template.BranchNodes = 3;
             template.HorizontalSpacing = 10;
             template.VerticalSpacing = 10;
-            template.VerticesSize = new NSize(50, 50);
+            template.VertexSize = new NSize(50, 50);
             template.VertexSizeDeviation = 1;
             template.Create(drawingDocument);
 
@@ -172,13 +172,13 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a random tree
                 NGenericTreeTemplate tree = new NGenericTreeTemplate();
-                tree.EdgesUserClass = "Connector";
+                tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 tree.Levels = 6;
                 tree.BranchNodes = 3;
                 tree.HorizontalSpacing = 10;
                 tree.VerticalSpacing = 10;
-                tree.VerticesShape = VertexShape;
-                tree.VerticesSize = VertexSize;
+                tree.VertexShape = VertexShape;
+                tree.VertexSize = VertexSize;
                 tree.Balanced = false;
                 tree.VertexSizeDeviation = 1;
 
@@ -203,13 +203,13 @@ namespace Nevron.Nov.Examples.Diagram
 
                 // create a random tree
                 NGenericTreeTemplate tree = new NGenericTreeTemplate();
-                tree.EdgesUserClass = "Connector";
+                tree.EdgeUserClass = NDR.StyleSheetNameConnectors;
                 tree.Levels = 8;
                 tree.BranchNodes = 2;
                 tree.HorizontalSpacing = 10;
                 tree.VerticalSpacing = 10;
-                tree.VerticesShape = VertexShape;
-                tree.VerticesSize = VertexSize;
+                tree.VertexShape = VertexShape;
+                tree.VertexSize = VertexSize;
                 tree.Balanced = false;
                 tree.VertexSizeDeviation = 1;
 

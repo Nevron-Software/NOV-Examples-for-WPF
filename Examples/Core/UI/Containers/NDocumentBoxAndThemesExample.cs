@@ -59,10 +59,10 @@ namespace Nevron.Nov.Examples.UI
 			NColor backgroundColor = NColor.Orange;
 
 			NSkin[] tabSkins = new NSkin[] {
-			  TabSkins.Top.FarTabPageHeaderSkin,
-			  TabSkins.Top.InnerTabPageHeaderSkin,
-			  TabSkins.Top.NearAndFarTabPageHeaderSkin,
-			  TabSkins.Top.NearTabPageHeaderSkin };
+			  TabSkins.Top.Far,
+			  TabSkins.Top.Inner,
+			  TabSkins.Top.NearAndFar,
+			  TabSkins.Top.Near };
 
 			for (int i = 0; i < tabSkins.Length; i++)
 			{
@@ -120,9 +120,8 @@ namespace Nevron.Nov.Examples.UI
 			// Create the document box
 			m_DocumentBox = new NDocumentBox();
 			m_DocumentBox.HorizontalPlacement = ENHorizontalPlacement.Left;
-			m_DocumentBox.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_DocumentBox.BorderThickness = new NMargins(1);
-			m_DocumentBox.Surface = new NDocumentBoxSurface(table);
+			m_DocumentBox.SetBorder(1, NColor.Red);
+            m_DocumentBox.Surface = new NDocumentBoxSurface(table);
 
 			return m_DocumentBox;
 		}
@@ -171,6 +170,10 @@ namespace Nevron.Nov.Examples.UI
 
 			themeItem = new NTreeViewItem("Windows 10");
 			themeItem.Tag = new NWindows10Theme();
+			rootItem.Items.Add(themeItem);
+
+			themeItem = new NTreeViewItem("Windows 11");
+			themeItem.Tag = new NWindows11Theme();
 			rootItem.Items.Add(themeItem);
 
 			themeItem = new NTreeViewItem("Mac OS X 10.7 Lion");
@@ -253,6 +256,8 @@ namespace Nevron.Nov.Examples.UI
 			stack.VerticalSpacing = 10;
 
 			NCheckBox checkBox = new NCheckBox("Check Box");
+            checkBox.Click += OnCheckBoxClick;
+			checkBox.ToggleCheckedOnClick = false;
 			stack.Add(checkBox);
 
 			NRadioButton radioButton = new NRadioButton("Radio Button");
@@ -263,7 +268,29 @@ namespace Nevron.Nov.Examples.UI
 
 			return stack;
 		}
-		private NListBox CreateListBox()
+
+        private void OnCheckBoxClick(NEventArgs arg)
+        {
+			NCheckBox checkBox = (NCheckBox)arg.TargetNode;
+			if (checkBox.Checked)
+			{
+				checkBox.Checked = false;
+				if (checkBox.Indeterminate)
+				{
+					checkBox.Indeterminate = false;
+				}
+				else
+				{
+					checkBox.Indeterminate = true;
+				}
+			}
+			else
+			{
+				checkBox.Checked = true;
+			}
+        }
+
+        private NListBox CreateListBox()
 		{
 			NListBox listBox = new NListBox();
 			for (int i = 1; i <= 20; i++)
@@ -366,7 +393,7 @@ namespace Nevron.Nov.Examples.UI
 			pageHome.Groups.Add(group);
 
 			NRibbonSplitButton pasteSplitButton = NRibbonSplitButton.CreateLarge("Paste", NResources.Image_Ribbon_32x32_clipboard_paste_png);
-			pasteSplitButton.CollapseToMedium = ENCollapseCondition.Never;
+            pasteSplitButton.CollapseToMedium = ENCollapseCondition.Never;
 			pasteSplitButton.CollapseToSmall = ENCollapseCondition.Never;
 
 			NMenu pasteMenu = new NMenu();
@@ -378,7 +405,7 @@ namespace Nevron.Nov.Examples.UI
 			group.Items.Add(pasteSplitButton);
 
 			NRibbonCollapsiblePanel collapsiblePanel = new NRibbonCollapsiblePanel();
-			collapsiblePanel.InitialState = (int)ENRibbonWidgetState.Medium;
+			collapsiblePanel.InitialState = ENRibbonWidgetState.Medium;
 			group.Items.Add(collapsiblePanel);
 
 			collapsiblePanel.Add(new NRibbonButton("Cut", null, NResources.Image_Ribbon_16x16_clipboard_cut_png));
@@ -390,7 +417,7 @@ namespace Nevron.Nov.Examples.UI
 			pageHome.Groups.Add(group);
 
 			collapsiblePanel = new NRibbonCollapsiblePanel();
-			collapsiblePanel.InitialState = (int)ENRibbonWidgetState.Medium;
+			collapsiblePanel.InitialState = ENRibbonWidgetState.Medium;
 			group.Items.Add(collapsiblePanel);
 
 			NFillSplitButton fillSplitButton = new NFillSplitButton();
@@ -540,6 +567,18 @@ namespace Nevron.Nov.Examples.UI
 				NTheme theme = (NTheme)selectedItem.Tag;
 				m_DocumentBox.Document.InheritStyleSheets = false;
 				m_DocumentBox.Document.StyleSheets.ApplyTheme(theme);
+
+				NStyleSheet styleSheet = new NStyleSheet();
+				NRule rule = styleSheet.CreateRule(
+					sb =>
+					{
+						sb.Type(NWrapFlowLayout.NWrapFlowLayoutSchema);
+					}
+				);
+
+				rule.AddValueDeclaration(NWrapFlowLayout.DirectionProperty, ENHVDirection.LeftToRight);
+
+				m_DocumentBox.Document.StyleSheets.Add(styleSheet);
 			}
 			else if (NStringHelpers.Equals(selectedItem.Tag, "inherit"))
 			{

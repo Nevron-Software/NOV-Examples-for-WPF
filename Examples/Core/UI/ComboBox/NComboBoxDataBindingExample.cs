@@ -159,7 +159,7 @@ namespace Nevron.Nov.Examples.UI
 
 				// Get the country flag
 				string flagResourceName = "RIMG_CountryFlags_" + country.Code.ToLower() + "_png";
-				NEmbeddedResource flagResource = NResources.Instance.GetResource(flagResourceName);
+				NEmbeddedResource flagResource = Presentation.NResources.Instance.GetResource(flagResourceName);
 				if (flagResource == null)
 					continue;
 

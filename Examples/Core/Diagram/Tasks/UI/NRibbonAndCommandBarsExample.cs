@@ -59,13 +59,12 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 		protected override string GetExampleDescription()
 		{
-			return "<p>This example demonstrates how to switch the NOV Diagram commanding interface between ribbon and command bars.</p>";
+			return "<p>This example demonstrates how to add commanding interface to the NOV Diagram and how to switch between ribbon and command bars.</p>";
 		}
 
 		private void InitDiagram(NDrawingDocument drawingDocument)
 		{
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape.SetBounds(100, 100, 150, 100);
 			drawingDocument.Content.ActivePage.Items.Add(shape);
 		}

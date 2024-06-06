@@ -33,10 +33,9 @@ namespace Nevron.Nov.Examples.UI
 		protected override NWidget CreateExampleContent()
 		{
 			m_TablePanel = new NTableFlowPanel();
-			m_TablePanel.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_TablePanel.BorderThickness = new NMargins(1);
+			m_TablePanel.SetBorder(1, NColor.Red);
 
-			for (int i = 1; i <= 16; i++)
+            for (int i = 1; i <= 16; i++)
 			{
 				m_TablePanel.Add(new NButton("Button " + i.ToString()));
 			}

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 
 using Nevron.Nov.Dom;
@@ -191,7 +192,7 @@ namespace Nevron.Nov.Examples.UI
 			{
 				case ENCommonDialogResult.OK:
 					NFile file = result.Files[0];
-					file.OpenRead().Then(
+					file.OpenReadAsync().Then(
 						delegate (Stream stream)
 						{
 							using (stream)
@@ -258,6 +259,7 @@ namespace Nevron.Nov.Examples.UI
 				new NFileDialogFileType("Text Files", "txt"),
 				new NFileDialogFileType("All Files", "*")
 			};
+			saveFileDialog.InitialDirectory = String.Empty;
 			saveFileDialog.SelectedFilterIndex = 0;
 			saveFileDialog.DefaultFileName = "NevronTest";
 			saveFileDialog.DefaultExtension = "txt";
@@ -271,7 +273,7 @@ namespace Nevron.Nov.Examples.UI
 			switch (result.Result)
 			{
 				case ENCommonDialogResult.OK:
-					result.File.Create().Then(
+					result.File.CreateAsync().Then(
 						delegate (Stream stream)
 						{
 							using (StreamWriter writer = new StreamWriter(stream))

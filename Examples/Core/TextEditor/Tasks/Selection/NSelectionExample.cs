@@ -5,10 +5,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	/// <summary>
-	/// The example demonstrates how to programmatically create paragraphs with differnt inline formatting
-	/// </summary>
-	public class NSelectionExample : NExampleBase
+    /// <summary>
+    /// The example demonstrates how to programmatically create paragraphs with differnt inline formatting
+    /// </summary>
+    public class NSelectionExample : NExampleBase
 	{
 		#region Constructors
 

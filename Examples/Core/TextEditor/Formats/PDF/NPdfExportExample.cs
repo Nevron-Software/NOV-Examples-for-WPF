@@ -63,7 +63,7 @@ namespace Nevron.Nov.Examples.Text
 		private void PopulateRichText()
 		{
 			// Load a document from resource
-			m_RichText.LoadFromResource(NResources.RBIN_DOCX_ComplexDocument_docx);
+			m_RichText.LoadFromResourceAsync(NResources.RBIN_DOCX_ComplexDocument_docx);
 		}
 
 		#endregion
@@ -87,7 +87,7 @@ namespace Nevron.Nov.Examples.Text
 		{
 			if (arg.Result == ENCommonDialogResult.OK)
 			{
-				m_RichText.SaveToFile(arg.File);
+				m_RichText.SaveToFileAsync(arg.File);
 			}
 		}
 

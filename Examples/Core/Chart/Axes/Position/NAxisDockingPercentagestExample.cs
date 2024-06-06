@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Axis docking example
+	/// Axis docking example.
 	/// </summary>
 	public class NAxisDockingPercentagestExample : NExampleBase
 	{
@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -43,7 +44,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
 
-			m_RedAxis = CreateLinearAxis(ENCartesianAxisDockZone.Left, NColor.Red);
+            // clear the default chart axes
+            chart.Axes.Clear();
+
+            m_RedAxis = CreateLinearAxis(ENCartesianAxisDockZone.Left, NColor.Red);
 			chart.Axes.Add(m_RedAxis);
 
 			m_GreenAxis = CreateLinearAxis(ENCartesianAxisDockZone.Right, NColor.Green);
@@ -53,7 +57,7 @@ namespace Nevron.Nov.Examples.Chart
 			m_BlueAxis = CreateLinearAxis(ENCartesianAxisDockZone.Left, NColor.Blue);
 			chart.Axes.Add(m_BlueAxis);
 
-			chart.Axes.Add(NCartesianChart.CreateDockedAxis(ENCartesianAxisDockZone.Bottom, ENScaleType.Orindal));
+			chart.Axes.Add(NCartesianChart.CreateDockedAxis(ENCartesianAxisDockZone.Bottom, ENScaleType.Ordinal));
 
 			// create three line series and dispay them on three vertical axes (red, green and blue axis)
 			NLineSeries line1 = CreateLineSeries(NColor.Red, NColor.DarkRed, 10, 20);
@@ -69,7 +73,7 @@ namespace Nevron.Nov.Examples.Chart
 			line2.VerticalAxis = m_GreenAxis;
 			line3.VerticalAxis = m_BlueAxis;
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -163,7 +167,7 @@ namespace Nevron.Nov.Examples.Chart
 			markerStyle.Visible = true;
 			markerStyle.Border = new NStroke(color);
 			markerStyle.Fill = new NColorFill(lightColor);
-			markerStyle.Shape = ENPointShape.Ellipse;
+			markerStyle.Shape = ENPointShape3D.Ellipse;
 			markerStyle.Size = new NSize(5, 5);
 
 			line.MarkerStyle = markerStyle;

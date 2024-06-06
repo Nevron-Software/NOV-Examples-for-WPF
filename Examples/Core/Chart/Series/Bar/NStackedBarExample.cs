@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -43,8 +44,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
-
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
 			// add interlace stripe
 			NLinearScale linearScale = (NLinearScale)chart.Axes[ENCartesianAxis.PrimaryY].Scale;
@@ -80,12 +79,12 @@ namespace Nevron.Nov.Examples.Chart
 			m_Bar2.DataLabelStyle = CreateDataLabelStyle();
 			m_Bar3.DataLabelStyle = CreateDataLabelStyle();
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
 			// pass some data
 			OnPositiveDataButtonClick(null);
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -187,31 +186,6 @@ namespace Nevron.Nov.Examples.Chart
 			dataLabelStyle.ArrowLength = 0;
 
 			return dataLabelStyle;
-		}
-		/// <summary>
-		/// Gets a format string from the specified index
-		/// </summary>
-		/// <param name="index"></param>
-		/// <returns></returns>
-		private string GetFormatStringFromIndex(int index)
-		{
-			switch (index)
-			{
-				case 0:
-					return "<value>";
-
-				case 1:
-					return "<total>";
-
-				case 2:
-					return "<cumulative>";
-
-				case 3:
-					return "<percent>";
-
-				default:
-					return "";
-			}
 		}
 		/// <summary>
 		/// Creates a label format combo box

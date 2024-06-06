@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
@@ -7,7 +8,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NVisioDrawingExportExample : NExampleBase
+    public class NVisioDrawingExportExample : NExampleBase
 	{
 		#region Constructors
 
@@ -75,30 +76,30 @@ namespace Nevron.Nov.Examples.Diagram
 			drawing.ScreenVisibility.ShowGrid = false;
 			drawing.ScreenVisibility.ShowPorts = false;
 
-			NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			NLibrary flowchartShapes = NLibrary.FlowchartShapes;
 			NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
-			NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
+			NShape nonPrintableShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			nonPrintableShape.Text = "Non printable shape";
 			nonPrintableShape.AllowPrint = false;
 			nonPrintableShape.Geometry.Fill = new NColorFill(NColor.Tomato);
 			nonPrintableShape.SetBounds(50, 50, 150, 50);
 			activePage.Items.Add(nonPrintableShape);
 
-			NShape isLifeGood = flowChartingShapes.CreateShape(ENFlowchartingShape.Decision);
+			NShape isLifeGood = flowchartShapes.CreateShape(ENFlowchartingShape.Decision);
 			isLifeGood.Text = "Is Life Good?";
 			isLifeGood.SetBounds(300, 50, 150, 100);
 			isLifeGood.Geometry.Fill = new NColorFill(NColor.LightSkyBlue);
 			activePage.Items.Add(isLifeGood);
 
-			NShape goodShape = flowChartingShapes.CreateShape(ENFlowchartingShape.Termination);
+			NShape goodShape = flowchartShapes.CreateShape(ENFlowchartingShape.Termination);
 			goodShape.Text = "Good";
 			goodShape.SetBounds(200, 200, 100, 100);
 			goodShape.Geometry.Fill = new NColorFill(NColor.Gold);
 			activePage.Items.Add(goodShape);
 
-			NShape changeSomething = flowChartingShapes.CreateShape(ENFlowchartingShape.Process);
+			NShape changeSomething = flowchartShapes.CreateShape(ENFlowchartingShape.Process);
 			changeSomething.Text = "Change Something";
 			changeSomething.Geometry.Fill = new NColorFill(NColor.Thistle);
 			changeSomething.SetBounds(450, 200, 100, 100);
@@ -128,15 +129,15 @@ namespace Nevron.Nov.Examples.Diagram
 
 		private void OnSaveAsButtonClick(NEventArgs arg)
 		{
-			string fileName = m_DrawingView.Drawing.Information.FileName;
+			string fileName = m_DrawingView.Content.Information.FileName;
 			if (String.IsNullOrEmpty(fileName) || !fileName.EndsWith("vsdx", StringComparison.OrdinalIgnoreCase))
 			{
 				// The document has not been saved, yet, so set a file name with VSDX extension
 				// to make the default Save As dialog show Visio Drawing as file save as type
-				m_DrawingView.Drawing.Information.FileName = "Document1.vsdx";
+				m_DrawingView.Content.Information.FileName = "Document1.vsdx";
 			}
 
-            m_DrawingView.SaveAs();
+            m_DrawingView.SaveAsAsync();
 		}
 
 		#endregion

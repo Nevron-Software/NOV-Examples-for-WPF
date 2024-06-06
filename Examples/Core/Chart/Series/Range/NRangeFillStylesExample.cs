@@ -1,6 +1,4 @@
-﻿using System;
-
-using Nevron.Nov.Chart;
+﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
@@ -35,7 +33,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -79,7 +78,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			NLegend legend = (NLegend)chartView.Surface.Legends[0];
 			legend.Mode = ENLegendMode.Custom;
-			legend.Header = new NLabel("Some header");
+			legend.Header = new NLabel("Some of World's Tallest Buildings");
 			double xOffset = 0;
 
 			for (int i = 0; i < buildingNames.Length; i++)
@@ -118,7 +117,7 @@ namespace Nevron.Nov.Examples.Chart
 				legend.Items.Add(new NPairBox(buildingCountryImageBox, new NLabel(buildingNames[i] + ", " + countryNames[i])));
 			}
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 
         protected override NWidget CreateExampleControls()

@@ -83,9 +83,6 @@ namespace Nevron.Nov.Examples.Gauge
 			m_RadialGauge.SweepAngle = new NAngle(270, NUnit.Degree);
 			m_RadialGauge.BeginAngle = new NAngle(-90, NUnit.Degree);
 
-			// FIX remove
-			axis.Scale.Title.Text = "Axis Title";
-
 			NStandardScale scale = axis.Scale as NStandardScale;
 			scale.MajorTickMode = ENMajorTickMode.AutoMinDistance;
 			scale.MinTickDistance = 50;

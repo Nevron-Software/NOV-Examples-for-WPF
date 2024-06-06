@@ -34,6 +34,7 @@ namespace Nevron.Nov.Examples.Text
 		{
 			// Create the rich text
 			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+
 			m_RichText = richTextWithRibbon.View;
 			m_RichText.AcceptsTab = true;
 			m_RichText.Content.Sections.Clear();
@@ -48,7 +49,7 @@ namespace Nevron.Nov.Examples.Text
 			NStackPanel stack = new NStackPanel();
 
 			NButton jumpToBookmarkButton = new NButton("Jump to Bookmark");
-			jumpToBookmarkButton.Click += new Function<NEventArgs>(OnJumpToBookmarkButtonClick);
+			jumpToBookmarkButton.Click += OnJumpToBookmarkButtonClick;
 
 			stack.Add(jumpToBookmarkButton);
 
@@ -69,21 +70,28 @@ namespace Nevron.Nov.Examples.Text
 
 			section.Blocks.Add(GetDescriptionBlock("Hyperlink Inlines", "The example shows how to use hyperlinks inlines.", 1));
 
-			// Hyperlink inline with a hyperlink to an URL
+			// Field inline with a hyperlink to a bookmark
 			{
-				NHyperlinkInline hyperlinkInline = new NHyperlinkInline();
-				hyperlinkInline.Hyperlink = new NUrlHyperlink("http://www.nevron.com", ENUrlHyperlinkTarget.SameWindowSameFrame);
-				hyperlinkInline.Text = "Jump to www.nevron.com";
+				NFieldInline bookmarkHyperlinkInline = new NFieldInline("Jump to MyBookmark", new NBookmarkHyperlink("MyBookmark"));
 
 				NParagraph paragraph = new NParagraph();
-				paragraph.Inlines.Add(hyperlinkInline);
+				paragraph.Inlines.Add(bookmarkHyperlinkInline);
+				section.Blocks.Add(paragraph);
+			}
+
+			// Field inline with a hyperlink to an URL
+			{
+				NFieldInline urlHyperlinkInline = new NFieldInline("Jump to www.nevron.com", new NUrlHyperlink("http://www.nevron.com", ENUrlHyperlinkTarget.SameWindowSameFrame));
+
+				NParagraph paragraph = new NParagraph();
+				paragraph.Inlines.Add(urlHyperlinkInline);
 				section.Blocks.Add(paragraph);
 			}
 
 			// Image inline with a hyperlink to an URL
 			{
 				NImageInline imageInline = new NImageInline();
-				imageInline.Image = Nov.Diagram.NResources.Image_MyDraw_Logos_MyDrawLogo_png;
+				imageInline.Image = Nov.Diagram.NResources.Image_MyDraw_Logos_MyDrawLogo_svg;
 				imageInline.Hyperlink = new NUrlHyperlink("http://www.mydraw.com", ENUrlHyperlinkTarget.SameWindowSameFrame);
 
 				NParagraph paragraph = new NParagraph();
@@ -96,17 +104,17 @@ namespace Nevron.Nov.Examples.Text
 				section.Blocks.Add(new NParagraph("Some paragraph"));
 			}
 
-			// Bookmark inline
+			// Bookmark
 			{
 				NParagraph paragraph = new NParagraph();
 
-				NBookmarkInline bookmark = new NBookmarkInline();
-				bookmark.Name = "MyBookmark";
-				bookmark.Text = "This is a bookmark";
-				bookmark.Fill = new NColorFill(NColor.Red);
-				paragraph.Inlines.Add(bookmark);
+				NTextInline textInline = new NTextInline("This is a bookmark");
+				textInline.Fill = new NColorFill(NColor.Red);
+				paragraph.Inlines.Add(textInline);
 
 				section.Blocks.Add(paragraph);
+
+				m_RichText.Content.Bookmarks.Create("MyBookmark", textInline);
 			}
 		}
 
@@ -114,7 +122,7 @@ namespace Nevron.Nov.Examples.Text
 
 		#region Event Handlers
 
-		void OnJumpToBookmarkButtonClick(NEventArgs arg)
+		private void OnJumpToBookmarkButtonClick(NEventArgs arg)
 		{
 			m_RichText.Content.Goto(ENTextDocumentPart.Bookmark, "MyBookmark", true);
 		}
@@ -132,7 +140,6 @@ namespace Nevron.Nov.Examples.Text
 		public static readonly NSchema NHyperlinkInlinesExampleSchema;
 
 		#endregion
-
 
 		#region Static Methods
 

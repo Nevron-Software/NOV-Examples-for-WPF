@@ -38,7 +38,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateTreeMapView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard TreeMap";
@@ -69,9 +71,17 @@ namespace Nevron.Nov.Examples.Chart
 				NXmlElement industry = (NXmlElement)rootElement.GetChildAt(i);
 				NGroupTreeMapNode treeMapSeries = new NGroupTreeMapNode();
 
-				treeMapSeries.BorderThickness = new NMargins(4.0);
-				treeMapSeries.Border = NBorder.CreateFilledBorder(NColor.Black);
-				treeMapSeries.Padding = new NMargins(2.0);
+				
+				treeMapSeries.BorderThickness = new NMargins(14.0);
+				if (i == 0)
+				{
+					treeMapSeries.Border = NBorder.CreateFilledBorder(NColor.Black);
+					treeMapSeries.Border.RightTopCorner = new NBorderCorner(NColor.Red);
+                    treeMapSeries.Border.BottomLeftCorner = new NBorderCorner(NColor.Blue);
+
+                }
+
+					treeMapSeries.Padding = new NMargins(12.0);
 
 				m_RootTreeMapNode.ChildNodes.Add(treeMapSeries);
 
@@ -94,7 +104,7 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -156,17 +166,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NStandardTreeMapExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateTreeMapView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
-			return chartView;
-		}
 
 		#endregion
 	}

@@ -51,8 +51,13 @@ namespace Nevron.Nov.Examples.Text
 			m_CommandBarBuilder.ToolBarBuilders.Remove(NLoc.Get("Standard"));
 			m_CommandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
 
-			// Create the command bars UI
-			return m_CommandBarBuilder.CreateUI(m_RichText);
+			// Create the commanding UI
+			NCommandUIHolder richTextViewWithCommandBars = m_CommandBarBuilder.CreateUI(m_RichText);
+
+			// Remove the Open command from the File menu and the page number command from the status bar
+			richTextViewWithCommandBars.RemoveCommands(NRichTextView.OpenCommand, NRichTextView.PageNumberStatusBarCommand);
+
+			return richTextViewWithCommandBars;
 		}
 
 		protected override NWidget CreateExampleControls()

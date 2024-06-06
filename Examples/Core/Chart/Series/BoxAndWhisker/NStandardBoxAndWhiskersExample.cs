@@ -33,14 +33,11 @@ namespace Nevron.Nov.Examples.Chart
 
         #region Example
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         protected override NWidget CreateExampleContent()
         {
-            NChartView chartView = new NChartView();
-            chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
             // configure title
             chartView.Surface.Titles[0].Text = "Standard Box and Whiskers";
@@ -57,7 +54,7 @@ namespace Nevron.Nov.Examples.Chart
             linearScale.Strips.Add(strip);
 
             m_BoxAndWhiskerSeries = new NBoxAndWhiskerSeries();
-            m_BoxAndWhiskerSeries.WidthMode = ENBarWidthMode.FixedWidth;
+            m_BoxAndWhiskerSeries.WidthSizeMode = ENBarSizeMode.Fixed;
             m_Chart.Series.Add(m_BoxAndWhiskerSeries);
 
             m_BoxAndWhiskerSeries.Fill = new NStockGradientFill(ENGradientStyle.Vertical, ENGradientVariant.Variant4, NColor.LightYellow, NColor.DarkOrange);
@@ -69,12 +66,8 @@ namespace Nevron.Nov.Examples.Chart
 
             GenerateData(m_BoxAndWhiskerSeries, 7);
 
-            return chartView;
+            return chartViewWithCommandBars;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         protected override NWidget CreateExampleControls()
         {
             NStackPanel stack = new NStackPanel();
@@ -106,7 +99,6 @@ namespace Nevron.Nov.Examples.Chart
 
             return boxGroup;
         }
-
         protected override string GetExampleDescription()
         {
             return @"<p>This example demonstrates how to create a standard box and whisker chart.</p>";

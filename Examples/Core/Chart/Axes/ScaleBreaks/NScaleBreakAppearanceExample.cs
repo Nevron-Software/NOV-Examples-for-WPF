@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -56,7 +57,8 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_ScaleBreak = new NAutoScaleBreak(0.4f);
 			m_ScaleBreak.PositionMode = ENScaleBreakPositionMode.Percent;
-			yScale.ScaleBreaks.Add(m_ScaleBreak);
+
+            yScale.ScaleBreaks.Add(m_ScaleBreak);
 
 			// add an interlaced strip to the Y axis
 			NScaleStrip interlacedStrip = new NScaleStrip();
@@ -86,9 +88,9 @@ namespace Nevron.Nov.Examples.Chart
 				bar.DataPoints.Add(new NBarDataPoint(random.Next(30)));
 			}	
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

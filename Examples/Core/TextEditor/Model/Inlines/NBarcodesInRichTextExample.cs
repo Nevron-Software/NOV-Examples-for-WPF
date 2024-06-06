@@ -101,7 +101,7 @@ namespace Nevron.Nov.Examples.Text
 			cell = table.Rows[1].Cells[1];
 			paragraph = (NParagraph)cell.Blocks[0];
 			paragraph.Inlines.Add(new NTextInline("The QR code to the left contains a link to "));
-			paragraph.Inlines.Add(new NHyperlinkInline("https://www.nevron.com", "https://www.nevron.com"));
+			paragraph.Inlines.Add(new NFieldInline("https://www.nevron.com", new NUrlHyperlink("https://www.nevron.com")));
 			paragraph.Inlines.Add(new NTextInline("."));
 		}
 
@@ -121,7 +121,6 @@ namespace Nevron.Nov.Examples.Text
 		public static readonly NSchema NBarcodesInRichTextExampleSchema;
 
 		#endregion
-
 
 		#region Static Methods
 

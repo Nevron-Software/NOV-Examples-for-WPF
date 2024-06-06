@@ -34,8 +34,8 @@ namespace Nevron.Nov.Examples.Barcode
 		{
 			// Create a linear barcode widget
 			m_Barcode = new NLinearBarcode();
-			m_Barcode.Symbology = ENLinearBarcodeSymbology.Code39;
-			m_Barcode.Text = "NEVRON";
+            m_Barcode.Symbology = ENLinearBarcodeSymbology.Code39;
+            m_Barcode.Text = "NEVRON";
 			m_Barcode.HorizontalPlacement = ENHorizontalPlacement.Center;
 			m_Barcode.VerticalPlacement = ENVerticalPlacement.Center;
 
@@ -63,6 +63,7 @@ namespace Nevron.Nov.Examples.Barcode
 
 			return new NUniSizeBoxGroup(stack);
 		}
+		///
 		protected override string GetExampleDescription()
 		{
 			return @"

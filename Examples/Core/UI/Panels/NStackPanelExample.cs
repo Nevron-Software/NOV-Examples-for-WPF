@@ -32,12 +32,10 @@ namespace Nevron.Nov.Examples.UI
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_StackPanel = new NStackPanel();
-			
-			m_StackPanel.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_StackPanel.BorderThickness = new NMargins(1);
+			m_StackPanel = new NStackPanel();			
+			m_StackPanel.SetBorder(1, NColor.Red);
 
-			for (int i = 1; i <= 16; i++)
+            for (int i = 1; i <= 16; i++)
 			{
 				m_StackPanel.Add(new NButton("Button " + i.ToString()));
 			}

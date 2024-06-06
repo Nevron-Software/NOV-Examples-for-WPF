@@ -31,7 +31,7 @@ namespace Nevron.Nov.Examples.UI
 		{
 			NCommandBarManager manager = new NCommandBarManager();
 
-			// create two lanes
+			// Create two lanes
 			NCommandBarLane lane0 = new NCommandBarLane();
 			manager.TopDock.Add(lane0);
 
@@ -43,7 +43,7 @@ namespace Nevron.Nov.Examples.UI
 			NCommandBarLane lane3 = new NCommandBarLane();
 			manager.TopDock.Add(lane3);
 
-			// create a menu bar in the first lane
+			// Create a menu bar in the first lane
 			NMenuBar menuBar = new NMenuBar();
 			lane0.Add(menuBar);
 
@@ -52,7 +52,7 @@ namespace Nevron.Nov.Examples.UI
 			menuBar.Items.Add(CreateViewMenu());
 			menuBar.Text = "Main Menu";
 
-			//Create File toolbar.
+			// Create the File toolbar
 			NToolBar fileToolBar = new NToolBar();
 			lane1.Add(fileToolBar);
 			fileToolBar.Text = "File";
@@ -60,10 +60,15 @@ namespace Nevron.Nov.Examples.UI
 			AddToolBarItem(fileToolBar, Nevron.Nov.Presentation.NResources.Image_File_New_png, null, "New");
 			AddToolBarItem(fileToolBar, Nevron.Nov.Presentation.NResources.Image_File_Open_png, null, "Open");
 			fileToolBar.Items.Add(new NCommandBarSeparator());
+
 			AddToolBarItem(fileToolBar, Nevron.Nov.Presentation.NResources.Image_File_Save_png, null, "Save...");
 			AddToolBarItem(fileToolBar, Nevron.Nov.Presentation.NResources.Image_File_SaveAs_png, null, "Save As...");
+			fileToolBar.Items.Add(new NCommandBarSeparator());
+
+			NButton executeButton = AddToolBarItem(fileToolBar, Nevron.Nov.Presentation.NResources.Image_Edit_Update_png, "Execute");
+			executeButton.UserClass = NUITheme.UserClassAlert; // Make this an alert button (i.e. a red button)
 			
-			//Create Edit toolbar.
+			// Create the Edit toolbar
 			NToolBar editToolBar = new NToolBar();
 			lane1.Add(editToolBar);
 			editToolBar.Text = "Edit";
@@ -75,12 +80,12 @@ namespace Nevron.Nov.Examples.UI
 			AddToolBarItem(editToolBar, Nevron.Nov.Presentation.NResources.Image_Edit_Cut_png, "Cut");
 			AddToolBarItem(editToolBar, Nevron.Nov.Presentation.NResources.Image_Edit_Paste_png, "Paste");
 
-			//Create View toolbar.
+			// Create the View toolbar
 			NToolBar viewToolBar = new NToolBar();
 			lane1.Add(viewToolBar);
 			viewToolBar.Text = "View";
 
-			//Add toggle buttons in a toggle button group which acts like radio buttons.
+			// Add toggle buttons in a toggle button group which acts like radio buttons.
 			AddToggleToolBarItem(viewToolBar, Nevron.Nov.Text.NResources.Image_Layout_Normal_png, "Normal Layout");
 			AddToggleToolBarItem(viewToolBar, Nevron.Nov.Text.NResources.Image_Layout_Web_png, "Web Layout");
 			AddToggleToolBarItem(viewToolBar, Nevron.Nov.Text.NResources.Image_Layout_Print_png, "Print Layout");
@@ -109,7 +114,7 @@ namespace Nevron.Nov.Examples.UI
 
 			toolbar.Items.Add(splitButton);
 
-			//Add toggle button which enable/disables the next fill split button.
+			// Add toggle button which enable/disables the next fill split button.
 			NToggleButton toggleButton = new NToggleButton("Enable");			
 			toggleButton.CheckedChanged += OnToggleButtonCheckedChanged;
 			toolbar.Items.Add(toggleButton);
@@ -209,25 +214,24 @@ namespace Nevron.Nov.Examples.UI
 
 			return view;
 		}
-		private void AddToggleToolBarItem(NToolBar toolBar, NImage image, string tooltip)
+
+		private NToggleButton AddToggleToolBarItem(NToolBar toolBar, NImage image, string tooltip)
 		{
-			NToggleButton item = new NToggleButton(image);
-			item.Tooltip = new NTooltip(tooltip);
-			NCommandBar.SetText(item, tooltip);
-			NCommandBar.SetImage(item, image);
-			toolBar.Items.Add(item);			
+			NToggleButton toggleButton = new NToggleButton(image);
+			toggleButton.Tooltip = new NTooltip(tooltip);
+			NCommandBar.SetText(toggleButton, tooltip);
+			NCommandBar.SetImage(toggleButton, image);
+			toolBar.Items.Add(toggleButton);
+
+			return toggleButton;
 		}
-		private void AddToolBarItem(NToolBar toolBar, NImage image)
+		private NButton AddToolBarItem(NToolBar toolBar, NImage image, string text)
 		{
-			AddToolBarItem(toolBar, image, null);
+			return AddToolBarItem(toolBar, image, text, text);
 		}
-		private void AddToolBarItem(NToolBar toolBar, NImage image, string text)
+		private NButton AddToolBarItem(NToolBar toolBar, NImage image, string text, string tooltip)
 		{
-			AddToolBarItem(toolBar, image, text, text);
-		}
-		private void AddToolBarItem(NToolBar toolBar, NImage image, string text, string tooltip)
-		{
-			NWidget item;
+			NButton button;
 			if (text == null)
 			{
 				text = string.Empty;
@@ -235,27 +239,28 @@ namespace Nevron.Nov.Examples.UI
 
 			if (image == null)
 			{
-				item = new NButton(text);
+				button = new NButton(text);
 			}
 			else
 			{
-				item = new NButton(NPairBox.Create(image, text));
-
+				button = new NButton(NPairBox.Create(image, text));
 			}
 
 			if (!string.IsNullOrEmpty(tooltip))
 			{
-				item.Tooltip = new NTooltip(tooltip);
+				button.Tooltip = new NTooltip(tooltip);
 			}
 
-			toolBar.Items.Add(item);
+			toolBar.Items.Add(button);
 
-			NCommandBar.SetText(item, text);
+			NCommandBar.SetText(button, text);
 
 			if (image != null)
 			{
-				NCommandBar.SetImage(item, (NImage)image.DeepClone());
+				NCommandBar.SetImage(button, (NImage)image.DeepClone());
 			}
+
+			return button;
 		}
 		private NMenuItem CreateMenuItem(string text, NImage image)
 		{

@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Axis value crossing example
+	/// Axis value crossing example.
 	/// </summary>
 	public class NAxisValueCrossingExample : NExampleBase
 	{
@@ -33,13 +33,10 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Surface.Titles[0].Text = "Axis Value Crossing";
@@ -51,11 +48,8 @@ namespace Nevron.Nov.Examples.Chart
 			NCartesianAxis primaryX = m_Chart.Axes[ENCartesianAxis.PrimaryX];
 			NCartesianAxis primaryY = m_Chart.Axes[ENCartesianAxis.PrimaryY];
 
-			// configure axes
-			NLinearScale scaleY = (NLinearScale)primaryY.Scale;
-
-			// configure scales
-			NLinearScale yScale = (NLinearScale)m_Chart.Axes[ENCartesianAxis.PrimaryY].Scale;
+            // configure scales
+            NLinearScale yScale = (NLinearScale)primaryY.Scale;
 			yScale.MajorGridLines = CreateDottedGrid();
 
 			NScaleStrip yStrip = new NScaleStrip(new NColorFill(new NColor(NColor.LightGray, 40)), null, true, 0, 0, 1, 1);
@@ -70,12 +64,16 @@ namespace Nevron.Nov.Examples.Chart
 			xScale.Strips.Add(xStrip);
 
 			// cross X and Y axes at their 0 values
-			primaryX.Anchor = new NValueCrossCartesianAxisAnchor(0, primaryY, ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+            NCrossCartesianAxisAnchor crossXAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+			crossXAnchor.YAxisCrossing = new NValueAxisCrossing(primaryY, 0); ;
+            primaryX.Anchor = crossXAnchor;
 
-			primaryY.Anchor = new NValueCrossCartesianAxisAnchor(0, primaryX, ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Left, 0.0f, 100.0f);
+            NCrossCartesianAxisAnchor crossYAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Right, 0.0f, 100.0f);
+            crossXAnchor.XAxisCrossing = new NValueAxisCrossing(primaryX, 0);
+            primaryY.Anchor = crossYAnchor;
 
-			// setup bubble series
-			NBubbleSeries bubble = new NBubbleSeries();
+            // setup bubble series
+            NBubbleSeries bubble = new NBubbleSeries();
 			bubble.Name = "Bubble Series";
 			bubble.InflateMargins = true;
 			bubble.DataLabelStyle = new NDataLabelStyle(false);
@@ -91,15 +89,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(bubble);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -128,7 +121,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to cross two axes at a specified value.</p>";
@@ -164,7 +156,10 @@ namespace Nevron.Nov.Examples.Chart
 			{
 				double posValue = m_HorizontalAxisPositionValueUpDown.Value;
 
-				m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor = new NValueCrossCartesianAxisAnchor(posValue, m_Chart.Axes[ENCartesianAxis.PrimaryY], ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+                NCrossCartesianAxisAnchor xAxisAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+				xAxisAnchor.YAxisCrossing = new NValueAxisCrossing(m_Chart.Axes[ENCartesianAxis.PrimaryY], posValue);
+					
+				m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor = xAxisAnchor;
 			}
 			else
 			{
@@ -174,21 +169,21 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnHorizontalAxisPositionValueUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			NValueCrossCartesianAxisAnchor crossAnchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NValueCrossCartesianAxisAnchor;
+            NCrossCartesianAxisAnchor crossAnchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NCrossCartesianAxisAnchor;
 
 			if (crossAnchor != null)
 			{
-				crossAnchor.Value = ((NNumericUpDown)arg.TargetNode).Value;
+                (crossAnchor.YAxisCrossing as NValueAxisCrossing).Value = ((NNumericUpDown)arg.TargetNode).Value;
 			}
 		}
 
 		void OnVerticalAxisPositionValueUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			NValueCrossCartesianAxisAnchor crossAnchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NValueCrossCartesianAxisAnchor;
+            NCrossCartesianAxisAnchor crossAnchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NCrossCartesianAxisAnchor;
 
-			if (crossAnchor != null)
+            if (crossAnchor != null)
 			{
-				crossAnchor.Value = ((NNumericUpDown)arg.TargetNode).Value;
+                (crossAnchor.XAxisCrossing as NValueAxisCrossing).Value = ((NNumericUpDown)arg.TargetNode).Value;
 			}
 		}
 
@@ -199,9 +194,11 @@ namespace Nevron.Nov.Examples.Chart
 
 			if (usePosition)
 			{
-				double posValue = m_VerticalAxisPositionValueUpDown.Value;
+				NAxisCrossing xCrossing = new NValueAxisCrossing(m_Chart.Axes[ENCartesianAxis.PrimaryX], m_VerticalAxisPositionValueUpDown.Value);
+				NCrossCartesianAxisAnchor xCrossAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Left, 0.0f, 100.0f);
+				xCrossAnchor.XAxisCrossing = xCrossing;
 
-				m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor = new NValueCrossCartesianAxisAnchor(posValue, m_Chart.Axes[ENCartesianAxis.PrimaryX], ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Left, 0.0f, 100.0f);
+                m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor = xCrossAnchor;
 			}
 			else
 			{

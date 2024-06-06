@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Nevron.Nov.Examples</AssemblyName>
+    <RootNamespace>Nevron.Nov.Examples</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Nevron.Examples.Core.snk</AssemblyOriginatorKeyFile>
+    <OutputPath>..\..\..\Bin\Standard</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(ProjectDir)\NResourceMaker.exe&quot; &quot;$(ProjectDir)\Resources&quot; Resources.xml ResourcesLog.txt" />
+  </Target>
+
+  <ItemGroup>
+    <Compile Remove="_Internal\AreaTest_Internal.cs" />
+    <Compile Remove="_Internal\ImagingTest_Internal.cs" />
+    <Compile Remove="_Internal\MilkyTest_Internal.cs" />
+    <Compile Remove="_Internal\NDebugAreaTestExample_Internal.cs" />
+    <Compile Remove="_Internal\NSimpleStateDiagramExample_Internal.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ExampesHomeScreen.png" />
+    <None Remove="Nevron.Nov.Examples.Mac.csproj.bkp" />
+    <None Remove="Nevron.Nov.Examples.SL.csproj.bkp" />
+    <None Remove="NResourceMaker.exe" />
+    <None Remove="ResourceCompressor.xml" />
+    <None Remove="Resources\BuildLog.xml" />
+    <None Remove="Resources\NResourcesData.bin" />
+    <None Remove="Resources\ResourcesLog.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NResourcesData.bin" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Nevron.Nov.Barcode">
+      <HintPath>..\..\Bin\Nevron.Nov.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Chart">
+      <HintPath>..\..\Bin\Nevron.Nov.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Diagram">
+      <HintPath>..\..\Bin\Nevron.Nov.Diagram.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Grid">
+      <HintPath>..\..\Bin\Nevron.Nov.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Presentation">
+      <HintPath>..\..\Bin\Nevron.Nov.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Schedule">
+      <HintPath>..\..\Bin\Nevron.Nov.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Nov.Text">
+      <HintPath>..\..\Bin\Nevron.Nov.Text.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

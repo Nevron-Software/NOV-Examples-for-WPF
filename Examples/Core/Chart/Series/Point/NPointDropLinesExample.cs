@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Nevron.Nov.Chart;
+using Nevron.Nov.Chart.Tools;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
@@ -35,7 +36,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -46,8 +48,8 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XYLinear);
 
-			// setup X axis
-			NLinearScale scaleX = new NLinearScale();
+            // setup X axis
+            NLinearScale scaleX = new NLinearScale();
 			scaleX.MajorGridLines = new NScaleGridLines();
             scaleX.MajorGridLines.Visible = true;
 			scaleX.MajorGridLines.Stroke.DashStyle = ENDashStyle.Dot;
@@ -66,7 +68,7 @@ namespace Nevron.Nov.Examples.Chart
 			m_Point.DataLabelStyle = new NDataLabelStyle(false);
 			m_Point.Fill = new NColorFill(NColor.DarkOrange);
 			m_Point.Size = 10;
-			m_Point.Shape = ENPointShape.Ellipse;
+			m_Point.Shape = ENPointShape3D.Ellipse;
 			m_Point.UseXValues = true;
 			m_Chart.Series.Add(m_Point);
 
@@ -77,9 +79,9 @@ namespace Nevron.Nov.Examples.Chart
                 m_Point.DataPoints.Add(new NPointDataPoint(i, value));
             }
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

@@ -33,7 +33,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -71,10 +72,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(m_Point);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
-		}
+			return chartViewWithCommandBars;
+        }
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -93,7 +94,7 @@ namespace Nevron.Nov.Examples.Chart
 			stack.Add(NPairBox.Create("Point Size: ", pointSizeNumericUpDown));
 
 			NComboBox pointShapeComboBox = new NComboBox();
-			pointShapeComboBox.FillFromEnum<ENPointShape>();
+			pointShapeComboBox.FillFromEnum<ENPointShape3D>();
 			pointShapeComboBox.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnPointShapeComboBoxSelectedIndexChanged);
 			stack.Add(NPairBox.Create("Point Shape: ", pointShapeComboBox));
 
@@ -110,7 +111,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnPointShapeComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
-			m_Point.Shape = (ENPointShape)(arg.TargetNode as NComboBox).SelectedIndex;
+			m_Point.Shape = (ENPointShape3D)(arg.TargetNode as NComboBox).SelectedIndex;
 		}
 
 		void OnPointSizeNumericUpDownValueChanged(NValueChangeEventArgs arg)

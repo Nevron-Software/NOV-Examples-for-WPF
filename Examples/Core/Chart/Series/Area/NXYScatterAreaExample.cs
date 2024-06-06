@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -43,7 +44,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
-
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XYLinear);
 
             // add interlace stripe
@@ -82,7 +82,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			chart.Series.Add(m_Area);
 
-			return m_ChartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

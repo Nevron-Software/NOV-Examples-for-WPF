@@ -35,7 +35,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreatePolarChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Polar Angle Axis Position";
@@ -98,20 +100,29 @@ namespace Nevron.Nov.Examples.Chart
 			gradScale.Labels.Style.Angle = new NScaleLabelAngle(ENScaleLabelAngleMode.Scale, 0);
 
 			m_GreenAxis.Scale = gradScale;
-			m_GreenAxis.Anchor = new NValueCrossPolarAxisAnchor(70, m_RedAxis, ENPolarAxisOrientation.Angle, ENScaleOrientation.Right);
 
-			m_RedAxis.Anchor = new NDockPolarAxisAnchor(ENPolarAxisDockZone.OuterRim);
+			NValueAxisCrossing greenAxisCrossing = new NValueAxisCrossing(m_RedAxis, 70);
+            NCrossPolarAxisAnchor greenCrossAnchor = new NCrossPolarAxisAnchor(greenAxisCrossing, ENPolarAxisOrientation.Angle, ENScaleOrientation.Right);
 
-			m_Chart.Axes[ENPolarAxis.PrimaryValue].Anchor = new NValueCrossPolarAxisAnchor(90, m_RedAxis, ENPolarAxisOrientation.Value, ENScaleOrientation.Auto);
+			m_GreenAxis.Anchor = greenCrossAnchor;
+
+            m_RedAxis.Anchor = new NDockPolarAxisAnchor(ENPolarAxisDockZone.OuterRim);
+
+            NValueAxisCrossing redAxisCrossing = new NValueAxisCrossing(m_RedAxis, 90);
+            NCrossPolarAxisAnchor redCrossAnchor = new NCrossPolarAxisAnchor(redAxisCrossing, ENPolarAxisOrientation.Value, ENScaleOrientation.Auto);
+
+            m_Chart.Axes[ENPolarAxis.PrimaryValue].Anchor = redCrossAnchor;
 
 			// apply style sheet
 			// color code the axes and series after the stylesheet is applied
 			m_RedAxis.Scale.SetColor(NColor.Red);
 			m_GreenAxis.Scale.SetColor(NColor.Green);
 
-			series2.ValueAxis = m_GreenAxis;
+			m_GreenAxis.VisibilityMode = ENAxisVisibilityMode.Visible;
 
-			return chartView;
+            series2.ValueAxis = m_GreenAxis;
+
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -179,14 +190,19 @@ namespace Nevron.Nov.Examples.Chart
 			}
 			else
 			{
-				m_GreenAxis.Anchor = new NValueCrossPolarAxisAnchor(m_GreenAxisCrossValueUpDown.Value, m_Chart.Axes[ENPolarAxis.PrimaryValue], ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+				NCrossPolarAxisAnchor axisAnchor = new NCrossPolarAxisAnchor(ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+				axisAnchor.Crossing = new NValueAxisCrossing(m_Chart.Axes[ENPolarAxis.PrimaryValue], m_GreenAxisCrossValueUpDown.Value);
+				m_GreenAxis.Anchor = axisAnchor;
+
 				m_GreenAxisCrossValueUpDown.Enabled = true;
 			}
 		}
 
 		void OnGreenAxisCrossValueUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			m_GreenAxis.Anchor = new NValueCrossPolarAxisAnchor(m_GreenAxisCrossValueUpDown.Value, m_Chart.Axes[ENPolarAxis.PrimaryValue], ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+            NCrossPolarAxisAnchor axisAnchor = new NCrossPolarAxisAnchor(ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+            axisAnchor.Crossing = new NValueAxisCrossing(m_Chart.Axes[ENPolarAxis.PrimaryValue], m_GreenAxisCrossValueUpDown.Value);
+            m_GreenAxis.Anchor = axisAnchor;
 		}
 
 		void OnDockRedAxisCheckBoxCheckedChanged(NValueChangeEventArgs arg)
@@ -198,14 +214,19 @@ namespace Nevron.Nov.Examples.Chart
 			}
 			else
 			{
-				m_RedAxis.Anchor = new NValueCrossPolarAxisAnchor(m_RedAxisCrossValueUpDown.Value, m_Chart.Axes[ENPolarAxis.PrimaryValue], ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+                NCrossPolarAxisAnchor axisAnchor = new NCrossPolarAxisAnchor(ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+                axisAnchor.Crossing = new NValueAxisCrossing(m_Chart.Axes[ENPolarAxis.PrimaryValue], m_RedAxisCrossValueUpDown.Value);
+                m_RedAxis.Anchor = axisAnchor;
+
 				m_RedAxisCrossValueUpDown.Enabled = true;
 			}
 		}
 
 		void OnRedAxisCrossValueUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			m_RedAxis.Anchor = new NValueCrossPolarAxisAnchor(m_RedAxisCrossValueUpDown.Value, m_Chart.Axes[ENPolarAxis.PrimaryValue], ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+            NCrossPolarAxisAnchor axisAnchor = new NCrossPolarAxisAnchor(ENPolarAxisOrientation.Angle, ENScaleOrientation.Auto);
+            axisAnchor.Crossing = new NValueAxisCrossing(m_Chart.Axes[ENPolarAxis.PrimaryValue], m_RedAxisCrossValueUpDown.Value);
+            m_RedAxis.Anchor = axisAnchor;
 		}
 
 		#endregion
@@ -262,17 +283,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NPolarAngleAxisPositionExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreatePolarChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
-			return chartView;
-		}
 
 		#endregion
 	}

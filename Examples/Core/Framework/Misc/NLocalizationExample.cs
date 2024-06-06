@@ -47,9 +47,9 @@ namespace Nevron.Nov.Examples.Framework
 			stack.Add(new NLabel("Language:"));
 
 			NListBox listBox = new NListBox();
-			listBox.Items.Add(CreateListBoxItem(NResources.Image_CountryFlags_us_png, EnglishLanguageName));
-			listBox.Items.Add(CreateListBoxItem(NResources.Image_CountryFlags_bg_png, BulgarianLanguageName));
-			listBox.Items.Add(CreateListBoxItem(NResources.Image_CountryFlags_de_png, GermanLanguageName));
+			listBox.Items.Add(CreateListBoxItem(Presentation.NResources.Image_CountryFlags_us_png, EnglishLanguageName));
+			listBox.Items.Add(CreateListBoxItem(Presentation.NResources.Image_CountryFlags_bg_png, BulgarianLanguageName));
+			listBox.Items.Add(CreateListBoxItem(Presentation.NResources.Image_CountryFlags_de_png, GermanLanguageName));
 			listBox.Selection.SingleSelect(listBox.Items[0]);
 			listBox.Selection.Selected += OnListBoxItemSelected;
 			stack.Add(listBox);

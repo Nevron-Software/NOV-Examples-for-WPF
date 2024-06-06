@@ -31,8 +31,7 @@ namespace Nevron.Nov.Examples.UI
 			m_Accordion.HorizontalPlacement = ENHorizontalPlacement.Left;
 			m_Accordion.VerticalPlacement = ENVerticalPlacement.Top;
 			m_Accordion.MinWidth = 300;
-            m_Accordion.Border = NBorder.CreateFilledBorder(NColor.Red);
-            m_Accordion.BorderThickness = new NMargins(1);
+            m_Accordion.SetBorder(1, NColor.Red);
 
             // create a stack panel to hold the expandable sections of the accordion
             // note that the accordion is designed like a radio button group, allowing the user to use any layout 

@@ -34,9 +34,10 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-            m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 
-            NDockPanel dockPanel = new NDockPanel();
+			NDockPanel dockPanel = new NDockPanel();
             m_ChartView.Surface.Content = dockPanel;
 
             NLabel label = new NLabel();
@@ -81,9 +82,9 @@ namespace Nevron.Nov.Examples.Chart
             secondGroupPanel.AddChild(m_Legend2);
             secondGroupPanel.AddChild(m_PieChart2);
 
-            m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+            m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-            return m_ChartView;
+            return chartViewWithCommandBars;
         }
 		protected override NWidget CreateExampleControls()
 		{

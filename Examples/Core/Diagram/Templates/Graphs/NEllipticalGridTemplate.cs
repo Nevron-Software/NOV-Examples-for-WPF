@@ -1,4 +1,5 @@
 using System;
+
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
@@ -6,10 +7,10 @@ using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// The NEllipticalGridTemplate class represents an elliptical grid template
-	/// </summary>
-	public class NEllipticalGridTemplate : NGraphTemplate
+    /// <summary>
+    /// The NEllipticalGridTemplate class represents an elliptical grid template
+    /// </summary>
+    public class NEllipticalGridTemplate : NGraphTemplate
 	{
 		#region Constructors
 
@@ -192,17 +193,17 @@ namespace Nevron.Nov.Examples.Diagram
 			double curAngle = 0;
 			double stepAngle = NMath.PI2 / m_nRimNodesCount;
 
-			NPoint center = new NPoint(	m_Origin.X + m_dRadiusX + m_VerticesSize.Width / 2, 
-										m_Origin.Y + m_dRadiusY + m_VerticesSize.Height / 2);
+			NPoint center = new NPoint(	m_Origin.X + m_dRadiusX + m_VertexSize.Width / 2, 
+										m_Origin.Y + m_dRadiusY + m_VertexSize.Height / 2);
 
 			for (i = 0; i < m_nRimNodesCount; i++)
 			{
-				pt = new NPoint(	center.X + m_dRadiusX * (double)Math.Cos(curAngle) - m_VerticesSize.Width / 2,
-									center.Y + m_dRadiusY * (double)Math.Sin(curAngle) - m_VerticesSize.Height / 2);
+				pt = new NPoint(	center.X + m_dRadiusX * (double)Math.Cos(curAngle) - m_VertexSize.Width / 2,
+									center.Y + m_dRadiusY * (double)Math.Sin(curAngle) - m_VertexSize.Height / 2);
 
-				node = CreateVertex(m_VerticesShape);
+				node = CreateVertex(m_VertexShape);
 
-				node.SetBounds(new NRectangle(pt, m_VerticesSize));
+				node.SetBounds(new NRectangle(pt, m_VertexSize));
                 page.Items.AddChild(node);
 
 				nodes.Add(node);
@@ -226,11 +227,11 @@ namespace Nevron.Nov.Examples.Diagram
 				return;
 
 			// create the center
-			node = CreateVertex(m_VerticesShape);
-			pt = new NPoint(	center.X - m_VerticesSize.Width / 2,
-								center.Y - m_VerticesSize.Height / 2);
+			node = CreateVertex(m_VertexShape);
+			pt = new NPoint(	center.X - m_VertexSize.Width / 2,
+								center.Y - m_VertexSize.Height / 2);
 
-			node.SetBounds(new NRectangle(pt, m_VerticesSize));
+			node.SetBounds(new NRectangle(pt, m_VertexSize));
             page.Items.AddChild(node);
 
 			// connect the ellipse nodes with the center

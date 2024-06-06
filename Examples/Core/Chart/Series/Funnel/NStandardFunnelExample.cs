@@ -1,7 +1,5 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
@@ -34,7 +32,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateFunnelChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Funnel);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Funnel";
@@ -49,10 +49,12 @@ namespace Nevron.Nov.Examples.Chart
 			m_FunnelSeries.DataPoints.Add(new NFunnelDataPoint(15.0, "Further Learn"));
 			m_FunnelSeries.DataPoints.Add(new NFunnelDataPoint(7.0, "Liking"));
 			m_FunnelSeries.DataPoints.Add(new NFunnelDataPoint(28.0, "Decision"));
+			m_FunnelSeries.DataLabelStyle = new NDataLabelStyle(true);
+			m_FunnelSeries.DataLabelStyle.VertAlign = ENVerticalAlignment.Center;
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+            chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -81,7 +83,17 @@ namespace Nevron.Nov.Examples.Chart
 			pointGapUpDown.ValueChanged += OnPointGapUpDownValueChanged;
 			stack.Add(NPairBox.Create("Point Gap Percent:", pointGapUpDown));
 
-			return group;
+            NNumericUpDown neckHeightPercentUpDown = new NNumericUpDown();
+            neckHeightPercentUpDown.Value = m_FunnelSeries.NeckHeightPercent;
+            neckHeightPercentUpDown.ValueChanged += OnNeckHeightPercentUpDownValueChanged;
+            stack.Add(NPairBox.Create("Neck Height Percent:", neckHeightPercentUpDown));
+
+            NNumericUpDown neckWidthPercentUpDown = new NNumericUpDown();
+            neckWidthPercentUpDown.Value = m_FunnelSeries.NeckWidthPercent;
+            neckWidthPercentUpDown.ValueChanged += OnNeckWidthPercentUpDownValueChanged;
+            stack.Add(NPairBox.Create("Neck Width Percent:", neckWidthPercentUpDown));
+
+            return group;
 		}
 		protected override string GetExampleDescription()
 		{
@@ -112,28 +124,27 @@ namespace Nevron.Nov.Examples.Chart
 			m_FunnelSeries.Shape = (ENFunnelShape)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
 
-		#endregion
+        private void OnNeckHeightPercentUpDownValueChanged(NValueChangeEventArgs arg)
+        {
+            m_FunnelSeries.NeckHeightPercent = ((NNumericUpDown)arg.TargetNode).Value;
+        }
 
-		#region Fields
+        private void OnNeckWidthPercentUpDownValueChanged(NValueChangeEventArgs arg)
+        {
+            m_FunnelSeries.NeckWidthPercent = ((NNumericUpDown)arg.TargetNode).Value;
+        }
 
-		NFunnelSeries m_FunnelSeries;
+        #endregion
+
+        #region Fields
+
+        NFunnelSeries m_FunnelSeries;
 
 		#endregion
 
 		#region Schema
 
 		public static readonly NSchema NStandardFunnelExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateFunnelChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Funnel);
-			return chartView;
-		}
 
 		#endregion
 	}

@@ -1,0 +1,586 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.Host.WinForm</name>
+    </assembly>
+    <members>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovControlHostDesigner">
+            <summary>
+            A WinForms NOV contol host designer.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.Verbs">
+            <summary>
+            Gets the verbs of this designer.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.PreFilterProperties(System.Collections.IDictionary)">
+            <summary>
+            Overriden to remove the "Widget" property from the designer property grid
+            if the NOV widget has a custom design time state.
+            </summary>
+            <param name="properties"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.PostFilterProperties(System.Collections.IDictionary)">
+            <summary>
+            Overriden to modify the metadata for some properties.
+            </summary>
+            <param name="properties"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.PreFilterEvents(System.Collections.IDictionary)">
+            <summary>
+            Overriden to remove all but the Nevron related events.
+            </summary>
+            <param name="events"></param>
+        </member>
+        <member name="F:Nevron.Nov.Windows.Forms.NNovControlHostDesigner.NevronCategory">
+            <summary>
+            The name of category for Nevron control events.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovVerbEditor">
+            <summary>
+            An editor for NOV verbs.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovVerbEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Gets the WinForm edit style.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovVerbEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Edits the widget.
+            </summary>
+            <param name="context"></param>
+            <param name="provider"></param>
+            <param name="value">The widget to edit.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovWidgetEditor">
+            <summary>
+            Shows a NOV widget editor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Gets the WinForm edit style.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Edits the widget.
+            </summary>
+            <param name="context"></param>
+            <param name="provider"></param>
+            <param name="value">The widget to edit.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NHostWinFormLoadAssemblyType">
+            <summary>
+            Dummy type used to explicitly load the Nevron.Nov.Host.WinForm assembly
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovApplicationInstaller">
+             <summary>
+             The Windows Forms Application installer.
+             Make sure to call its Install() method in your Windows Forms application Main()
+             function prior to using Nevron Open Vision Products. For example:
+             <code>
+             static class Program
+             {
+                 [STAThread]
+                 static void Main()
+                 {
+                     NNovApplicationInstaller.Install();
+            
+                     Application.EnableVisualStyles();
+                     Application.SetCompatibleTextRenderingDefault(false);
+                     Application.Run(new Form1());
+                 }
+             }
+             </code>
+             </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovApplicationInstaller.Install(Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for Windows Forms applications.
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovApplicationInstaller.InstallServer(Nevron.Nov.ENProductGroup,Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for a WPF application server.
+            </summary>
+            <param name="productGroup"></param>
+            <param name="modules"></param>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NResources">
+            <summary>
+            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NResources.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Windows.Forms.NResources.RBIN_documentation_zip">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Windows.Forms.NResources.Instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovControlHost`1">
+            <summary>
+            A System.Windows.Forms.Control that contains a NOV widget of a certain type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovControlHost`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovWidgetHost`1">
+            <summary>
+            A System.Windows.Forms.Control that contains a NOV widget of a certain type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.#ctor(`0)">
+            <summary>
+            Creates a new NNovControl that hosts the specified widget.
+            </summary>
+            <param name="widget"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.#ctor(`0,System.Windows.Forms.DockStyle)">
+            <summary>
+            Creates a new NNovControl that hosts the specified widget.
+            </summary>
+            <param name="widget"></param>
+            <param name="dockStyle"></param>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.Widget">
+            <summary>
+            Gets/Sets the NOV widget contained by this host.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.DesignTimeState">
+            <summary>
+            Gets/Sets the design time state of the editor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovWidgetHost`1.UpdateDesignTimeState">
+            <summary>
+            Updates the design time state of the control.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Windows.Forms.NNovChildWindowHost">
+            <summary>
+            A System.Windows.Forms.Control which can contain a NOV NChildWindow.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.#ctor(System.Windows.Forms.DockStyle)">
+            <summary>
+            Initializer constructor
+            </summary>
+            <param name="dockStyle"></param>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Dispose(System.Boolean)">
+            <summary>
+            Disposes this object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.AutoSize">
+            <summary>
+            Gets or sets whether the control must be automatically sized to its content.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Dock">
+            <summary>
+            Gets or sets which control borders are docked to its parent control and determines how a control is resized with its parent.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Anchor">
+            <summary>
+            Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent. 
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Padding">
+            <summary>
+            Gets the space, in pixels, that is specified by default between controls. This property returns zero padding, since the host does not use this property.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.BackColor">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.BackgroundImage">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.BackgroundImageLayout">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.CausesValidation">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.ContextMenuStrip">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Cursor">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Enabled">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Focused">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Font">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.ForeColor">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.ImeMode">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Margin">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.RightToLeft">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Text">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.UseWaitCursor">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.Visible">
+            <summary>
+            Not used by NOV controls.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.GetPreferredSize(System.Drawing.Size)">
+            <summary>
+            
+            </summary>
+            <param name="proposedSize"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nevron.Nov.Windows.Forms.NNovChildWindowHost.DefaultSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Windows.Forms.NNovChildWindowHost.OnParentChanged(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.MQrb.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="Grrb">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="P:Nevron.Nov.Internal.prrb`1.Nevron#Nov#Office#INOfficeMainWindow#Title">
+            <summary>
+            Gets/Sets the title of the form.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.prrb`1.Nevron#Nov#Office#INOfficeMainWindow#Close">
+            <summary>
+            Closes the main application window.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Internal.prrb`1.Nevron#Nov#Office#INOfficeMainWindow#MainWidget">
+            <summary>
+            Gets the main widget of the application that is hosted in the main window.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.prrb`1.OnShown(System.EventArgs)">
+            <summary>
+            Called after the form has been shown.
+            </summary>
+            <param name="Qrrb"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.prrb`1.OnClosing(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Called when the form is about to be closed.
+            </summary>
+            <param name="rrrb"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.prrb`1.OnLocationChanged(System.EventArgs)">
+            <summary>
+            Called when the location of the form has changed.
+            </summary>
+            <param name="Srrb"></param>
+        </member>
+        <member name="P:Nevron.Nov.Internal.CSrb`2.IsAnotherInstanceRunning">
+            <summary>
+            Checks whether an instance of this application is already running.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Nevron.Nov.Internal.CSrb`2.IsSandboxed">
+            <summary>
+            Gets whether this is a sandboxed environment (e.g. Blazor).
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Internal.CSrb`2.IsStoreApp">
+            <summary>
+            Gets whether the application is runnting in the store.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Internal.CSrb`2.CmdLineFileName">
+            <summary>
+            Gets the Command Line File name with which the application was started.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.GetMainWindowAsync">
+            <summary>
+            Gets the main window of the application.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.CreateMainWindowStateWorkspaceItem">
+            <summary>
+            Creates the main window state workspace item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.OnAfterInitUIAsync">
+            <summary>
+            Called after the main widget is initialized.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.ShowHelp">
+            <summary>
+            Shows the application help
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.OnStartedAsync">
+            <summary>
+            Called when the app is started
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.StartMessagePump">
+            <summary>
+            Ensures there is a message pump to do messages
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.CSrb`2.ExitMessagePump">
+            <summary>
+            Exits the message pump of the application.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.UYdK.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+            <summary>
+            Decodes the specified image data, using GDI+ image decoders.
+            </summary>
+            <param name="vYdK">Encoded image data.</param>
+            <param name="WYdK">The format of the data in the byte array - not used, because GDI+ performs its own format recognition.</param>
+            <returns>Returns a raster that contains the decoded image data. Returns null if the decoding was not successful.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.UYdK.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Encodes a raster into BMP image format, using the GDI+ image encoder.
+            </summary>
+            <param name="xYdK">The raster to be encoded.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.UYdK.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+            <summary>
+            Encodes a raster into PNG image format, using the GDI+ image encoder.
+            </summary>
+            <param name="YYdK">The raster to be encoded.</param>
+            <param name="AAEK">PNG encoder settings.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.UYdK.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+            <summary>
+            Encodes a raster into JPEG image format, using the GDI+ image encoder.
+            </summary>
+            <param name="bAEK">The raster to be encoded.</param>
+            <param name="CAEK">JPEG encoder settings.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.UYdK.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Encodes a raster into TIFF image format, using the image encoding capabilities of the underlying platform.
+            Must be implemented in the image service of a platform host.
+            </summary>
+            <param name="dAEK">The raster to be encoded.</param>
+            <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.YbEK.Nevron#Nov#Dom#INEventHandler#Invoke(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            Called when the measure of the child window has changed.
+            </summary>
+            <param name="bCEK"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.Dispose(System.Boolean)">
+            <summary>
+            Disposes this surface
+            </summary>
+            <param name="KIEK"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.IsInputKey(System.Windows.Forms.Keys)">
+            <summary>
+            Overriden to return true
+            </summary>
+            <param name="lIEK"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.IsInputChar(System.Char)">
+            <summary>
+            Overriden to return true
+            </summary>
+            <param name="MIEK"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.OnHandleCreated(System.EventArgs)">
+            <summary>
+            Called when the native window handle is created.
+            </summary>
+            <param name="nIEK"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.OnHandleDestroyed(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="OIEK"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.OnClientSizeChanged(System.EventArgs)">
+            <summary>
+            Overriden to request a repaint of the surface
+            </summary>
+            <param name="pIEK"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.AIEK`1.OnDpiChangedBeforeParent(System.EventArgs)">
+            <summary>
+            Called when the DPI has changed, and the parent was not yet notified about it
+            </summary>
+            <param name="QIEK"></param>
+        </member>
+        <member name="T:Nevron.Nov.Office.NSplashScreenForm">
+            <summary>
+            Represents a splash screen form.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Office.NSplashScreenForm.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Office.NSplashScreenForm.BackgroundImage">
+            <summary>
+            Gets or sets the background image displayed in the control.
+            Overriden to size the form to the specified image.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormWindowState">
+            <summary>
+            The state of the Form
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormBoundsInPixels">
+            <summary>
+            The bounds of the Form (in pixels), in case the Form is in Normal state
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormCenterInDips">
+            <summary>
+            The bounds of the Form (in pixels), in case the Form is in Normal state
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.NWinMainWindowStateWorkspaceItemSchema">
+            <summary>
+            Schema associated with NWinMainWindowStateWorkspaceItem.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormWindowStateProperty">
+            <summary>
+            Reference to the FormWindowState property.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormBoundsInPixelsProperty">
+            <summary>
+            Reference to the FormBoundsInPixels property.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Office.NWinMainWindowStateWorkspaceItem.FormCenterInDipsProperty">
+            <summary>
+            Reference to the FormCenterInDips property.
+            </summary>
+        </member>
+    </members>
+</doc>

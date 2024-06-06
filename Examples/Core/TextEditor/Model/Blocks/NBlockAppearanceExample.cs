@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-using Nevron.Nov.Dom;
+﻿using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
@@ -8,7 +6,7 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples.Text
 {
 	/// <summary>
-	/// The example demonstrates how to programmatically create paragraphs with differnt inline formatting
+	/// The example demonstrates how to programmatically create paragraphs with different inline formatting.
 	/// </summary>
 	public class NBlockAppearanceExample : NExampleBase
 	{

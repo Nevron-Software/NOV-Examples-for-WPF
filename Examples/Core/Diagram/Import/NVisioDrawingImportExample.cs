@@ -57,7 +57,7 @@ namespace Nevron.Nov.Examples.Diagram
         private void InitDiagram(NDrawingDocument drawingDocument)
         {
             // Import a Visio diagram
-            m_DrawingView.LoadFromResource(NResources.RBIN_VSDX_CorporateDiagramShapes_vsdx);
+            m_DrawingView.LoadFromResourceAsync(NResources.RBIN_VSDX_CorporateDiagramShapes_vsdx);
 
             // Hide ports
             drawingDocument.Content.ScreenVisibility.ShowPorts = false;

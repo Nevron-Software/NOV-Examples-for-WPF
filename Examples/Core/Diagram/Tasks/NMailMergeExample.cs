@@ -1,4 +1,5 @@
 ﻿using System.IO;
+
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
@@ -82,12 +83,12 @@ namespace Nevron.Nov.Examples.Diagram
             drawing.ScreenVisibility.ShowGrid = false;
             drawing.ScreenVisibility.ShowPorts = false;
 
-            // Create a shape factory
-            NBasicShapeFactory basicShapeFactory = new NBasicShapeFactory();
-            basicShapeFactory.DefaultSize = new NSize(100, 100);
+            // Get the basic shapes library
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			basicShapes.DefaultSize = new NSize(100, 100);
 
             // Create the Name shape
-            NShape nameShape = basicShapeFactory.CreateShape(ENBasicShape.Rectangle);
+            NShape nameShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
             nameShape.Width = 150;
             nameShape.PinX = activePage.Width / 2;
             nameShape.PinY = 100;
@@ -102,7 +103,7 @@ namespace Nevron.Nov.Examples.Diagram
             activePage.Items.Add(nameShape);
 
             // Create the City shape
-            NShape cityShape = basicShapeFactory.CreateShape(ENBasicShape.SixPointStar);
+            NShape cityShape = basicShapes.CreateShape(ENBasicShape.SixPointStar);
             cityShape.PinX = nameShape.PinX - 150;
             cityShape.PinY = nameShape.PinY + 200;
 
@@ -114,7 +115,7 @@ namespace Nevron.Nov.Examples.Diagram
             activePage.Items.Add(cityShape);
 
             // Create the Birth Date shape
-            NShape birthDateShape = basicShapeFactory.CreateShape(ENBasicShape.Circle);
+            NShape birthDateShape = basicShapes.CreateShape(ENBasicShape.Circle);
             birthDateShape.PinX = nameShape.PinX + 150;
             birthDateShape.PinY = cityShape.PinY;
 

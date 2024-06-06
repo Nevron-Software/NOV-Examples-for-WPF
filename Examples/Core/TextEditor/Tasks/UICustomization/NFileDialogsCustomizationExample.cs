@@ -211,29 +211,13 @@ namespace Nevron.Nov.Examples.Text
 				CustomOpenCommandActionSchema = NSchema.Create(typeof(CustomOpenCommandAction), NOpenCommandActionSchema);
 			}
 
-			/// <summary>
-			/// Executes the command action.
-			/// </summary>
-			/// <param name="target"></param>
-			/// <param name="parameter"></param>
-			public override void Execute(NNode target, object parameter)
+			protected override NTextFormat[] GetFormats()
 			{
-				if (IsEnabled(target) == false)
-					return;
-
-				// Get the drawing view
-				NRichTextView view = GetRichTextView(target) as NRichTextView;
-				if (view == null)
-					return;
-
-				NTextFormatRegistry registry = new NTextFormatRegistry();
-				registry.DocumentFormats =  new NTextFormat[]
+				return new NTextFormat[]
 				{
 					NTextFormat.Docx,
 					NTextFormat.Rtf
 				};
-
-				view.OpenFile(null, null, true, true);
 			}
 
 			public static readonly NSchema CustomOpenCommandActionSchema;
@@ -249,29 +233,13 @@ namespace Nevron.Nov.Examples.Text
 				CustomSaveAsCommandActionSchema = NSchema.Create(typeof(CustomSaveAsCommandAction), NSaveAsCommandActionSchema);
 			}
 
-			/// <summary>
-			/// Executes this command action.
-			/// </summary>
-			/// <param name="target"></param>
-			/// <param name="parameter"></param>
-			public override void Execute(NNode target, object parameter)
+			protected override NTextFormat[] GetFormats()
 			{
-				if (IsEnabled(target) == false)
-					return;
-
-				// Get the drawing view
-				NRichTextView view = GetRichTextView(target) as NRichTextView;
-				if (view == null)
-					return;
-
-				NTextFormatRegistry registry = new NTextFormatRegistry();
-				registry.DocumentFormats = new NTextFormat[]
+				return new NTextFormat[]
 				{
 					NTextFormat.Docx,
 					NTextFormat.Rtf
 				};
-
-				view.SaveAs(NTextFormat.NevronBinary, registry, true);
 			}
 
 			public static readonly NSchema CustomSaveAsCommandActionSchema;

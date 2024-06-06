@@ -25,7 +25,7 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NInteractivityExample()
 		{
-			NReadOnlyOrDisabledScheduleViewExampleSchema = NSchema.Create(typeof(NInteractivityExample), NExampleBaseSchema);
+			NInteractivityExampleSchema = NSchema.Create(typeof(NInteractivityExample), NExampleBaseSchema);
 		}
 
 		#endregion
@@ -143,9 +143,9 @@ namespace Nevron.Nov.Examples.Schedule
 		#region Schema
 
 		/// <summary>
-		/// Schema associated with NReadOnlyOrDisabledScheduleViewExample.
+		/// Schema associated with NInteractivityExample.
 		/// </summary>
-		public static readonly NSchema NReadOnlyOrDisabledScheduleViewExampleSchema;
+		public static readonly NSchema NInteractivityExampleSchema;
 
 		#endregion
 	}

@@ -1,4 +1,6 @@
-﻿namespace Nevron.Nov.Examples
+﻿using Nevron.Nov.Text;
+
+namespace Nevron.Nov.Examples
 {
 	/// <summary>
 	/// Base class for Visual Studio C# project generators.

@@ -1,17 +1,16 @@
 using System;
 
-
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Graphics;
-using Nevron.Nov.DataStructures;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// The NTriangularGridTemplate class represents a triangular grid template
-	/// </summary>
-	public class NTriangularGridTemplate : NGraphTemplate
+    /// <summary>
+    /// The NTriangularGridTemplate class represents a triangular grid template
+    /// </summary>
+    public class NTriangularGridTemplate : NGraphTemplate
     {
         #region Constructors
 
@@ -106,8 +105,8 @@ namespace Nevron.Nov.Examples.Diagram
 		{
 			NPage page = document.Content.ActivePage;
             NRectangle templateBounds = new NRectangle( m_Origin.X, m_Origin.Y, 
-														m_nLevels * m_VerticesSize.Width + (m_nLevels - 1) * m_fHorizontalSpacing,
-														m_nLevels * m_VerticesSize.Height + (m_nLevels - 1) * m_fVerticalSpacing);
+														m_nLevels * m_VertexSize.Width + (m_nLevels - 1) * m_fHorizontalSpacing,
+														m_nLevels * m_VertexSize.Height + (m_nLevels - 1) * m_fVerticalSpacing);
 			NPoint location;
 			NShape cur = null, prev = null;
 			NShape edge = null;
@@ -118,17 +117,17 @@ namespace Nevron.Nov.Examples.Diagram
 			for (int level = 1; level <= m_nLevels; level++)
 			{
 				// determine the location of the first node in the level
-				location = new NPoint(	templateBounds.X + (templateBounds.Width - level * m_VerticesSize.Width - (level - 1) * m_fHorizontalSpacing) / 2,
-										templateBounds.Y + (level - 1) * (m_VerticesSize.Height + m_fVerticalSpacing));
+				location = new NPoint(	templateBounds.X + (templateBounds.Width - level * m_VertexSize.Width - (level - 1) * m_fHorizontalSpacing) / 2,
+										templateBounds.Y + (level - 1) * (m_VertexSize.Height + m_fVerticalSpacing));
 
 				curRowNodes = new NList<NShape>();
 				for (int i = 0; i < level; i++)
 				{
-                    cur = CreateVertex(m_VerticesShape);
-					cur.SetBounds(new NRectangle(location, m_VerticesSize));
+                    cur = CreateVertex(m_VertexShape);
+					cur.SetBounds(new NRectangle(location, m_VertexSize));
 					page.Items.AddChild(cur);
 
-					location.X += m_VerticesSize.Width + m_fHorizontalSpacing;
+					location.X += m_VertexSize.Width + m_fHorizontalSpacing;
 
 					// connect the current node with its ancestors and prev node
 					if (m_bConnectGrid == false)
@@ -152,7 +151,7 @@ namespace Nevron.Nov.Examples.Diagram
                             edge = CreateEdge(ENConnectorShape.Line);
 							page.Items.AddChild(edge);
 
-							edge.GlueBeginToGeometryIntersection((NShape)prevRowNodes[i]);
+							edge.GlueBeginToGeometryIntersection(prevRowNodes[i]);
 							edge.GlueEndToShape(cur);
 						}
 

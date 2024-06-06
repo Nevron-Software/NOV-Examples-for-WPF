@@ -1,4 +1,6 @@
-﻿namespace Nevron.Nov.Examples
+﻿using Nevron.Nov.Text;
+
+namespace Nevron.Nov.Examples
 {
 	internal abstract class NVbProjectGenerator : NProjectGenerator
 	{

@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NConnectorWithMultipleLabelsExample : NExampleBase
+    public class NConnectorWithMultipleLabelsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -64,21 +64,20 @@ outward ports to a connector and then gluing shapes that only have text to these
 			NDrawing drawing = drawingDocument.Content;
 			NPage activePage = drawing.ActivePage;
 
-			// 1. Create some shape factories
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-			NConnectorShapeFactory connectorShapesFactory = new NConnectorShapeFactory();
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
-			// 2. Create and add some shapes
-			NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			// Create and add some shapes
+			NShape shape1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			shape1.SetBounds(new NRectangle(50, 50, 100, 100));
 			activePage.Items.Add(shape1);
 
-			NShape shape2 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			shape2.SetBounds(new NRectangle(400, 50, 100, 100));
 			activePage.Items.Add(shape2);
 
-			// 3. Connect the shapes
-			NShape connector = connectorShapesFactory.CreateShape(ENConnectorShape.Line);
+			// Connect the shapes
+			NShape connector = connectorShapes.CreateShape(ENConnectorShape.Line);
 			activePage.Items.Add(connector);
 			connector.GlueBeginToShape(shape1);
 			connector.GlueEndToShape(shape2);

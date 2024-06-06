@@ -33,13 +33,10 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -68,12 +65,16 @@ namespace Nevron.Nov.Examples.Chart
 			xScale.Strips.Add(xStrip);
 
 			// cross X and Y axes
-			primaryX.Anchor = new NModelCrossCartesianAxisAnchor(0, ENAxisCrossAlignment.Center, primaryY, ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+            NCrossCartesianAxisAnchor xCrossAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Horizontal, ENScaleOrientation.Right, 0.0f, 100.0f);
+			xCrossAnchor.YAxisCrossing = new NModelAxisCrossing(primaryY, 0, ENAxisCrossAlignment.Center);
+            primaryX.Anchor = xCrossAnchor;
 
-			primaryY.Anchor = new NModelCrossCartesianAxisAnchor(0, ENAxisCrossAlignment.Center, primaryX, ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Left, 0.0f, 100.0f);
+            NCrossCartesianAxisAnchor yCrossAnchor = new NCrossCartesianAxisAnchor(ENCartesianAxisOrientation.Vertical, ENScaleOrientation.Left, 0.0f, 100.0f);
+            yCrossAnchor.XAxisCrossing = new NModelAxisCrossing(primaryX, 0, ENAxisCrossAlignment.Center);
+            primaryY.Anchor = yCrossAnchor;
 
-			// setup bubble series
-			NBubbleSeries bubble = new NBubbleSeries();
+            // setup bubble series
+            NBubbleSeries bubble = new NBubbleSeries();
 			bubble.Name = "Bubble Series";
 			bubble.InflateMargins = true;
 			bubble.DataLabelStyle = new NDataLabelStyle(false);
@@ -89,15 +90,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(bubble);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -128,7 +124,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to cross two axes at a specified model offset.</p>";
@@ -140,26 +135,26 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnHorizontalAxisOffsetUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			NModelCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NModelCrossCartesianAxisAnchor;
-			anchor.Offset = ((NNumericUpDown)arg.TargetNode).Value;
+            NCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NCrossCartesianAxisAnchor;
+			(anchor.YAxisCrossing as NModelAxisCrossing).Offset = ((NNumericUpDown)arg.TargetNode).Value;
 		}
 
 		void OnVerticalAxisOffsetUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			NModelCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NModelCrossCartesianAxisAnchor;
-			anchor.Offset = ((NNumericUpDown)arg.TargetNode).Value;
+            NCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NCrossCartesianAxisAnchor;
+            (anchor.XAxisCrossing as NModelAxisCrossing).Offset = ((NNumericUpDown)arg.TargetNode).Value;
 		}
 
 		void OnHorizontalAxisAlignmentComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
-			NModelCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NModelCrossCartesianAxisAnchor;
-			anchor.Alignment = (ENAxisCrossAlignment)((NComboBox)arg.TargetNode).SelectedIndex;
+            NCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryX].Anchor as NCrossCartesianAxisAnchor;
+            (anchor.YAxisCrossing as NModelAxisCrossing).Alignment = (ENAxisCrossAlignment)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
 
 		void OnVerticalAxisAlignmentComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
-			NModelCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NModelCrossCartesianAxisAnchor;
-			anchor.Alignment = (ENAxisCrossAlignment)((NComboBox)arg.TargetNode).SelectedIndex;
+            NCrossCartesianAxisAnchor anchor = m_Chart.Axes[ENCartesianAxis.PrimaryY].Anchor as NCrossCartesianAxisAnchor;
+            (anchor.XAxisCrossing as NModelAxisCrossing).Alignment = (ENAxisCrossAlignment)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
 
 		#endregion

@@ -61,7 +61,7 @@ namespace Nevron.Nov.Examples.UI
 
 			m_EventsLog = new NExampleEventsLog();
 			stack.Add(m_EventsLog);
-			NTrace.WriteLine("Create Menu Example Controls");
+			NDebug.WriteLine("Create Menu Example Controls");
 			return new NUniSizeBoxGroup(stack);
 		}
 		protected override string GetExampleDescription()

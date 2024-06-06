@@ -2,6 +2,7 @@
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
+using Nevron.Nov.Xml;
 
 namespace Nevron.Nov.Examples
 {
@@ -120,22 +121,16 @@ namespace Nevron.Nov.Examples
 
 		#region Public Methods
 
-		public void UpdateFavoriteButton(bool addedToFavorites)
+		public void Update(NXmlElement xmlElement)
 		{
-			NImageBox imageBox = (NImageBox)m_FavoriteButton.Content;
-			if (addedToFavorites)
-			{
-				// The example is added to Favorites
-				imageBox.Image = NResources.Image_ExamplesUI_Icons_Favorites_png;
-				m_FavoriteButton.Tooltip = new NTooltip("Remove from Favorites");
-			}
-			else
-			{
-				// The example is not added to Favorites
-				imageBox.Image = NResources.Image_ExamplesUI_Icons_FavoritesEmpty_png;
-				m_FavoriteButton.Tooltip = new NTooltip("Add to Favorites");
-			}
-		}
+            string name = xmlElement.GetAttributeValue("name");
+            string examplePath = NExamplesUi.GetExamplePath(xmlElement);
+
+            Title = NExamplesUi.ProcessHeaderText(name);
+            UpdateFavoriteButton(NExamplesOptions.Instance.FavoriteExamples.Contains(examplePath));
+
+			m_ExampleElement = xmlElement;
+        }
 
 		#endregion
 
@@ -156,7 +151,7 @@ namespace Nevron.Nov.Examples
 				dock.Add(m_SearchBox, ENDockArea.Left);
 			}
 
-			// Create the title label and the Favorite button
+			// Create the title label and the Favorite and Copy Link buttons
 			{
 				m_TitleLabel = new NLabel();
 				NStylePropertyEx.SetRelativeFontSize(m_TitleLabel, ENRelativeFontSize.XLarge);
@@ -167,9 +162,18 @@ namespace Nevron.Nov.Examples
 				UpdateFavoriteButton(false);
 				m_FavoriteButton.Click += OnFavoriteButtonClick;
 
-				NPairBox pairBox = new NPairBox(m_TitleLabel, m_FavoriteButton);
-				pairBox.HorizontalPlacement = ENHorizontalPlacement.Left;
-				dock.Add(pairBox, ENDockArea.Center);
+				NButton copyLinkButton = new NButton(NResources.Image_ExamplesUI_Icons_Link_png);
+                NStylePropertyEx.SetExtendedLook(copyLinkButton, ENExtendedLook.Flat);
+				copyLinkButton.Tooltip = new NTooltip("Copy link to clipboard");
+                copyLinkButton.Click += OnCopyLinkButtonClick;
+
+				NStackPanel stack = new NStackPanel();
+				stack.Direction = ENHVDirection.LeftToRight;
+				stack.Add(m_TitleLabel);
+				stack.Add(m_FavoriteButton);
+				stack.Add(copyLinkButton);
+
+				dock.Add(stack, ENDockArea.Center);
 			}
 
 			// Create the prev/next example buttons
@@ -199,11 +203,32 @@ namespace Nevron.Nov.Examples
 			return dock;
 		}
 
-		#endregion
+        #endregion
 
-		#region Event Handlers
+        #region Implementation - UI
 
-		private void OnFavoriteButtonClick(NEventArgs arg)
+        private void UpdateFavoriteButton(bool addedToFavorites)
+		{
+			NImageBox imageBox = (NImageBox)m_FavoriteButton.Content;
+			if (addedToFavorites)
+			{
+				// The example is added to Favorites
+				imageBox.Image = NResources.Image_ExamplesUI_Icons_Favorites_png;
+				m_FavoriteButton.Tooltip = new NTooltip("Remove from Favorites");
+			}
+			else
+			{
+				// The example is not added to Favorites
+				imageBox.Image = NResources.Image_ExamplesUI_Icons_FavoritesEmpty_png;
+				m_FavoriteButton.Tooltip = new NTooltip("Add to Favorites");
+			}
+		}
+
+        #endregion
+
+        #region Event Handlers
+
+        private void OnFavoriteButtonClick(NEventArgs arg)
 		{
 			NButton favoriteButton = (NButton)arg.TargetNode;
 			
@@ -219,17 +244,24 @@ namespace Nevron.Nov.Examples
 				FavoriteAddedOrRemoved(addedToFavorites);
 			}
 		}
+        private void OnCopyLinkButtonClick(NEventArgs arg)
+        {
+            NExamplesContent examplesContent = GetFirstAncestor<NExamplesContent>();
+            NExamplesUi.CopyExampleLinkToClipboard(examplesContent.LinkProcessor, m_ExampleElement);
+        }
 
-		#endregion
+        #endregion
 
-		#region Fields
+        #region Fields
 
-		private NExamplesSearchBox m_SearchBox;
+        private NExamplesSearchBox m_SearchBox;
 		private NLabel m_TitleLabel;
 		private NButton m_FavoriteButton;
 		private NExampleBreadcrumb m_Breadcrumb;
 		private NButton m_PreviousExampleButton;
 		private NButton m_NextExampleButton;
+
+		private NXmlElement m_ExampleElement;
 
 		#endregion
 

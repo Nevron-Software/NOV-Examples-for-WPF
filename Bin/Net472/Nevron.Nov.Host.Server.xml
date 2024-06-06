@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.Host.Server</name>
+    </assembly>
+    <members>
+        <member name="M:Nevron.Nov.Server.NNovApplicationInstaller.Install(Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for an application server.
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.Opnh.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Overriden to return null - native bitmap encoding is not currently supported by the server host.
+            </summary>
+            <param name="ppnh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.Opnh.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+            <summary>
+            Overriden to return null - native JPEG encoding is not currently supported by the server host.
+            </summary>
+            <param name="Qpnh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.Opnh.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+            <summary>
+            Overriden to return null - native PNG encoding is not currently supported by the server host.
+            </summary>
+            <param name="Spnh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.Opnh.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Overriden to return null - native TIFF encoding is not currently supported by the server host.
+            </summary>
+            <param name="Upnh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.Opnh.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+            <summary>
+            Overriden to return null - native image decoding is not currently supported by the server host.
+            </summary>
+            <param name="vpnh"></param>
+            <param name="Wpnh"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

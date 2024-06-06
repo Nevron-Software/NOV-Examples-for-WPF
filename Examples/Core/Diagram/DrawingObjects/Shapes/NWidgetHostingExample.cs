@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NWidgetHostingExample : NExampleBase
+    public class NWidgetHostingExample : NExampleBase
     {
         #region Constructors
 
@@ -191,8 +191,8 @@ namespace Nevron.Nov.Examples.Diagram
             };
             activePage.Items.Add(addToCartButton);
 
-            // create selected book shapes
-            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+			// create selected book shapes
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
 
             // selected image
             m_SelectedBookImage = basicShapes.CreateShape(ENBasicShape.Rectangle);

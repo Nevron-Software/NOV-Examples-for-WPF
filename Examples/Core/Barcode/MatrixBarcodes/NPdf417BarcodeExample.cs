@@ -36,10 +36,9 @@ namespace Nevron.Nov.Examples.Barcode
 			m_Barcode = new NMatrixBarcode();
 			m_Barcode.Symbology = ENMatrixBarcodeSymbology.Pdf417;
 			m_Barcode.Text = "Nevron Software";
-			m_Barcode.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_Barcode.BorderThickness = new NMargins(1);
+			m_Barcode.SetBorder(1, NColor.Red);
 
-			return m_Barcode;
+            return m_Barcode;
 		}
 		protected override NWidget CreateExampleControls()
 		{

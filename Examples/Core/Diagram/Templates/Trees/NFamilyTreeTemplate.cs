@@ -6,10 +6,10 @@ using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// The NFamilyTreeTemplate class represents a family tree template
-	/// </summary>
-	public class NFamilyTreeTemplate : NGraphTemplate
+    /// <summary>
+    /// The NFamilyTreeTemplate class represents a family tree template
+    /// </summary>
+    public class NFamilyTreeTemplate : NGraphTemplate
 	{
 		#region Constructors
 
@@ -79,35 +79,35 @@ namespace Nevron.Nov.Examples.Diagram
 			NPage page = document.Content.ActivePage;
 			
 			// determine the elements dimensions
-			double childrenWidth = m_nChildrenCount * m_VerticesSize.Width + (m_nChildrenCount - 1) * m_fHorizontalSpacing;
-            double parentsWidth = m_VerticesSize.Width * 2 + m_fHorizontalSpacing;
+			double childrenWidth = m_nChildrenCount * m_VertexSize.Width + (m_nChildrenCount - 1) * m_fHorizontalSpacing;
+            double parentsWidth = m_VertexSize.Width * 2 + m_fHorizontalSpacing;
 			
 			// determine the template dimensions
 			double templateWidth = Math.Max(childrenWidth, parentsWidth);
-			NRectangle templateBounds = new NRectangle(m_Origin.X, m_Origin.Y, templateWidth, m_VerticesSize.Height * 2 + m_fVerticalSpacing); 
+			NRectangle templateBounds = new NRectangle(m_Origin.X, m_Origin.Y, templateWidth, m_VertexSize.Height * 2 + m_fVerticalSpacing); 
 			NPoint center = templateBounds.Center;
 
 			// create the parent nodes
-			NShape father = CreateVertex(m_VerticesShape);
-			pt = new NPoint(center.X - (m_VerticesSize.Width + m_fHorizontalSpacing / 2), templateBounds.Y);  
-			father.SetBounds(new NRectangle(pt, m_VerticesSize));
+			NShape father = CreateVertex(m_VertexShape);
+			pt = new NPoint(center.X - (m_VertexSize.Width + m_fHorizontalSpacing / 2), templateBounds.Y);  
+			father.SetBounds(new NRectangle(pt, m_VertexSize));
 			page.Items.AddChild(father);
 
-			NShape mother = CreateVertex(m_VerticesShape);
+			NShape mother = CreateVertex(m_VertexShape);
 			pt = new NPoint(center.X + m_fHorizontalSpacing / 2, templateBounds.Y);  
-			mother.SetBounds(new NRectangle(pt, m_VerticesSize));
+			mother.SetBounds(new NRectangle(pt, m_VertexSize));
 			page.Items.AddChild(mother);
 
 			// create the children
 			if (m_nChildrenCount > 0)
 			{
-				double childrenY = templateBounds.Y + m_VerticesSize.Height + m_fVerticalSpacing;
+				double childrenY = templateBounds.Y + m_VertexSize.Height + m_fVerticalSpacing;
 				for (int i = 0; i < m_nChildrenCount; i++)
 				{
 					// create the child
-					node = CreateVertex(m_VerticesShape);
-					pt = new NPoint(i * (m_VerticesSize.Width + m_fHorizontalSpacing), childrenY);
-					node.SetBounds(new NRectangle(pt, m_VerticesSize));
+					node = CreateVertex(m_VertexShape);
+					pt = new NPoint(i * (m_VertexSize.Width + m_fHorizontalSpacing), childrenY);
+					node.SetBounds(new NRectangle(pt, m_VertexSize));
 					page.Items.AddChild(node);
 
 					// attach it to the parents
@@ -136,5 +136,3 @@ namespace Nevron.Nov.Examples.Diagram
 		#endregion
 	}
 }
-#region AUTO_CODE_BLOCK [NFamilyTreeTemplate]
-#endregion

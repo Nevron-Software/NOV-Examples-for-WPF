@@ -49,12 +49,17 @@ namespace Nevron.Nov.Examples.Framework
 			m_GenderComboBox.Items.Add(new NComboBoxItem ("Female"));
 			m_GenderComboBox.SelectedIndex = 0;
 
+			m_ProfessionComboBox = new NComboBox();
+			m_ProfessionComboBox.FillFromEnum<Profession>();
+			m_ProfessionComboBox.SelectedIndex = 0;
+
 			m_OtherTextBox = new NTextBox();
 
 			stack.Add(new NPairBox(new NLabel("Name (string):"), m_NameTextBox, true));
 			stack.Add(new NPairBox(new NLabel("Address (string):"), m_AddressTextBox, true));
 			stack.Add(new NPairBox(new NLabel("Married (boolean):"), m_MarriedCheckBox, true));
 			stack.Add(new NPairBox(new NLabel("Gender (singleton):"), m_GenderComboBox, true));
+			stack.Add(new NPairBox(new NLabel("Profession (enum):"), m_ProfessionComboBox, true));
 			stack.Add(new NPairBox(new NLabel("Other (string, non serialized):"), m_OtherTextBox, true));
 
 			return new NUniSizeBoxGroup(stack);
@@ -99,17 +104,20 @@ namespace Nevron.Nov.Examples.Framework
 				m_MemoryStream = new MemoryStream();
 
 				NSerializer serializer = new NSerializer();
+
 				PersonInfo serializationObject = new PersonInfo(
 					m_NameTextBox.Text,
 					m_AddressTextBox.Text,
 					m_MarriedCheckBox.Checked,
 					m_GenderComboBox.SelectedIndex == 0 ? GenderSingleton.Male : GenderSingleton.Female,
+					(Profession)(typeof(Profession).GetEnumValues().GetValue(m_ProfessionComboBox.SelectedIndex)),
 					m_OtherTextBox.Text);
+
 				serializer.SaveToStream(serializationObject, m_MemoryStream, ENPersistencyFormat.Binary);
 			}
 			catch (Exception ex)
 			{
-				NTrace.WriteLine(ex.Message);
+				NDebug.WriteLine(ex.Message);
 			}
 		}
 
@@ -127,6 +135,19 @@ namespace Nevron.Nov.Examples.Framework
 			m_AddressTextBox.Text = serializationObject.Address;
 			m_MarriedCheckBox.Checked = serializationObject.Married;
 			m_GenderComboBox.SelectedIndex = serializationObject.Gender == GenderSingleton.Male ? 0 : 1;
+
+			// intentionally done this way to test serialization of UInt64 based enums
+			int index = 0;
+			foreach (Profession profession in typeof(Profession).GetEnumValues())
+			{
+				if (profession == serializationObject.Profession)
+                {
+					m_ProfessionComboBox.SelectedIndex = index;
+					break;
+				}
+				index++;
+			}
+
 			m_OtherTextBox.Text = serializationObject.Other;
 		}
 
@@ -154,7 +175,7 @@ namespace Nevron.Nov.Examples.Framework
 
 			#region Static Methods
 
-			public static object GetSurrogateSerializer_NoObf(GenderSingleton singleton)
+			public static object GetSurrogateSerializer(GenderSingleton singleton)
 			{
 				return new GenderSurrogate(singleton);
 			}
@@ -224,12 +245,21 @@ namespace Nevron.Nov.Examples.Framework
 
 			public bool IsMale;
 
-			#endregion
+            #endregion
+        }
+
+        public enum Profession : UInt64
+        { 
+			Architect,
+			Businessman,
+			Dentist,
+			Developer = uint.MaxValue
 		}
-		/// <summary>
-		/// Represents a class showing some 
-		/// </summary>
-		public class PersonInfo
+
+        /// <summary>
+        /// Represents a class showing some 
+        /// </summary>
+        public class PersonInfo
 		{
 			#region Constructors
 
@@ -243,15 +273,19 @@ namespace Nevron.Nov.Examples.Framework
 			/// <summary>
 			/// Initializer constructor
 			/// </summary>
-			/// <param name="a"></param>
-			/// <param name="b"></param>
-			/// <param name="c"></param>
-			public PersonInfo(string name, string address, bool married, GenderSingleton gender, string other)
+			/// <param name="name"></param>
+			/// <param name="address"></param>
+			/// <param name="married"></param>
+			/// <param name="gender"></param>
+			/// <param name="profession"></param>
+			/// <param name="other"></param>
+			public PersonInfo(string name, string address, bool married, GenderSingleton gender, Profession profession, string other)
 			{
 				Name = name;
 				Address = address;
 				Married = married;
 				Gender = gender;
+				Profession = profession;
 				Other = other;
 			}
 
@@ -263,6 +297,7 @@ namespace Nevron.Nov.Examples.Framework
 			public string Address;
 			public bool Married;
 			public GenderSingleton Gender;
+			public Profession Profession;
 
 			[NNonSerialized]
 			public string Other;
@@ -278,6 +313,7 @@ namespace Nevron.Nov.Examples.Framework
 		NTextBox m_AddressTextBox;
 		NCheckBox m_MarriedCheckBox;
 		NComboBox m_GenderComboBox;
+		NComboBox m_ProfessionComboBox;
 		NTextBox m_OtherTextBox;
 
 		MemoryStream m_MemoryStream;

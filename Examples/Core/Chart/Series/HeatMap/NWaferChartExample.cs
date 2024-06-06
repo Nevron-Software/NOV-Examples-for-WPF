@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -48,7 +49,7 @@ namespace Nevron.Nov.Examples.Chart
 			NHeatMapSeries heatMap = new NHeatMapSeries();
 			chart.Series.Add(heatMap);
 
-			NGridData data = heatMap.Data;
+			NHeatMapData data = heatMap.Data;
 
 			heatMap.Palette = new NTwoColorPalette(NColor.Green, NColor.Red);
 
@@ -83,7 +84,7 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

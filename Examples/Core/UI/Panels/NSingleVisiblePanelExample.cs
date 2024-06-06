@@ -35,10 +35,9 @@ namespace Nevron.Nov.Examples.UI
 			m_SingleVisiblePanel.HorizontalPlacement = ENHorizontalPlacement.Left;
 			m_SingleVisiblePanel.VerticalPlacement = ENVerticalPlacement.Top;
 			m_SingleVisiblePanel.PreferredWidth = 400;
-			m_SingleVisiblePanel.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_SingleVisiblePanel.BorderThickness = new NMargins(1);
+			m_SingleVisiblePanel.SetBorder(1, NColor.Red);
 
-			NStackPanel mainStack = new NStackPanel();
+            NStackPanel mainStack = new NStackPanel();
 			m_SingleVisiblePanel.Add(mainStack);
 
 			mainStack.Add(CreateHeaderLabel("Mobile Computers"));

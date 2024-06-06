@@ -1,16 +1,15 @@
-﻿using System;
-using Nevron.Nov.Chart;
+﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
-using Nevron.Nov.UI;
 using Nevron.Nov.Layout;
-using Nevron.Nov.Editors;
+using Nevron.Nov.UI;
+using System;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
-	/// This example demonstrates how to control the size of the gauge axes
-    /// </summary>
+	/// <summary>
+	/// 
+	/// </summary>
 	public class NScaleSectionsExample : NExampleBase
     {
         #region Constructors
@@ -164,18 +163,18 @@ namespace Nevron.Nov.Examples.Gauge
 				// FIX: Smart Shapes
 				if (blueSection.Range.Contains(valueIndicator.Value))
 				{
-//					valueIndicator.Shape.FillStyle = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant1, NColor.White, NColor.Blue);
-//					valueIndicator.Shape.StrokeStyle = new NStrokeStyle(Color.Blue);
+					valueIndicator.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant1, NColor.White, NColor.Blue);
+					valueIndicator.Stroke = new NStroke(NColor.Blue);
 				}
 				else if (redSection.Range.Contains(valueIndicator.Value))
 				{
-//					valueIndicator.Shape.FillStyle = new NGradientFillStyle(GradientStyle.Horizontal, GradientVariant.Variant1, Color.White, Color.Red);
-//					valueIndicator.Shape.StrokeStyle = new NStrokeStyle(Color.Red);
+					valueIndicator.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant1, NColor.White, NColor.Red);
+					valueIndicator.Stroke = new NStroke(NColor.Red);
 				}
 				else
 				{
-//					valueIndicator.Shape.FillStyle = new NColorFillStyle(Color.LightGreen);
-//					valueIndicator.Shape.StrokeStyle = new NStrokeStyle(Color.DarkGreen);
+					valueIndicator.Fill = new NColorFill(NColor.LightGreen);
+					valueIndicator.Stroke = new NStroke(NColor.DarkGreen);
 				}
 			}
 		}

@@ -32,7 +32,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreatePieChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Pie);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Pie";
@@ -53,7 +55,8 @@ namespace Nevron.Nov.Examples.Chart
 			m_PieSeries.LegendView.Mode = ENSeriesLegendMode.DataPoints;
 			m_PieSeries.LegendView.Format = "<label> <percent>";
 
-			m_PieSeries.DataPoints.Add(new NPieDataPoint(24, "Cars"));
+
+            m_PieSeries.DataPoints.Add(new NPieDataPoint(24, "Cars"));
 			m_PieSeries.DataPoints.Add(new NPieDataPoint(18, "Airplanes"));
 			m_PieSeries.DataPoints.Add(new NPieDataPoint(32, "Trains"));
 			m_PieSeries.DataPoints.Add(new NPieDataPoint(23, "Ships"));
@@ -62,9 +65,9 @@ namespace Nevron.Nov.Examples.Chart
 			// detach airplanes
 			m_PieSeries.DataPoints[1].DetachmentPercent = 10;
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -121,17 +124,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NStandardPieExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreatePieChartView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Pie);
-			return chartView;
-		}
 
 		#endregion
 	}

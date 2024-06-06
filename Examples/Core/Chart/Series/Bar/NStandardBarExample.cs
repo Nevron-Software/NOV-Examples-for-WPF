@@ -33,24 +33,23 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
-			// configure title
+			// Set the title
 			chartView.Surface.Titles[0].Text = "Standard Bar";
 
-			// configure chart
+			// Configure the chart
 			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
 
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
-
-            // add interlace stripe
+            // Add an interlace stripe
 			NLinearScale linearScale = chart.Axes[ENCartesianAxis.PrimaryY].Scale as NLinearScale;
 			NScaleStrip strip = new NScaleStrip(new NColorFill(ENNamedColor.Beige), null, true, 0, 0, 1, 1);
             strip.Interlaced = true;
-            //linearScale.Strips.Add(strip);
+            linearScale.Strips.Add(strip);
 
-			// setup a bar series
+			// Setup a bar series
 			m_Bar = new NBarSeries();
 			m_Bar.Name = "Bar Series";
 			m_Bar.InflateMargins = true;
@@ -58,19 +57,28 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Bar.Shadow = new NShadow(NColor.LightGray, 2, 2);
 
-			// add some data to the bar series
+			// Add some data to the bar series
 			m_Bar.LegendView.Mode = ENSeriesLegendMode.DataPoints;
 			m_Bar.DataPoints.Add(new NBarDataPoint(18, "C++"));
 			m_Bar.DataPoints.Add(new NBarDataPoint(15, "Ruby"));
 			m_Bar.DataPoints.Add(new NBarDataPoint(21, "Python"));
 			m_Bar.DataPoints.Add(new NBarDataPoint(23, "Java"));
-			m_Bar.DataPoints.Add(new NBarDataPoint(27, "Javascript"));
+			m_Bar.DataPoints.Add(new NBarDataPoint(27, "JavaScript"));
 			m_Bar.DataPoints.Add(new NBarDataPoint(29, "C#"));
 			m_Bar.DataPoints.Add(new NBarDataPoint(26, "PHP"));
-
 			chart.Series.Add(m_Bar);
 
-			return chartView;
+			// Configure the X axis to show the language names
+			string[] labels = new string[m_Bar.DataPoints.Count];
+			for (int i = 0; i < m_Bar.DataPoints.Count; i++)
+			{
+				labels[i] = m_Bar.DataPoints[i].Label;
+			}
+
+			NOrdinalScale xAxisScale = (NOrdinalScale)chart.Axes[ENCartesianAxis.PrimaryX].Scale;
+			xAxisScale.Labels.TextProvider = new NOrdinalScaleLabelTextProvider(labels);
+
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

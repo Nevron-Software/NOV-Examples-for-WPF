@@ -8,23 +8,23 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples.Diagram
 {
 	public class NRichTextFormattingExample : NExampleBase
-    {
-        #region Constructors
+	{
+		#region Constructors
 
-        /// <summary>
-        /// Default constructor.
-        /// </summary>
-        public NRichTextFormattingExample()
-        {
-        }
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public NRichTextFormattingExample()
+		{
+		}
 
-        /// <summary>
-        /// Static constructor.
-        /// </summary>
-        static NRichTextFormattingExample()
-        {
-            NRichTextFormattingExampleSchema = NSchema.Create(typeof(NRichTextFormattingExample), NExampleBaseSchema);
-        }
+		/// <summary>
+		/// Static constructor.
+		/// </summary>
+		static NRichTextFormattingExample()
+		{
+			NRichTextFormattingExampleSchema = NSchema.Create(typeof(NRichTextFormattingExample), NExampleBaseSchema);
+		}
 
 		#endregion
 
@@ -53,20 +53,20 @@ namespace Nevron.Nov.Examples.Diagram
 			return null;
 		}
 		protected override string GetExampleDescription()
-        {
-            return @"<p>Demonstrates how to apply rich text formatting to texts.</p>";
-        }
+		{
+			return @"<p>Demonstrates how to apply rich text formatting to texts.</p>";
+		}
 
-        private void InitDiagram(NDrawingDocument drawingDocument)
-        {
-            NDrawing drawing = drawingDocument.Content;
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NDrawing drawing = drawingDocument.Content;
 
-            // hide the grid
-            drawing.ScreenVisibility.ShowGrid = false;
+			// hide the grid
+			drawing.ScreenVisibility.ShowGrid = false;
 
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
 
-			NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			shape1.SetBounds(10, 10, 381, 600);
 
 			NTextBlock textBlock1 = new NTextBlock();
@@ -75,7 +75,7 @@ namespace Nevron.Nov.Examples.Diagram
 			AddFormattedTextToContent(textBlock1.Content);
 			drawing.ActivePage.Items.Add(shape1);
 
-			NShape shape2 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
 			shape2.SetBounds(401, 10, 381, 600);
 			NTextBlock textBlock2 = new NTextBlock();
 			shape2.TextBlock = textBlock2;
@@ -270,6 +270,6 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		public static readonly NSchema NRichTextFormattingExampleSchema;
 
-        #endregion
-    }
+		#endregion
+	}
 }

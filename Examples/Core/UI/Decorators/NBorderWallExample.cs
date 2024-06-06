@@ -309,12 +309,12 @@ Using the controls to the right	you can change the type and appearance of the ge
 
             #region Protected Overrides - Border Wall
 
-            protected override NBorderWall CreateBorderWall()
+            protected override NBorderWall CreateBorderWall(NPaintVisitor visitor)
             {
                 switch (BorderWallType)
                 {
                     case ENCustomBorderWallType.Rectangle:
-                        return base.CreateBorderWall();
+                        return base.CreateBorderWall(visitor);
 
                     case ENCustomBorderWallType.Cross:
                         return CreateCrossBorderWall();

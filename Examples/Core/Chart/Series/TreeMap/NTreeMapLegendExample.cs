@@ -22,7 +22,6 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NTreeMapLegendExample()
 		{
-
 		}
 		/// <summary>
 		/// Static constructor
@@ -38,7 +37,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateTreeMapView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "TreeMap Legend";
@@ -97,7 +98,7 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -151,17 +152,6 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NTreeMapLegendExampleSchema;
-
-		#endregion
-
-		#region Static Methods
-
-		private static NChartView CreateTreeMapView()
-		{
-			NChartView chartView = new NChartView();
-			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
-			return chartView;
-		}
 
 		#endregion
 	}

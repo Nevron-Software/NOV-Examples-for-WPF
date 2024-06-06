@@ -101,7 +101,7 @@
             <param name="path"></param>
             <returns></returns>
         </member>
-        <member name="T:Nevron.Nov.CustomActions.NCreateEvaluationLicenseKey">
+        <member name="T:Nevron.Nov.CustomActions.NCreateEvaluationLicenseKeyAction">
             <summary>
             Creates an evaluation license key
             </summary>
@@ -587,48 +587,54 @@
             Enumerates the log entry types
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.pnii.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.AnfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+            <summary>
+            
+            </summary>
+            <param name="dnfK"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.lOfK.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="vnii"></param>
+            <param name="rOfK"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.coii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.xOfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="doii"></param>
+            <param name="YOfK"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.gpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.CQfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="hpii"></param>
+            <param name="dQfK"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.ipii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.EQfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="jpii"></param>
+            <param name="fQfK"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.mpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.IQfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="ppii"></param>
+            <param name="lQfK"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.vpii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.rQfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="xpii"></param>
+            <param name="tQfK"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.etii.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
+        <member name="M:Nevron.Nov.Internal.AUfK.Execute(Nevron.Nov.CustomActions.NInstallationContext)">
             <summary>
             
             </summary>
-            <param name="jtii"></param>
+            <param name="fUfK"></param>
         </member>
     </members>
 </doc>

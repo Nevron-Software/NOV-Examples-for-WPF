@@ -35,11 +35,10 @@ namespace Nevron.Nov.Examples.UI
 		{
 			// Create a dock panel with red border
 			m_DockPanel = new NDockPanel();
-			m_DockPanel.Border = NBorder.CreateFilledBorder(NColor.Red);
-			m_DockPanel.BorderThickness = new NMargins(1);
+			m_DockPanel.SetBorder(1, NColor.Red);
 
-			// Create and dock several widgets
-			NWidget widget = CreateDockedWidget(ENDockArea.Left);
+            // Create and dock several widgets
+            NWidget widget = CreateDockedWidget(ENDockArea.Left);
 			widget.PreferredSize = new NSize(100, 100);
 			m_DockPanel.Add(widget);
 

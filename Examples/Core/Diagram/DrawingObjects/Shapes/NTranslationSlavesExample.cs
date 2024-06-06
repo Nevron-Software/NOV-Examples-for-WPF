@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NTranslationSlavesExample : NExampleBase
+    public class NTranslationSlavesExample : NExampleBase
     {
         #region Constructors
 
@@ -82,22 +82,22 @@ Note that the example will automatically highlight the move slaves of the curren
 			// create rectangular grid template
 			template = new NRectangularGridTemplate();
 			template.Origin = new NPoint(10, 23);
-			template.VerticesShape = ENBasicShape.Rectangle;
-            template.EdgesUserClass = NDR.StyleSheetNameConnectors;
+			template.VertexShape = ENBasicShape.Rectangle;
+            template.EdgeUserClass = NDR.StyleSheetNameConnectors;
             template.Create(drawingDocument);
 
 			// create tree template
 			template = new NGenericTreeTemplate();
 			template.Origin = new NPoint(250, 23);
-            template.VerticesShape = ENBasicShape.Triangle;
-            template.EdgesUserClass = NDR.StyleSheetNameConnectors;
+            template.VertexShape = ENBasicShape.Triangle;
+            template.EdgeUserClass = NDR.StyleSheetNameConnectors;
             template.Create(drawingDocument);
 
 			// create elliptical grid template
 			template = new NEllipticalGridTemplate();
 			template.Origin = new NPoint(10, 250);
-            template.VerticesShape = ENBasicShape.Ellipse;
-            template.EdgesUserClass = NDR.StyleSheetNameConnectors;
+            template.VertexShape = ENBasicShape.Ellipse;
+            template.EdgeUserClass = NDR.StyleSheetNameConnectors;
 			template.Create(drawingDocument);
 
             // hook selection events
@@ -116,7 +116,7 @@ Note that the example will automatically highlight the move slaves of the curren
         /// Called when a diagram item has been selected.
         /// </summary>
         /// <param name="arg"></param>
-        void OnSelectionSelected(NSelectEventArgs<NDiagramItem> arg)
+        void OnSelectionSelected(NSelectEventArgs<NPageItem> arg)
         {
             NShape shape = arg.Item as NShape;
             if (shape == null)
@@ -135,7 +135,7 @@ Note that the example will automatically highlight the move slaves of the curren
         /// Called when a diagram item has been deselected.
         /// </summary>
         /// <param name="arg"></param>
-        void OnSelectionDeselected(NSelectEventArgs<NDiagramItem> arg)
+        void OnSelectionDeselected(NSelectEventArgs<NPageItem> arg)
         {
             NShape shape = arg.Item as NShape;
             if (shape == null)

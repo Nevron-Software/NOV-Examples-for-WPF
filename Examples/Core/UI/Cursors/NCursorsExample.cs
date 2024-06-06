@@ -81,6 +81,7 @@ namespace Nevron.Nov.Examples.UI
 </p>
 ";
 		}
+
 		#endregion
 
 		#region Implementation

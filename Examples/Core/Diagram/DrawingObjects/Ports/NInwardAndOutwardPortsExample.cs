@@ -5,54 +5,54 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NInwardAndOutwardPortsExample : NExampleBase
-    {
-        #region Constructors
+	public class NInwardAndOutwardPortsExample : NExampleBase
+	{
+		#region Constructors
 
-        /// <summary>
-        /// Default constructor.
-        /// </summary>
-        public NInwardAndOutwardPortsExample()
-        {
-        }
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public NInwardAndOutwardPortsExample()
+		{
+		}
 
-        /// <summary>
-        /// Static constructor.
-        /// </summary>
-        static NInwardAndOutwardPortsExample()
-        {
-            NInwardAndOutwardPortsExampleSchema = NSchema.Create(typeof(NInwardAndOutwardPortsExample), NExampleBaseSchema);
-        }
+		/// <summary>
+		/// Static constructor.
+		/// </summary>
+		static NInwardAndOutwardPortsExample()
+		{
+			NInwardAndOutwardPortsExampleSchema = NSchema.Create(typeof(NInwardAndOutwardPortsExample), NExampleBaseSchema);
+		}
 
-        #endregion
+		#endregion
 
-        #region Example
+		#region Example
 
-        protected override NWidget CreateExampleContent()
-        {
-            // Create a simple drawing
-            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
-            m_DrawingView = drawingViewWithRibbon.View;
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
-            m_DrawingView.Document.HistoryService.Pause();
-            try
-            {
-                InitDiagram(m_DrawingView.Document);
-            }
-            finally
-            {
-                m_DrawingView.Document.HistoryService.Resume();
-            }
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
 
-            return drawingViewWithRibbon;
-        }
-        protected override NWidget CreateExampleControls()
-        {
-            return null;
-        }
-        protected override string GetExampleDescription()
-        {
-            return @"
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
 <p>
     Demonstrates the behavior of inward and outward ports. Move the rectangle close to the Star to see the rectangle rotate to match the snapped ports direction.
 </p>
@@ -73,47 +73,46 @@ namespace Nevron.Nov.Examples.Diagram
     <b>InwardAndOutward</b> ports behave as both inward and outward.
 </p>
 ";
-        }
+		}
 
-        private void InitDiagram(NDrawingDocument drawingDocument)
-        {
-            NDrawing drawing = drawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NDrawing drawing = drawingDocument.Content;
+			NPage activePage = drawing.ActivePage;
 
-            // hide the grid
-            drawing.ScreenVisibility.ShowGrid = false;
+			// hide the grid
+			drawing.ScreenVisibility.ShowGrid = false;
 
-            // plotter commands
-            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
-           
-            // create a rectangle with an outward port
-            NShape rectShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
-            rectShape.SetBounds(50, 50, 100, 100);
-            rectShape.Text = "Move me close to the star";
-            rectShape.GetPortByName("Top").GlueMode = ENPortGlueMode.Outward;
-            activePage.Items.Add(rectShape);
+			NBasicShapeFactory basicShapes = new NBasicShapeFactory();
 
-            // create a pentagram
-            NShape pentagramShape = basicShapes.CreateShape(ENBasicShape.Pentagram);
-            pentagramShape.SetBounds(310, 310, 100, 100);
-            activePage.Items.Add(pentagramShape);
-        }
+			// create a rectangle with an outward port
+			NShape rectShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
+			rectShape.SetBounds(50, 50, 100, 100);
+			rectShape.Text = "Move me close to the star";
+			rectShape.GetPortByName("Top").GlueMode = ENPortGlueMode.Outward;
+			activePage.Items.Add(rectShape);
 
-        #endregion
+			// create a pentagram
+			NShape pentagramShape = basicShapes.CreateShape(ENBasicShape.Pentagram);
+			pentagramShape.SetBounds(310, 310, 100, 100);
+			activePage.Items.Add(pentagramShape);
+		}
 
-        #region Fields
+		#endregion
 
-        private NDrawingView m_DrawingView;
+		#region Fields
 
-        #endregion
+		private NDrawingView m_DrawingView;
 
-        #region Schema
+		#endregion
 
-        /// <summary>
-        /// Schema associated with NInwardAndOutwardPortsExample.
-        /// </summary>
-        public static readonly NSchema NInwardAndOutwardPortsExampleSchema;
+		#region Schema
 
-        #endregion
-    }
+		/// <summary>
+		/// Schema associated with NInwardAndOutwardPortsExample.
+		/// </summary>
+		public static readonly NSchema NInwardAndOutwardPortsExampleSchema;
+
+		#endregion
+	}
 }

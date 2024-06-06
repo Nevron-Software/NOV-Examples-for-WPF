@@ -97,11 +97,11 @@ namespace Nevron.Nov.Examples.Schedule
 
 		private void OnLoadButtonClick(NEventArgs arg)
 		{
-			m_ScheduleView.OpenFile();
+			m_ScheduleView.OpenFileAsync();
 		}
 		private void OnSaveButtonClick(NEventArgs arg)
 		{
-			m_ScheduleView.SaveAs();
+			m_ScheduleView.SaveAsAsync();
 		}
 
 		#endregion

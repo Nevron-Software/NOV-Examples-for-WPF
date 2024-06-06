@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -64,15 +65,15 @@ namespace Nevron.Nov.Examples.Chart
 			m_Point.DataLabelStyle = new NDataLabelStyle(false);
 			m_Point.Fill = new NColorFill(new NColor(NColor.DarkOrange, 160));
 			m_Point.Size = 5;
-			m_Point.Shape = ENPointShape.Ellipse;
+			m_Point.Shape = ENPointShape3D.Ellipse;
 			m_Point.UseXValues = true;
 			m_Chart.Series.Add(m_Point);
 
 			OnNewDataButtonClick(null);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

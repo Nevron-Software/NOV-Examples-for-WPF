@@ -32,7 +32,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -48,8 +49,11 @@ namespace Nevron.Nov.Examples.Chart
 				// configure the axes
 				NCartesianAxis axis = m_Chart.Axes[i];
 
-				// set the range to [0, 100]
-				axis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
+				// set the visibility mode to always visible
+                axis.VisibilityMode = ENAxisVisibilityMode.Visible;
+
+                // set the range to [0, 100]
+                axis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
 				axis.MinViewRangeValue = 0;
 				axis.MaxViewRangeValue = 100;
 
@@ -79,9 +83,9 @@ namespace Nevron.Nov.Examples.Chart
 				linearScale.Labels.OverlapResolveLayouts = new NDomArray<ENLevelLabelsLayout>(new ENLevelLabelsLayout[] { ENLevelLabelsLayout.Stagger2 } );
 			}
 
-			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return m_ChartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

@@ -223,7 +223,7 @@
             Y coordinate.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.ctph.ToString">
+        <member name="M:Nevron.Nov.Internal.UjMj.ToString">
             <summary>
             Provides a string version of this object.
             </summary>
@@ -231,7 +231,7 @@
             A string version of this object.
             </returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.oaqh.ToString">
+        <member name="M:Nevron.Nov.Internal.hQMj.ToString">
             <summary>
             Returns a string that represents this NFileDialogCustomPlace instance.
             </summary>
@@ -239,118 +239,118 @@
             A string that represents this NFileDialogCustomPlace instance.
             </returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.ugag.Dispose">
+        <member name="M:Nevron.Nov.Internal.Gbnh.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.iwyh.IntegratedSecurity">
+        <member name="P:Nevron.Nov.Internal.rnvj.IntegratedSecurity">
             <summary>
             Gets/Sets a boolean value that indicates whether UserId and Password are specified in the connection(when false) 
             or whether the current Windows account credentials are used for authentication (when true).
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.iwyh.UserID">
+        <member name="P:Nevron.Nov.Internal.rnvj.UserID">
             <summary>
             Gets or sets the user ID to be used when connecting to SQL Server.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.iwyh.Password">
+        <member name="P:Nevron.Nov.Internal.rnvj.Password">
             <summary>
             Gets or sets the password for the SQL Server account.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.iwyh.DataSource">
+        <member name="P:Nevron.Nov.Internal.rnvj.DataSource">
             <summary>
             Gets or sets the name or network address of the instance of SQL Server to connect to.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.iwyh.InitialCatalog">
+        <member name="P:Nevron.Nov.Internal.rnvj.InitialCatalog">
             <summary>
             Gets or sets the name of the database associated with the connection.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.xwyh`1.IsOpen">
+        <member name="P:Nevron.Nov.Internal.hOvj`1.IsOpen">
             <summary>
             Checks whether the connection is opened.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xwyh`1.GetSchema(System.String)">
+        <member name="M:Nevron.Nov.Internal.hOvj`1.GetSchema(System.String)">
             <summary>
             
             </summary>
-            <param name="axyh"></param>
+            <param name="jOvj"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xwyh`1.Close">
+        <member name="M:Nevron.Nov.Internal.hOvj`1.Close">
             <summary>
             Closes the connection.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xiai.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.MIWj.Equals(System.Object)">
             <summary>
             Overriden to check whether two cursor definititions are equal or not
             </summary>
-            <param name="ajai"></param>
+            <param name="OIWj"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xiai.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.MIWj.GetHashCode">
             <summary>
             Overriden because equal was overriden
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fyvh.Dispose">
+        <member name="M:Nevron.Nov.Internal.vpSj.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vlwh.Dispose">
+        <member name="M:Nevron.Nov.Internal.Mdtj.Dispose">
             <summary>
             Disposes the internally created bitmap
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.lkai.Dispose">
+        <member name="M:Nevron.Nov.Internal.AKWj.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jwwh.IsReadOnly">
+        <member name="M:Nevron.Nov.Internal.Yntj.IsReadOnly">
             <summary>
             Returns true
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jwwh.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
+        <member name="M:Nevron.Nov.Internal.Yntj.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
             <summary>
             Throws an invalid operation exception
             </summary>
-            <param name="lwwh"></param>
-            <param name="mwwh"></param>
+            <param name="bOtj"></param>
+            <param name="COtj"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.jwwh.ContainsData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.Yntj.ContainsData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Queries whether data can be obtained in the specified format.
             </summary>
-            <param name="nwwh"></param>
+            <param name="dOtj"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jwwh.GetFormats">
+        <member name="M:Nevron.Nov.Internal.Yntj.GetFormats">
             <summary>
             Gets a list of the formats in which data can be obtained.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jwwh.GetData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.Yntj.GetData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Gets a data object in the specified format. 
             Returns null, if data in the specified format does not exists or its retrieval failed.  
             Returns a format specific object instance in case the data was successfully retrived.
             </summary>
-            <param name="owwh"></param>
+            <param name="EOtj"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.kmgi.ErrorCode">
+        <member name="P:Nevron.Nov.Internal.EMdK.ErrorCode">
             <summary>
             Gets the HRESULT of the error.
             </summary>

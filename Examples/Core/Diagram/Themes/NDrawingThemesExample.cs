@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NDrawingThemesExample : NExampleBase
+    public class NDrawingThemesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -72,8 +72,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             NDrawing drawing = drawingDocument.Content;
             NPage page = drawing.ActivePage;
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-
+            NBasicShapeFactory factory = new NBasicShapeFactory();
 			// Hide ports
 			drawing.ScreenVisibility.ShowPorts = false;
 

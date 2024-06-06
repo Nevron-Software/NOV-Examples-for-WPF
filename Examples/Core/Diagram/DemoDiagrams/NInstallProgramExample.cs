@@ -64,11 +64,10 @@ namespace Nevron.Nov.Examples.Diagram
             drawingDocument.StyleSheets.Add(sheet);
 
             // create a rule that applies to the geometries of all shapes with user class Connectors
-            const string connectorsClass = "Connector";
             {
                 NRule rule = sheet.CreateRule(delegate(NSelectorBuilder sb)
                 {
-                    sb.Type(NGeometry.NGeometrySchema); sb.ChildOf(); sb.UserClass(connectorsClass);
+                    sb.Type(NGeometry.NGeometrySchema); sb.ChildOf(); sb.UserClass(NDR.StyleSheetNameConnectors);
                 });
                 rule.AddValueDeclaration<NArrowhead>(NGeometry.EndArrowheadProperty, new NArrowhead(ENArrowheadShape.TriangleNoFill), true);
             }
@@ -77,7 +76,7 @@ namespace Nevron.Nov.Examples.Diagram
             {
                 NRule rule = sheet.CreateRule(delegate(NSelectorBuilder sb)
                 {
-                    sb.Type(NTextBlock.NTextBlockSchema); sb.ChildOf(); sb.UserClass(connectorsClass);
+                    sb.Type(NTextBlock.NTextBlockSchema); sb.ChildOf(); sb.UserClass(NDR.StyleSheetNameConnectors);
                 });
                 rule.AddValueDeclaration<NFill>(NTextBlock.BackgroundFillProperty, new NColorFill(NColor.White));
             }
@@ -117,9 +116,9 @@ namespace Nevron.Nov.Examples.Diagram
             drawing.ScreenVisibility.ShowGrid = false;
             drawing.ScreenVisibility.ShowPorts = false;
 
-            NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            NFlowchartShapeFactory flowChartingShapesFactory = new NFlowchartShapeFactory();
-            NConnectorShapeFactory connectorShapesFactory = new NConnectorShapeFactory();
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+            NLibrary flowchartShapes = NLibrary.FlowchartShapes;
+            NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
             NRectangle bounds;
 
@@ -224,7 +223,7 @@ namespace Nevron.Nov.Examples.Diagram
         private NShape CreateBasicShape(ENBasicShape basicShape, NRectangle bounds, string text, string userClass)
         {
             // create shape
-            NShape shape = new NBasicShapeFactory().CreateShape(basicShape);
+            NShape shape = m_BasicShapes.CreateShape(basicShape);
 
             // set bounds, text and user class
             shape.SetBounds(bounds);
@@ -246,7 +245,7 @@ namespace Nevron.Nov.Examples.Diagram
         private NShape CreateFlowChartingShape(ENFlowchartingShape flowChartShape, NRectangle bounds, string text, string userClass)
         {
             // create shape
-            NShape shape = new NFlowchartShapeFactory().CreateShape(flowChartShape);
+            NShape shape = NLibrary.FlowchartShapes.CreateShape(flowChartShape);
 
             // set bounds, text and user class
             shape.SetBounds(bounds);
@@ -277,7 +276,7 @@ namespace Nevron.Nov.Examples.Diagram
                 throw new ArgumentNullException("toShape");
 
             // create the connector
-            NShape connector = new NConnectorShapeFactory().CreateShape(connectorType);
+            NShape connector = m_ConnectorShapes.CreateShape(connectorType);
 
             // set text and user class
             connector.Text = text;
@@ -321,14 +320,17 @@ namespace Nevron.Nov.Examples.Diagram
         private NSize m_GridCellSize = new NSize(180, 70);
         private NSize m_GridSpacing = new NSize(50, 40);
 
-        #endregion
+		private NBasicShapeFactory m_BasicShapes = new NBasicShapeFactory();
+		private NConnectorShapeFactory m_ConnectorShapes = new NConnectorShapeFactory();
 
-        #region Schema
+		#endregion
 
-        /// <summary>
-        /// Schema associated with NInstallProgramExample.
-        /// </summary>
-        public static readonly NSchema NInstallProgramExampleSchema;
+		#region Schema
+
+		/// <summary>
+		/// Schema associated with NInstallProgramExample.
+		/// </summary>
+		public static readonly NSchema NInstallProgramExampleSchema;
 
         #endregion
     }

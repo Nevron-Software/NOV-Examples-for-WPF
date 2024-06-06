@@ -110,8 +110,8 @@ namespace Nevron.Nov.Examples.Diagram
             template.BranchNodes = 3;
             template.HorizontalSpacing = 10;
             template.VerticalSpacing = 10;
-            template.VerticesShape = ENBasicShape.Circle;
-            template.VerticesSize = new NSize(50, 50);
+            template.VertexShape = ENBasicShape.Circle;
+            template.VertexSize = new NSize(50, 50);
             template.VertexSizeDeviation = 0;
             template.Create(drawingDocument);
 
@@ -159,11 +159,11 @@ namespace Nevron.Nov.Examples.Diagram
 
 				// create a test tree
 				NRandomGraphTemplate graph = new NRandomGraphTemplate();
-				graph.EdgesUserClass = "Connector";
+				graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
 				graph.VertexCount = 10;
 				graph.EdgeCount = 15;
-				graph.VerticesShape = VertexShape;
-				graph.VerticesSize = VertexSize;
+				graph.VertexShape = VertexShape;
+				graph.VertexSize = VertexSize;
 				graph.Create(drawingDocument);
 
 				// layout the tree
@@ -185,11 +185,11 @@ namespace Nevron.Nov.Examples.Diagram
 
 				// create a test tree
 				NRandomGraphTemplate graph = new NRandomGraphTemplate();
-				graph.EdgesUserClass = "Connector";
+				graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
 				graph.VertexCount = 20;
 				graph.EdgeCount = 30;
-				graph.VerticesShape = VertexShape;
-				graph.VerticesSize = VertexSize;
+				graph.VertexShape = VertexShape;
+				graph.VertexSize = VertexSize;
 				graph.Create(drawingDocument);
 
 				// layout the tree

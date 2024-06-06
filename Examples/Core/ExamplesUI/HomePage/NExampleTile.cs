@@ -7,6 +7,9 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples
 {
+	/// <summary>
+	/// Represents an example tile, which can be an examples folder or an example.
+	/// </summary>
 	public class NExampleTile : NPairBox
 	{
 		#region Constructors
@@ -27,6 +30,12 @@ namespace Nevron.Nov.Examples
 			: base(icon, title)
 		{
 			m_Status = defaultStatus;
+
+			if (Box1 != null)
+			{
+				Box1.PreferredSize = IconSize;
+			}
+
 			Box2.VerticalPlacement = ENVerticalPlacement.Center;
 		}
 
@@ -151,6 +160,7 @@ namespace Nevron.Nov.Examples
 		#region Constants
 
 		internal const string FontName = "Arial";
+		internal static readonly NSize IconSize = new NSize(16, 16);
 
 		#endregion
 	}

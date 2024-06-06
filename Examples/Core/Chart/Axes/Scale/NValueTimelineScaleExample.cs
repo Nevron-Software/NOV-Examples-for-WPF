@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Value Timeline Scale Example
+	/// Value Timeline Scale Example.
 	/// </summary>
 	public class NValueTimelineScaleExample : NExampleBase
 	{
@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -76,11 +77,11 @@ namespace Nevron.Nov.Examples.Chart
 			m_Stock.CandleWidth = 4;
 			m_Stock.UseXValues = true;
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
 			OnWeeklyDataButtonClick(null);
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

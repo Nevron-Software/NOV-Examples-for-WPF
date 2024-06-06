@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -79,9 +80,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_Chart.Series.Add(m_Bubble);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.DataPoints));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -89,10 +90,10 @@ namespace Nevron.Nov.Examples.Chart
 			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
 			
 			NComboBox bubbleShapeComboBox = new NComboBox();
-			bubbleShapeComboBox.FillFromEnum<ENPointShape>();
+			bubbleShapeComboBox.FillFromEnum<ENPointShape3D>();
 			bubbleShapeComboBox.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnBubbleShapeComboBoxSelectedIndexChanged);
 			stack.Add(NPairBox.Create("Bubble Shape: ", bubbleShapeComboBox));
-			bubbleShapeComboBox.SelectedIndex = (int)ENPointShape.Ellipse;
+			bubbleShapeComboBox.SelectedIndex = (int)ENPointShape3D.Ellipse;
 
 			NNumericUpDown minBubbleSizeUpDown = new NNumericUpDown();
 			minBubbleSizeUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnMinBubbleSizeUpDownValueChanged);
@@ -126,38 +127,11 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-		private NComboBox CreateLegendFormatCombo()
-		{
-			NComboBox comboBox = new NComboBox();
-
-			NComboBoxItem item = new NComboBoxItem("Value and Label");
-			item.Tag = "<value> <label>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Value");
-			item.Tag = "<value>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Label");
-			item.Tag = "<label>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Size");
-			item.Tag = "<size>";
-			comboBox.Items.Add(item);
-
-			return comboBox;
-		}
-
-		#endregion
-
 		#region Event Handlers
 
 		void OnBubbleShapeComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
-			m_Bubble.Shape = (ENPointShape)((NComboBox)arg.TargetNode).SelectedIndex;
+			m_Bubble.Shape = (ENPointShape3D)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
 
 		void OnInflateMarginsCheckBoxCheckedChanged(NValueChangeEventArgs arg)

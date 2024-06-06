@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.RoslynCompilerService</name>
+    </assembly>
+    <members>
+        <member name="T:Nevron.Nov.Compiler.NRoslynCompilerService">
+            <summary>
+            Represents the compiler service that is used to compile code to in-memory assembly.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Compiler.NRoslynCompilerService.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Compiler.NRoslynCompilerService.CreateMetadataReferenceFromAssembly(System.Reflection.Assembly)">
+            <summary>
+            Creates an <see cref="T:Microsoft.CodeAnalysis.MetadataReference"/> from the given assembly.
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Compiler.NRoslynCompilerService.GetMetadataReferences(Nevron.Nov.Compiler.NCodeAssembly)">
+            <summary>
+            Gets the metadata references for the given code assembly.
+            </summary>
+            <param name="codeAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Compiler.NRoslynCompilerService.DoCompile(Nevron.Nov.Compiler.NCodeAssembly)">
+            <summary>
+            Overriden to compile the specified code assembly
+            </summary>
+            <param name="codeAssembly"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -38,7 +38,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_ChartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			m_ChartView = chartViewWithCommandBars.View;
 			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
@@ -46,8 +47,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
-
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
 			// add interlace stripe
 			NLinearScale linearScale = (NLinearScale)chart.Axes[ENCartesianAxis.PrimaryY].Scale;
@@ -76,11 +75,11 @@ namespace Nevron.Nov.Examples.Chart
 			m_Bar3.DataLabelStyle = new NDataLabelStyle(false);
 			chart.Series.Add(m_Bar3);
 
-			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
 			FillRandomData();
 
-			return m_ChartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -160,27 +159,28 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnLoadStateFromFileButtonClick(NEventArgs arg)
 		{
-			m_ChartView.OpenFile();
+			m_ChartView.OpenFileAsync();
 		}
 
 		void OnSaveStateToFileButtonClick(NEventArgs arg)
 		{
-            m_ChartView.SaveAs();
-		}
+            m_ChartView.SaveAsAsync();
+        }
 
 		void OnLoadStateFromStreamButtonClick(NEventArgs arg)
 		{
 			if (m_Stream != null)
 			{
 				m_Stream.Seek(0, SeekOrigin.Begin);
-				m_ChartView.LoadFromStream(m_Stream);
-			}
+				m_ChartView.LoadFromStreamAsync(m_Stream);
+
+            }
 		}
 
 		void OnSaveStateToStreamButtonClick(NEventArgs arg)
 		{
 			m_Stream = new MemoryStream();
-			m_ChartView.SaveToStream(m_Stream, NChartFormat.NevronXml);
+			m_ChartView.SaveToStreamAsync(m_Stream, NChartFormat.NevronXml);
 		}
 
 		void OnChangeDataButtonClick(NEventArgs arg)

@@ -68,8 +68,8 @@ namespace Nevron.Nov.Examples.Gauge
 			m_KnobIndicator.OffsetFromScale = -3;
 			m_KnobIndicator.AllowDragging = true;
 
-			// apply fill style to the marker
-			NAdvancedGradientFill advancedGradientFill = new NAdvancedGradientFill();
+            // apply fill style to the marker
+            NAdvancedGradientFill advancedGradientFill = new NAdvancedGradientFill();
 			advancedGradientFill.BackgroundColor = NColor.Red;
 			advancedGradientFill.Points.Add(new NAdvancedGradientPoint(NColor.White, new NAngle(20, NUnit.Degree), 20, 0, 100, ENAdvancedGradientPointShape.Circle));
 			m_KnobIndicator.Fill = advancedGradientFill;

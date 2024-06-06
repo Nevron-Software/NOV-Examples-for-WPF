@@ -6,10 +6,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	/// <summary>
-	/// The example demonstrates how to programmatically a sample report.
-	/// </summary>
-	public class NSelectionChangedExample : NExampleBase
+    /// <summary>
+    /// The example demonstrates how to programmatically a sample report.
+    /// </summary>
+    public class NSelectionChangedExample : NExampleBase
 	{
 		#region Constructors
 

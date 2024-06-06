@@ -58,7 +58,13 @@ namespace Nevron.Nov.Examples.Schedule
 			commandBarBuilder.ToolBarBuilders.Remove(NScheduleCommandBarBuilder.ToolbarStandardName);
 			commandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
 
-			return commandBarBuilder.CreateUI(m_ScheduleView);
+			// Create the commanding UI
+			NCommandUIHolder scheduleViewWithCommandBars = commandBarBuilder.CreateUI(m_ScheduleView);
+
+			// Remove the Open and Save commands
+			scheduleViewWithCommandBars.RemoveCommands(NScheduleView.OpenCommand, NScheduleView.SaveCommand, NScheduleView.SaveAsCommand);
+
+			return scheduleViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

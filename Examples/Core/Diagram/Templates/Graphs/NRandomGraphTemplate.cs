@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 
-using Nevron.Nov.Graphics;
-using Nevron.Nov.Layout;
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Diagram.Shapes;
-using Nevron.Nov.DataStructures;
+using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 
 namespace Nevron.Nov.Examples.Diagram
 {
@@ -25,8 +24,8 @@ namespace Nevron.Nov.Examples.Diagram
         {
             m_nVertexCount = 10;
             m_nEdgeCount = 15;
-            m_MinVerticesSize = m_VerticesSize;
-            m_MaxVerticesSize = m_VerticesSize;
+            m_MinVerticesSize = m_VertexSize;
+            m_MaxVerticesSize = m_VertexSize;
         }
 
         #endregion
@@ -159,7 +158,7 @@ namespace Nevron.Nov.Examples.Diagram
             // Create the vertices
             for (i = 0; i < m_nVertexCount; i++)
             {
-                vertices[i] = CreateVertex(m_VerticesShape);
+                vertices[i] = CreateVertex(m_VertexShape);
                 double width = random.Next(minSize.Width, maxSize.Width);
                 double height = random.Next(minSize.Height, maxSize.Height);
                 vertices[i].SetBounds(new NRectangle(0, 0, width, height));
@@ -190,8 +189,8 @@ namespace Nevron.Nov.Examples.Diagram
             // Apply a table layout to the generated graph
             NTableFlowLayout tableLayout = new NTableFlowLayout();
             tableLayout.MaxOrdinal = (int)Math.Sqrt(m_nVertexCount) + 1;
-            tableLayout.HorizontalSpacing = m_VerticesSize.Width / 5;
-            tableLayout.VerticalSpacing = m_VerticesSize.Width / 5;
+            tableLayout.HorizontalSpacing = m_VertexSize.Width / 5;
+            tableLayout.VerticalSpacing = m_VertexSize.Width / 5;
 
             NDrawingLayoutContext context = new NDrawingLayoutContext(document, activePage);
             tableLayout.Arrange(new NList<object>(NArrayHelpers<NShape>.CastAll<object>(vertices)), context);

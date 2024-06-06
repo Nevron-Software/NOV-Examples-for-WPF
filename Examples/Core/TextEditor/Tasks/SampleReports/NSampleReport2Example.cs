@@ -262,9 +262,6 @@ namespace Nevron.Nov.Examples.Text
 			// configure chart
 			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
 			chart.Padding = new NMargins(20);
-
-			// configure axes
-			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 			chart.Margins = NMargins.Zero;
 
 			if (area)

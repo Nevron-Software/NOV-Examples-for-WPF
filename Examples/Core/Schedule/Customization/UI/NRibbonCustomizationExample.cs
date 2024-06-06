@@ -66,7 +66,13 @@ namespace Nevron.Nov.Examples.Schedule
 			// Insert the custom ribbon group at the beginning of the home tab page
 			homeTabBuilder.RibbonGroupBuilders.Insert(0, new CustomRibbonGroupBuilder());
 
-			return ribbonBuilder.CreateUI(m_ScheduleView);
+			// Create the commanding UI
+			NCommandUIHolder scheduleViewWithRibbon = ribbonBuilder.CreateUI(m_ScheduleView);
+
+			// Remove the Open and Save commands
+			scheduleViewWithRibbon.RemoveCommands(NScheduleView.OpenCommand, NScheduleView.SaveCommand, NScheduleView.SaveAsCommand);
+
+			return scheduleViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{

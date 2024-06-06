@@ -54,7 +54,7 @@ namespace Nevron.Nov.Examples.Text
 		}
 		protected override string GetExampleDescription()
 		{
-			return "<p>This example demonstrates how to switch the NOV Rich Text commanding interface between ribbon and command bars.</p>";
+			return "<p>This example demonstrates how to add commanding interface to the NOV Rich Text Editor and how to switch between ribbon and command bars.</p>";
 		}
 
 		private void PopulateRichText()

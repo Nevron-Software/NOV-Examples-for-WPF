@@ -1,4 +1,6 @@
-﻿using Nevron.Nov.DataStructures;
+﻿using System;
+
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Diagram.Shapes;
@@ -9,7 +11,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NLayeredGraphLayoutExample : NExampleBase
+    public class NLayeredGraphLayoutExample : NExampleBase
 	{
 		#region Constructors
 
@@ -77,6 +79,11 @@ namespace Nevron.Nov.Examples.Diagram
 			itemsStack.Add(randomGraph2Button);
 
 			stack.Add(new NGroupBox("Items", itemsStack));
+
+			// Create the layout result label
+			m_ResultLabel = new NLabel();
+			stack.Add(new NGroupBox("Layout Results", m_ResultLabel));
+			UpdateResultLabel();
 
 			return stack;
 		}
@@ -201,7 +208,7 @@ namespace Nevron.Nov.Examples.Diagram
 				else
 				{
 					NRoutableConnector edge = new NRoutableConnector();
-					edge.UserClass = "Connector";
+					edge.UserClass = NDR.StyleSheetNameConnectors;
 					activePage.Items.Add(edge);
 					edge.GlueBeginToShape(shapes[from[i - vertexCount] - 1]);
 					edge.GlueEndToShape(shapes[to[i - vertexCount] - 1]);
@@ -235,6 +242,21 @@ namespace Nevron.Nov.Examples.Diagram
 
 			// size the page to the content size
 			activePage.SizeToContent();
+
+			// update the result label
+			UpdateResultLabel();
+		}
+		private void UpdateResultLabel()
+		{
+			if (m_ResultLabel == null)
+				return;
+
+			NPage page = m_DrawingView.ActivePage;
+			int crossings = NLayoutHelpers.GetNumberOfEdgeCrossings(page);
+
+			m_ResultLabel.Text =
+				$"Edge crossings: {crossings}" + Environment.NewLine +
+				$"Page area: {page.Width * page.Height:N0} px\u00B2 ({page.Width:N0} px x {page.Height:N0} px)";
 		}
 
 		#endregion
@@ -250,16 +272,16 @@ namespace Nevron.Nov.Examples.Diagram
 			{
 				m_DrawingView.ActivePage.Items.Clear();
 
-				// create a test tree
+				// create a random graph
 				NRandomGraphTemplate graph = new NRandomGraphTemplate();
-				graph.EdgesUserClass = "Connector";
+				graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
 				graph.VertexCount = 10;
 				graph.EdgeCount = 15;
-				graph.VerticesShape = VertexShape;
-				graph.VerticesSize = VertexSize;
+				graph.VertexShape = VertexShape;
+				graph.VertexSize = VertexSize;
 				graph.Create(drawingDocument);
 
-				// layout the tree
+				// arrange the graph
 				ArrangeDiagram(drawingDocument);
 			}
 			finally
@@ -278,11 +300,11 @@ namespace Nevron.Nov.Examples.Diagram
 
 				// create a test graph
 				NRandomGraphTemplate graph = new NRandomGraphTemplate();
-				graph.EdgesUserClass = "Connector";
+				graph.EdgeUserClass = NDR.StyleSheetNameConnectors;
 				graph.VertexCount = 20;
 				graph.EdgeCount = 30;
-				graph.VerticesShape = VertexShape;
-				graph.VerticesSize = VertexSize;
+				graph.VertexShape = VertexShape;
+				graph.VertexSize = VertexSize;
 				graph.Create(drawingDocument);
 
 				// layout the graph
@@ -307,6 +329,7 @@ namespace Nevron.Nov.Examples.Diagram
 		#region Fields
 
 		private NDrawingView m_DrawingView;
+		private NLabel m_ResultLabel;
 		private NLayeredGraphLayout m_Layout = new NLayeredGraphLayout();
 
 		#endregion

@@ -59,7 +59,12 @@ namespace Nevron.Nov.Examples.Text
 			homeTabBuilder.RibbonGroupBuilders.Insert(0, new CustomRibbonGroup());
 
 			// Create the ribbon commanding UI
-			return m_RibbonBuilder.CreateUI(m_RichText);
+			NCommandUIHolder richTextViewWithRibbon = m_RibbonBuilder.CreateUI(m_RichText);
+
+			// Remove the Open command from the File menu and the page number command from the status bar
+			richTextViewWithRibbon.RemoveCommands(NRichTextView.OpenCommand, NRichTextView.PageNumberStatusBarCommand);
+
+			return richTextViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{

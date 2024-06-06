@@ -3,11 +3,12 @@ using Nevron.Nov.Diagram.DrawingCommands;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Diagram.UI;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Text;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NRibbonCustomizationExample : NExampleBase
+    public class NRibbonCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -65,7 +66,13 @@ namespace Nevron.Nov.Examples.Diagram
 			// Insert the custom ribbon group at the beginning of the home tab page
 			homeTabBuilder.RibbonGroupBuilders.Insert(0, new CustomRibbonGroupBuilder());
 
-			return m_RibbonBuilder.CreateUI(m_DrawingView);
+			// Create the commanding UI
+			NCommandUIHolder drawingViewWithRibbon = m_RibbonBuilder.CreateUI(m_DrawingView);
+
+			// Remove the Open command from the File menu and the page number command from the status bar
+			drawingViewWithRibbon.RemoveCommands(NDrawingView.OpenCommand, NDrawingView.PageNumberStatusBarCommand);
+
+			return drawingViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -73,13 +80,12 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 		protected override string GetExampleDescription()
 		{
-			return @"<p>This example demonstrates how to customize the NOV diagram ribbon.</p>";
+			return @"<p>This example demonstrates how to customize the NOV Diagram ribbon.</p>";
 		}
 
 		private void InitDiagram(NDrawingDocument drawingDocument)
 		{
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			NShape shape = new NBasicShapeFactory().CreateShape(ENBasicShape.Rectangle);
 			shape.SetBounds(100, 100, 150, 100);
 			drawingDocument.Content.ActivePage.Items.Add(shape);
 		}

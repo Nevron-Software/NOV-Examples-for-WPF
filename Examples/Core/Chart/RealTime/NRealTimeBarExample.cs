@@ -35,7 +35,8 @@ namespace Nevron.Nov.Examples.Chart
 
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = new NChartView();
+			NChartViewWithCommandBars chartViewWithCommandBars = new NChartViewWithCommandBars();
+			NChartView chartView = chartViewWithCommandBars.View;
 			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Registered += OnChartViewRegistered;
@@ -65,15 +66,15 @@ namespace Nevron.Nov.Examples.Chart
 			m_Bar.InflateMargins = true;
 			m_Bar.DataLabelStyle = new NDataLabelStyle(false);
 			m_Bar.UseXValues = true;
-			m_Bar.WidthMode = ENBarWidthMode.ScaleWidth;
+			m_Bar.WidthSizeMode = ENBarSizeMode.Scale;
 			m_Bar.Width = 0.5;
 			m_CurXValue = 0;
 
 			m_Chart.Series.Add(m_Bar);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, ENChartPaletteTarget.Series));
 
-			return chartView;
+			return chartViewWithCommandBars;
 		}
 		protected override NWidget CreateExampleControls()
 		{

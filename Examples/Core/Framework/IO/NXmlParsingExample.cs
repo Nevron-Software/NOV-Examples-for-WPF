@@ -143,7 +143,7 @@ namespace Nevron.Nov.Examples.Framework
 			if (arg.Result != ENCommonDialogResult.OK)
 				return;
 
-			arg.Files[0].OpenRead().Then(
+			arg.Files[0].OpenReadAsync().Then(
 				delegate (Stream stream)
 				{
 					using (stream)

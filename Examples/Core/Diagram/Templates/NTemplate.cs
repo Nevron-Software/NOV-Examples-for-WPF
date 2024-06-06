@@ -1,6 +1,5 @@
 using System;
 
-using Nevron.Nov.Dom;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Graphics;
 
@@ -135,7 +134,7 @@ namespace Nevron.Nov.Examples.Diagram
 			}
 			catch (Exception ex)
 			{
-				NTrace.WriteLine("Failed to create template. Exception was: " + ex.Message);
+				NDebug.WriteLine("Failed to create template. Exception was: " + ex.Message);
 				document.RollbackHistoryTransaction();
 				return false;
 			}
